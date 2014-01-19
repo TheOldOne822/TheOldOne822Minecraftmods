@@ -23,10 +23,10 @@ public class HandlerEvent {
 				EntityPlayer eventPlayer = (EntityPlayer) event.entity;
 
 				if (helmet != null && chest != null && legs != null && boots != null) {
-					if ((helmet.getItem() == Content.cinderstoneHelm || helmet.getItem() == Content.dragonbezoarHelm || helmet.getItem() == Content.extendedcinderstoneHelm || helmet.getItem() == Content.extendeddragonbezoarHelm)
-							&& (chest.getItem() == Content.cinderstoneChest || chest.getItem() == Content.dragonbezoarChest || chest.getItem() == Content.extendedcinderstoneChest || chest.getItem() == Content.extendeddragonbezoarChest)
-							&& (legs.getItem() == Content.cinderstoneLegs || legs.getItem() == Content.dragonbezoarLegs || legs.getItem() == Content.extendedcinderstoneLegs || legs.getItem() == Content.extendeddragonbezoarLegs)
-							&& (boots.getItem() == Content.cinderstoneBoots || boots.getItem() == Content.dragonbezoarBoots || boots.getItem() == Content.extendedcinderstoneBoots || boots.getItem() == Content.extendeddragonbezoarBoots)) {
+					if ((helmet.getItem() == Content.cinderstoneHelm || helmet.getItem() == Content.dragonbezoarHelm || (EWAPI.getEWInstalled() && (helmet.getItem() == Content.extendedcinderstoneHelm || helmet.getItem() == Content.extendeddragonbezoarHelm)))
+							&& (chest.getItem() == Content.cinderstoneChest || chest.getItem() == Content.dragonbezoarChest || (EWAPI.getEWInstalled() && ( chest.getItem() == Content.extendedcinderstoneChest || chest.getItem() == Content.extendeddragonbezoarChest)))
+							&& (legs.getItem() == Content.cinderstoneLegs || legs.getItem() == Content.dragonbezoarLegs || (EWAPI.getEWInstalled() && ( legs.getItem() == Content.extendedcinderstoneLegs || legs.getItem() == Content.extendeddragonbezoarLegs)))
+							&& (boots.getItem() == Content.cinderstoneBoots || boots.getItem() == Content.dragonbezoarBoots || (EWAPI.getEWInstalled() && ( boots.getItem() == Content.extendedcinderstoneBoots || boots.getItem() == Content.extendeddragonbezoarBoots)))) {
 						if (event.source.equals(DamageSource.lava) || event.source.equals(DamageSource.inFire) || event.source.equals(DamageSource.onFire)
 								|| event.source.equals(DamageSource.fall)) {
 							event.setCanceled(true);
@@ -50,10 +50,10 @@ public class HandlerEvent {
 				EntityPlayer eventPlayer = (EntityPlayer) event.entity;
 
 				if (helmet != null && chest != null && legs != null && boots != null) {
-					if ((helmet.getItem() == Content.dragonbezoarHelm || helmet.getItem() == Content.extendeddragonbezoarHelm)
-							&& (chest.getItem() == Content.dragonbezoarChest || chest.getItem() == Content.extendeddragonbezoarChest)
-							&& (legs.getItem() == Content.dragonbezoarLegs || legs.getItem() == Content.extendeddragonbezoarLegs)
-							&& (boots.getItem() == Content.dragonbezoarBoots || boots.getItem() == Content.extendeddragonbezoarBoots)) {
+					if ((helmet.getItem() == Content.dragonbezoarHelm || (EWAPI.getEWInstalled() && helmet.getItem() == Content.extendeddragonbezoarHelm))
+							&& (chest.getItem() == Content.dragonbezoarChest || (EWAPI.getEWInstalled() && chest.getItem() == Content.extendeddragonbezoarChest))
+							&& (legs.getItem() == Content.dragonbezoarLegs || (EWAPI.getEWInstalled() && legs.getItem() == Content.extendeddragonbezoarLegs))
+							&& (boots.getItem() == Content.dragonbezoarBoots || (EWAPI.getEWInstalled() && boots.getItem() == Content.extendeddragonbezoarBoots))) {
 						if (event.source.equals(DamageSource.wither)) {
 							event.setCanceled(true);
 						}
@@ -77,10 +77,10 @@ public class HandlerEvent {
 				EntityPlayer eventPlayer = (EntityPlayer) event.entity;
 
 				if (helmet != null && chest != null && legs != null && boots != null) {
-					if ((helmet.getItem() == Content.pyralisHelm || helmet.getItem() == Content.extendedpyralisHelm)
-							&& (chest.getItem() == Content.pyralisChest || chest.getItem() == Content.extendedpyralisChest)
-							&& (legs.getItem() == Content.pyralisLegs || legs.getItem() == Content.extendedpyralisLegs)
-							&& (boots.getItem() == Content.pyralisBoots || boots.getItem() == Content.extendedpyralisBoots)) {
+					if ((helmet.getItem() == Content.pyralisHelm || (EWAPI.getEWInstalled() && helmet.getItem() == Content.extendedpyralisHelm))
+							&& (chest.getItem() == Content.pyralisChest || (EWAPI.getEWInstalled() && chest.getItem() == Content.extendedpyralisChest))
+							&& (legs.getItem() == Content.pyralisLegs || (EWAPI.getEWInstalled() && legs.getItem() == Content.extendedpyralisLegs))
+							&& (boots.getItem() == Content.pyralisBoots || (EWAPI.getEWInstalled() && boots.getItem() == Content.extendedpyralisBoots))) {
 						int r = generator.nextInt(100);
 						if (r <= Settings.pyralisArmorResistance) {
 							if (event.source.equals(DamageSource.wither) || event.source.equals(DamageSource.lava) || event.source.equals(DamageSource.inFire)

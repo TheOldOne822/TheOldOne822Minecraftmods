@@ -30,7 +30,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
-@Mod(modid = "netherrocksfusion", name = "Netherrocks Fusion", version = "1.0", dependencies = "required-after:simpleores; required-after:simpleoresfusion")
+@Mod(modid = "netherrocksfusion", name = "Netherrocks Fusion", version = "1.2", dependencies = "required-after:simpleores; required-after:simpleoresfusion")
 public class NetherrocksFusion {
 
 	@SidedProxy(clientSide = "theoldone822.NetherrocksFusion.ProxyClient", serverSide = "theoldone822.NetherrocksFusion.ProxyCommon")	
@@ -82,9 +82,7 @@ public class NetherrocksFusion {
 		public static float increaseShearDurability = 1.5f;
 		public static float increaseShearMiningSpeed = 1.5f;
 		// efficiency is doubled
-
 	}
-
 
 	@Instance("NetherrocksFusion")
 	public static NetherrocksFusion instance = new NetherrocksFusion();
@@ -117,7 +115,6 @@ public class NetherrocksFusion {
     	Content.doItems();
     	Content.doTools();
     	Recipes.doRecipes();
-		
 	}
 
 	@EventHandler
@@ -148,5 +145,4 @@ public class NetherrocksFusion {
 
 		proxy.registerRenderInformation();
 	}
-
 }
