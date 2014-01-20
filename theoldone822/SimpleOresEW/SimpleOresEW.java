@@ -6,7 +6,6 @@ import java.util.Arrays;
 import theoldone822.SimpleOresEW.Items.ItemExtendedArmor;
 import theoldone822.SimpleOresEW.Items.ItemExtendedAxe;
 import theoldone822.SimpleOresEW.Items.ItemExtendedBow;
-import theoldone822.SimpleOresEW.Items.ItemExtendedBowFusion;
 import theoldone822.SimpleOresEW.Items.ItemExtendedHoe;
 import theoldone822.SimpleOresEW.Items.ItemExtendedPickaxe;
 import theoldone822.SimpleOresEW.Items.ItemExtendedShovel;
@@ -36,7 +35,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
-@Mod(modid = "simpleoresew", name = "Simple Ore Extended Work Bench Plugin", version = "1.5", dependencies = "required-after:extendedWorkbench")
+@Mod(modid = "simpleoresew", name = "Simple Ore Extended Work Bench Plugin", version = "1.6", dependencies = "required-after:extendedWorkbench")
 public class SimpleOresEW {
 	public static Item extendedmythrilBow;
 	public static Item extendedonyxBow;
@@ -55,14 +54,16 @@ public class SimpleOresEW {
 	public static Item extendedillumeniteLegs;
 	public static Item extendedillumeniteBoots;
 
+	public static Item extendedfyriteSword;
+	public static Item extendedillumeniteSword;
+	public static Item extendedfyritePick;
+
 	public static Item extendedsilverHelm;
 	public static Item extendedsilverChest;
 	public static Item extendedsilverLegs;
 	public static Item extendedsilverBoots;
 
-	public static Item extendedfyriteSword;
-	public static Item extendedillumeniteSword;
-	public static Item extendedfyritePick;
+	public static Item extendedsilverBow;
 
 	public static class extendedValues {
 
@@ -125,67 +126,87 @@ public class SimpleOresEW {
 		int armorRenderer[] = new int[13];
 
 		if (FMLCommonHandler.instance().getEffectiveSide().isClient())
-			armorRenderer = new int[] { RenderingRegistry.addNewArmourRendererPrefix("extendedCopper"), RenderingRegistry.addNewArmourRendererPrefix("extendedTin"),
-					RenderingRegistry.addNewArmourRendererPrefix("extendedMythril"), RenderingRegistry.addNewArmourRendererPrefix("extendedAdamantium"),
-					RenderingRegistry.addNewArmourRendererPrefix("extendedOnyx"), RenderingRegistry.addNewArmourRendererPrefix("extendedBronze"),
-					RenderingRegistry.addNewArmourRendererPrefix("extendedThyrium"), RenderingRegistry.addNewArmourRendererPrefix("extendedSinisite"),
-					RenderingRegistry.addNewArmourRendererPrefix("extendedMalachite"), RenderingRegistry.addNewArmourRendererPrefix("extendedDragonstone"),
-					RenderingRegistry.addNewArmourRendererPrefix("extendedFyrite"), RenderingRegistry.addNewArmourRendererPrefix("extendedIllumenite"),
+			armorRenderer = new int[] { RenderingRegistry.addNewArmourRendererPrefix("extendedCopper"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedTin"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedMythril"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedAdamantium"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedOnyx"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedBronze"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedThyrium"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedSinisite"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedMalachite"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedDragonstone"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedFyrite"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedIllumenite"),
 					RenderingRegistry.addNewArmourRendererPrefix("extendedSilver") };
+
+		String[] toolmatNames = new String[] { "Copper", "Tin", "Mythril", "Adamantium", "Onyx", "Bronze", "Thyrium", "Sinisite", "Malachite",
+				"Ashstone", "Dragonstone", "Argonite", "Silver" };
+		String[] toolNames = new String[] { "Sword", "Shovel", "Pickaxe", "Axe", "Hoe" };
+		String[] armormatNames = new String[] { "Copper", "Tin", "Mythril", "Adamantium", "Onyx", "Bronze", "Thyrium", "Sinisite", "Malachite",
+				"Dragonstone", "Fyrite", "Illumenite", "Silver" };
+		String[] armorNames = new String[] { "Helmet", "Chestplate", "Leggings", "Boots" };
 
 		if (PluginChecks.getSimpleInstalled()) {
 			{
-				String[] matNames = new String[] { "Copper", "Tin", "Mythril", "Adamantium", "Onyx" };
-				String[] toolNames = new String[] { "Sword", "Shovel", "Pickaxe", "Axe", "Hoe" };
-				Object[] material = new Object[] { SimpleOres.core.Items.copperIngot, SimpleOres.core.Items.tinIngot, SimpleOres.core.Items.mythrilIngot,
-						SimpleOres.core.Items.adamantiumIngot, SimpleOres.core.Items.onyxGem };
-				EnumToolMaterial[] sotool = new EnumToolMaterial[] { SimpleOres.core.SimpleOres.toolCopper, SimpleOres.core.SimpleOres.toolTin, SimpleOres.core.SimpleOres.toolMythril,
-						SimpleOres.core.SimpleOres.toolAdamantium, SimpleOres.core.SimpleOres.toolOnyx };
+				Object[] material = new Object[] { SimpleOres.core.Items.copperIngot, SimpleOres.core.Items.tinIngot,
+						SimpleOres.core.Items.mythrilIngot, SimpleOres.core.Items.adamantiumIngot, SimpleOres.core.Items.onyxGem };
+				EnumToolMaterial[] sotool = new EnumToolMaterial[] { SimpleOres.core.SimpleOres.toolCopper, SimpleOres.core.SimpleOres.toolTin,
+						SimpleOres.core.SimpleOres.toolMythril, SimpleOres.core.SimpleOres.toolAdamantium, SimpleOres.core.SimpleOres.toolOnyx };
 				Object[] handle = new Object[] { Block.planks, Block.planks, Item.ingotIron, Item.ingotIron, Item.diamond };
-				int[] level = new int[] { SimpleOres.core.Settings.copperMiningLevel, SimpleOres.core.Settings.tinMiningLevel, SimpleOres.core.Settings.mythrilMiningLevel,
-						SimpleOres.core.Settings.adamantiumMiningLevel, SimpleOres.core.Settings.onyxMiningLevel };
+				int[] level = new int[] { SimpleOres.core.Settings.copperMiningLevel, SimpleOres.core.Settings.tinMiningLevel,
+						SimpleOres.core.Settings.mythrilMiningLevel, SimpleOres.core.Settings.adamantiumMiningLevel,
+						SimpleOres.core.Settings.onyxMiningLevel };
 
 				for (int i = 0; i < 5; i++) {
 
-					item[0][i] = new ItemExtendedSword((config.getItem("SO Base ID", 24034)).getInt() + i * 5 + 0, sotool[i]).setUnlocalizedName("extendedWorkbenchso:tool0" + i)
-							.setTextureName("SimpleOresEW:tool" + matNames[i] + "Sword");
-					item[1][i] = new ItemExtendedShovel((config.getItem("SO Base ID", 24034)).getInt() + i * 5 + 1, sotool[i]).setUnlocalizedName("extendedWorkbenchso:tool1" + i)
-							.setTextureName("SimpleOresEW:tool" + matNames[i] + "Shovel");
-					item[2][i] = new ItemExtendedPickaxe((config.getItem("SO Base ID", 24034)).getInt() + i * 5 + 2, sotool[i]).setUnlocalizedName("extendedWorkbenchso:tool2" + i)
-							.setTextureName("SimpleOresEW:tool" + matNames[i] + "Pickaxe");
-					item[3][i] = new ItemExtendedAxe((config.getItem("SO Base ID", 24034)).getInt() + i * 5 + 3, sotool[i]).setUnlocalizedName("extendedWorkbenchso:tool3" + i).setTextureName(
-							"SimpleOresEW:tool" + matNames[i] + "Axe");
-					item[4][i] = new ItemExtendedHoe((config.getItem("SO Base ID", 24034)).getInt() + i * 5 + 4, sotool[i]).setUnlocalizedName("extendedWorkbenchso:tool4" + i).setTextureName(
-							"SimpleOresEW:tool" + matNames[i] + "Hoe");
+					item[0][i] = new ItemExtendedSword((config.getItem("SO Base ID", 24034)).getInt() + i * 5 + 0, sotool[i])
+							.setUnlocalizedName("extendedWorkbenchso:tool0" + i)
+							.setTextureName("SimpleOresEW:tool" + toolmatNames[i] + "Sword");
+					item[1][i] = new ItemExtendedShovel((config.getItem("SO Base ID", 24034)).getInt() + i * 5 + 1, sotool[i])
+							.setUnlocalizedName("extendedWorkbenchso:tool1" + i).setTextureName(
+									"SimpleOresEW:tool" + toolmatNames[i] + "Shovel");
+					item[2][i] = new ItemExtendedPickaxe((config.getItem("SO Base ID", 24034)).getInt() + i * 5 + 2, sotool[i])
+							.setUnlocalizedName("extendedWorkbenchso:tool2" + i).setTextureName(
+									"SimpleOresEW:tool" + toolmatNames[i] + "Pickaxe");
+					item[3][i] = new ItemExtendedAxe((config.getItem("SO Base ID", 24034)).getInt() + i * 5 + 3, sotool[i]).setUnlocalizedName(
+							"extendedWorkbenchso:tool3" + i).setTextureName("SimpleOresEW:tool" + toolmatNames[i] + "Axe");
+					item[4][i] = new ItemExtendedHoe((config.getItem("SO Base ID", 24034)).getInt() + i * 5 + 4, sotool[i]).setUnlocalizedName(
+							"extendedWorkbenchso:tool4" + i).setTextureName("SimpleOresEW:tool" + toolmatNames[i] + "Hoe");
 
 					MinecraftForge.setToolClass(item[2][i], "pickaxe", level[i]);
 					MinecraftForge.setToolClass(item[1][i], "shovel", level[i]);
 					MinecraftForge.setToolClass(item[3][i], "axe", level[i]);
 
-					EWAPI.addRecipe(new ItemStack(item[0][i], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'), material[i], ('Y'), handle[i] });
-					EWAPI.addRecipe(new ItemStack(item[1][i], 1), new Object[] { " X ", " X ", " Y ", " Y ", " Y ", " Y ", ('X'), material[i], ('Y'), handle[i] });
-					EWAPI.addRecipe(new ItemStack(item[2][i], 1), new Object[] { "XX ", " XX", " YX", " Y ", " Y ", " Y ", ('X'), material[i], ('Y'), handle[i] });
-					EWAPI.addRecipe(new ItemStack(item[3][i], 1), new Object[] { "X  ", "XXX", "XY ", " Y ", " Y ", " Y ", ('X'), material[i], ('Y'), handle[i] });
-					EWAPI.addRecipe(new ItemStack(item[4][i], 1), new Object[] { " X ", " XX", " Y ", " Y ", " Y ", " Y ", ('X'), material[i], ('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[0][i], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[1][i], 1), new Object[] { " X ", " X ", " Y ", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[2][i], 1), new Object[] { "XX ", " XX", " YX", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[3][i], 1), new Object[] { "X  ", "XXX", "XY ", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[4][i], 1), new Object[] { " X ", " XX", " Y ", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
 
 					for (int j = 0; j < 5; j++)
-						LanguageRegistry.addName(item[j][i], "Extended " + (matNames[i]) + " " + (toolNames[j]));
+						LanguageRegistry.addName(item[j][i], "Extended " + (toolmatNames[i]) + " " + (toolNames[j]));
 				}
 			}
 
 			{
-				Object[] material = new Object[] { SimpleOres.core.Items.copperIngot, SimpleOres.core.Items.tinIngot, SimpleOres.core.Items.mythrilIngot,
-						SimpleOres.core.Items.adamantiumIngot, SimpleOres.core.Items.onyxGem };
-				String[] matNames = new String[] { "Copper", "Tin", "Mythril", "Adamantium", "Onyx" };
-				String[] armorNames = new String[] { "Helmet", "Chestplate", "Leggings", "Boots" };
-				EnumArmorMaterial[] soarmor = new EnumArmorMaterial[] { SimpleOres.core.SimpleOres.armorCopper, SimpleOres.core.SimpleOres.armorTin, SimpleOres.core.SimpleOres.armorMythril,
+				Object[] material = new Object[] { SimpleOres.core.Items.copperIngot, SimpleOres.core.Items.tinIngot,
+						SimpleOres.core.Items.mythrilIngot, SimpleOres.core.Items.adamantiumIngot, SimpleOres.core.Items.onyxGem };
+				EnumArmorMaterial[] soarmor = new EnumArmorMaterial[] { SimpleOres.core.SimpleOres.armorCopper,
+						SimpleOres.core.SimpleOres.armorTin, SimpleOres.core.SimpleOres.armorMythril,
 						SimpleOres.core.SimpleOres.armorAdamantium, SimpleOres.core.SimpleOres.armorOnyx };
 
 				for (int i = 0; i < 5; i++) {
 					for (int j = 0; j < 4; j++) {
-						armor[i][j] = (ItemArmor) new ItemExtendedArmor((config.getItem("SO Base ID", 24034)).getInt() + 25 + i * 4 + j, soarmor[i], armorRenderer[i], j, matNames[i]).setUnlocalizedName(
-								"extendedWorkbenchso:armor" + i + j).setTextureName("SimpleOresEW:armorextended" + matNames[i] + armorNames[j]);
-						LanguageRegistry.addName(armor[i][j], "Extended " + matNames[i] + " " + armorNames[j]);
+						armor[i][j] = (ItemArmor) new ItemExtendedArmor((config.getItem("SO Base ID", 24034)).getInt() + 25 + i * 4 + j,
+								soarmor[i], armorRenderer[i], j, armormatNames[i]).setUnlocalizedName("extendedWorkbenchso:armor" + i + j)
+								.setTextureName("SimpleOresEW:armorextended" + armormatNames[i] + armorNames[j]);
+						LanguageRegistry.addName(armor[i][j], "Extended " + armormatNames[i] + " " + armorNames[j]);
 					}
 
 					EWAPI.addRecipe(new ItemStack(armor[i][3], 1), new Object[] { "X X", "X X", "X X", ('X'), material[i] });
@@ -195,24 +216,27 @@ public class SimpleOresEW {
 				}
 			}
 
-			extendedmythrilBow = (ItemBow) new ItemExtendedBow((config.getItem("SO Base ID", 24034)).getInt() + 45, 750, SimpleOres.core.SimpleOres.toolMythril).setFull3D()
-					.setUnlocalizedName("extendedWorkbenchso:mythrilBow");
-			extendedonyxBow = (ItemBow) new ItemExtendedBow((config.getItem("SO Base ID", 24034)).getInt() + 46, 1000, SimpleOres.core.SimpleOres.toolOnyx).setFull3D().setUnlocalizedName(
-					"extendedWorkbenchso:onyxBow");
-			EWAPI.addRecipe(new ItemStack(extendedmythrilBow, 1), new Object[] { " YX", "Y X", "Z X", "Z X", "Y X", " YX", ('X'), Item.silk, ('Y'), SimpleOres.core.Items.mythrilRod, ('Z'),
-					Item.ingotIron });
-			EWAPI.addRecipe(new ItemStack(extendedonyxBow, 1), new Object[] { " YX", "Y X", "ZWX", "ZWX", "Y X", " YX", ('W'), Item.flintAndSteel, ('X'), Item.silk, ('Y'),
-					SimpleOres.core.Items.onyxRod, ('Z'), Item.diamond });
+			extendedmythrilBow = (ItemBow) new ItemExtendedBow((config.getItem("SO Base ID", 24034)).getInt() + 45, 750,
+					SimpleOres.core.SimpleOres.toolMythril).setFull3D().setUnlocalizedName("extendedWorkbenchso:mythrilBow");
+			extendedonyxBow = (ItemBow) new ItemExtendedBow((config.getItem("SO Base ID", 24034)).getInt() + 46, 1000,
+					SimpleOres.core.SimpleOres.toolOnyx).setFull3D().setUnlocalizedName("extendedWorkbenchso:onyxBow");
+			EWAPI.addRecipe(new ItemStack(extendedmythrilBow, 1), new Object[] { " YX", "Y X", "Z X", "Z X", "Y X", " YX", ('X'), Item.silk,
+					('Y'), SimpleOres.core.Items.mythrilRod, ('Z'), Item.ingotIron });
+			EWAPI.addRecipe(new ItemStack(extendedonyxBow, 1), new Object[] { " YX", "Y X", "ZWX", "ZWX", "Y X", " YX", ('W'),
+					Item.flintAndSteel, ('X'), Item.silk, ('Y'), SimpleOres.core.Items.onyxRod, ('Z'), Item.diamond });
 
-			extendedtinShears = new ItemExtendedShears((config.getItem("SO Base ID", 24034)).getInt() + 47, 176).setUnlocalizedName("extendedWorkbenchso:tinShears").setTextureName(
-					"SimpleOresEW:tinShears");
-			extendedadamantiumShears = new ItemExtendedShears((config.getItem("SO Base ID", 24034)).getInt() + 48, 1092).setUnlocalizedName("extendedWorkbenchso:adamantiumShears")
-					.setTextureName("SimpleOresEW:adamantiumShears");
-			extendedonyxShears = new ItemExtendedShears((config.getItem("SO Base ID", 24034)).getInt() + 49, 3116).setUnlocalizedName("extendedWorkbenchso:onyxShears").setTextureName(
-					"SimpleOresEW:onyxShears");
-			EWAPI.addRecipe(new ItemStack(extendedtinShears, 1), new Object[] { "X ", " X", "X ", " X", "X ", ('X'), SimpleOres.core.Items.tinIngot });
-			EWAPI.addRecipe(new ItemStack(extendedadamantiumShears, 1), new Object[] { "X ", " X", "X ", " X", "X ", ('X'), SimpleOres.core.Items.adamantiumIngot });
-			EWAPI.addRecipe(new ItemStack(extendedonyxShears, 1), new Object[] { "X ", " X", "X ", " X", "X ", ('X'), SimpleOres.core.Items.onyxGem });
+			extendedtinShears = new ItemExtendedShears((config.getItem("SO Base ID", 24034)).getInt() + 47, 176).setUnlocalizedName(
+					"extendedWorkbenchso:tinShears").setTextureName("SimpleOresEW:tinShears");
+			extendedadamantiumShears = new ItemExtendedShears((config.getItem("SO Base ID", 24034)).getInt() + 48, 1092).setUnlocalizedName(
+					"extendedWorkbenchso:adamantiumShears").setTextureName("SimpleOresEW:adamantiumShears");
+			extendedonyxShears = new ItemExtendedShears((config.getItem("SO Base ID", 24034)).getInt() + 49, 3116).setUnlocalizedName(
+					"extendedWorkbenchso:onyxShears").setTextureName("SimpleOresEW:onyxShears");
+			EWAPI.addRecipe(new ItemStack(extendedtinShears, 1), new Object[] { "X ", " X", "X ", " X", "X ", ('X'),
+					SimpleOres.core.Items.tinIngot });
+			EWAPI.addRecipe(new ItemStack(extendedadamantiumShears, 1), new Object[] { "X ", " X", "X ", " X", "X ", ('X'),
+					SimpleOres.core.Items.adamantiumIngot });
+			EWAPI.addRecipe(new ItemStack(extendedonyxShears, 1), new Object[] { "X ", " X", "X ", " X", "X ", ('X'),
+					SimpleOres.core.Items.onyxGem });
 
 			LanguageRegistry.addName(extendedmythrilBow, "Extended Mythril Bow");
 			LanguageRegistry.addName(extendedonyxBow, "Extended Onyx Bow");
@@ -223,60 +247,71 @@ public class SimpleOresEW {
 		}
 
 		if (PluginChecks.getFusionInstalled()) {
-						{
-				String[] matNames = new String[] { "Copper", "Tin", "Mythril", "Adamantium", "Onyx", "Bronze", "Thyrium", "Sinisite" };
-				String[] toolNames = new String[] { "Sword", "Shovel", "Pickaxe", "Axe", "Hoe" };
-				Object[] material = new Object[] { Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, SimpleOres.plugins.fusion.Content.bronzeIngot,
-						SimpleOres.plugins.fusion.Content.thyriumIngot, SimpleOres.plugins.fusion.Content.sinisiteIngot };
-				EnumToolMaterial[] sotool = new EnumToolMaterial[] { EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD,
-						SimpleOres.plugins.fusion.FusionPlugin.toolBronze, SimpleOres.plugins.fusion.FusionPlugin.toolThyrium, SimpleOres.plugins.fusion.FusionPlugin.toolSinisite };
-				Object[] handle = new Object[] { Block.planks, Block.planks, Item.ingotIron, Item.ingotIron, Item.diamond, Block.cobblestone, Item.ingotIron, Item.diamond };
-				int[] level = new int[] { 1, 1, 1, 1, 1, SimpleOres.plugins.fusion.Settings.bronzeMiningLevel, SimpleOres.plugins.fusion.Settings.thyriumMiningLevel,
-						SimpleOres.plugins.fusion.Settings.sinisiteMiningLevel };
+			{
+				Object[] material = new Object[] { Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+						SimpleOres.plugins.fusion.Content.bronzeIngot, SimpleOres.plugins.fusion.Content.thyriumIngot,
+						SimpleOres.plugins.fusion.Content.sinisiteIngot };
+				EnumToolMaterial[] sotool = new EnumToolMaterial[] { EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD,
+						EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, SimpleOres.plugins.fusion.FusionPlugin.toolBronze,
+						SimpleOres.plugins.fusion.FusionPlugin.toolThyrium, SimpleOres.plugins.fusion.FusionPlugin.toolSinisite };
+				Object[] handle = new Object[] { Block.planks, Block.planks, Item.ingotIron, Item.ingotIron, Item.diamond, Block.cobblestone,
+						Item.ingotIron, Item.diamond };
+				int[] level = new int[] { 1, 1, 1, 1, 1, SimpleOres.plugins.fusion.Settings.bronzeMiningLevel,
+						SimpleOres.plugins.fusion.Settings.thyriumMiningLevel, SimpleOres.plugins.fusion.Settings.sinisiteMiningLevel };
 
 				for (int i = 5; i < 8; i++) {
 
-					item[0][i] = new ItemExtendedSword((config.getItem("Fusion Base ID", 24084)).getInt() + (i - 5) * 5, sotool[i]).setUnlocalizedName("extendedWorkbenchso:tool0" + i)
-							.setTextureName("SimpleOresEW:tool" + matNames[i] + "Sword");
-					item[1][i] = new ItemExtendedShovel((config.getItem("Fusion Base ID", 24084)).getInt() + (i - 5) * 5 + 1, sotool[i]).setUnlocalizedName("extendedWorkbenchso:tool1" + i)
-							.setTextureName("SimpleOresEW:tool" + matNames[i] + "Shovel");
-					item[2][i] = new ItemExtendedPickaxe((config.getItem("Fusion Base ID", 24084)).getInt() + (i - 5) * 5 + 2, sotool[i]).setUnlocalizedName("extendedWorkbenchso:tool2" + i)
-							.setTextureName("SimpleOresEW:tool" + matNames[i] + "Pickaxe");
-					item[3][i] = new ItemExtendedAxe((config.getItem("Fusion Base ID", 24084)).getInt() + (i - 5) * 5 + 3, sotool[i]).setUnlocalizedName("extendedWorkbenchso:tool3" + i)
-							.setTextureName("SimpleOresEW:tool" + matNames[i] + "Axe");
-					item[4][i] = new ItemExtendedHoe((config.getItem("Fusion Base ID", 24084)).getInt() + (i - 5) * 5 + 4, sotool[i]).setUnlocalizedName("extendedWorkbenchso:tool4" + i)
-							.setTextureName("SimpleOresEW:tool" + matNames[i] + "Hoe");
+					item[0][i] = new ItemExtendedSword((config.getItem("Fusion Base ID", 24084)).getInt() + (i - 5) * 5, sotool[i])
+							.setUnlocalizedName("extendedWorkbenchso:tool0" + i)
+							.setTextureName("SimpleOresEW:tool" + toolmatNames[i] + "Sword");
+					item[1][i] = new ItemExtendedShovel((config.getItem("Fusion Base ID", 24084)).getInt() + (i - 5) * 5 + 1, sotool[i])
+							.setUnlocalizedName("extendedWorkbenchso:tool1" + i).setTextureName(
+									"SimpleOresEW:tool" + toolmatNames[i] + "Shovel");
+					item[2][i] = new ItemExtendedPickaxe((config.getItem("Fusion Base ID", 24084)).getInt() + (i - 5) * 5 + 2, sotool[i])
+							.setUnlocalizedName("extendedWorkbenchso:tool2" + i).setTextureName(
+									"SimpleOresEW:tool" + toolmatNames[i] + "Pickaxe");
+					item[3][i] = new ItemExtendedAxe((config.getItem("Fusion Base ID", 24084)).getInt() + (i - 5) * 5 + 3, sotool[i])
+							.setUnlocalizedName("extendedWorkbenchso:tool3" + i).setTextureName("SimpleOresEW:tool" + toolmatNames[i] + "Axe");
+					item[4][i] = new ItemExtendedHoe((config.getItem("Fusion Base ID", 24084)).getInt() + (i - 5) * 5 + 4, sotool[i])
+							.setUnlocalizedName("extendedWorkbenchso:tool4" + i).setTextureName("SimpleOresEW:tool" + toolmatNames[i] + "Hoe");
 
 					MinecraftForge.setToolClass(item[2][i], "pickaxe", level[i]);
 					MinecraftForge.setToolClass(item[1][i], "shovel", level[i]);
 					MinecraftForge.setToolClass(item[3][i], "axe", level[i]);
 
-					EWAPI.addRecipe(new ItemStack(item[0][i], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'), material[i], ('Y'), handle[i] });
-					EWAPI.addRecipe(new ItemStack(item[1][i], 1), new Object[] { " X ", " X ", " Y ", " Y ", " Y ", " Y ", ('X'), material[i], ('Y'), handle[i] });
-					EWAPI.addRecipe(new ItemStack(item[2][i], 1), new Object[] { "XX ", " XX", " YX", " Y ", " Y ", " Y ", ('X'), material[i], ('Y'), handle[i] });
-					EWAPI.addRecipe(new ItemStack(item[3][i], 1), new Object[] { "X  ", "XXX", "XY ", " Y ", " Y ", " Y ", ('X'), material[i], ('Y'), handle[i] });
-					EWAPI.addRecipe(new ItemStack(item[4][i], 1), new Object[] { " X ", " XX", " Y ", " Y ", " Y ", " Y ", ('X'), material[i], ('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[0][i], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[1][i], 1), new Object[] { " X ", " X ", " Y ", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[2][i], 1), new Object[] { "XX ", " XX", " YX", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[3][i], 1), new Object[] { "X  ", "XXX", "XY ", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[4][i], 1), new Object[] { " X ", " XX", " Y ", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
 
 					for (int j = 0; j < 5; j++)
-						LanguageRegistry.addName(item[j][i], "Extended " + (matNames[i]) + " " + (toolNames[j]));
+						LanguageRegistry.addName(item[j][i], "Extended " + (toolmatNames[i]) + " " + (toolNames[j]));
 				}
 			}
 
 			{
-				Object[] material = new Object[] { SimpleOres.core.Items.copperIngot, SimpleOres.core.Items.tinIngot, SimpleOres.core.Items.mythrilIngot,
-						SimpleOres.core.Items.adamantiumIngot, SimpleOres.core.Items.onyxGem, SimpleOres.plugins.fusion.Content.bronzeIngot, SimpleOres.plugins.fusion.Content.thyriumIngot,
+				Object[] material = new Object[] { SimpleOres.core.Items.copperIngot, SimpleOres.core.Items.tinIngot,
+						SimpleOres.core.Items.mythrilIngot, SimpleOres.core.Items.adamantiumIngot, SimpleOres.core.Items.onyxGem,
+						SimpleOres.plugins.fusion.Content.bronzeIngot, SimpleOres.plugins.fusion.Content.thyriumIngot,
 						SimpleOres.plugins.fusion.Content.sinisiteIngot };
-				String[] matNames = new String[] { "Copper", "Tin", "Mythril", "Adamantium", "Onyx", "Bronze", "Thyrium", "Sinisite" };
-				String[] armorNames = new String[] { "Helmet", "Chestplate", "Leggings", "Boots" };
-				EnumArmorMaterial[] soarmor = new EnumArmorMaterial[] { SimpleOres.core.SimpleOres.armorCopper, SimpleOres.core.SimpleOres.armorTin, SimpleOres.core.SimpleOres.armorMythril,
-						SimpleOres.core.SimpleOres.armorAdamantium, SimpleOres.core.SimpleOres.armorOnyx, SimpleOres.plugins.fusion.FusionPlugin.armorBronze,
-						SimpleOres.plugins.fusion.FusionPlugin.armorThyrium, SimpleOres.plugins.fusion.FusionPlugin.armorSinisite };
+				EnumArmorMaterial[] soarmor = new EnumArmorMaterial[] { SimpleOres.core.SimpleOres.armorCopper,
+						SimpleOres.core.SimpleOres.armorTin, SimpleOres.core.SimpleOres.armorMythril,
+						SimpleOres.core.SimpleOres.armorAdamantium, SimpleOres.core.SimpleOres.armorOnyx,
+						SimpleOres.plugins.fusion.FusionPlugin.armorBronze, SimpleOres.plugins.fusion.FusionPlugin.armorThyrium,
+						SimpleOres.plugins.fusion.FusionPlugin.armorSinisite };
 
 				for (int i = 5; i < 8; i++) {
 					for (int j = 0; j < 4; j++) {
-						armor[i][j] = (ItemArmor) new ItemExtendedArmor((config.getItem("Fusion Base ID", 24084)).getInt() + 15 + (i - 5) * 4 + j, soarmor[i], armorRenderer[i], j, matNames[i])
-								.setUnlocalizedName("extendedWorkbenchso:armor" + i + j).setTextureName("SimpleOresEW:armorextended" + matNames[i] + armorNames[j]);
-						LanguageRegistry.addName(armor[i][j], "Extended " + matNames[i] + " " + armorNames[j]);
+						armor[i][j] = (ItemArmor) new ItemExtendedArmor((config.getItem("Fusion Base ID", 24084)).getInt() + 15 + (i - 5) * 4
+								+ j, soarmor[i], armorRenderer[i], j, armormatNames[i]).setUnlocalizedName("extendedWorkbenchso:armor" + i + j)
+								.setTextureName("SimpleOresEW:armorextended" + armormatNames[i] + armorNames[j]);
+						LanguageRegistry.addName(armor[i][j], "Extended " + armormatNames[i] + " " + armorNames[j]);
 					}
 
 					EWAPI.addRecipe(new ItemStack(armor[i][3], 1), new Object[] { "X X", "X X", "X X", ('X'), material[i] });
@@ -285,14 +320,14 @@ public class SimpleOresEW {
 					EWAPI.addRecipe(new ItemStack(armor[i][0], 1), new Object[] { "XXX", "XXX", "X X", ('X'), material[i] });
 				}
 			}
-			extendedthyriumBow = (ItemBow) new ItemExtendedBowFusion((config.getItem("Fusion Base ID", 24084)).getInt() + 37, 900, SimpleOres.plugins.fusion.FusionPlugin.toolThyrium)
-					.setFull3D().setUnlocalizedName("extendedWorkbenchso:thyriumBow");
-			extendedsinisiteBow = (ItemBow) new ItemExtendedBowFusion((config.getItem("Fusion Base ID", 24084)).getInt() + 38, 1200, SimpleOres.plugins.fusion.FusionPlugin.toolSinisite)
-					.setFull3D().setUnlocalizedName("extendedWorkbenchso:sinisiteBow");
-			EWAPI.addRecipe(new ItemStack(extendedthyriumBow, 1), new Object[] { " YX", "Y X", "Z X", "Z X", "Y X", " YX", ('X'), Item.silk, ('Y'),
-					SimpleOres.plugins.fusion.Content.thyriumRod, ('Z'), Item.ingotGold });
-			EWAPI.addRecipe(new ItemStack(extendedsinisiteBow, 1), new Object[] { " YX", "Y X", "Z X", "Z X", "Y X", " YX", ('X'), Item.silk, ('Y'),
-					SimpleOres.plugins.fusion.Content.sinisiteRod, ('Z'), SimpleOres.core.Items.onyxGem });
+			extendedthyriumBow = (ItemBow) new ItemExtendedBow((config.getItem("Fusion Base ID", 24084)).getInt() + 37, 900,
+					SimpleOres.plugins.fusion.FusionPlugin.toolThyrium).setFull3D().setUnlocalizedName("extendedWorkbenchso:thyriumBow");
+			extendedsinisiteBow = (ItemBow) new ItemExtendedBow((config.getItem("Fusion Base ID", 24084)).getInt() + 38, 1200,
+					SimpleOres.plugins.fusion.FusionPlugin.toolSinisite).setFull3D().setUnlocalizedName("extendedWorkbenchso:sinisiteBow");
+			EWAPI.addRecipe(new ItemStack(extendedthyriumBow, 1), new Object[] { " YX", "Y X", "Z X", "Z X", "Y X", " YX", ('X'), Item.silk,
+					('Y'), SimpleOres.plugins.fusion.Content.thyriumRod, ('Z'), Item.ingotGold });
+			EWAPI.addRecipe(new ItemStack(extendedsinisiteBow, 1), new Object[] { " YX", "Y X", "Z X", "Z X", "Y X", " YX", ('X'), Item.silk,
+					('Y'), SimpleOres.plugins.fusion.Content.sinisiteRod, ('Z'), SimpleOres.core.Items.onyxGem });
 
 			LanguageRegistry.addName(extendedthyriumBow, "Extended Thyrium Bow");
 			LanguageRegistry.addName(extendedsinisiteBow, "Extended Sinisite Bow");
@@ -300,58 +335,70 @@ public class SimpleOresEW {
 		}
 
 		if (PluginChecks.getNetherInstalled()) {
-						{
-				String[] matNames = new String[] { "Copper", "Tin", "Mythril", "Adamantium", "Onyx", "Bronze", "Thyrium", "Sinisite", "Malachite", "Ashstone", "Dragonstone", "Argonite" };
-				String[] toolNames = new String[] { "Sword", "Shovel", "Pickaxe", "Axe", "Hoe" };
-				Object[] material = new Object[] { Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
-						Netherrocks.core.Items.malachiteIngot, Netherrocks.core.Items.ashstoneGem, Netherrocks.core.Items.dragonstoneGem, Netherrocks.core.Items.argoniteIngot };
-				EnumToolMaterial[] sotool = new EnumToolMaterial[] { EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD,
-						EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, Netherrocks.core.Netherrocks.toolMalachite, Netherrocks.core.Netherrocks.toolAshstone,
+			{
+				Object[] material = new Object[] { Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+						Item.ingotIron, Item.ingotIron, Item.ingotIron, Netherrocks.core.Items.malachiteIngot,
+						Netherrocks.core.Items.ashstoneGem, Netherrocks.core.Items.dragonstoneGem, Netherrocks.core.Items.argoniteIngot };
+				EnumToolMaterial[] sotool = new EnumToolMaterial[] { EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD,
+						EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD,
+						Netherrocks.core.Netherrocks.toolMalachite, Netherrocks.core.Netherrocks.toolAshstone,
 						Netherrocks.core.Netherrocks.toolDragonstone, Netherrocks.core.Netherrocks.toolArgonite };
-				Object[] handle = new Object[] { Block.planks, Block.planks, Item.ingotIron, Item.ingotIron, Item.diamond, Block.cobblestone, Item.ingotIron, Item.diamond, Item.ingotIron,
-						Item.ingotIron, Item.diamond, Item.ingotIron };
+				Object[] handle = new Object[] { Block.planks, Block.planks, Item.ingotIron, Item.ingotIron, Item.diamond, Block.cobblestone,
+						Item.ingotIron, Item.diamond, Item.ingotIron, Item.ingotIron, Item.diamond, Item.ingotIron };
 				int[] level = new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 4, 3 };
 
 				for (int i = 8; i < 12; i++) {
 
-					item[0][i] = new ItemExtendedSword((config.getItem("Netherrocks Base ID", 24123)).getInt() + 0 + (i - 8) * 5, sotool[i]).setUnlocalizedName("extendedWorkbenchnr:tool0" + i).setTextureName(
-							"SimpleOresEW:toolextended" + matNames[i] + "Sword");
-					item[1][i] = new ItemExtendedShovel((config.getItem("Netherrocks Base ID", 24123)).getInt() + 1 + (i - 8) * 5, sotool[i]).setUnlocalizedName("extendedWorkbenchnr:tool1" + i).setTextureName(
-							"SimpleOresEW:toolextended" + matNames[i] + "Shovel");
-					item[2][i] = new ItemExtendedPickaxe((config.getItem("Netherrocks Base ID", 24123)).getInt() + 2 + (i - 8) * 5, sotool[i]).setUnlocalizedName("extendedWorkbenchnr:tool2" + i).setTextureName(
-							"SimpleOresEW:toolextended" + matNames[i] + "Pickaxe");
-					item[3][i] = new ItemExtendedAxe((config.getItem("Netherrocks Base ID", 24123)).getInt() + 3 + (i - 8) * 5, sotool[i]).setUnlocalizedName("extendedWorkbenchnr:tool3" + i).setTextureName(
-							"SimpleOresEW:toolextended" + matNames[i] + "Axe");
-					item[4][i] = new ItemExtendedHoe((config.getItem("Netherrocks Base ID", 24123)).getInt() + 4 + (i - 8) * 5, sotool[i]).setUnlocalizedName("extendedWorkbenchnr:tool4" + i).setTextureName(
-							"SimpleOresEW:toolextended" + matNames[i] + "Hoe");
+					item[0][i] = new ItemExtendedSword((config.getItem("Netherrocks Base ID", 24123)).getInt() + 0 + (i - 8) * 5, sotool[i])
+							.setUnlocalizedName("extendedWorkbenchnr:tool0" + i).setTextureName(
+									"SimpleOresEW:toolextended" + toolmatNames[i] + "Sword");
+					item[1][i] = new ItemExtendedShovel((config.getItem("Netherrocks Base ID", 24123)).getInt() + 1 + (i - 8) * 5, sotool[i])
+							.setUnlocalizedName("extendedWorkbenchnr:tool1" + i).setTextureName(
+									"SimpleOresEW:toolextended" + toolmatNames[i] + "Shovel");
+					item[2][i] = new ItemExtendedPickaxe((config.getItem("Netherrocks Base ID", 24123)).getInt() + 2 + (i - 8) * 5, sotool[i])
+							.setUnlocalizedName("extendedWorkbenchnr:tool2" + i).setTextureName(
+									"SimpleOresEW:toolextended" + toolmatNames[i] + "Pickaxe");
+					item[3][i] = new ItemExtendedAxe((config.getItem("Netherrocks Base ID", 24123)).getInt() + 3 + (i - 8) * 5, sotool[i])
+							.setUnlocalizedName("extendedWorkbenchnr:tool3" + i).setTextureName(
+									"SimpleOresEW:toolextended" + toolmatNames[i] + "Axe");
+					item[4][i] = new ItemExtendedHoe((config.getItem("Netherrocks Base ID", 24123)).getInt() + 4 + (i - 8) * 5, sotool[i])
+							.setUnlocalizedName("extendedWorkbenchnr:tool4" + i).setTextureName(
+									"SimpleOresEW:toolextended" + toolmatNames[i] + "Hoe");
 
 					MinecraftForge.setToolClass(item[2][i], "pickaxe", level[i]);
 					MinecraftForge.setToolClass(item[1][i], "shovel", level[i]);
 					MinecraftForge.setToolClass(item[3][i], "axe", level[i]);
 
-					EWAPI.addRecipe(new ItemStack(item[0][i], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'), material[i], ('Y'), handle[i] });
-					EWAPI.addRecipe(new ItemStack(item[1][i], 1), new Object[] { " X ", " X ", " Y ", " Y ", " Y ", " Y ", ('X'), material[i], ('Y'), handle[i] });
-					EWAPI.addRecipe(new ItemStack(item[2][i], 1), new Object[] { "XX ", " XX", " YX", " Y ", " Y ", " Y ", ('X'), material[i], ('Y'), handle[i] });
-					EWAPI.addRecipe(new ItemStack(item[3][i], 1), new Object[] { "X  ", "XXX", "XY ", " Y ", " Y ", " Y ", ('X'), material[i], ('Y'), handle[i] });
-					EWAPI.addRecipe(new ItemStack(item[4][i], 1), new Object[] { " X ", " XX", " Y ", " Y ", " Y ", " Y ", ('X'), material[i], ('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[0][i], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[1][i], 1), new Object[] { " X ", " X ", " Y ", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[2][i], 1), new Object[] { "XX ", " XX", " YX", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[3][i], 1), new Object[] { "X  ", "XXX", "XY ", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[4][i], 1), new Object[] { " X ", " XX", " Y ", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
 
 					for (int j = 0; j < 5; j++)
-						LanguageRegistry.addName(item[j][i], "Extended " + (matNames[i]) + " " + (toolNames[j]));
+						LanguageRegistry.addName(item[j][i], "Extended " + (toolmatNames[i]) + " " + (toolNames[j]));
 				}
 			}
 			{
-				Object[] material = new Object[] { Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
-						Netherrocks.core.Items.malachiteIngot, Netherrocks.core.Items.dragonstoneGem };
-				String[] matNames = new String[] { "Copper", "Tin", "Mythril", "Adamantium", "Onyx", "Bronze", "Thyrium", "Sinisite", "Malachite", "Dragonstone" };
-				String[] armorNames = new String[] { "Helmet", "Chestplate", "Leggings", "Boots" };
-				EnumArmorMaterial[] soarmor = new EnumArmorMaterial[] { EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
-						EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, Netherrocks.core.Netherrocks.armorMalachite, Netherrocks.core.Netherrocks.armorDragonstone };
+				Object[] material = new Object[] { Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+						Item.ingotIron, Item.ingotIron, Item.ingotIron, Netherrocks.core.Items.malachiteIngot,
+						Netherrocks.core.Items.dragonstoneGem };
+				EnumArmorMaterial[] soarmor = new EnumArmorMaterial[] { EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
+						EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
+						Netherrocks.core.Netherrocks.armorMalachite, Netherrocks.core.Netherrocks.armorDragonstone };
 
 				for (int i = 8; i < 10; i++) {
 					for (int j = 0; j < 4; j++) {
-						armor[i][j] = (ItemArmor) new ItemExtendedArmor((config.getItem("Netherrocks Base ID", 24123)).getInt() + 28 + (i - 8) * 4 + j, soarmor[i], armorRenderer[i], j, matNames[i]).setUnlocalizedName(
-								"extendedWorkbenchnr:armor" + i + j).setTextureName("SimpleOresEW:armorextended" + matNames[i] + armorNames[j]);
-						LanguageRegistry.addName(armor[i][j], "Extended " + matNames[i] + " " + armorNames[j]);
+						armor[i][j] = (ItemArmor) new ItemExtendedArmor((config.getItem("Netherrocks Base ID", 24123)).getInt() + 28 + (i - 8)
+								* 4 + j, soarmor[i], armorRenderer[i], j, armormatNames[i]).setUnlocalizedName(
+								"extendedWorkbenchnr:armor" + i + j).setTextureName(
+								"SimpleOresEW:armorextended" + armormatNames[i] + armorNames[j]);
+						LanguageRegistry.addName(armor[i][j], "Extended " + armormatNames[i] + " " + armorNames[j]);
 					}
 
 					EWAPI.addRecipe(new ItemStack(armor[i][3], 1), new Object[] { "X X", "X X", "X X", ('X'), material[i] });
@@ -361,31 +408,47 @@ public class SimpleOresEW {
 				}
 			}
 
-			extendedfyriteHelm = new ItemExtendedArmor((config.getItem("Netherrocks Base ID", 24123)).getInt() + 68, Netherrocks.core.Netherrocks.armorFyrite, armorRenderer[10], 0, "Fyrite").setUnlocalizedName(
+			extendedfyriteHelm = new ItemExtendedArmor((config.getItem("Netherrocks Base ID", 24123)).getInt() + 68,
+					Netherrocks.core.Netherrocks.armorFyrite, armorRenderer[10], 0, "Fyrite").setUnlocalizedName(
 					"extendedWorkbenchnr:armorFyriteHelmet").setTextureName("SimpleOresEW:armorextendedFyriteHelmet");
-			extendedfyriteChest = new ItemExtendedArmor((config.getItem("Netherrocks Base ID", 24123)).getInt() + 69, Netherrocks.core.Netherrocks.armorFyrite, armorRenderer[10], 1, "Fyrite").setUnlocalizedName(
+			extendedfyriteChest = new ItemExtendedArmor((config.getItem("Netherrocks Base ID", 24123)).getInt() + 69,
+					Netherrocks.core.Netherrocks.armorFyrite, armorRenderer[10], 1, "Fyrite").setUnlocalizedName(
 					"extendedWorkbenchnr:armorFyriteChestplate").setTextureName("SimpleOresEW:armorextendedFyriteChestplate");
-			extendedfyriteLegs = new ItemExtendedArmor((config.getItem("Netherrocks Base ID", 24123)).getInt() + 70, Netherrocks.core.Netherrocks.armorFyrite, armorRenderer[10], 2, "Fyrite").setUnlocalizedName(
+			extendedfyriteLegs = new ItemExtendedArmor((config.getItem("Netherrocks Base ID", 24123)).getInt() + 70,
+					Netherrocks.core.Netherrocks.armorFyrite, armorRenderer[10], 2, "Fyrite").setUnlocalizedName(
 					"extendedWorkbenchnr:armorFyriteLeggings").setTextureName("SimpleOresEW:armorextendedFyriteLeggings");
-			extendedfyriteBoots = new ItemExtendedArmor((config.getItem("Netherrocks Base ID", 24123)).getInt() + 71, Netherrocks.core.Netherrocks.armorFyrite, armorRenderer[10], 3, "Fyrite").setUnlocalizedName(
+			extendedfyriteBoots = new ItemExtendedArmor((config.getItem("Netherrocks Base ID", 24123)).getInt() + 71,
+					Netherrocks.core.Netherrocks.armorFyrite, armorRenderer[10], 3, "Fyrite").setUnlocalizedName(
 					"extendedWorkbenchnr:armorFyriteBoots").setTextureName("SimpleOresEW:armorextendedFyriteBoots");
-			extendedillumeniteHelm = new ItemExtendedArmor((config.getItem("Netherrocks Base ID", 24123)).getInt() + 72, Netherrocks.core.Netherrocks.armorIllumenite, armorRenderer[11], 0, "Illumenite")
-					.setUnlocalizedName("extendedWorkbenchnr:armorIllumeniteHelmet").setTextureName("SimpleOresEW:armorextendedIllumeniteHelmet");
-			extendedillumeniteChest = new ItemExtendedArmor((config.getItem("Netherrocks Base ID", 24123)).getInt() + 73, Netherrocks.core.Netherrocks.armorIllumenite, armorRenderer[11], 1, "Illumenite")
-					.setUnlocalizedName("extendedWorkbenchnr:armorIllumeniteChestplate").setTextureName("SimpleOresEW:armorextendedIllumeniteChestplate");
-			extendedillumeniteLegs = new ItemExtendedArmor((config.getItem("Netherrocks Base ID", 24123)).getInt() + 74, Netherrocks.core.Netherrocks.armorIllumenite, armorRenderer[11], 2, "Illumenite")
-					.setUnlocalizedName("extendedWorkbenchnr:armorIllumeniteLeggings").setTextureName("SimpleOresEW:armorextendedIllumeniteLeggings");
-			extendedillumeniteBoots = new ItemExtendedArmor((config.getItem("Netherrocks Base ID", 24123)).getInt() + 75, Netherrocks.core.Netherrocks.armorIllumenite, armorRenderer[11], 3, "Illumenite")
-					.setUnlocalizedName("extendedWorkbenchnr:armorIllumeniteBoots").setTextureName("SimpleOresEW:armorextendedIllumeniteBoots");
+			extendedillumeniteHelm = new ItemExtendedArmor((config.getItem("Netherrocks Base ID", 24123)).getInt() + 72,
+					Netherrocks.core.Netherrocks.armorIllumenite, armorRenderer[11], 0, "Illumenite").setUnlocalizedName(
+					"extendedWorkbenchnr:armorIllumeniteHelmet").setTextureName("SimpleOresEW:armorextendedIllumeniteHelmet");
+			extendedillumeniteChest = new ItemExtendedArmor((config.getItem("Netherrocks Base ID", 24123)).getInt() + 73,
+					Netherrocks.core.Netherrocks.armorIllumenite, armorRenderer[11], 1, "Illumenite").setUnlocalizedName(
+					"extendedWorkbenchnr:armorIllumeniteChestplate").setTextureName("SimpleOresEW:armorextendedIllumeniteChestplate");
+			extendedillumeniteLegs = new ItemExtendedArmor((config.getItem("Netherrocks Base ID", 24123)).getInt() + 74,
+					Netherrocks.core.Netherrocks.armorIllumenite, armorRenderer[11], 2, "Illumenite").setUnlocalizedName(
+					"extendedWorkbenchnr:armorIllumeniteLeggings").setTextureName("SimpleOresEW:armorextendedIllumeniteLeggings");
+			extendedillumeniteBoots = new ItemExtendedArmor((config.getItem("Netherrocks Base ID", 24123)).getInt() + 75,
+					Netherrocks.core.Netherrocks.armorIllumenite, armorRenderer[11], 3, "Illumenite").setUnlocalizedName(
+					"extendedWorkbenchnr:armorIllumeniteBoots").setTextureName("SimpleOresEW:armorextendedIllumeniteBoots");
 
-			EWAPI.addRecipe(new ItemStack(extendedfyriteHelm, 1), new Object[] { "X X", "X X", "X X", ('X'), Netherrocks.core.Items.fyriteIngot });
-			EWAPI.addRecipe(new ItemStack(extendedfyriteChest, 1), new Object[] { "XXX", "XXX", "X X", "X X", ('X'), Netherrocks.core.Items.fyriteIngot });
-			EWAPI.addRecipe(new ItemStack(extendedfyriteLegs, 1), new Object[] { "X X", "XXX", "XXX", "XXX", ('X'), Netherrocks.core.Items.fyriteIngot });
-			EWAPI.addRecipe(new ItemStack(extendedfyriteBoots, 1), new Object[] { "XXX", "XXX", "X X", ('X'), Netherrocks.core.Items.fyriteIngot });
-			EWAPI.addRecipe(new ItemStack(extendedillumeniteHelm, 1), new Object[] { "X X", "X X", "X X", ('X'), Netherrocks.core.Items.illumeniteIngot });
-			EWAPI.addRecipe(new ItemStack(extendedillumeniteChest, 1), new Object[] { "XXX", "XXX", "X X", "X X", ('X'), Netherrocks.core.Items.illumeniteIngot });
-			EWAPI.addRecipe(new ItemStack(extendedillumeniteLegs, 1), new Object[] { "X X", "XXX", "XXX", "XXX", ('X'), Netherrocks.core.Items.illumeniteIngot });
-			EWAPI.addRecipe(new ItemStack(extendedillumeniteBoots, 1), new Object[] { "XXX", "XXX", "X X", ('X'), Netherrocks.core.Items.illumeniteIngot });
+			EWAPI.addRecipe(new ItemStack(extendedfyriteHelm, 1),
+					new Object[] { "X X", "X X", "X X", ('X'), Netherrocks.core.Items.fyriteIngot });
+			EWAPI.addRecipe(new ItemStack(extendedfyriteChest, 1), new Object[] { "XXX", "XXX", "X X", "X X", ('X'),
+					Netherrocks.core.Items.fyriteIngot });
+			EWAPI.addRecipe(new ItemStack(extendedfyriteLegs, 1), new Object[] { "X X", "XXX", "XXX", "XXX", ('X'),
+					Netherrocks.core.Items.fyriteIngot });
+			EWAPI.addRecipe(new ItemStack(extendedfyriteBoots, 1), new Object[] { "XXX", "XXX", "X X", ('X'),
+					Netherrocks.core.Items.fyriteIngot });
+			EWAPI.addRecipe(new ItemStack(extendedillumeniteHelm, 1), new Object[] { "X X", "X X", "X X", ('X'),
+					Netherrocks.core.Items.illumeniteIngot });
+			EWAPI.addRecipe(new ItemStack(extendedillumeniteChest, 1), new Object[] { "XXX", "XXX", "X X", "X X", ('X'),
+					Netherrocks.core.Items.illumeniteIngot });
+			EWAPI.addRecipe(new ItemStack(extendedillumeniteLegs, 1), new Object[] { "X X", "XXX", "XXX", "XXX", ('X'),
+					Netherrocks.core.Items.illumeniteIngot });
+			EWAPI.addRecipe(new ItemStack(extendedillumeniteBoots, 1), new Object[] { "XXX", "XXX", "X X", ('X'),
+					Netherrocks.core.Items.illumeniteIngot });
 
 			LanguageRegistry.addName(extendedfyriteHelm, "Extended Fyrite Helmet");
 			LanguageRegistry.addName(extendedfyriteChest, "Extended Fyrite Chestplate");
@@ -396,17 +459,22 @@ public class SimpleOresEW {
 			LanguageRegistry.addName(extendedillumeniteLegs, "Extended Illumenite Leggings");
 			LanguageRegistry.addName(extendedillumeniteBoots, "Extended Illumenite Boots");
 
-			extendedfyriteSword = new ItemExtendedSword((config.getItem("Netherrocks Base ID", 24123)).getInt() + 76, Netherrocks.core.Netherrocks.toolFyrite).setUnlocalizedName(
-					"extendedWorkbenchnr:toolFyriteSword").setTextureName("SimpleOresEW:toolextendedFyriteSword");
-			extendedillumeniteSword = new ItemExtendedSword((config.getItem("Netherrocks Base ID", 24123)).getInt() + 77, Netherrocks.core.Netherrocks.toolIllumenite).setUnlocalizedName(
-					"extendedWorkbenchnr:toolIllumeniteSword").setTextureName("SimpleOresEW:toolextendedIllumeniteSword");
-			extendedfyritePick = new ItemExtendedPickaxe((config.getItem("Netherrocks Base ID", 24123)).getInt() + 78, Netherrocks.core.Netherrocks.toolFyrite).setUnlocalizedName(
-					"extendedWorkbenchnr:toolFyritePick").setTextureName("SimpleOresEW:toolextendedFyritePickaxe");
+			extendedfyriteSword = new ItemExtendedSword((config.getItem("Netherrocks Base ID", 24123)).getInt() + 76,
+					Netherrocks.core.Netherrocks.toolFyrite).setUnlocalizedName("extendedWorkbenchnr:toolFyriteSword").setTextureName(
+					"SimpleOresEW:toolextendedFyriteSword");
+			extendedillumeniteSword = new ItemExtendedSword((config.getItem("Netherrocks Base ID", 24123)).getInt() + 77,
+					Netherrocks.core.Netherrocks.toolIllumenite).setUnlocalizedName("extendedWorkbenchnr:toolIllumeniteSword").setTextureName(
+					"SimpleOresEW:toolextendedIllumeniteSword");
+			extendedfyritePick = new ItemExtendedPickaxe((config.getItem("Netherrocks Base ID", 24123)).getInt() + 78,
+					Netherrocks.core.Netherrocks.toolFyrite).setUnlocalizedName("extendedWorkbenchnr:toolFyritePick").setTextureName(
+					"SimpleOresEW:toolextendedFyritePickaxe");
 
-			EWAPI.addRecipe(new ItemStack(extendedfyriteSword, 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'), Netherrocks.core.Items.fyriteIngot, ('Y'), Item.ingotIron });
-			EWAPI.addRecipe(new ItemStack(extendedillumeniteSword, 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'), Netherrocks.core.Items.illumeniteIngot, ('Y'),
-					Item.ingotGold });
-			EWAPI.addRecipe(new ItemStack(extendedfyritePick, 1), new Object[] { "XX ", " XX", " YX", " Y ", " Y ", " Y ", ('X'), Netherrocks.core.Items.fyriteIngot, ('Y'), Item.ingotIron });
+			EWAPI.addRecipe(new ItemStack(extendedfyriteSword, 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'),
+					Netherrocks.core.Items.fyriteIngot, ('Y'), Item.ingotIron });
+			EWAPI.addRecipe(new ItemStack(extendedillumeniteSword, 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'),
+					Netherrocks.core.Items.illumeniteIngot, ('Y'), Item.ingotGold });
+			EWAPI.addRecipe(new ItemStack(extendedfyritePick, 1), new Object[] { "XX ", " XX", " YX", " Y ", " Y ", " Y ", ('X'),
+					Netherrocks.core.Items.fyriteIngot, ('Y'), Item.ingotIron });
 
 			LanguageRegistry.addName(extendedfyriteSword, "Extended Fyrite Sword");
 			LanguageRegistry.addName(extendedillumeniteSword, "Extended Illumenite Sword");
@@ -416,58 +484,97 @@ public class SimpleOresEW {
 
 		}
 		if (PluginChecks.getSilverInstalled()) {
-			String[] toolNames = new String[] { "Sword", "Shovel", "Pickaxe", "Axe", "Hoe" };
-			item[0][12] = new ItemExtendedSword((config.getItem("Silver Base ID", 24202)).getInt() + 0, OnlySilver.code.Items.toolSilver).setUnlocalizedName("extendedWorkbenchnr:tool012")
-					.setTextureName("SimpleOresEW:toolSilverSword");
-			item[1][12] = new ItemExtendedShovel((config.getItem("Silver Base ID", 24202)).getInt() + 1, OnlySilver.code.Items.toolSilver).setUnlocalizedName("extendedWorkbenchnr:tool112")
-					.setTextureName("SimpleOresEW:toolSilverShovel");
-			item[2][12] = new ItemExtendedPickaxe((config.getItem("Silver Base ID", 24202)).getInt() + 2, OnlySilver.code.Items.toolSilver).setUnlocalizedName("extendedWorkbenchnr:tool212")
-					.setTextureName("SimpleOresEW:toolSilverPickaxe");
-			item[3][12] = new ItemExtendedAxe((config.getItem("Silver Base ID", 24202)).getInt() + 3, OnlySilver.code.Items.toolSilver).setUnlocalizedName("extendedWorkbenchnr:tool312").setTextureName(
-					"SimpleOresEW:toolSilverAxe");
-			item[4][12] = new ItemExtendedHoe((config.getItem("Silver Base ID", 24202)).getInt() + 4, OnlySilver.code.Items.toolSilver).setUnlocalizedName("extendedWorkbenchnr:tool412").setTextureName(
-					"SimpleOresEW:toolSilverHoe");
+			item[0][12] = new ItemExtendedSword((config.getItem("Silver Base ID", 24202)).getInt() + 0, OnlySilver.code.Items.toolSilver)
+					.setUnlocalizedName("extendedWorkbenchnr:tool012").setTextureName("SimpleOresEW:toolSilverSword");
+			item[1][12] = new ItemExtendedShovel((config.getItem("Silver Base ID", 24202)).getInt() + 1, OnlySilver.code.Items.toolSilver)
+					.setUnlocalizedName("extendedWorkbenchnr:tool112").setTextureName("SimpleOresEW:toolSilverShovel");
+			item[2][12] = new ItemExtendedPickaxe((config.getItem("Silver Base ID", 24202)).getInt() + 2, OnlySilver.code.Items.toolSilver)
+					.setUnlocalizedName("extendedWorkbenchnr:tool212").setTextureName("SimpleOresEW:toolSilverPickaxe");
+			item[3][12] = new ItemExtendedAxe((config.getItem("Silver Base ID", 24202)).getInt() + 3, OnlySilver.code.Items.toolSilver)
+					.setUnlocalizedName("extendedWorkbenchnr:tool312").setTextureName("SimpleOresEW:toolSilverAxe");
+			item[4][12] = new ItemExtendedHoe((config.getItem("Silver Base ID", 24202)).getInt() + 4, OnlySilver.code.Items.toolSilver)
+					.setUnlocalizedName("extendedWorkbenchnr:tool412").setTextureName("SimpleOresEW:toolSilverHoe");
 
 			MinecraftForge.setToolClass(item[2][12], "pickaxe", (OnlySilver.code.conf.Config.silverHarvestLevel).get());
 			MinecraftForge.setToolClass(item[1][12], "shovel", (OnlySilver.code.conf.Config.silverHarvestLevel).get());
 			MinecraftForge.setToolClass(item[3][12], "axe", (OnlySilver.code.conf.Config.silverHarvestLevel).get());
 
-			EWAPI.addRecipe(new ItemStack(item[0][12], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'), OnlySilver.code.api.OnlySilverAPI.silverIngot.get(), ('Y'),
-					Block.cobblestone });
-			EWAPI.addRecipe(new ItemStack(item[1][12], 1), new Object[] { " X ", " X ", " Y ", " Y ", " Y ", " Y ", ('X'), OnlySilver.code.api.OnlySilverAPI.silverIngot.get(), ('Y'),
-					Block.cobblestone });
-			EWAPI.addRecipe(new ItemStack(item[2][12], 1), new Object[] { "XX ", " XX", " YX", " Y ", " Y ", " Y ", ('X'), OnlySilver.code.api.OnlySilverAPI.silverIngot.get(), ('Y'),
-					Block.cobblestone });
-			EWAPI.addRecipe(new ItemStack(item[3][12], 1), new Object[] { "X  ", "XXX", "XY ", " Y ", " Y ", " Y ", ('X'), OnlySilver.code.api.OnlySilverAPI.silverIngot.get(), ('Y'),
-					Block.cobblestone });
-			EWAPI.addRecipe(new ItemStack(item[4][12], 1), new Object[] { " X ", " XX", " Y ", " Y ", " Y ", " Y ", ('X'), OnlySilver.code.api.OnlySilverAPI.silverIngot.get(), ('Y'),
-					Block.cobblestone });
+			EWAPI.addRecipe(new ItemStack(item[0][12], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'),
+					OnlySilver.code.api.OnlySilverAPI.silverIngot.get(), ('Y'), Block.cobblestone });
+			EWAPI.addRecipe(new ItemStack(item[1][12], 1), new Object[] { " X ", " X ", " Y ", " Y ", " Y ", " Y ", ('X'),
+					OnlySilver.code.api.OnlySilverAPI.silverIngot.get(), ('Y'), Block.cobblestone });
+			EWAPI.addRecipe(new ItemStack(item[2][12], 1), new Object[] { "XX ", " XX", " YX", " Y ", " Y ", " Y ", ('X'),
+					OnlySilver.code.api.OnlySilverAPI.silverIngot.get(), ('Y'), Block.cobblestone });
+			EWAPI.addRecipe(new ItemStack(item[3][12], 1), new Object[] { "X  ", "XXX", "XY ", " Y ", " Y ", " Y ", ('X'),
+					OnlySilver.code.api.OnlySilverAPI.silverIngot.get(), ('Y'), Block.cobblestone });
+			EWAPI.addRecipe(new ItemStack(item[4][12], 1), new Object[] { " X ", " XX", " Y ", " Y ", " Y ", " Y ", ('X'),
+					OnlySilver.code.api.OnlySilverAPI.silverIngot.get(), ('Y'), Block.cobblestone });
 
 			for (int j = 0; j < 5; j++)
 				LanguageRegistry.addName(item[j][12], "Extended Silver" + " " + (toolNames[j]));
 
-			extendedsilverHelm = new ItemExtendedArmor((config.getItem("Silver Base ID", 24202)).getInt() + 5, OnlySilver.code.Items.armorSilver, armorRenderer[12], 0, "Silver").setUnlocalizedName(
+			extendedsilverHelm = new ItemExtendedArmor((config.getItem("Silver Base ID", 24202)).getInt() + 5,
+					OnlySilver.code.Items.armorSilver, armorRenderer[12], 0, "Silver").setUnlocalizedName(
 					"extendedWorkbenchnr:armorSilverHelmet").setTextureName("SimpleOresEW:armorextendedSilverHelmet");
-			extendedsilverChest = new ItemExtendedArmor((config.getItem("Silver Base ID", 24202)).getInt() + 6, OnlySilver.code.Items.armorSilver, armorRenderer[12], 1, "Silver").setUnlocalizedName(
+			extendedsilverChest = new ItemExtendedArmor((config.getItem("Silver Base ID", 24202)).getInt() + 6,
+					OnlySilver.code.Items.armorSilver, armorRenderer[12], 1, "Silver").setUnlocalizedName(
 					"extendedWorkbenchnr:armorSilverChestplate").setTextureName("SimpleOresEW:armorextendedSilverChestplate");
-			extendedsilverLegs = new ItemExtendedArmor((config.getItem("Silver Base ID", 24202)).getInt() + 7, OnlySilver.code.Items.armorSilver, armorRenderer[12], 2, "Silver").setUnlocalizedName(
+			extendedsilverLegs = new ItemExtendedArmor((config.getItem("Silver Base ID", 24202)).getInt() + 7,
+					OnlySilver.code.Items.armorSilver, armorRenderer[12], 2, "Silver").setUnlocalizedName(
 					"extendedWorkbenchnr:armorSilverLeggings").setTextureName("SimpleOresEW:armorextendedSilverLeggings");
-			extendedsilverBoots = new ItemExtendedArmor((config.getItem("Silver Base ID", 24202)).getInt() + 8, OnlySilver.code.Items.armorSilver, armorRenderer[12], 3, "Silver").setUnlocalizedName(
+			extendedsilverBoots = new ItemExtendedArmor((config.getItem("Silver Base ID", 24202)).getInt() + 8,
+					OnlySilver.code.Items.armorSilver, armorRenderer[12], 3, "Silver").setUnlocalizedName(
 					"extendedWorkbenchnr:armorSilverBoots").setTextureName("SimpleOresEW:armorextendedSilverBoots");
 
-			EWAPI.addRecipe(new ItemStack(extendedsilverHelm, 1), new Object[] { "X X", "X X", "X X", ('X'), OnlySilver.code.api.OnlySilverAPI.silverIngot.get() });
-			EWAPI.addRecipe(new ItemStack(extendedsilverChest, 1), new Object[] { "XXX", "XXX", "X X", "X X", ('X'), OnlySilver.code.api.OnlySilverAPI.silverIngot.get() });
-			EWAPI.addRecipe(new ItemStack(extendedsilverLegs, 1), new Object[] { "X X", "XXX", "XXX", "XXX", ('X'), OnlySilver.code.api.OnlySilverAPI.silverIngot.get() });
-			EWAPI.addRecipe(new ItemStack(extendedsilverBoots, 1), new Object[] { "XXX", "XXX", "X X", ('X'), OnlySilver.code.api.OnlySilverAPI.silverIngot.get() });
+			EWAPI.addRecipe(new ItemStack(extendedsilverHelm, 1), new Object[] { "X X", "X X", "X X", ('X'),
+					OnlySilver.code.api.OnlySilverAPI.silverIngot.get() });
+			EWAPI.addRecipe(new ItemStack(extendedsilverChest, 1), new Object[] { "XXX", "XXX", "X X", "X X", ('X'),
+					OnlySilver.code.api.OnlySilverAPI.silverIngot.get() });
+			EWAPI.addRecipe(new ItemStack(extendedsilverLegs, 1), new Object[] { "X X", "XXX", "XXX", "XXX", ('X'),
+					OnlySilver.code.api.OnlySilverAPI.silverIngot.get() });
+			EWAPI.addRecipe(new ItemStack(extendedsilverBoots, 1), new Object[] { "XXX", "XXX", "X X", ('X'),
+					OnlySilver.code.api.OnlySilverAPI.silverIngot.get() });
 
 			LanguageRegistry.addName(extendedsilverHelm, "Extended Silver Helmet");
 			LanguageRegistry.addName(extendedsilverChest, "Extended Silver Chestplate");
 			LanguageRegistry.addName(extendedsilverLegs, "Extended Silver Leggings");
 			LanguageRegistry.addName(extendedsilverBoots, "Extended Silver Boots");
+			
+			extendedsilverBow = (ItemBow) new ItemExtendedBow((config.getItem("Silver Base ID", 24202)).getInt() + 9, 500, OnlySilver.code.Items.toolSilver).setFull3D().setUnlocalizedName("extendedWorkbenchso:silverBow");
+			EWAPI.addRecipe(new ItemStack(extendedthyriumBow, 1), new Object[] { " YX", "Y X", "Z X", "Z X", "Y X", " YX", ('X'), Item.silk,
+					('Y'), OnlySilver.code.api.OnlySilverAPI.silverRod.get(), ('Z'), Item.ingotIron });
+
+			LanguageRegistry.addName(extendedsilverBow, "Extended Silver Bow");
+			
 		}
 		if (PluginChecks.getNetherFusionInstalled()) {
 
 		}
+		if (PluginChecks.getArsenicInstalled()) {
+
+		}
+		if (PluginChecks.getAlchemyInstalled()) {
+
+		}
+		if (PluginChecks.getCthonInstalled()) {
+
+		}
+		if (PluginChecks.getGlitterInstalled()) {
+
+		}
+		if (PluginChecks.getHaditeInstalled()) {
+
+		}
+		if (PluginChecks.getCobaltInstalled()) {
+
+		}
+		if (PluginChecks.getTungstenInstalled()) {
+
+		}
+		if (PluginChecks.getSterlingInstalled()) {
+
+		}
+
 		proxy.registerRenderInformation();
 
 		config.save();

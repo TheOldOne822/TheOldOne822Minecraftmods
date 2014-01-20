@@ -5,6 +5,7 @@ import java.util.Random;
 
 import org.lwjgl.opengl.GL11;
 
+import theoldone822.SimpleOresEW.PluginChecks;
 import theoldone822.SimpleOresEW.SimpleOresEW;
 import static theoldone822.SimpleOresEW.SimpleOresEW.extendedValues.increaseBowDamage;
 import static theoldone822.SimpleOresEW.SimpleOresEW.extendedValues.increaseBowStrength;
@@ -31,12 +32,14 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemExtendedBow extends ItemBow {
 	/**
-	 * The EnumToolMaterial for the tool. This is used to set what item can be used to repair it.
+	 * The EnumToolMaterial for the tool. This is used to set what item can be
+	 * used to repair it.
 	 */
 	private final EnumToolMaterial material;
 
 	/**
-	 * Creating the icons for the bows. As you draw the bows back, the icon changes, which is why there are 4 icons for each bow here.
+	 * Creating the icons for the bows. As you draw the bows back, the icon
+	 * changes, which is why there are 4 icons for each bow here.
 	 */
 	public static Icon mythrilBow;
 	public static Icon mythrilBow1;
@@ -48,12 +51,29 @@ public class ItemExtendedBow extends ItemBow {
 	public static Icon onyxBow2;
 	public static Icon onyxBow3;
 	public static Icon onyxBow4;
+	public static Icon thyriumBow;
+	public static Icon thyriumBow1;
+	public static Icon thyriumBow2;
+	public static Icon thyriumBow3;
+	public static Icon thyriumBow4;
+	public static Icon sinisiteBow;
+	public static Icon sinisiteBow1;
+	public static Icon sinisiteBow2;
+	public static Icon sinisiteBow3;
+	public static Icon sinisiteBow4;
+	public static Icon silverBow;
+	public static Icon silverBow1;
+	public static Icon silverBow2;
+	public static Icon silverBow3;
+	public static Icon silverBow4;
 
 	/**
 	 * Constructor for the bows. Worth noting are the following:
 	 * 
-	 * "this.maxStackSize = 1;" This basically just sets it so that you can only have one per stack. "this.bFull3D = true;" This allows it to be rendered in
-	 * proper 3D when held in your hand. Tools are rendered like this, while items such as sugar are not.
+	 * "this.maxStackSize = 1;" This basically just sets it so that you can only
+	 * have one per stack. "this.bFull3D = true;" This allows it to be rendered
+	 * in proper 3D when held in your hand. Tools are rendered like this, while
+	 * items such as sugar are not.
 	 */
 	public ItemExtendedBow(int par1, int dam, EnumToolMaterial enumtoolmaterial) {
 		super(par1);
@@ -65,21 +85,38 @@ public class ItemExtendedBow extends ItemBow {
 	}
 
 	/**
-	 * Registers the icons for the bows. All icons are registered, and the default icons (when you haven't drawn it back at all) are set.
+	 * Registers the icons for the bows. All icons are registered, and the
+	 * default icons (when you haven't drawn it back at all) are set.
 	 * 
-	 * The default image for the mythril bow is set as mythrilBow. The default image for the onyx bow is set as onyxBow. The default image for the thyrium bow
-	 * is set as thyriumBow. The default image for the sinisite bow is set as sinisiteBow.
+	 * The default image for the mythril bow is set as mythrilBow. The default
+	 * image for the onyx bow is set as onyxBow. The default image for the
+	 * thyrium bow is set as thyriumBow. The default image for the sinisite bow
+	 * is set as sinisiteBow.
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister) {
-		if (itemID == SimpleOresEW.extendedmythrilBow.itemID) {
-			this.itemIcon = iconRegister.registerIcon("simpleoresew:" + "mythrilBow0");
-		}
+		if (PluginChecks.getSimpleInstalled()) {
+			if (itemID == SimpleOresEW.extendedmythrilBow.itemID) {
+				this.itemIcon = iconRegister.registerIcon("simpleoresew:" + "mythrilBow0");
+			}
 
-		if (itemID == SimpleOresEW.extendedonyxBow.itemID) {
-			this.itemIcon = iconRegister.registerIcon("simpleoresew:" + "onyxBow0");
+			if (itemID == SimpleOresEW.extendedonyxBow.itemID) {
+				this.itemIcon = iconRegister.registerIcon("simpleoresew:" + "onyxBow0");
+			}
 		}
+		if (PluginChecks.getFusionInstalled()) {
+			if (itemID == SimpleOresEW.extendedthyriumBow.itemID) {
+				this.itemIcon = iconRegister.registerIcon("simpleoresew:" + "thyriumBow0");
+			}
+
+			if (itemID == SimpleOresEW.extendedsinisiteBow.itemID) {
+				this.itemIcon = iconRegister.registerIcon("simpleoresew:" + "sinisiteBow0");
+			}
+		}
+		if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
+			this.itemIcon = iconRegister.registerIcon("simpleoresew:" + "silverBow0");
+			
 		mythrilBow = iconRegister.registerIcon("simpleoresew:" + "mythrilBow0");
 		mythrilBow1 = iconRegister.registerIcon("simpleoresew:" + "mythrilBow1");
 		mythrilBow2 = iconRegister.registerIcon("simpleoresew:" + "mythrilBow2");
@@ -90,13 +127,30 @@ public class ItemExtendedBow extends ItemBow {
 		onyxBow2 = iconRegister.registerIcon("simpleoresew:" + "onyxBow2");
 		onyxBow3 = iconRegister.registerIcon("simpleoresew:" + "onyxBow3");
 		onyxBow4 = iconRegister.registerIcon("simpleoresew:" + "onyxBow4");
+		thyriumBow = iconRegister.registerIcon("simpleoresew:" + "thyriumBow0");
+		thyriumBow1 = iconRegister.registerIcon("simpleoresew:" + "thyriumBow1");
+		thyriumBow2 = iconRegister.registerIcon("simpleoresew:" + "thyriumBow2");
+		thyriumBow3 = iconRegister.registerIcon("simpleoresew:" + "thyriumBow3");
+		thyriumBow4 = iconRegister.registerIcon("simpleoresew:" + "thyriumBow4");
+		sinisiteBow = iconRegister.registerIcon("simpleoresew:" + "sinisiteBow0");
+		sinisiteBow1 = iconRegister.registerIcon("simpleoresew:" + "sinisiteBow1");
+		sinisiteBow2 = iconRegister.registerIcon("simpleoresew:" + "sinisiteBow2");
+		sinisiteBow3 = iconRegister.registerIcon("simpleoresew:" + "sinisiteBow3");
+		sinisiteBow4 = iconRegister.registerIcon("simpleoresew:" + "sinisiteBow4");
+		silverBow = iconRegister.registerIcon("simpleoresew:" + "silverBow0");
+		silverBow1 = iconRegister.registerIcon("simpleoresew:" + "silverBow1");
+		silverBow2 = iconRegister.registerIcon("simpleoresew:" + "silverBow2");
+		silverBow3 = iconRegister.registerIcon("simpleoresew:" + "silverBow3");
+		silverBow4 = iconRegister.registerIcon("simpleoresew:" + "silverBow4");
 	}
 
 	/**
-	 * Gets the icon based on draw back time. As you draw back for longer, the image changes.
+	 * Gets the icon based on draw back time. As you draw back for longer, the
+	 * image changes.
 	 * 
-	 * The GL11.glTranslate/Rotate sets how the item is held in third person, so it is held like a bow rather than a tool (ie. hand on the grip in the middle,
-	 * not at the bottom.
+	 * The GL11.glTranslate/Rotate sets how the item is held in third person, so
+	 * it is held like a bow rather than a tool (ie. hand on the grip in the
+	 * middle, not at the bottom.
 	 */
 	@Override
 	public Icon getIcon(ItemStack itemStack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining) {
@@ -110,8 +164,9 @@ public class ItemExtendedBow extends ItemBow {
 		if (player.getItemInUse() == null)
 			return this.itemIcon;
 		int var8 = player.getItemInUseDuration();
-		
-			if (var8 >= 100) {
+
+		if (var8 >= 100) {
+			if (PluginChecks.getSimpleInstalled()) {
 				if (itemID == SimpleOresEW.extendedmythrilBow.itemID) {
 					return mythrilBow4;
 				}
@@ -120,7 +175,21 @@ public class ItemExtendedBow extends ItemBow {
 					return onyxBow4;
 				}
 			}
-			if (var8 >= 18 * increaseBowTime) {
+			if (PluginChecks.getFusionInstalled()) {
+				if (itemID == SimpleOresEW.extendedthyriumBow.itemID) {
+					return thyriumBow4;
+				}
+
+				if (itemID == SimpleOresEW.extendedsinisiteBow.itemID) {
+					return sinisiteBow4;
+				}
+			}
+
+			if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
+				return silverBow4;
+		}
+		if (var8 >= 18 * increaseBowTime) {
+			if (PluginChecks.getSimpleInstalled()) {
 				if (itemID == SimpleOresEW.extendedmythrilBow.itemID) {
 					return mythrilBow3;
 				}
@@ -128,8 +197,22 @@ public class ItemExtendedBow extends ItemBow {
 				if (itemID == SimpleOresEW.extendedonyxBow.itemID) {
 					return onyxBow3;
 				}
+				if (PluginChecks.getFusionInstalled()) {
+					if (itemID == SimpleOresEW.extendedthyriumBow.itemID) {
+						return thyriumBow3;
+					}
+
+					if (itemID == SimpleOresEW.extendedsinisiteBow.itemID) {
+						return sinisiteBow3;
+					}
+				}
 			}
-			if (var8 > 13 * increaseBowTime) {
+
+			if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
+				return silverBow3;
+		}
+		if (var8 > 13 * increaseBowTime) {
+			if (PluginChecks.getSimpleInstalled()) {
 				if (itemID == SimpleOresEW.extendedmythrilBow.itemID) {
 					return mythrilBow2;
 				}
@@ -138,7 +221,21 @@ public class ItemExtendedBow extends ItemBow {
 					return onyxBow2;
 				}
 			}
-			if (var8 > 0) {
+			if (PluginChecks.getFusionInstalled()) {
+				if (itemID == SimpleOresEW.extendedthyriumBow.itemID) {
+					return thyriumBow2;
+				}
+
+				if (itemID == SimpleOresEW.extendedsinisiteBow.itemID) {
+					return sinisiteBow2;
+				}
+			}
+
+			if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
+				return silverBow2;
+		}
+		if (var8 > 0) {
+			if (PluginChecks.getSimpleInstalled()) {
 				if (itemID == SimpleOresEW.extendedmythrilBow.itemID) {
 					return mythrilBow1;
 				}
@@ -147,16 +244,32 @@ public class ItemExtendedBow extends ItemBow {
 					return onyxBow1;
 				}
 			}
-		
+			if (PluginChecks.getFusionInstalled()) {
+				if (itemID == SimpleOresEW.extendedthyriumBow.itemID) {
+					return thyriumBow1;
+				}
+
+				if (itemID == SimpleOresEW.extendedsinisiteBow.itemID) {
+					return sinisiteBow1;
+				}
+			}
+
+			if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
+				return silverBow1;
+		}
+
 		return this.itemIcon;
 	}
 
 	/**
-	 * Sets the rarity of the item. This gives it a different coloured name (like with the golden apple). This is not in use though, it is simply here for
-	 * reference so I can remember how to do it if I choose to do so later.
+	 * Sets the rarity of the item. This gives it a different coloured name
+	 * (like with the golden apple). This is not in use though, it is simply
+	 * here for reference so I can remember how to do it if I choose to do so
+	 * later.
 	 */
 	/*
-	 * public EnumRarity getRarity(ItemStack itemstack) { if(itemID == SimpleOres.silverBow.itemID) { return EnumRarity.uncommon; }
+	 * public EnumRarity getRarity(ItemStack itemstack) { if(itemID ==
+	 * SimpleOres.silverBow.itemID) { return EnumRarity.uncommon; }
 	 * 
 	 * if(itemID == SimpleOres.mythrilBow.itemID) { return EnumRarity.rare; }
 	 * 
@@ -166,26 +279,45 @@ public class ItemExtendedBow extends ItemBow {
 	 */
 
 	/**
-	 * Adds info to the tool tip when you hover over the item. This is just to show the special effects of the bows.
+	 * Adds info to the tool tip when you hover over the item. This is just to
+	 * show the special effects of the bows.
 	 */
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
-		if (itemID == SimpleOresEW.extendedmythrilBow.itemID) {
-			par3List.add(StatCollector.translateToLocal("tips.damageTooltip"));
-			par3List.add(StatCollector.translateToLocal("tips.efficiencyTooltip"));
-		}
+		if (PluginChecks.getSimpleInstalled()) {
+			if (itemID == SimpleOresEW.extendedmythrilBow.itemID) {
+				par3List.add(StatCollector.translateToLocal("tips.damageTooltip"));
+				par3List.add(StatCollector.translateToLocal("tips.efficiencyTooltip"));
+			}
 
-		if (itemID == SimpleOresEW.extendedonyxBow.itemID) {
-			par3List.add(StatCollector.translateToLocal("tips.damageTooltip"));
-			par3List.add(StatCollector.translateToLocal("tips.flameTooltip"));
+			if (itemID == SimpleOresEW.extendedonyxBow.itemID) {
+				par3List.add(StatCollector.translateToLocal("tips.damageTooltip"));
+				par3List.add(StatCollector.translateToLocal("tips.flameTooltip"));
+			}
 		}
+		if (PluginChecks.getFusionInstalled()) {
+			if (itemID == SimpleOresEW.extendedthyriumBow.itemID) {
+				par3List.add(StatCollector.translateToLocal("tips.damageTooltip"));
+				par3List.add(StatCollector.translateToLocal("tips.zoomTooltip"));
+			}
+
+			if (itemID == SimpleOresEW.extendedsinisiteBow.itemID) {
+				par3List.add(StatCollector.translateToLocal("tips.damageTooltip"));
+				par3List.add(StatCollector.translateToLocal("tips.knockbackTooltip"));
+			}
+		}
+		if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
+			par3List.add(StatCollector.translateToLocal("tips.knockbackTooltip"));
 	}
 
 	/**
-	 * Determines what happens when you let go of the right mouse button, usually firing an arrow. Sets the arrows speed etc. depending on drawback time.
+	 * Determines what happens when you let go of the right mouse button,
+	 * usually firing an arrow. Sets the arrows speed etc. depending on drawback
+	 * time.
 	 * 
-	 * This is also where the special effects are determined, such as flame, damage and knockback. The Mythril Bows chance to not consume an arrow is determined
-	 * here too.
+	 * This is also where the special effects are determined, such as flame,
+	 * damage and knockback. The Mythril Bows chance to not consume an arrow is
+	 * determined here too.
 	 */
 	@Override
 	public void onPlayerStoppedUsing(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer, int par4) {
@@ -198,7 +330,8 @@ public class ItemExtendedBow extends ItemBow {
 		}
 
 		var6 = event.charge;
-		boolean flag = (par3EntityPlayer.capabilities.isCreativeMode) || (EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, par1ItemStack) > 0);
+		boolean flag = (par3EntityPlayer.capabilities.isCreativeMode)
+				|| (EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, par1ItemStack) > 0);
 
 		if ((flag) || (par3EntityPlayer.inventory.hasItem(Item.arrow.itemID))) {
 			int i = getMaxItemUseDuration(par1ItemStack) - par4;
@@ -224,9 +357,11 @@ public class ItemExtendedBow extends ItemBow {
 				var8.setIsCritical(true);
 			}
 
-			if (f >= 1.0F && itemID == SimpleOresEW.extendedonyxBow.itemID) {
-				var8.setIsCritical(true);
-				var8.setFire(100);
+			if (PluginChecks.getSimpleInstalled()) {
+				if (f >= 1.0F && itemID == SimpleOresEW.extendedonyxBow.itemID) {
+					var8.setIsCritical(true);
+					var8.setFire(100);
+				}
 			}
 
 			int j = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, par1ItemStack);
@@ -264,11 +399,15 @@ public class ItemExtendedBow extends ItemBow {
 			}
 
 			if (!flag) {
-				if (z == 1 && itemID == SimpleOresEW.extendedmythrilBow.itemID) {
-					var8.canBePickedUp = 0;
-				}
+				if (PluginChecks.getSimpleInstalled()) {
+					if (z == 1 && itemID == SimpleOresEW.extendedmythrilBow.itemID) {
+						var8.canBePickedUp = 0;
+					}
 
-				else {
+					else {
+						par3EntityPlayer.inventory.consumeInventoryItem(Item.arrow.itemID);
+					}
+				} else {
 					par3EntityPlayer.inventory.consumeInventoryItem(Item.arrow.itemID);
 				}
 			}
@@ -280,13 +419,29 @@ public class ItemExtendedBow extends ItemBow {
 			if (!par2World.isRemote) {
 				par2World.spawnEntityInWorld(var8);
 
-				if (itemID == SimpleOresEW.extendedmythrilBow.itemID) {
-					var8.setDamage(var8.getDamage() + SimpleOres.core.Settings.mythrilBowDamageModifier * increaseBowDamage * 0.5D + 0.5D);
-				}
+				if (PluginChecks.getSimpleInstalled()) {
+					if (itemID == SimpleOresEW.extendedmythrilBow.itemID) {
+						var8.setDamage(var8.getDamage() + SimpleOres.core.Settings.mythrilBowDamageModifier * increaseBowDamage * 0.5D + 0.5D);
+					}
 
-				if (itemID == SimpleOresEW.extendedonyxBow.itemID) {
-					var8.setDamage(var8.getDamage() + SimpleOres.core.Settings.onyxBowDamageModifier * increaseBowDamage * 0.5D + 0.5D);
+					if (itemID == SimpleOresEW.extendedonyxBow.itemID) {
+						var8.setDamage(var8.getDamage() + SimpleOres.core.Settings.onyxBowDamageModifier * increaseBowDamage * 0.5D + 0.5D);
+					}
 				}
+				if (PluginChecks.getFusionInstalled()) {
+					if (itemID == SimpleOresEW.extendedthyriumBow.itemID) {
+						var8.setDamage(var8.getDamage() + SimpleOres.plugins.fusion.Settings.thyriumBowDamageModifier * increaseBowDamage
+								* 0.5D + 0.5D);
+					}
+
+					if (itemID == SimpleOresEW.extendedsinisiteBow.itemID) {
+						var8.setDamage(var8.getDamage() + SimpleOres.plugins.fusion.Settings.sinisiteBowDamageModifier * increaseBowDamage
+								* 0.5D + 0.5D);
+						var8.setKnockbackStrength(k + SimpleOres.plugins.fusion.Settings.sinisiteBowKnockbackModifier);
+					}
+				}
+				if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
+					var8.setKnockbackStrength(k + 2);
 			}
 		}
 	}
@@ -296,7 +451,8 @@ public class ItemExtendedBow extends ItemBow {
 	}
 
 	/**
-	 * Determines how long you can use the item for. Not sure if it actually has any effect.
+	 * Determines how long you can use the item for. Not sure if it actually has
+	 * any effect.
 	 */
 	@Override
 	public int getMaxItemUseDuration(ItemStack par1ItemStack) {
@@ -332,9 +488,11 @@ public class ItemExtendedBow extends ItemBow {
 	}
 
 	/**
-	 * Determines if the tool is repairable, and gets the item which can be used to repair it depending on the material of the tool.
+	 * Determines if the tool is repairable, and gets the item which can be used
+	 * to repair it depending on the material of the tool.
 	 * 
-	 * For example, a mythril bow can be repaired with a mythril ingot, an onyx bow with an onyx gem.
+	 * For example, a mythril bow can be repaired with a mythril ingot, an onyx
+	 * bow with an onyx gem.
 	 */
 	@Override
 	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
