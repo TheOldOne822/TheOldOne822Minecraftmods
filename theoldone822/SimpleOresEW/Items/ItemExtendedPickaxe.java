@@ -7,6 +7,7 @@ import static theoldone822.SimpleOresEW.SimpleOresEW.extendedValues.increaseTool
 import java.util.ArrayList;
 import java.util.Random;
 
+import theoldone822.SimpleOresEW.PluginChecks;
 import theoldone822.SimpleOresEW.SimpleOresEW;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
@@ -37,7 +38,7 @@ public class ItemExtendedPickaxe extends ItemPickaxe
 	@Override
 public boolean onBlockStartBreak(ItemStack itemstack, int i, int j, int k, EntityPlayer player) {
 		Random random = new Random();
-		if (itemID == SimpleOresEW.extendedfyritePick.itemID && !player.capabilities.isCreativeMode) {
+		if (PluginChecks.getFusionInstalled() && itemID == SimpleOresEW.extendedfyritePick.itemID && !player.capabilities.isCreativeMode) {
 			Boolean flag = false;
 			World world = player.worldObj;
 			int blockID = world.getBlockId(i, j, k);

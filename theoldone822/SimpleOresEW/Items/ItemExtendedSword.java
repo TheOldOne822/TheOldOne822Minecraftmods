@@ -6,6 +6,7 @@ import static theoldone822.SimpleOresEW.SimpleOresEW.extendedValues.increaseSwor
 
 import java.lang.reflect.Field;
 
+import theoldone822.SimpleOresEW.PluginChecks;
 import theoldone822.SimpleOresEW.SimpleOresEW;
 
 import com.google.common.collect.HashMultimap;
@@ -54,12 +55,12 @@ public class ItemExtendedSword extends ItemSword
 	 */
 	@Override
 	public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLivingBase, EntityLivingBase par3EntityLivingBase) {
-		if (itemID == SimpleOresEW.extendedfyriteSword.itemID) {
+		if (PluginChecks.getFusionInstalled() && itemID == SimpleOresEW.extendedfyriteSword.itemID) {
 			par1ItemStack.damageItem(1, par3EntityLivingBase);
 			par2EntityLivingBase.setFire(100);
 		}
 
-		if (itemID == SimpleOresEW.extendedillumeniteSword.itemID) {
+		if (PluginChecks.getFusionInstalled() && itemID == SimpleOresEW.extendedillumeniteSword.itemID) {
 			par1ItemStack.damageItem(1, par3EntityLivingBase);
 			par3EntityLivingBase.addPotionEffect(new PotionEffect(Potion.nightVision.id, 3600));
 			par2EntityLivingBase.addPotionEffect(new PotionEffect(Potion.blindness.id, 60));
@@ -74,7 +75,7 @@ public class ItemExtendedSword extends ItemSword
 
 	@Override
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
-		if (itemID == SimpleOresEW.extendedfyriteSword.itemID) {
+		if (PluginChecks.getFusionInstalled() && itemID == SimpleOresEW.extendedfyriteSword.itemID) {
 			if (par7 == 0) {
 				--par5;
 			}

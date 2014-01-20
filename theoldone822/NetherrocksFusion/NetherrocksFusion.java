@@ -44,12 +44,16 @@ public class NetherrocksFusion {
 	public static EnumArmorMaterial armorCinderstone;
 	public static EnumArmorMaterial armorThraka;
 	public static EnumArmorMaterial armorPyralis;
+	public static EnumArmorMaterial armorPyralisChain;
 	public static EnumArmorMaterial armorDragonBezoar;
+	public static EnumArmorMaterial armorDragonBezoarChain;
 
 	public static int rendererCinderstone;
 	public static int rendererThraka;
 	public static int rendererPyralis;
+	public static int rendererPyralisChain;
 	public static int rendererDragonBezoar;
+	public static int rendererDragonBezoarChain;
 	public static int rendererextendedCinderstone;
 	public static int rendererextendedThraka;
 	public static int rendererextendedPyralis;
@@ -108,7 +112,9 @@ public class NetherrocksFusion {
     	armorCinderstone = EnumHelper.addArmorMaterial("FYRITEIL", Settings.cinderstoneArmorDurability, Settings.cinderstoneArmorDamageReduction, Settings.cinderstoneArmorEnchantability);
     	armorThraka = EnumHelper.addArmorMaterial("ASHMAL", Settings.thrakaArmorDurability, Settings.thrakaArmorDamageReduction, Settings.thrakaArmorEnchantability);
     	armorPyralis = EnumHelper.addArmorMaterial("DRAGONPLUS", Settings.pyralisArmorDurability, Settings.pyralisArmorDamageReduction, Settings.pyralisArmorEnchantability);
+    	armorPyralisChain = EnumHelper.addArmorMaterial("DRAGONPLUS", Settings.pyralischainArmorDurability, Settings.pyralischainArmorDamageReduction, Settings.pyralischainArmorEnchantability);
     	armorDragonBezoar = EnumHelper.addArmorMaterial("SUPER", Settings.dragonbezoarArmorDurability, Settings.dragonbezoarArmorDamageReduction, Settings.dragonbezoarArmorEnchantability);
+    	armorDragonBezoarChain = EnumHelper.addArmorMaterial("SUPER", Settings.dragonbezoarchainArmorDurability, Settings.dragonbezoarchainArmorDamageReduction, Settings.dragonbezoarchainArmorEnchantability);
 
 		Content.doArmor();
     	Content.doBlocks();
@@ -127,7 +133,9 @@ public class NetherrocksFusion {
 		rendererCinderstone = SimpleOres.core.SimpleOres.proxy.addArmor("cinderstone");
 		rendererThraka = SimpleOres.core.SimpleOres.proxy.addArmor("thraka");
 		rendererPyralis = SimpleOres.core.SimpleOres.proxy.addArmor("pyralis");
+		rendererPyralis = SimpleOres.core.SimpleOres.proxy.addArmor("pyralischain");
 		rendererDragonBezoar = SimpleOres.core.SimpleOres.proxy.addArmor("dragonbezoar");
+		rendererDragonBezoar = SimpleOres.core.SimpleOres.proxy.addArmor("dragonbezoarchain");
 		rendererextendedCinderstone = SimpleOres.core.SimpleOres.proxy.addArmor("extendedcinderstone");
 		rendererextendedThraka = SimpleOres.core.SimpleOres.proxy.addArmor("extendedthraka");
 		rendererextendedPyralis = SimpleOres.core.SimpleOres.proxy.addArmor("extendedpyralis");
@@ -140,8 +148,10 @@ public class NetherrocksFusion {
 
         armorCinderstone.customCraftingMaterial = Content.cinderstoneIngot;
         armorPyralis.customCraftingMaterial = Content.pyralisIngot;
+        armorPyralisChain.customCraftingMaterial = Content.pyralisIngot;
         armorThraka.customCraftingMaterial = Content.thrakaIngot;
         armorDragonBezoar.customCraftingMaterial = Content.dragonbezoarIngot;
+        armorDragonBezoarChain.customCraftingMaterial = Content.dragonbezoarIngot;
 
 		proxy.registerRenderInformation();
 	}

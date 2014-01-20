@@ -17,7 +17,6 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -82,7 +81,7 @@ public class MoreFusionFurnaces {
 
 	}
 
-	@Init
+	@EventHandler
 	public void InitiateMoreFusionFurnaces(FMLInitializationEvent initEvent) {
 		instance = this;
 		NetworkRegistry.instance().registerGuiHandler(instance, proxy);

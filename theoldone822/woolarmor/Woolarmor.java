@@ -18,9 +18,8 @@ import net.minecraft.item.ItemArmor;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.Init;
+import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.Mod.PreInit;
 import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -58,7 +57,7 @@ public class Woolarmor {
 	@Instance("woolarmor")
 	public static Woolarmor instance;
 
-	@PreInit
+	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		proxy.preInit();
 		ModMetadata metadata = event.getModMetadata();
@@ -88,7 +87,7 @@ public class Woolarmor {
 
 	}
 
-	@Init
+	@EventHandler
 	public void Initiatewoolarmor(FMLInitializationEvent initEvent) {
 
 		if (EWAPI.getEWInstalled()) {

@@ -545,7 +545,12 @@ public class SimpleOresEW {
 					('Y'), OnlySilver.code.api.OnlySilverAPI.silverRod.get(), ('Z'), Item.ingotIron });
 
 			LanguageRegistry.addName(extendedsilverBow, "Extended Silver Bow");
-			
+
+			if (OnlySilver.code.conf.Config.werewolfEffectiveness.get())
+				try {
+					MinecraftForge.EVENT_BUS.register(new WerewolfHandler());
+				} catch (Exception ignored) {}
+
 		}
 		if (PluginChecks.getNetherFusionInstalled()) {
 

@@ -38,6 +38,18 @@ public class Recipes {
 		GameRegistry.addShapelessRecipe(new ItemStack(Content.pyralisIngot, 9), new Object[] { Content.pyralisBlock });
 		GameRegistry.addShapelessRecipe(new ItemStack(Content.dragonbezoarIngot, 9), new Object[] { Content.dragonbezoarBlock });
 
+		GameRegistry.addRecipe(new ItemStack(Content.pyralisChain, 8), new Object[] { " X ", "X X", " X ", Character.valueOf('X'), Content.pyralisIngot});
+		GameRegistry.addRecipe(new ItemStack(Content.pyralisChain, 6), new Object[] { " Y ", "X X", " X ", Character.valueOf('X'), Content.pyralisIngot, Character.valueOf('Y'), Netherrocks.core.Items.dragonstoneGem});
+		GameRegistry.addRecipe(new ItemStack(Content.pyralisChain, 6), new Object[] { " X ", "Y X", " X ", Character.valueOf('X'), Content.pyralisIngot, Character.valueOf('Y'), Netherrocks.core.Items.dragonstoneGem});
+		GameRegistry.addRecipe(new ItemStack(Content.pyralisChain, 6), new Object[] { " X ", "X Y", " X ", Character.valueOf('X'), Content.pyralisIngot, Character.valueOf('Y'), Netherrocks.core.Items.dragonstoneGem});
+		GameRegistry.addRecipe(new ItemStack(Content.pyralisChain, 6), new Object[] { " X ", "X X", " Y ", Character.valueOf('X'), Content.pyralisIngot, Character.valueOf('Y'), Netherrocks.core.Items.dragonstoneGem});
+
+		GameRegistry.addRecipe(new ItemStack(Content.dragonbezoarChain, 8), new Object[] { " X ", "X X", " X ", Character.valueOf('X'), Content.dragonbezoarIngot});
+		GameRegistry.addRecipe(new ItemStack(Content.dragonbezoarChain, 6), new Object[] { " Y ", "X X", " X ", Character.valueOf('X'), Content.dragonbezoarIngot, Character.valueOf('Y'), Content.pyralisIngot});
+		GameRegistry.addRecipe(new ItemStack(Content.dragonbezoarChain, 6), new Object[] { " X ", "Y X", " X ", Character.valueOf('X'), Content.dragonbezoarIngot, Character.valueOf('Y'), Content.pyralisIngot});
+		GameRegistry.addRecipe(new ItemStack(Content.dragonbezoarChain, 6), new Object[] { " X ", "X Y", " X ", Character.valueOf('X'), Content.dragonbezoarIngot, Character.valueOf('Y'), Content.pyralisIngot});
+		GameRegistry.addRecipe(new ItemStack(Content.dragonbezoarChain, 6), new Object[] { " X ", "X X", " Y ", Character.valueOf('X'), Content.dragonbezoarIngot, Character.valueOf('Y'), Content.pyralisIngot});
+		
 		GameRegistry.addShapelessRecipe(new ItemStack(Content.largeCinderstoneChunk, 1), new Object[] { Content.smallCinderstoneChunk, Content.smallCinderstoneChunk,
 				Content.smallCinderstoneChunk, Content.smallCinderstoneChunk, Content.smallCinderstoneChunk });
 		GameRegistry.addShapelessRecipe(new ItemStack(Content.largeCinderstoneChunk, 1), new Object[] { Content.mediumCinderstoneChunk, Content.mediumCinderstoneChunk,
@@ -98,10 +110,20 @@ public class Recipes {
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.pyralisLegs, true, new Object[] { "XXX", "X X", "X X", Character.valueOf('X'), "ingotPyralis" }));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.pyralisBoots, true, new Object[] { "X X", "X X", Character.valueOf('X'), "ingotPyralis" }));
 
+		GameRegistry.addRecipe(new ItemStack(Content.pyralisChainHelm, 1), new Object[] { "XXX", "X X", Character.valueOf('X'), Content.pyralisChain });
+		GameRegistry.addRecipe(new ItemStack(Content.pyralisChainChest, 1), new Object[] { "X X", "XXX", "XXX", Character.valueOf('X'), Content.pyralisChain });
+		GameRegistry.addRecipe(new ItemStack(Content.pyralisChainLegs, 1), new Object[] { "XXX", "X X", "X X", Character.valueOf('X'), Content.pyralisChain });
+		GameRegistry.addRecipe(new ItemStack(Content.pyralisChainBoots, 1), new Object[] { "X X", "X X", Character.valueOf('X'), Content.pyralisChain });
+
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.dragonbezoarHelm, true, new Object[] { "XXX", "X X", Character.valueOf('X'), "ingotDragonBezoar" }));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.dragonbezoarChest, true, new Object[] { "X X", "XXX", "XXX", Character.valueOf('X'), "ingotDragonBezoar" }));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.dragonbezoarLegs, true, new Object[] { "XXX", "X X", "X X", Character.valueOf('X'), "ingotDragonBezoar" }));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.dragonbezoarBoots, true, new Object[] { "X X", "X X", Character.valueOf('X'), "ingotDragonBezoar" }));
+
+		GameRegistry.addRecipe(new ItemStack(Content.dragonbezoarChainHelm, 1), new Object[] { "XXX", "X X", Character.valueOf('X'), Content.dragonbezoarChain });
+		GameRegistry.addRecipe(new ItemStack(Content.dragonbezoarChainChest, 1), new Object[] { "X X", "XXX", "XXX", Character.valueOf('X'), Content.dragonbezoarChain });
+		GameRegistry.addRecipe(new ItemStack(Content.dragonbezoarChainLegs, 1), new Object[] { "XXX", "X X", "X X", Character.valueOf('X'), Content.dragonbezoarChain });
+		GameRegistry.addRecipe(new ItemStack(Content.dragonbezoarChainBoots, 1), new Object[] { "X X", "X X", Character.valueOf('X'), Content.dragonbezoarChain });
 
 		// Smelting
 		FusionRecipes.smelting().addSmelting(new ItemStack(Netherrocks.core.Items.fyriteIngot), new ItemStack(Netherrocks.core.Items.illumeniteIngot), new ItemStack(Item.gunpowder),

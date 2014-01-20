@@ -22,6 +22,8 @@ public class IDs {
 	public static int pyralisIngotID;
 	public static int dragonbezoarIngotID;
 	public static int dragonbezoarRodID;
+	public static int pyralisChainID;
+	public static int dragonbezoarChainID;
 	public static int smallCinderstoneChunkID;
 	public static int mediumCinderstoneChunkID;
 	public static int largeCinderstoneChunkID;
@@ -68,10 +70,18 @@ public class IDs {
 	public static int pyralisChestID;
 	public static int pyralisLegsID;
 	public static int pyralisBootsID;
+	public static int pyralisChainHelmID;
+	public static int pyralisChainChestID;
+	public static int pyralisChainLegsID;
+	public static int pyralisChainBootsID;
 	public static int dragonbezoarHelmID;
 	public static int dragonbezoarChestID;
 	public static int dragonbezoarLegsID;
 	public static int dragonbezoarBootsID;
+	public static int dragonbezoarChainHelmID;
+	public static int dragonbezoarChainChestID;
+	public static int dragonbezoarChainLegsID;
+	public static int dragonbezoarChainBootsID;
 
 	//Extended Tool
 	public static int extendedcinderstoneSwordID;
@@ -136,6 +146,8 @@ public class IDs {
 	pyralisIngotID = config.getItem("Items", "Pyralis Ingot", 6514).getInt();
 	dragonbezoarIngotID = config.getItem("Items", "Dragon Bezoar Ingot", 6515).getInt();
 	dragonbezoarRodID = config.getItem("Items", "Dragon Bezoar Rod", 6516).getInt();
+	pyralisChainID = config.getItem("Items", "Pyralis Chain", 6597).getInt();
+	dragonbezoarChainID = config.getItem("Items", "Dragon Bezoar Chain", 6598).getInt();
 	smallCinderstoneChunkID = config.getItem("Items", "Cinderstone Chunk Small", 6517).getInt();
 	mediumCinderstoneChunkID = config.getItem("Items", "Cinderstone Chunk Medium ", 6518).getInt();
 	largeCinderstoneChunkID = config.getItem("Items", "Cinderstone Chunk Large ", 6519).getInt();
@@ -182,10 +194,18 @@ public class IDs {
 	pyralisChestID = config.getItem("Armor", "Pyralis Chestplate", 6556).getInt();
 	pyralisLegsID = config.getItem("Armor", "Pyralis Leggings", 6557).getInt();
 	pyralisBootsID = config.getItem("Armor", "Pyralis Boots", 6558).getInt();
+	pyralisChainHelmID = config.getItem("Armor", "Pyralis Chain Helmet", 6599).getInt();
+	pyralisChainChestID = config.getItem("Armor", "Pyralis Chain Chestplate", 6600).getInt();
+	pyralisChainLegsID = config.getItem("Armor", "Pyralis Chain Leggings", 6601).getInt();
+	pyralisChainBootsID = config.getItem("Armor", "Pyralis Chain Boots", 6602).getInt();
 	dragonbezoarHelmID = config.getItem("Armor", "Dragon Bezoar Helmet", 6559).getInt();
 	dragonbezoarChestID = config.getItem("Armor", "Dragon Bezoar Chestplate", 6560).getInt();
 	dragonbezoarLegsID = config.getItem("Armor", "Dragon Bezoar Leggings", 6561).getInt();
 	dragonbezoarBootsID = config.getItem("Armor", "Dragon Bezoar Boots", 6562).getInt();
+	dragonbezoarChainHelmID = config.getItem("Armor", "Dragon Bezoar Chain Helmet", 6603).getInt();
+	dragonbezoarChainChestID = config.getItem("Armor", "Dragon Bezoar Chain Chestplate", 6604).getInt();
+	dragonbezoarChainLegsID = config.getItem("Armor", "Dragon Bezoar Chain Leggings", 6605).getInt();
+	dragonbezoarChainBootsID = config.getItem("Armor", "Dragon Bezoar Chain Boots", 6606).getInt();
 
 	//Extended Tool ID's
 	extendedcinderstoneSwordID = config.getItem("Weapons", "Extended Cinderstone Sword", 6563).getInt();

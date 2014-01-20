@@ -57,6 +57,8 @@ public class Content
 	public static Item pyralisIngot;
 	public static Item dragonbezoarIngot;
 	public static Item dragonbezoarRod;
+	public static Item pyralisChain;
+	public static Item dragonbezoarChain;
 	
 	public static Item smallCinderstoneChunk;
 	public static Item mediumCinderstoneChunk;
@@ -108,10 +110,18 @@ public class Content
 	public static Item pyralisChest;
 	public static Item pyralisLegs;
 	public static Item pyralisBoots;
+	public static Item pyralisChainHelm;
+	public static Item pyralisChainChest;
+	public static Item pyralisChainLegs;
+	public static Item pyralisChainBoots;
 	public static Item dragonbezoarHelm;
 	public static Item dragonbezoarChest;
 	public static Item dragonbezoarLegs;
 	public static Item dragonbezoarBoots;
+	public static Item dragonbezoarChainHelm;
+	public static Item dragonbezoarChainChest;
+	public static Item dragonbezoarChainLegs;
+	public static Item dragonbezoarChainBoots;
 	
 	/**
 	 * Creating the tool items.
@@ -172,10 +182,18 @@ public class Content
 		pyralisChest = new SimpleArmor(IDs.pyralisChestID, mod.armorPyralis, mod.rendererPyralis, 1, "pyralis", "netherrocksfusion", SimpleOres.tabSimpleCombat).setUnlocalizedName("netherrocksfusion:pyralisChest").setTextureName("netherrocksfusion:pyralisChest");
 		pyralisLegs = new SimpleArmor(IDs.pyralisLegsID, mod.armorPyralis, mod.rendererPyralis, 2, "pyralis", "netherrocksfusion", SimpleOres.tabSimpleCombat).setUnlocalizedName("netherrocksfusion:pyralisLegs").setTextureName("netherrocksfusion:pyralisLegs");
 		pyralisBoots = new SimpleArmor(IDs.pyralisBootsID, mod.armorPyralis, mod.rendererPyralis, 3, "pyralis", "netherrocksfusion", SimpleOres.tabSimpleCombat).setUnlocalizedName("netherrocksfusion:pyralisBoots").setTextureName("netherrocksfusion:pyralisBoots");
+		pyralisChainHelm = new SimpleArmor(IDs.pyralisChainHelmID, mod.armorPyralisChain, mod.rendererPyralisChain, 0, "pyralisChain", "netherrocksfusion", SimpleOres.tabSimpleCombat).setUnlocalizedName("netherrocksfusion:pyralisChainHelm").setTextureName("netherrocksfusion:pyralisChainHelm");
+		pyralisChainChest = new SimpleArmor(IDs.pyralisChainChestID, mod.armorPyralisChain, mod.rendererPyralisChain, 1, "pyralisChain", "netherrocksfusion", SimpleOres.tabSimpleCombat).setUnlocalizedName("netherrocksfusion:pyralisChainChest").setTextureName("netherrocksfusion:pyralisChainChest");
+		pyralisChainLegs = new SimpleArmor(IDs.pyralisChainLegsID, mod.armorPyralisChain, mod.rendererPyralisChain, 2, "pyralisChain", "netherrocksfusion", SimpleOres.tabSimpleCombat).setUnlocalizedName("netherrocksfusion:pyralisChainLegs").setTextureName("netherrocksfusion:pyralisChainLegs");
+		pyralisChainBoots = new SimpleArmor(IDs.pyralisChainBootsID, mod.armorPyralisChain, mod.rendererPyralisChain, 3, "pyralisChain", "netherrocksfusion", SimpleOres.tabSimpleCombat).setUnlocalizedName("netherrocksfusion:pyralisChainBoots").setTextureName("netherrocksfusion:pyralisChainBoots");
 		dragonbezoarHelm = new SimpleArmor(IDs.dragonbezoarHelmID, mod.armorDragonBezoar, mod.rendererDragonBezoar, 0, "dragonbezoar", "netherrocksfusion", SimpleOres.tabSimpleCombat).setUnlocalizedName("netherrocksfusion:dragonbezoarHelm").setTextureName("netherrocksfusion:dragonbezoarHelm");
 		dragonbezoarChest = new SimpleArmor(IDs.dragonbezoarChestID, mod.armorDragonBezoar, mod.rendererDragonBezoar, 1, "dragonbezoar", "netherrocksfusion", SimpleOres.tabSimpleCombat).setUnlocalizedName("netherrocksfusion:dragonbezoarChest").setTextureName("netherrocksfusion:dragonbezoarChest");
 		dragonbezoarLegs = new SimpleArmor(IDs.dragonbezoarLegsID, mod.armorDragonBezoar, mod.rendererDragonBezoar, 2, "dragonbezoar", "netherrocksfusion", SimpleOres.tabSimpleCombat).setUnlocalizedName("netherrocksfusion:dragonbezoarLegs").setTextureName("netherrocksfusion:dragonbezoarLegs");
 		dragonbezoarBoots = new SimpleArmor(IDs.dragonbezoarBootsID, mod.armorDragonBezoar, mod.rendererDragonBezoar, 3, "dragonbezoar", "netherrocksfusion", SimpleOres.tabSimpleCombat).setUnlocalizedName("netherrocksfusion:dragonbezoarBoots").setTextureName("netherrocksfusion:dragonbezoarBoots");
+		dragonbezoarChainHelm = new SimpleArmor(IDs.dragonbezoarChainHelmID, mod.armorDragonBezoarChain, mod.rendererDragonBezoarChain, 0, "dragonbezoarChain", "netherrocksfusion", SimpleOres.tabSimpleCombat).setUnlocalizedName("netherrocksfusion:dragonbezoarChainHelm").setTextureName("netherrocksfusion:dragonbezoarChainHelm");
+		dragonbezoarChainChest = new SimpleArmor(IDs.dragonbezoarChainChestID, mod.armorDragonBezoarChain, mod.rendererDragonBezoarChain, 1, "dragonbezoarChain", "netherrocksfusion", SimpleOres.tabSimpleCombat).setUnlocalizedName("netherrocksfusion:dragonbezoarChainChest").setTextureName("netherrocksfusion:dragonbezoarChainChest");
+		dragonbezoarChainLegs = new SimpleArmor(IDs.dragonbezoarChainLegsID, mod.armorDragonBezoarChain, mod.rendererDragonBezoarChain, 2, "dragonbezoarChain", "netherrocksfusion", SimpleOres.tabSimpleCombat).setUnlocalizedName("netherrocksfusion:dragonbezoarChainLegs").setTextureName("netherrocksfusion:dragonbezoarChainLegs");
+		dragonbezoarChainBoots = new SimpleArmor(IDs.dragonbezoarChainBootsID, mod.armorDragonBezoarChain, mod.rendererDragonBezoarChain, 3, "dragonbezoarChain", "netherrocksfusion", SimpleOres.tabSimpleCombat).setUnlocalizedName("netherrocksfusion:dragonbezoarChainBoots").setTextureName("netherrocksfusion:dragonbezoarChainBoots");
 
 		LanguageRegistry.addName(cinderstoneHelm, "Cinderstone Helmet");
 		LanguageRegistry.addName(cinderstoneChest, "Cinderstone Chestplate");
@@ -192,10 +210,20 @@ public class Content
 		LanguageRegistry.addName(pyralisLegs, "Pyralis Leggings");
 		LanguageRegistry.addName(pyralisBoots, "Pyralis Boots");
 
+		LanguageRegistry.addName(pyralisChainHelm, "Pyralis Chain Helmet");
+		LanguageRegistry.addName(pyralisChainChest, "Pyralis Chain Chestplate");
+		LanguageRegistry.addName(pyralisChainLegs, "Pyralis Chain Leggings");
+		LanguageRegistry.addName(pyralisChainBoots, "Pyralis Chain Boots");
+
 		LanguageRegistry.addName(dragonbezoarHelm, "Dragon Bezoar Helmet");
 		LanguageRegistry.addName(dragonbezoarChest, "Dragon Bezoar Chestplate");
 		LanguageRegistry.addName(dragonbezoarLegs, "Dragon Bezoar Leggings");
 		LanguageRegistry.addName(dragonbezoarBoots, "Dragon Bezoar Boots");
+
+		LanguageRegistry.addName(dragonbezoarChainHelm, "Dragon Bezoar Chain Helmet");
+		LanguageRegistry.addName(dragonbezoarChainChest, "Dragon Bezoar Chain Chestplate");
+		LanguageRegistry.addName(dragonbezoarChainLegs, "Dragon Bezoar Chain Leggings");
+		LanguageRegistry.addName(dragonbezoarChainBoots, "Dragon Bezoar Chain Boots");
 
 		if (EWAPI.getEWInstalled()) {
 			extendedcinderstoneHelm = new ItemExtendedArmor(IDs.extendedcinderstoneHelmID, mod.armorCinderstone, mod.rendererextendedCinderstone, 0, "cinderstone", "netherrocksfusion").setUnlocalizedName("netherrocksfusion:extendedcinderstoneHelm").setTextureName("netherrocksfusion:extendedcinderstoneHelm");
@@ -280,8 +308,10 @@ public class Content
 		//Item Details
 		cinderstoneIngot = new SimpleIngot(IDs.cinderstoneIngotID, "netherrocksfusion", SimpleOres.tabSimpleMaterials).setUnlocalizedName("netherrocksfusion:cinderstoneIngot").setTextureName("netherrocksfusion:cinderstoneIngot");
 		pyralisIngot = new SimpleIngot(IDs.pyralisIngotID, "netherrocksfusion", SimpleOres.tabSimpleMaterials).setUnlocalizedName("netherrocksfusion:pyralisIngot").setTextureName("netherrocksfusion:pyralisIngot");
+		pyralisChain = new SimpleIngot(IDs.pyralisChainID, "netherrocksfusion", SimpleOres.tabSimpleMaterials).setUnlocalizedName("netherrocksfusion:pyralisChain").setTextureName("netherrocksfusion:pyralisChain");
 		thrakaIngot = new SimpleIngot(IDs.thrakaIngotID, "netherrocksfusion", SimpleOres.tabSimpleMaterials).setUnlocalizedName("netherrocksfusion:thrakaIngot").setTextureName("netherrocksfusion:thrakaIngot");
 		dragonbezoarIngot = new SimpleIngot(IDs.dragonbezoarIngotID, "netherrocksfusion", SimpleOres.tabSimpleMaterials).setUnlocalizedName("netherrocksfusion:dragonbezoarIngot").setTextureName("netherrocksfusion:dragonbezoarIngot");
+		dragonbezoarChain = new SimpleIngot(IDs.dragonbezoarChainID, "netherrocksfusion", SimpleOres.tabSimpleMaterials).setUnlocalizedName("netherrocksfusion:dragonbezoarChain").setTextureName("netherrocksfusion:dragonbezoarChain");
 		dragonbezoarRod = new SimpleIngot(IDs.dragonbezoarRodID, "netherrocksfusion", SimpleOres.tabSimpleMaterials).setUnlocalizedName("netherrocksfusion:dragonbezoarRod").setTextureName("netherrocksfusion:dragonbezoarRod");	
 		smallCinderstoneChunk = new SimpleIngot(IDs.smallCinderstoneChunkID, "netherrocksfusion", SimpleOres.tabSimpleMaterials).setUnlocalizedName("netherrocksfusion:smallCinderstoneChunk").setTextureName("netherrocksfusion:smallCinderstoneChunk");
 		mediumCinderstoneChunk = new SimpleIngot(IDs.mediumCinderstoneChunkID, "netherrocksfusion", SimpleOres.tabSimpleMaterials).setUnlocalizedName("netherrocksfusion:mediumCinderstoneChunk").setTextureName("netherrocksfusion:mediumCinderstoneChunk");
@@ -299,7 +329,9 @@ public class Content
 		LanguageRegistry.addName(cinderstoneIngot, "Cinderstone Ingot");
 		LanguageRegistry.addName(thrakaIngot, "Thraka Ingot");
 		LanguageRegistry.addName(pyralisIngot, "Pyralis Ingot");
+		LanguageRegistry.addName(pyralisChain, "Pyralis Chain Links");
 		LanguageRegistry.addName(dragonbezoarIngot, "Dragon Bezoar Ingot");
+		LanguageRegistry.addName(dragonbezoarChain, "Dragon Bezoar Chain Links");
 		LanguageRegistry.addName(dragonbezoarRod, "Dragon Bezoar Rod");
 		LanguageRegistry.addName(smallCinderstoneChunk, "Small Cinderstone Chunk");
 		LanguageRegistry.addName(mediumCinderstoneChunk, "Medium Cinderstone Chunk");

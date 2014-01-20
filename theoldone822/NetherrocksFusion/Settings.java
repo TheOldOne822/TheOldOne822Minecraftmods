@@ -55,9 +55,16 @@ public class Settings {
 	public static int[] pyralisArmorDamageReduction;
 	public static int pyralisArmorEnchantability;
 	public static int pyralisArmorResistance;
+	public static int pyralischainArmorDurability;
+	public static int[] pyralischainArmorDamageReduction;
+	public static int pyralischainArmorEnchantability;
+	public static int pyralischainArmorResistance;
 	public static int dragonbezoarArmorDurability;
 	public static int[] dragonbezoarArmorDamageReduction;
 	public static int dragonbezoarArmorEnchantability;
+	public static int dragonbezoarchainArmorDurability;
+	public static int[] dragonbezoarchainArmorDamageReduction;
+	public static int dragonbezoarchainArmorEnchantability;
 
 	//Block Stats
 	//Cinderstone
@@ -139,6 +146,14 @@ public class Settings {
 	pyralisArmorDamageReduction = settings.get("Armor Stats", "Pyralis Armor Damage Reduction Array", new int[] {3, 8, 6, 3}).getIntList();
 	pyralisArmorEnchantability = settings.get("Armor Stats", "Pyralis Armor Enchantability", 29).getInt();
 	pyralisArmorResistance = settings.get("Armor Stats", "Pyralis Armor Resistance", 50).getInt();
+
+	pyralischainArmorDurability = settings.get("Armor Stats", "Pyralis Armor Durability", 20).getInt();
+	pyralischainArmorDamageReduction = settings.get("Armor Stats", "Pyralis Armor Damage Reduction Array", new int[] {2, 6, 5, 2}).getIntList();
+	pyralischainArmorEnchantability = settings.get("Armor Stats", "Pyralis Armor Enchantability", 31).getInt();
+
+	dragonbezoarchainArmorDurability = settings.get("Armor Stats", "Dragon Bezoar Armor Durability", 51).getInt();
+	dragonbezoarchainArmorDamageReduction = settings.get("Armor Stats", "Dragon Bezoar Armor Damage Reduction Array", new int[] {4, 7, 6, 4}).getIntList();
+	dragonbezoarchainArmorEnchantability = settings.get("Armor Stats", "Dragon Bezoar Armor Enchantability", 40).getInt();
 
 	dragonbezoarArmorDurability = settings.get("Armor Stats", "Dragon Bezoar Armor Durability", 62).getInt();
 	dragonbezoarArmorDamageReduction = settings.get("Armor Stats", "Dragon Bezoar Armor Damage Reduction Array", new int[] {6, 9, 8, 7}).getIntList();
