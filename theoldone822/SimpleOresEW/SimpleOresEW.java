@@ -35,7 +35,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
-@Mod(modid = "simpleoresew", name = "Simple Ore Extended Work Bench Plugin", version = "1.6", dependencies = "required-after:extendedWorkbench")
+@Mod(modid = "simpleoresew", name = "Simple Ore Extended Work Bench Plugin", version = "1.7", dependencies = "required-after:extendedWorkbench; after:simpleores; after:simpleoresfusion; after:onlysilver; after:MoCreatures; after:SimpleArsenic; after:netherrocksfusion; after:netherrocks; after:classicalalchemy; after:simplecthon; after:goldenglitter; after:haditecoal; after:simplecobalt; after:simpletungsten; after:sterlingandblack")
 public class SimpleOresEW {
 	public static Item extendedmythrilBow;
 	public static Item extendedonyxBow;
@@ -123,7 +123,7 @@ public class SimpleOresEW {
 
 	@EventHandler
 	public void Initiatesimpleoresew(FMLInitializationEvent initEvent) {
-		int armorRenderer[] = new int[13];
+		int armorRenderer[] = new int[31];
 
 		if (FMLCommonHandler.instance().getEffectiveSide().isClient())
 			armorRenderer = new int[] { RenderingRegistry.addNewArmourRendererPrefix("extendedCopper"),
@@ -138,13 +138,36 @@ public class SimpleOresEW {
 					RenderingRegistry.addNewArmourRendererPrefix("extendedDragonstone"),
 					RenderingRegistry.addNewArmourRendererPrefix("extendedFyrite"),
 					RenderingRegistry.addNewArmourRendererPrefix("extendedIllumenite"),
-					RenderingRegistry.addNewArmourRendererPrefix("extendedSilver") };
+					RenderingRegistry.addNewArmourRendererPrefix("extendedSilver"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedarsenideBronze"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedarsenideGold"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedtenebrium"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedstannum"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedcuprum"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedpyropus"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedtombBronze"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedcthon"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedroseGold"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedcobalt"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedblueDriftSteel"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedblueCeladon"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedgreenCeladon"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedtungsten"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedtungstencarbide"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedvalfram"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedsterlingSteel"),
+					RenderingRegistry.addNewArmourRendererPrefix("extendedblackSilver"), };
 
 		String[] toolmatNames = new String[] { "Copper", "Tin", "Mythril", "Adamantium", "Onyx", "Bronze", "Thyrium", "Sinisite", "Malachite",
-				"Ashstone", "Dragonstone", "Argonite", "Silver" };
+				"Ashstone", "Dragonstone", "Argonite", "Silver", "Arsenic", "Arsenide Bronze", "Arsenide Gold", "Tenebrium", "Stannum",
+				"Cuprum", "Pyropus Bronze", "Tomb Bronze", "Pulchrum", "Cthon", "Rose Gold", "Erubescent Gold", "Scarlatite Gold",
+				"Hephaestan Gold", "Hadite Steel", "Gestankenzinn", "Cobalt", "Blue Drift Steel", "Blue Celadon", "Green Celadon", "Tungsten",
+				"Tungsten Carbide", "Valfram", "Sterling Steel", "Black Silver" };
 		String[] toolNames = new String[] { "Sword", "Shovel", "Pickaxe", "Axe", "Hoe" };
 		String[] armormatNames = new String[] { "Copper", "Tin", "Mythril", "Adamantium", "Onyx", "Bronze", "Thyrium", "Sinisite", "Malachite",
-				"Dragonstone", "Fyrite", "Illumenite", "Silver" };
+				"Dragonstone", "Fyrite", "Illumenite", "Silver", "Arsenide Bronze", "Arsenide Gold", "Tenebrium", "Stannum", "Cuprum",
+				"Pyropus Bronze", "Tomb Bronze", "Cthon", "Rose Gold", "Cobalt", "Blue Drift Steel", "Blue Celadon", "Green Celadon",
+				"Tungsten", "Tungsten Carbide", "Valfram", "Sterling Steel", "Black Silver" };
 		String[] armorNames = new String[] { "Helmet", "Chestplate", "Leggings", "Boots" };
 
 		if (PluginChecks.getSimpleInstalled()) {
@@ -539,8 +562,9 @@ public class SimpleOresEW {
 			LanguageRegistry.addName(extendedsilverChest, "Extended Silver Chestplate");
 			LanguageRegistry.addName(extendedsilverLegs, "Extended Silver Leggings");
 			LanguageRegistry.addName(extendedsilverBoots, "Extended Silver Boots");
-			
-			extendedsilverBow = (ItemBow) new ItemExtendedBow((config.getItem("Silver Base ID", 24202)).getInt() + 9, 500, OnlySilver.code.Items.toolSilver).setFull3D().setUnlocalizedName("extendedWorkbenchso:silverBow");
+
+			extendedsilverBow = (ItemBow) new ItemExtendedBow((config.getItem("Silver Base ID", 24202)).getInt() + 9, 500,
+					OnlySilver.code.Items.toolSilver).setFull3D().setUnlocalizedName("extendedWorkbenchso:silverBow");
 			EWAPI.addRecipe(new ItemStack(extendedthyriumBow, 1), new Object[] { " YX", "Y X", "Z X", "Z X", "Y X", " YX", ('X'), Item.silk,
 					('Y'), OnlySilver.code.api.OnlySilverAPI.silverRod.get(), ('Z'), Item.ingotIron });
 
@@ -549,7 +573,8 @@ public class SimpleOresEW {
 			if (OnlySilver.code.conf.Config.werewolfEffectiveness.get())
 				try {
 					MinecraftForge.EVENT_BUS.register(new WerewolfHandler());
-				} catch (Exception ignored) {}
+				} catch (Exception ignored) {
+				}
 
 		}
 		if (PluginChecks.getNetherFusionInstalled()) {
