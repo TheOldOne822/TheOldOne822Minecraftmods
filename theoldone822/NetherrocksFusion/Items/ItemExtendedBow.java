@@ -27,6 +27,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -35,6 +36,13 @@ public class ItemExtendedBow extends ItemBow {
 	 * The EnumToolMaterial for the tool. This is used to set what item can be used to repair it.
 	 */
 	private final EnumToolMaterial material;
+
+	public ItemExtendedBow setUnlocalizedName(String unlocalizedName)
+	{
+		super.setUnlocalizedName(unlocalizedName);
+		GameRegistry.registerItem(this, unlocalizedName);
+		return this;
+	}
 
 	/**
 	 * Creating the icons for the bows. As you draw the bows back, the icon changes, which is why there are 4 icons for each bow here.

@@ -25,10 +25,11 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
-@Mod(modid = "woolarmor", name = "Wool Armor", version = "1.0")
+@Mod(modid = "woolarmor", name = "Wool Armor", version = "1.1")
 public class Woolarmor {
 
 	public static Configuration config;
@@ -78,6 +79,11 @@ public class Woolarmor {
 		LanguageRegistry.addName(woolChest, "Wool Chestplate");
 		LanguageRegistry.addName(woolLegs, "Wool Leggings");
 		LanguageRegistry.addName(woolBoots, "Wool Boots");
+		
+		GameRegistry.registerItem(woolHelm, "WoolHelmet");
+		GameRegistry.registerItem(woolChest, "WoolChestplate");
+		GameRegistry.registerItem(woolLegs, "WoolLeggings");
+		GameRegistry.registerItem(woolBoots, "WoolBoots");
 		
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(woolHelm, true, new Object[] { "XXX", "X X", Character.valueOf('X'), Block.cloth }));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(woolChest, true, new Object[] { "X X", "XXX", "XXX", Character.valueOf('X'), Block.cloth }));

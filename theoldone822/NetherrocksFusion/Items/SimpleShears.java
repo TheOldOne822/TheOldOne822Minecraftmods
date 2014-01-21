@@ -3,6 +3,7 @@ package theoldone822.NetherrocksFusion.Items;
 import java.util.ArrayList;
 import java.util.Random;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -28,6 +29,13 @@ public class SimpleShears extends Item
         this.setMaxDamage(maxDamage);
         
     }
+    
+	public SimpleShears setUnlocalizedName(String unlocalizedName)
+	{
+		super.setUnlocalizedName(unlocalizedName);
+		GameRegistry.registerItem(this, unlocalizedName);
+		return this;
+	}
     
     public boolean onBlockDestroyed(ItemStack par1ItemStack, World par2World, int par3, int par4, int par5, int par6, EntityLiving par7EntityLiving)
     {

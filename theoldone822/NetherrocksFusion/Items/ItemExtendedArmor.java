@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.ISpecialArmor;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -37,7 +38,15 @@ public class ItemExtendedArmor extends ItemArmor implements ISpecialArmor
         this.maxStackSize = 1;
         this.setMaxDamage((int)(getMaxDamage() * increaseArmorDurability));
     	this.setArmorType(mod, type.toLowerCase(), par4);
+
     }
+
+	public ItemExtendedArmor setUnlocalizedName(String unlocalizedName)
+	{
+		super.setUnlocalizedName(unlocalizedName);
+		GameRegistry.registerItem(this, unlocalizedName);
+		return this;
+	}
 
     public void setArmorType(String mod, String type, int slotNumber)
     {

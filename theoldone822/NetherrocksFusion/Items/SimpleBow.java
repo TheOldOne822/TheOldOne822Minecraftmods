@@ -7,6 +7,7 @@ import org.lwjgl.opengl.GL11;
 
 import theoldone822.NetherrocksFusion.Content;
 import theoldone822.NetherrocksFusion.Settings;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
@@ -60,6 +61,13 @@ public class SimpleBow extends ItemBow
 	    this.setMaxDamage(dam);
 	}
 	
+	public SimpleBow setUnlocalizedName(String unlocalizedName)
+	{
+		super.setUnlocalizedName(unlocalizedName);
+		GameRegistry.registerItem(this, unlocalizedName);
+		return this;
+	}
+
 	/**
 	 * Registers the icons for the bows. All icons are registered, and the default icons (when you haven't drawn it back at all) are set.
 	 * 

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import theoldone822.NetherrocksFusion.Content;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -31,6 +32,13 @@ public class NetherAxe extends ItemAxe {
 		this.b = enumtoolmaterial;
 	}
 
+	public NetherAxe setUnlocalizedName(String unlocalizedName)
+	{
+		super.setUnlocalizedName(unlocalizedName);
+		GameRegistry.registerItem(this, unlocalizedName);
+		return this;
+	}
+	
 	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
 		return this.b.getToolCraftingMaterial() == par2ItemStack.itemID ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
 	}

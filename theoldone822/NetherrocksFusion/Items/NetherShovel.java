@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import theoldone822.NetherrocksFusion.Content;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -29,6 +30,13 @@ public class NetherShovel extends ItemSpade {
 	public NetherShovel(int i, EnumToolMaterial enumtoolmaterial) {
 		super(i, enumtoolmaterial);
 		this.b = enumtoolmaterial;
+	}
+
+	public NetherShovel setUnlocalizedName(String unlocalizedName)
+	{
+		super.setUnlocalizedName(unlocalizedName);
+		GameRegistry.registerItem(this, unlocalizedName);
+		return this;
 	}
 
 	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {

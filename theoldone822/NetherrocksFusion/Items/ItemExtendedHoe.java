@@ -1,6 +1,7 @@
 package theoldone822.NetherrocksFusion.Items;
 
 import static theoldone822.NetherrocksFusion.NetherrocksFusion.extendedValues.increaseHoeDurability;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemHoe;
@@ -14,6 +15,13 @@ public class ItemExtendedHoe extends ItemHoe
         super(par1, par2EnumToolMaterial);
         this.setMaxDamage((int)(getMaxDamage() * increaseHoeDurability));
     }
+
+	public ItemExtendedHoe setUnlocalizedName(String unlocalizedName)
+	{
+		super.setUnlocalizedName(unlocalizedName);
+		GameRegistry.registerItem(this, unlocalizedName);
+		return this;
+	}
 
     @Override
     public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int i, int j, int k, int l, float f0, float f1, float f2)

@@ -17,7 +17,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
-@Mod(modid = "craftablechain", name = "Craftable Chain", version = "1.1")
+@Mod(modid = "craftablechain", name = "Craftable Chain", version = "1.2")
 public class CraftableChain {
 
 	public static Item chainLinks;
@@ -52,6 +52,7 @@ public class CraftableChain {
 		GameRegistry.addRecipe(new ItemStack(Item.plateChain, 1), new Object[] { "X X", "XXX", "XXX", Character.valueOf('X'), chainLinks });
 		GameRegistry.addRecipe(new ItemStack(Item.legsChain, 1), new Object[] { "XXX", "X X", "X X", Character.valueOf('X'), chainLinks });
 		GameRegistry.addRecipe(new ItemStack(Item.bootsChain, 1), new Object[] { "X X", "X X", Character.valueOf('X'), chainLinks });
+		GameRegistry.registerItem(chainLinks, "chainLinks");
 
 		config.save();
 	}

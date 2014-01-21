@@ -7,6 +7,7 @@ import static theoldone822.NetherrocksFusion.NetherrocksFusion.extendedValues.in
 import java.util.ArrayList;
 import java.util.Random;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import theoldone822.NetherrocksFusion.Content;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
@@ -32,6 +33,13 @@ public class ItemExtendedAxe extends ItemAxe
         setMaxDamage((int)(getMaxDamage() * increaseToolDurability));
         this.damageVsEntity *= increaseToolAttackDamage;
     }
+
+	public ItemExtendedAxe setUnlocalizedName(String unlocalizedName)
+	{
+		super.setUnlocalizedName(unlocalizedName);
+		GameRegistry.registerItem(this, unlocalizedName);
+		return this;
+	}
 
     @Override
     public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block)

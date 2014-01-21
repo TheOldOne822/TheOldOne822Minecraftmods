@@ -13,6 +13,7 @@ import theoldone822.NetherrocksFusion.Content;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
@@ -44,6 +45,13 @@ public class ItemExtendedSword extends ItemSword
         exWeaponDamage = 5 + par2EnumToolMaterial.getDamageVsEntity() * 2;
     }
     
+	public ItemExtendedSword setUnlocalizedName(String unlocalizedName)
+	{
+		super.setUnlocalizedName(unlocalizedName);
+		GameRegistry.registerItem(this, unlocalizedName);
+		return this;
+	}
+
     @Override
     public Multimap getItemAttributeModifiers()
     {

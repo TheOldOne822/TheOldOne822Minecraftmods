@@ -1,5 +1,6 @@
 package theoldone822.NetherrocksFusion.Items;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -27,10 +28,17 @@ public class SimpleArmor extends ItemArmor
 		super(ID, armormaterial, renderer, slotNumber);
         this.material = armormaterial;
         this.modName = mod;
-        
+
     	this.setArmorType(mod, type.toLowerCase(), slotNumber);
 	}
-	
+
+	public SimpleArmor setUnlocalizedName(String unlocalizedName)
+	{
+		super.setUnlocalizedName(unlocalizedName);
+		GameRegistry.registerItem(this, unlocalizedName);
+		return this;
+	}
+
     /**
      * Sets the icon for the item. 
      */

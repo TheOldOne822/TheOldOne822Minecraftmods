@@ -1,5 +1,6 @@
 package theoldone822.NetherrocksFusion.Items;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -31,6 +32,13 @@ public class SimpleHoe extends ItemHoe
 		
 	}
 	
+	public SimpleHoe setUnlocalizedName(String unlocalizedName)
+	{
+		super.setUnlocalizedName(unlocalizedName);
+		GameRegistry.registerItem(this, unlocalizedName);
+		return this;
+	}
+
 	/**
 	 * Determines if the tool is repairable, and gets the item which can be used to repair it depending on the material of the tool.
 	 * 
