@@ -24,32 +24,30 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
-public class ItemExtendedSword extends ItemSword
-{
+public class ItemExtendedSword extends ItemSword {
 	protected EnumToolMaterial ewToolMaterial;
 	protected float exWeaponDamage;
-	
-    public ItemExtendedSword(int par1, EnumToolMaterial par2EnumToolMaterial)
-    {
-        super(par1, par2EnumToolMaterial);
-        this.ewToolMaterial = par2EnumToolMaterial;
-        setMaxDamage((int)(getMaxDamage() * increaseSwordDurability));
-        exWeaponDamage = 5 + par2EnumToolMaterial.getDamageVsEntity() * 2;
-    }
-    
-    @Override
-    public Multimap getItemAttributeModifiers()
-    {
-        Multimap multimap = HashMultimap.create();
-        multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", (double)this.exWeaponDamage, 0));
-        return multimap;
-    }
 
-    @Override
-    public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block)
-    {
-        return (int)(super.getStrVsBlock(par1ItemStack, par2Block) * increaseSwordMiningSpeed);
-    }
+	public ItemExtendedSword(int par1, EnumToolMaterial par2EnumToolMaterial) {
+		super(par1, par2EnumToolMaterial);
+		this.ewToolMaterial = par2EnumToolMaterial;
+		setMaxDamage((int) (getMaxDamage() * increaseSwordDurability));
+		exWeaponDamage = 5 + par2EnumToolMaterial.getDamageVsEntity() * 2;
+	}
+
+	@Override
+	public Multimap getItemAttributeModifiers() {
+		Multimap multimap = HashMultimap.create();
+		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e,
+				"Weapon modifier", (double) this.exWeaponDamage, 0));
+		return multimap;
+	}
+
+	@Override
+	public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
+		return (int) (super.getStrVsBlock(par1ItemStack, par2Block) * increaseSwordMiningSpeed);
+	}
+
 	/**
 	 * Adds special effects to the Fyrite and Illumenite Swords.
 	 */
@@ -69,12 +67,29 @@ public class ItemExtendedSword extends ItemSword
 				par2EntityLivingBase.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 200, 3));
 			}
 		}
+		if (PluginChecks.getArsenicInstalled()) {
+			if (itemID == SimpleOresEW.item[0][13].itemID) {
+				par1ItemStack.damageItem(1, par3EntityLivingBase);
+				par2EntityLivingBase.addPotionEffect(new PotionEffect(Potion.poison.id, 130));
+			}
+
+			if (itemID == SimpleOresEW.item[0][14].itemID) {
+				par1ItemStack.damageItem(1, par3EntityLivingBase);
+				par2EntityLivingBase.addPotionEffect(new PotionEffect(Potion.poison.id, 55));
+			}
+
+			if (itemID == SimpleOresEW.item[0][15].itemID) {
+				par1ItemStack.damageItem(1, par3EntityLivingBase);
+				par2EntityLivingBase.addPotionEffect(new PotionEffect(Potion.poison.id, 80));
+			}
+		}
 		par1ItemStack.damageItem(1, par3EntityLivingBase);
 		return true;
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
+	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7,
+			float par8, float par9, float par10) {
 		if (PluginChecks.getFusionInstalled() && itemID == SimpleOresEW.extendedfyriteSword.itemID) {
 			if (par7 == 0) {
 				--par5;
@@ -106,7 +121,8 @@ public class ItemExtendedSword extends ItemSword
 				int var11 = par3World.getBlockId(par4, par5, par6);
 
 				if (var11 == 0) {
-					par3World.playSoundEffect((double) par4 + 0.5D, (double) par5 + 0.5D, (double) par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+					par3World.playSoundEffect((double) par4 + 0.5D, (double) par5 + 0.5D, (double) par6 + 0.5D, "fire.ignite", 1.0F,
+							itemRand.nextFloat() * 0.4F + 0.8F);
 					par3World.setBlock(par4, par5, par6, Block.fire.blockID);
 				}
 
@@ -114,4 +130,5 @@ public class ItemExtendedSword extends ItemSword
 			}
 		}
 		return true;
-	}}
+	}
+}
