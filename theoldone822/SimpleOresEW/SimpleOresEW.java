@@ -591,7 +591,9 @@ public class SimpleOresEW {
 						SimpleOres.plugins.akkamaddi.arsenic.code.ArsenicAndLace.toolTenebrium };
 				Object[] handle = new Object[] { Block.planks, Block.planks, Item.ingotIron, Item.ingotIron, Item.diamond, Block.cobblestone,
 						Item.ingotIron, Item.diamond, Item.ingotIron, Item.ingotIron, Item.diamond, Item.ingotIron, Item.ingotIron,
-						Block.cobblestone, Block.cobblestone, Block.cobblestone, Item.ingotIron };
+						Block.planks, SimpleOres.plugins.akkamaddi.arsenic.code.ArsenicAndLace.arsenicIngot,
+						SimpleOres.plugins.akkamaddi.arsenic.code.ArsenicAndLace.arsenicIngot,
+						SimpleOres.plugins.akkamaddi.arsenic.code.ArsenicAndLace.arsenicIngot };
 
 				for (int i = 13; i < 17; i++) {
 
@@ -664,6 +666,128 @@ public class SimpleOresEW {
 
 		}
 		if (PluginChecks.getAlchemyInstalled()) {
+			{
+				Object[] material = new Object[] { Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+						Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+						Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+						SimpleOres.plugins.akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.stannumIngot,
+						SimpleOres.plugins.akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.cuprumIngot,
+						SimpleOres.plugins.akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.pyropusBronzeIngot,
+						SimpleOres.plugins.akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.tombBronzeIngot,
+						SimpleOres.plugins.akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.pulchrumBronzeIngot };
+				EnumToolMaterial[] sotool = new EnumToolMaterial[] { EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD,
+						EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD,
+						EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD,
+						EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD,
+						SimpleOres.plugins.akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.toolStannum,
+						SimpleOres.plugins.akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.toolCuprum,
+						SimpleOres.plugins.akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.toolPyropusBronze,
+						SimpleOres.plugins.akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.toolTombBronze,
+						SimpleOres.plugins.akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.toolPulchrumBronze };
+				Object[] handle = new Object[] { Block.planks, Block.planks, Item.ingotIron, Item.ingotIron, Item.diamond, Block.cobblestone,
+						Item.ingotIron, Item.diamond, Item.ingotIron, Item.ingotIron, Item.diamond, Item.ingotIron, Item.ingotIron,
+						Block.cobblestone, Block.cobblestone, Block.cobblestone, Item.ingotIron, SimpleOres.core.Items.tinIngot,
+						SimpleOres.core.Items.copperIngot, SimpleOres.plugins.fusion.Content.bronzeIngot,
+						SimpleOres.plugins.fusion.Content.bronzeIngot, SimpleOres.plugins.fusion.Content.bronzeIngot };
+
+				for (int i = 17; i < 20; i++) {
+
+					item[0][i] = new ItemExtendedSword((config.getItem("Alchemy Base ID", 24244)).getInt() + (i - 17) * 5, sotool[i])
+							.setUnlocalizedName("extendedWorkbenchso:tool0" + i)
+							.setTextureName("SimpleOresEW:tool" + toolmatNames[i] + "Sword");
+					item[1][i] = new ItemExtendedShovel((config.getItem("Alchemy Base ID", 24244)).getInt() + (i - 17) * 5 + 1, sotool[i])
+							.setUnlocalizedName("extendedWorkbenchso:tool1" + i).setTextureName(
+									"SimpleOresEW:tool" + toolmatNames[i] + "Shovel");
+					item[2][i] = new ItemExtendedPickaxe((config.getItem("Alchemy Base ID", 24244)).getInt() + (i - 17) * 5 + 2, sotool[i])
+							.setUnlocalizedName("extendedWorkbenchso:tool2" + i).setTextureName(
+									"SimpleOresEW:tool" + toolmatNames[i] + "Pickaxe");
+					item[3][i] = new ItemExtendedAxe((config.getItem("Alchemy Base ID", 24244)).getInt() + (i - 17) * 5 + 3, sotool[i])
+							.setUnlocalizedName("extendedWorkbenchso:tool3" + i).setTextureName("SimpleOresEW:tool" + toolmatNames[i] + "Axe");
+					item[4][i] = new ItemExtendedHoe((config.getItem("Alchemy Base ID", 24244)).getInt() + (i - 17) * 5 + 4, sotool[i])
+							.setUnlocalizedName("extendedWorkbenchso:tool4" + i).setTextureName("SimpleOresEW:tool" + toolmatNames[i] + "Hoe");
+
+					MinecraftForge.setToolClass(item[2][i], "pickaxe", sotool[i].getHarvestLevel());
+					MinecraftForge.setToolClass(item[1][i], "shovel", sotool[i].getHarvestLevel());
+					MinecraftForge.setToolClass(item[3][i], "axe", sotool[i].getHarvestLevel());
+
+					EWAPI.addRecipe(new ItemStack(item[0][i], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[1][i], 1), new Object[] { " X ", " X ", " Y ", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[2][i], 1), new Object[] { "XX ", " XX", " YX", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[3][i], 1), new Object[] { "X  ", "XXX", "XY ", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[4][i], 1), new Object[] { " X ", " XX", " Y ", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+
+					for (int j = 0; j < 5; j++)
+						LanguageRegistry.addName(item[j][i], "Extended " + (toolmatNames[i]) + " " + (toolNames[j]));
+				}
+				for (int i = 20; i < 22; i++) {
+
+					item[0][i] = new ItemExtendedSword((config.getItem("Alchemy Base ID", 24244)).getInt() + 15 + (i - 20) * 4, sotool[i])
+							.setUnlocalizedName("extendedWorkbenchso:tool0" + i)
+							.setTextureName("SimpleOresEW:tool" + toolmatNames[i] + "Sword");
+					item[1][i] = new ItemExtendedShovel((config.getItem("Alchemy Base ID", 24244)).getInt() + 15 + (i - 20) * 4 + 1, sotool[i])
+							.setUnlocalizedName("extendedWorkbenchso:tool1" + i).setTextureName(
+									"SimpleOresEW:tool" + toolmatNames[i] + "Shovel");
+					item[2][i] = new ItemExtendedPickaxe((config.getItem("Alchemy Base ID", 24244)).getInt() + 15 + (i - 20) * 4 + 2, sotool[i])
+							.setUnlocalizedName("extendedWorkbenchso:tool2" + i).setTextureName(
+									"SimpleOresEW:tool" + toolmatNames[i] + "Pickaxe");
+					item[3][i] = new ItemExtendedAxe((config.getItem("Alchemy Base ID", 24244)).getInt() + 15 + (i - 20) * 4 + 3, sotool[i])
+							.setUnlocalizedName("extendedWorkbenchso:tool3" + i).setTextureName("SimpleOresEW:tool" + toolmatNames[i] + "Axe");
+
+					MinecraftForge.setToolClass(item[2][i], "pickaxe", sotool[i].getHarvestLevel());
+					MinecraftForge.setToolClass(item[1][i], "shovel", sotool[i].getHarvestLevel());
+					MinecraftForge.setToolClass(item[3][i], "axe", sotool[i].getHarvestLevel());
+
+					EWAPI.addRecipe(new ItemStack(item[0][i], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[1][i], 1), new Object[] { " X ", " X ", " Y ", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[2][i], 1), new Object[] { "XX ", " XX", " YX", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[3][i], 1), new Object[] { "X  ", "XXX", "XY ", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+
+					for (int j = 0; j < 4; j++)
+						LanguageRegistry.addName(item[j][i], "Extended " + (toolmatNames[i]) + " " + (toolNames[j]));
+				}
+
+			}
+
+			{
+				Object[] material = new Object[] { Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+						Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+						Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+						SimpleOres.plugins.akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.stannumIngot,
+						SimpleOres.plugins.akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.cuprumIngot,
+						SimpleOres.plugins.akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.pyropusBronzeIngot,
+						SimpleOres.plugins.akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.tombBronzeIngot, };
+				EnumArmorMaterial[] soarmor = new EnumArmorMaterial[] { EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
+						EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
+						EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
+						EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
+						SimpleOres.plugins.akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.armorStannum,
+						SimpleOres.plugins.akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.armorCuprum,
+						SimpleOres.plugins.akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.armorPyropusBronze,
+						SimpleOres.plugins.akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.armorTombBronze };
+
+				for (int i = 16; i < 20; i++) {
+					for (int j = 0; j < 4; j++) {
+						armor[i][j] = (ItemArmor) new ItemExtendedArmor((config.getItem("Alchemy Base ID", 24244)).getInt() + 23 + (i - 16) * 4
+								+ j, soarmor[i], armorRenderer[i], j, armormatNames[i]).setUnlocalizedName("extendedWorkbenchso:armor" + i + j)
+								.setTextureName("SimpleOresEW:armorextended" + armormatNames[i] + armorNames[j]);
+						LanguageRegistry.addName(armor[i][j], "Extended " + armormatNames[i] + " " + armorNames[j]);
+					}
+
+					EWAPI.addRecipe(new ItemStack(armor[i][3], 1), new Object[] { "X X", "X X", "X X", ('X'), material[i] });
+					EWAPI.addRecipe(new ItemStack(armor[i][2], 1), new Object[] { "XXX", "XXX", "X X", "X X", ('X'), material[i] });
+					EWAPI.addRecipe(new ItemStack(armor[i][1], 1), new Object[] { "X X", "XXX", "XXX", "XXX", ('X'), material[i] });
+					EWAPI.addRecipe(new ItemStack(armor[i][0], 1), new Object[] { "XXX", "XXX", "X X", ('X'), material[i] });
+				}
+			}
 
 		}
 		if (PluginChecks.getCthonInstalled()) {

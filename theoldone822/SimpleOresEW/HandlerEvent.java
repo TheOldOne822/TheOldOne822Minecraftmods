@@ -27,7 +27,8 @@ public class HandlerEvent {
 								&& (chest.getItem() == Netherrocks.core.Armor.fyriteChest || chest.getItem() == SimpleOresEW.extendedfyriteChest)
 								&& (legs.getItem() == Netherrocks.core.Armor.fyriteLegs || legs.getItem() == SimpleOresEW.extendedfyriteLegs)
 								&& (boots.getItem() == Netherrocks.core.Armor.fyriteBoots || boots.getItem() == SimpleOresEW.extendedfyriteBoots)) {
-							if (event.source.equals(DamageSource.lava) || event.source.equals(DamageSource.inFire) || event.source.equals(DamageSource.onFire)) {
+							if (event.source.equals(DamageSource.lava) || event.source.equals(DamageSource.inFire)
+									|| event.source.equals(DamageSource.onFire)) {
 								event.setCanceled(true);
 							}
 						}
@@ -58,6 +59,37 @@ public class HandlerEvent {
 							if (event.source.equals(DamageSource.fall)) {
 								event.setCanceled(true);
 							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	public void onAnvilDamage(LivingAttackEvent event) {
+		if (event.entity instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) event.entity;
+			ItemStack helmet = player.getCurrentItemOrArmor(4);
+			ItemStack chest = player.getCurrentItemOrArmor(3);
+			ItemStack legs = player.getCurrentItemOrArmor(2);
+			ItemStack boots = player.getCurrentItemOrArmor(1);
+
+			if (event.entity instanceof EntityPlayer) {
+				EntityPlayer eventPlayer = (EntityPlayer) event.entity;
+
+				if (helmet != null && chest != null && legs != null && boots != null) {
+					if (PluginChecks.getAlchemyInstalled()
+							&& (helmet.getItem() == SimpleOres.plugins.akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.stannumHelm || helmet
+									.getItem() == SimpleOresEW.armor[16][0])
+							&& (chest.getItem() == SimpleOres.plugins.akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.stannumChest || chest
+									.getItem() == SimpleOresEW.armor[16][1])
+							&& (legs.getItem() == SimpleOres.plugins.akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.stannumLegs || legs
+									.getItem() == SimpleOresEW.armor[16][2])
+							&& (boots.getItem() == SimpleOres.plugins.akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.stannumBoots || boots
+									.getItem() == SimpleOresEW.armor[16][3])) {
+						if (event.source.equals(DamageSource.anvil)) {
+							event.setCanceled(true);
+							// return;
 						}
 					}
 				}
