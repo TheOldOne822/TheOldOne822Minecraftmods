@@ -29,7 +29,7 @@ public class HandlerTick implements ITickHandler
 			if(player != null && player.isUsingItem())
 			{
 				int itemID = player.getItemInUse().itemID;
-				if(itemID == Content.dragonbezoarBow.itemID || (EWAPI.getEWInstalled() && itemID == Content.extendeddragonbezoarBow.itemID))
+				if(itemID == Content.dragonbezoarBow.itemID)
 				{
 					NetherrocksFusion.proxy.onBowUse(player.getItemInUse(), player);
 						this.zoomAmount = (float) zoomAmount;

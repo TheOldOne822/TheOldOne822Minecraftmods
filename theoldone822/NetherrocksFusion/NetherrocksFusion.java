@@ -54,40 +54,7 @@ public class NetherrocksFusion {
 	public static int rendererPyralisChain;
 	public static int rendererDragonBezoar;
 	public static int rendererDragonBezoarChain;
-	public static int rendererextendedCinderstone;
-	public static int rendererextendedThraka;
-	public static int rendererextendedPyralis;
-	public static int rendererextendedDragonBezoar;
 	
-	public static class extendedValues {
-
-		// sword
-		public static float increaseSwordDurability = 1.5f;
-		public static float increaseSwordDamage = 2f;
-		public static float increaseSwordMiningSpeed = 1.5f;
-
-		// tool + hoe
-		public static float increaseToolDurability = 2f;
-		public static float increaseToolPower = 2f;
-		public static float increaseToolAttackDamage = 1.5f;
-		public static float increaseHoeDurability = 2f;
-
-		// bow
-		public static float increaseBowDurability = 1.5f;
-		public static float increaseBowStrength = 1.5f;
-		public static float increaseBowTime = 1.2f;
-		public static float increaseBowDamage = 1.5f;
-
-		// armor
-		public static float increaseArmorDurability = 1.5f;
-		// damage reduction increased
-
-		// shears
-		public static float increaseShearDurability = 1.5f;
-		public static float increaseShearMiningSpeed = 1.5f;
-		// efficiency is doubled
-	}
-
 	@Instance("NetherrocksFusion")
 	public static NetherrocksFusion instance = new NetherrocksFusion();
 
@@ -136,10 +103,6 @@ public class NetherrocksFusion {
 		rendererPyralis = SimpleOres.core.SimpleOres.proxy.addArmor("pyralischain");
 		rendererDragonBezoar = SimpleOres.core.SimpleOres.proxy.addArmor("dragonbezoar");
 		rendererDragonBezoar = SimpleOres.core.SimpleOres.proxy.addArmor("dragonbezoarchain");
-		rendererextendedCinderstone = SimpleOres.core.SimpleOres.proxy.addArmor("extendedcinderstone");
-		rendererextendedThraka = SimpleOres.core.SimpleOres.proxy.addArmor("extendedthraka");
-		rendererextendedPyralis = SimpleOres.core.SimpleOres.proxy.addArmor("extendedpyralis");
-		rendererextendedDragonBezoar = SimpleOres.core.SimpleOres.proxy.addArmor("extendeddragonbezoar");
 		
         toolCinderstone.customCraftingMaterial = Content.cinderstoneIngot;
         toolPyralis.customCraftingMaterial = Content.pyralisIngot;

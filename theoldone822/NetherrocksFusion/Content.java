@@ -2,14 +2,6 @@ package theoldone822.NetherrocksFusion;
 
 import theoldone822.NetherrocksFusion.Furnaces.SuperFurnace;
 import theoldone822.NetherrocksFusion.Furnaces.SuperFusionFurnace;
-import theoldone822.NetherrocksFusion.Items.ItemExtendedArmor;
-import theoldone822.NetherrocksFusion.Items.ItemExtendedAxe;
-import theoldone822.NetherrocksFusion.Items.ItemExtendedBow;
-import theoldone822.NetherrocksFusion.Items.ItemExtendedHoe;
-import theoldone822.NetherrocksFusion.Items.ItemExtendedPickaxe;
-import theoldone822.NetherrocksFusion.Items.ItemExtendedShears;
-import theoldone822.NetherrocksFusion.Items.ItemExtendedShovel;
-import theoldone822.NetherrocksFusion.Items.ItemExtendedSword;
 import theoldone822.NetherrocksFusion.Items.NetherAxe;
 import theoldone822.NetherrocksFusion.Items.NetherPickaxe;
 import theoldone822.NetherrocksFusion.Items.NetherShovel;
@@ -126,44 +118,6 @@ public class Content
 	/**
 	 * Creating the tool items.
 	 */
-	public static Item extendedcinderstoneSword;
-	public static Item extendedthrakaPick;
-	public static Item extendedthrakaAxe;
-	public static Item extendedthrakaShovel;
-	public static Item extendedthrakaSword;
-	public static Item extendedthrakaHoe;
-	public static Item extendedpyralisPick;
-	public static Item extendedpyralisAxe;
-	public static Item extendedpyralisShovel;
-	public static Item extendedpyralisSword;
-	public static Item extendedpyralisHoe;
-	public static Item extendeddragonbezoarPick;
-	public static Item extendeddragonbezoarAxe;
-	public static Item extendeddragonbezoarShovel;
-	public static Item extendeddragonbezoarSword;
-	public static Item extendeddragonbezoarHoe;
-	public static Item extendeddragonbezoarBow;
-	public static Item extendeddragonbezoarShears;
-	
-	/**
-	 * Creating the armor items.
-	 */
-	public static Item extendedcinderstoneHelm;
-	public static Item extendedcinderstoneChest;
-	public static Item extendedcinderstoneLegs;
-	public static Item extendedcinderstoneBoots;
-	public static Item extendedthrakaHelm;
-	public static Item extendedthrakaChest;
-	public static Item extendedthrakaLegs;
-	public static Item extendedthrakaBoots;
-	public static Item extendedpyralisHelm;
-	public static Item extendedpyralisChest;
-	public static Item extendedpyralisLegs;
-	public static Item extendedpyralisBoots;
-	public static Item extendeddragonbezoarHelm;
-	public static Item extendeddragonbezoarChest;
-	public static Item extendeddragonbezoarLegs;
-	public static Item extendeddragonbezoarBoots;
 	/**
 	 * The method that gives the armor items their properties and names. This is called by the main SimpleOres class.
 	 */
@@ -224,45 +178,7 @@ public class Content
 		LanguageRegistry.addName(dragonbezoarChainChest, "Dragon Bezoar Chain Chestplate");
 		LanguageRegistry.addName(dragonbezoarChainLegs, "Dragon Bezoar Chain Leggings");
 		LanguageRegistry.addName(dragonbezoarChainBoots, "Dragon Bezoar Chain Boots");
-
-		if (EWAPI.getEWInstalled()) {
-			extendedcinderstoneHelm = new ItemExtendedArmor(IDs.extendedcinderstoneHelmID, mod.armorCinderstone, mod.rendererextendedCinderstone, 0, "cinderstone", "netherrocksfusion").setUnlocalizedName("netherrocksfusion:extendedcinderstoneHelm").setTextureName("netherrocksfusion:extendedcinderstoneHelm");
-			extendedcinderstoneChest = new ItemExtendedArmor(IDs.extendedcinderstoneChestID, mod.armorCinderstone, mod.rendererextendedCinderstone, 1, "cinderstone", "netherrocksfusion").setUnlocalizedName("netherrocksfusion:extendedcinderstoneChest").setTextureName("netherrocksfusion:extendedcinderstoneChest");
-			extendedcinderstoneLegs = new ItemExtendedArmor(IDs.extendedcinderstoneLegsID, mod.armorCinderstone, mod.rendererextendedCinderstone, 2, "cinderstone", "netherrocksfusion").setUnlocalizedName("netherrocksfusion:extendedcinderstoneLegs").setTextureName("netherrocksfusion:extendedcinderstoneLegs");
-			extendedcinderstoneBoots = new ItemExtendedArmor(IDs.extendedcinderstoneBootsID, mod.armorCinderstone, mod.rendererextendedCinderstone, 3, "cinderstone", "netherrocksfusion").setUnlocalizedName("netherrocksfusion:extendedcinderstoneBoots").setTextureName("netherrocksfusion:extendedcinderstoneBoots");
-			extendedthrakaHelm = new ItemExtendedArmor(IDs.extendedthrakaHelmID, mod.armorThraka, mod.rendererextendedThraka, 0, "thraka", "netherrocksfusion").setUnlocalizedName("netherrocksfusion:extendedthrakaHelm").setTextureName("netherrocksfusion:extendedthrakaHelm");
-			extendedthrakaChest = new ItemExtendedArmor(IDs.extendedthrakaChestID, mod.armorThraka, mod.rendererextendedThraka, 1, "thraka", "netherrocksfusion").setUnlocalizedName("netherrocksfusion:extendedthrakaChest").setTextureName("netherrocksfusion:extendedthrakaChest");
-			extendedthrakaLegs = new ItemExtendedArmor(IDs.extendedthrakaLegsID, mod.armorThraka, mod.rendererextendedThraka, 2, "thraka", "netherrocksfusion").setUnlocalizedName("netherrocksfusion:extendedthrakaLegs").setTextureName("netherrocksfusion:extendedthrakaLegs");
-			extendedthrakaBoots = new ItemExtendedArmor(IDs.extendedthrakaBootsID, mod.armorThraka, mod.rendererextendedThraka, 3, "thraka", "netherrocksfusion").setUnlocalizedName("netherrocksfusion:extendedthrakaBoots").setTextureName("netherrocksfusion:extendedthrakaBoots");
-			extendedpyralisHelm = new ItemExtendedArmor(IDs.extendedpyralisHelmID, mod.armorPyralis, mod.rendererextendedPyralis, 0, "pyralis", "netherrocksfusion").setUnlocalizedName("netherrocksfusion:extendedpyralisHelm").setTextureName("netherrocksfusion:extendedpyralisHelm");
-			extendedpyralisChest = new ItemExtendedArmor(IDs.extendedpyralisChestID, mod.armorPyralis, mod.rendererextendedPyralis, 1, "pyralis", "netherrocksfusion").setUnlocalizedName("netherrocksfusion:extendedpyralisChest").setTextureName("netherrocksfusion:extendedpyralisChest");
-			extendedpyralisLegs = new ItemExtendedArmor(IDs.extendedpyralisLegsID, mod.armorPyralis, mod.rendererextendedPyralis, 2, "pyralis", "netherrocksfusion").setUnlocalizedName("netherrocksfusion:extendedpyralisLegs").setTextureName("netherrocksfusion:extendedpyralisLegs");
-			extendedpyralisBoots = new ItemExtendedArmor(IDs.extendedpyralisBootsID, mod.armorPyralis, mod.rendererextendedPyralis, 3, "pyralis", "netherrocksfusion").setUnlocalizedName("netherrocksfusion:extendedpyralisBoots").setTextureName("netherrocksfusion:extendedpyralisBoots");
-			extendeddragonbezoarHelm = new ItemExtendedArmor(IDs.extendeddragonbezoarHelmID, mod.armorDragonBezoar, mod.rendererextendedDragonBezoar, 0, "dragonbezoar", "netherrocksfusion").setUnlocalizedName("netherrocksfusion:extendeddragonbezoarHelm").setTextureName("netherrocksfusion:extendeddragonbezoarHelm");
-			extendeddragonbezoarChest = new ItemExtendedArmor(IDs.extendeddragonbezoarChestID, mod.armorDragonBezoar, mod.rendererextendedDragonBezoar, 1, "dragonbezoar", "netherrocksfusion").setUnlocalizedName("netherrocksfusion:extendeddragonbezoarChest").setTextureName("netherrocksfusion:extendeddragonbezoarChest");
-			extendeddragonbezoarLegs = new ItemExtendedArmor(IDs.extendeddragonbezoarLegsID, mod.armorDragonBezoar, mod.rendererextendedDragonBezoar, 2, "dragonbezoar", "netherrocksfusion").setUnlocalizedName("netherrocksfusion:extendeddragonbezoarLegs").setTextureName("netherrocksfusion:extendeddragonbezoarLegs");
-			extendeddragonbezoarBoots = new ItemExtendedArmor(IDs.extendeddragonbezoarBootsID, mod.armorDragonBezoar, mod.rendererextendedDragonBezoar, 3, "dragonbezoar", "netherrocksfusion").setUnlocalizedName("netherrocksfusion:extendeddragonbezoarBoots").setTextureName("netherrocksfusion:extendeddragonbezoarBoots");
-	
-			LanguageRegistry.addName(extendedcinderstoneHelm, "Extended Cinderstone Helmet");
-			LanguageRegistry.addName(extendedcinderstoneChest, "Extended Cinderstone Chestplate");
-			LanguageRegistry.addName(extendedcinderstoneLegs, "Extended Cinderstone Leggings");
-			LanguageRegistry.addName(extendedcinderstoneBoots, "Extended Cinderstone Boots");
-
-			LanguageRegistry.addName(extendedthrakaHelm, "Extended Thraka Helmet");
-			LanguageRegistry.addName(extendedthrakaChest, "Extended Thraka Chestplate");
-			LanguageRegistry.addName(extendedthrakaLegs, "Extended Thraka Leggings");
-			LanguageRegistry.addName(extendedthrakaBoots, "Extended Thraka Boots");
-
-			LanguageRegistry.addName(extendedpyralisHelm, "Extended Pyralis Helmet");
-			LanguageRegistry.addName(extendedpyralisChest, "Extended Pyralis Chestplate");
-			LanguageRegistry.addName(extendedpyralisLegs, "Extended Pyralis Leggings");
-			LanguageRegistry.addName(extendedpyralisBoots, "Extended Pyralis Boots");
-
-			LanguageRegistry.addName(extendeddragonbezoarHelm, "Extended Dragon Bezoar Helmet");
-			LanguageRegistry.addName(extendeddragonbezoarChest, "Extended Dragon Bezoar Chestplate");
-			LanguageRegistry.addName(extendeddragonbezoarLegs, "Extended Dragon Bezoar Leggings");
-			LanguageRegistry.addName(extendeddragonbezoarBoots, "Extended Dragon Bezoar Boots");
-}	}
+}
 	
 	/**
 	 * The method that gives blocks their properties, names etc, harvest levels and registers them. This is called by the main SimpleOres class.
@@ -402,53 +318,5 @@ public class Content
         MinecraftForge.setToolClass(dragonbezoarShovel, "shovel", Settings.dragonbezoarMiningLevel);
         MinecraftForge.setToolClass(dragonbezoarAxe, "axe", Settings.dragonbezoarMiningLevel);
 
-		if (EWAPI.getEWInstalled()) {
-		extendedcinderstoneSword = new ItemExtendedSword(IDs.extendedcinderstoneSwordID, NetherrocksFusion.toolCinderstone).setUnlocalizedName("extendedWorkbenchnf:cinderstoneSword").setTextureName("netherrocksfusion:extendedcinderstoneSword");
-		extendedthrakaPick = new ItemExtendedPickaxe(IDs.extendedthrakaPickID, NetherrocksFusion.toolThraka).setUnlocalizedName("extendedWorkbenchnf:thrakaPick").setTextureName("netherrocksfusion:extendedthrakaPick");
-		extendedthrakaAxe = new ItemExtendedAxe(IDs.extendedthrakaAxeID, NetherrocksFusion.toolThraka).setUnlocalizedName("extendedWorkbenchnf:thrakaAxe").setTextureName("netherrocksfusion:extendedthrakaAxe");
-		extendedthrakaShovel = new ItemExtendedShovel(IDs.extendedthrakaShovelID, NetherrocksFusion.toolThraka).setUnlocalizedName("extendedWorkbenchnf:thrakaShovel").setTextureName("netherrocksfusion:extendedthrakaShovel");
-		extendedthrakaSword = new ItemExtendedSword(IDs.extendedthrakaSwordID, NetherrocksFusion.toolThraka).setUnlocalizedName("extendedWorkbenchnf:thrakaSword").setTextureName("netherrocksfusion:extendedthrakaSword");
-		extendedthrakaHoe = new ItemExtendedHoe(IDs.extendedthrakaHoeID, NetherrocksFusion.toolThraka).setUnlocalizedName("extendedWorkbenchnf:thrakaHoe").setTextureName("netherrocksfusion:extendedthrakaHoe");
-		extendedpyralisPick = new ItemExtendedPickaxe(IDs.extendedpyralisPickID, NetherrocksFusion.toolPyralis).setUnlocalizedName("extendedWorkbenchnf:pyralisPick").setTextureName("netherrocksfusion:extendedpyralisPick");
-		extendedpyralisAxe = new ItemExtendedAxe(IDs.extendedpyralisAxeID, NetherrocksFusion.toolPyralis).setUnlocalizedName("extendedWorkbenchnf:pyralisAxe").setTextureName("netherrocksfusion:extendedpyralisAxe");
-		extendedpyralisShovel = new ItemExtendedShovel(IDs.extendedpyralisShovelID, NetherrocksFusion.toolPyralis).setUnlocalizedName("extendedWorkbenchnf:pyralisShovel").setTextureName("netherrocksfusion:extendedpyralisShovel");
-		extendedpyralisSword = new ItemExtendedSword(IDs.extendedpyralisSwordID, NetherrocksFusion.toolPyralis).setUnlocalizedName("extendedWorkbenchnf:pyralisSword").setTextureName("netherrocksfusion:extendedpyralisSword");
-		extendedpyralisHoe = new ItemExtendedHoe(IDs.extendedpyralisHoeID, NetherrocksFusion.toolPyralis).setUnlocalizedName("extendedWorkbenchnf:pyralisHoe").setTextureName("netherrocksfusion:extendedpyralisHoe");
-		extendeddragonbezoarPick = new ItemExtendedPickaxe(IDs.extendeddragonbezoarPickID, NetherrocksFusion.toolDragonBezoar).setUnlocalizedName("extendedWorkbenchnf:dragonbezoarPick").setTextureName("netherrocksfusion:extendeddragonbezoarPick");
-		extendeddragonbezoarAxe = new ItemExtendedAxe(IDs.extendeddragonbezoarAxeID, NetherrocksFusion.toolDragonBezoar).setUnlocalizedName("extendedWorkbenchnf:dragonbezoarAxe").setTextureName("netherrocksfusion:extendeddragonbezoarAxe");
-		extendeddragonbezoarShovel = new ItemExtendedShovel(IDs.extendeddragonbezoarShovelID, NetherrocksFusion.toolDragonBezoar).setUnlocalizedName("extendedWorkbenchnf:dragonbezoarShovel").setTextureName("netherrocksfusion:extendeddragonbezoarShovel");
-		extendeddragonbezoarSword = new ItemExtendedSword(IDs.extendeddragonbezoarSwordID, NetherrocksFusion.toolDragonBezoar).setUnlocalizedName("extendedWorkbenchnf:dragonbezoarSword").setTextureName("netherrocksfusion:extendeddragonbezoarSword");
-		extendeddragonbezoarHoe = new ItemExtendedHoe(IDs.extendeddragonbezoarHoeID, NetherrocksFusion.toolDragonBezoar).setUnlocalizedName("extendedWorkbenchnf:dragonbezoarHoe").setTextureName("netherrocksfusion:extendeddragonbezoarHoe");
-		extendeddragonbezoarBow = (ItemBow) new ItemExtendedBow(IDs.extendeddragonbezoarBowID, 1200, mod.toolPyralis).setFull3D().setUnlocalizedName("extendedWorkbenchnf:dragonbezoarBow").setTextureName("netherrocksfusion:extendeddragonbezoarBow");
-		extendeddragonbezoarShears = new ItemExtendedShears(IDs.extendeddragonbezoarShearsID, 9300).setUnlocalizedName("extendedWorkbenchnf:dragonbezoarShears").setTextureName("netherrocksfusion:extendeddragonbezoarShears");
-
-		LanguageRegistry.addName(extendedcinderstoneSword, "Extended Cinderstone Sword");
-		LanguageRegistry.addName(extendedthrakaPick, "Extended Thraka Pickaxe");
-		LanguageRegistry.addName(extendedthrakaAxe, "Extended Thraka Axe");
-		LanguageRegistry.addName(extendedthrakaShovel, "Extended Thraka Shovel");
-		LanguageRegistry.addName(extendedthrakaSword, "Extended Thraka Sword");
-		LanguageRegistry.addName(extendedthrakaHoe, "Extended Thraka Hoe");
-		LanguageRegistry.addName(extendedpyralisPick, "Extended Pyralis Pickaxe");
-		LanguageRegistry.addName(extendedpyralisAxe, "Extended Pyralis Axe");
-		LanguageRegistry.addName(extendedpyralisShovel, "Extended Pyralis Shovel");
-		LanguageRegistry.addName(extendedpyralisSword, "Extended Pyralis Sword");
-		LanguageRegistry.addName(extendedpyralisHoe, "Extended Pyralis Hoe");
-		LanguageRegistry.addName(extendeddragonbezoarPick, "Extended Dragon Bezoar Pickaxe");
-		LanguageRegistry.addName(extendeddragonbezoarAxe, "Extended Dragon Bezoar Axe");
-		LanguageRegistry.addName(extendeddragonbezoarShovel, "Extended Dragon Bezoar Shovel");
-		LanguageRegistry.addName(extendeddragonbezoarSword, "Extended Dragon Bezoar Sword");
-		LanguageRegistry.addName(extendeddragonbezoarHoe, "Extended Dragon Bezoar Hoe");
-		LanguageRegistry.addName(extendeddragonbezoarBow, "Extended Dragon Bezoar Bow");
-		LanguageRegistry.addName(extendeddragonbezoarShears, "Extended Dragon Bezoar Shears");
-
-        MinecraftForge.setToolClass(extendedthrakaPick, "pickaxe", Settings.thrakaMiningLevel);
-        MinecraftForge.setToolClass(extendedthrakaShovel, "shovel", Settings.thrakaMiningLevel);
-        MinecraftForge.setToolClass(extendedthrakaAxe, "axe", Settings.thrakaMiningLevel);
-        MinecraftForge.setToolClass(extendedpyralisPick, "pickaxe", Settings.pyralisMiningLevel);
-        MinecraftForge.setToolClass(extendedpyralisShovel, "shovel", Settings.pyralisMiningLevel);
-        MinecraftForge.setToolClass(extendedpyralisAxe, "axe", Settings.pyralisMiningLevel);
-        MinecraftForge.setToolClass(extendeddragonbezoarPick, "pickaxe", Settings.dragonbezoarMiningLevel);
-        MinecraftForge.setToolClass(extendeddragonbezoarShovel, "shovel", Settings.dragonbezoarMiningLevel);
-        MinecraftForge.setToolClass(extendeddragonbezoarAxe, "axe", Settings.dragonbezoarMiningLevel);
-		}	}
+		}
 }

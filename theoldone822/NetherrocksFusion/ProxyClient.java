@@ -74,25 +74,4 @@ public void resetSavedFOV()
 	 TickRegistry.registerTickHandler(new HandlerTick(), Side.CLIENT);
  }
 
-	@Override
-	public void registerRenderInformation() {
-		if (EWAPI.getEWInstalled()) {
-			naruto1310.extendedWorkbench.item.RenderExtendedTool render = new naruto1310.extendedWorkbench.item.RenderExtendedTool();
-			MinecraftForgeClient.registerItemRenderer(Content.extendedcinderstoneSword.itemID, render);
-			MinecraftForgeClient.registerItemRenderer(Content.extendedthrakaPick.itemID, render);
-			MinecraftForgeClient.registerItemRenderer(Content.extendedthrakaAxe.itemID, render);
-			MinecraftForgeClient.registerItemRenderer(Content.extendedthrakaShovel.itemID, render);
-			MinecraftForgeClient.registerItemRenderer(Content.extendedthrakaSword.itemID, render);
-			MinecraftForgeClient.registerItemRenderer(Content.extendedthrakaHoe.itemID, render);
-			MinecraftForgeClient.registerItemRenderer(Content.extendedpyralisPick.itemID, render);
-			MinecraftForgeClient.registerItemRenderer(Content.extendedpyralisAxe.itemID, render);
-			MinecraftForgeClient.registerItemRenderer(Content.extendedpyralisShovel.itemID, render);
-			MinecraftForgeClient.registerItemRenderer(Content.extendedpyralisSword.itemID, render);
-			MinecraftForgeClient.registerItemRenderer(Content.extendedpyralisHoe.itemID, render);
-			MinecraftForgeClient.registerItemRenderer(Content.extendeddragonbezoarPick.itemID, render);
-			MinecraftForgeClient.registerItemRenderer(Content.extendeddragonbezoarAxe.itemID, render);
-			MinecraftForgeClient.registerItemRenderer(Content.extendeddragonbezoarShovel.itemID, render);
-			MinecraftForgeClient.registerItemRenderer(Content.extendeddragonbezoarSword.itemID, render);
-			MinecraftForgeClient.registerItemRenderer(Content.extendeddragonbezoarHoe.itemID, render);
-			}}
 }
