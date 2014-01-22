@@ -66,6 +66,11 @@ public class ItemExtendedBow extends ItemBow {
 	public static Icon silverBow2;
 	public static Icon silverBow3;
 	public static Icon silverBow4;
+	public static Icon extendeddragonbezoarBow;
+	public static Icon extendeddragonbezoarBow1;
+	public static Icon extendeddragonbezoarBow2;
+	public static Icon extendeddragonbezoarBow3;
+	public static Icon extendeddragonbezoarBow4;
 
 	/**
 	 * Constructor for the bows. Worth noting are the following:
@@ -116,7 +121,11 @@ public class ItemExtendedBow extends ItemBow {
 		}
 		if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
 			this.itemIcon = iconRegister.registerIcon("simpleoresew:" + "silverBow0");
-			
+
+		if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
+			this.itemIcon = iconRegister.registerIcon("netherrocksfusion:" + "extendeddragonbezoarBow");
+		}
+
 		mythrilBow = iconRegister.registerIcon("simpleoresew:" + "mythrilBow0");
 		mythrilBow1 = iconRegister.registerIcon("simpleoresew:" + "mythrilBow1");
 		mythrilBow2 = iconRegister.registerIcon("simpleoresew:" + "mythrilBow2");
@@ -142,6 +151,11 @@ public class ItemExtendedBow extends ItemBow {
 		silverBow2 = iconRegister.registerIcon("simpleoresew:" + "silverBow2");
 		silverBow3 = iconRegister.registerIcon("simpleoresew:" + "silverBow3");
 		silverBow4 = iconRegister.registerIcon("simpleoresew:" + "silverBow4");
+		extendeddragonbezoarBow = iconRegister.registerIcon("netherrocksfusion:" + "extendeddragonbezoarBow");
+		extendeddragonbezoarBow1 = iconRegister.registerIcon("netherrocksfusion:" + "extendeddragonbezoarBow1");
+		extendeddragonbezoarBow2 = iconRegister.registerIcon("netherrocksfusion:" + "extendeddragonbezoarBow2");
+		extendeddragonbezoarBow3 = iconRegister.registerIcon("netherrocksfusion:" + "extendeddragonbezoarBow3");
+		extendeddragonbezoarBow4 = iconRegister.registerIcon("netherrocksfusion:" + "extendeddragonbezoarBow4");
 	}
 
 	/**
@@ -187,6 +201,9 @@ public class ItemExtendedBow extends ItemBow {
 
 			if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
 				return silverBow4;
+			if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
+				return extendeddragonbezoarBow4;
+			}
 		}
 		if (var8 >= 18 * increaseBowTime) {
 			if (PluginChecks.getSimpleInstalled()) {
@@ -210,6 +227,9 @@ public class ItemExtendedBow extends ItemBow {
 
 			if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
 				return silverBow3;
+			if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
+				return extendeddragonbezoarBow3;
+			}
 		}
 		if (var8 > 13 * increaseBowTime) {
 			if (PluginChecks.getSimpleInstalled()) {
@@ -233,6 +253,9 @@ public class ItemExtendedBow extends ItemBow {
 
 			if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
 				return silverBow2;
+			if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
+				return extendeddragonbezoarBow2;
+			}
 		}
 		if (var8 > 0) {
 			if (PluginChecks.getSimpleInstalled()) {
@@ -256,6 +279,9 @@ public class ItemExtendedBow extends ItemBow {
 
 			if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
 				return silverBow1;
+			if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
+				return extendeddragonbezoarBow1;
+			}
 		}
 
 		return this.itemIcon;
@@ -308,6 +334,13 @@ public class ItemExtendedBow extends ItemBow {
 		}
 		if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
 			par3List.add(StatCollector.translateToLocal("tips.knockbackTooltip"));
+		if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
+			par3List.add(StatCollector.translateToLocal("tips.damageTooltip"));
+			par3List.add(StatCollector.translateToLocal("tips.zoomTooltip"));
+			par3List.add(StatCollector.translateToLocal("tips.knockbackTooltip"));
+			par3List.add(StatCollector.translateToLocal("tips.efficiencyTooltip"));
+			par3List.add(StatCollector.translateToLocal("tips.flameTooltip"));
+		}
 	}
 
 	/**
@@ -357,11 +390,11 @@ public class ItemExtendedBow extends ItemBow {
 				var8.setIsCritical(true);
 			}
 
-			if (PluginChecks.getSimpleInstalled()) {
-				if (f >= 1.0F && itemID == SimpleOresEW.extendedonyxBow.itemID) {
-					var8.setIsCritical(true);
-					var8.setFire(100);
-				}
+			if (f >= 1.0F
+					&& ((PluginChecks.getSimpleInstalled() && itemID == SimpleOresEW.extendedonyxBow.itemID) || (PluginChecks
+							.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID))) {
+				var8.setIsCritical(true);
+				var8.setFire(100);
 			}
 
 			int j = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, par1ItemStack);
@@ -399,14 +432,10 @@ public class ItemExtendedBow extends ItemBow {
 			}
 
 			if (!flag) {
-				if (PluginChecks.getSimpleInstalled()) {
-					if (z == 1 && itemID == SimpleOresEW.extendedmythrilBow.itemID) {
-						var8.canBePickedUp = 0;
-					}
-
-					else {
-						par3EntityPlayer.inventory.consumeInventoryItem(Item.arrow.itemID);
-					}
+				if (z == 1
+						&& ((PluginChecks.getSimpleInstalled() && itemID == SimpleOresEW.extendedmythrilBow.itemID) || (PluginChecks
+								.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID))) {
+					var8.canBePickedUp = 0;
 				} else {
 					par3EntityPlayer.inventory.consumeInventoryItem(Item.arrow.itemID);
 				}
@@ -442,6 +471,12 @@ public class ItemExtendedBow extends ItemBow {
 				}
 				if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
 					var8.setKnockbackStrength(k + 2);
+				
+				if (itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
+					var8.setDamage(var8.getDamage() + theoldone822.NetherrocksFusion.Settings.dragonbezoarBowDamageModifier * increaseBowDamage
+							* 0.5D + 0.5D);
+					var8.setKnockbackStrength(k + theoldone822.NetherrocksFusion.Settings.dragonbezoarBowKnockbackModifier);
+				}
 			}
 		}
 	}

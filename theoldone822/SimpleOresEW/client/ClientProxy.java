@@ -20,8 +20,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
 	/**
-	 * Some very messy code to determine the zooming of the bows when you draw them back. Most of this is copy paste so I won't attempt to explain it. It is
-	 * fairly straight forward if you actually look at it though.
+	 * Some very messy code to determine the zooming of the bows when you draw
+	 * them back. Most of this is copy paste so I won't attempt to explain it.
+	 * It is fairly straight forward if you actually look at it though.
 	 */
 	public float fovModifierHand = 0F;
 	protected float speedOnGround = 0.1F;
@@ -47,8 +48,8 @@ public class ClientProxy extends CommonProxy {
 		}
 
 		f *= 1.0F - f1 * HandlerTick.zoomAmount;
-		fovModifierHand = fovModifierHand > 0.001F ? fovModifierHand : (Float) ObfuscationReflectionHelper.getPrivateValue(EntityRenderer.class, Minecraft.getMinecraft().entityRenderer,
-				"fovModifierHand", "field_78507_R");
+		fovModifierHand = fovModifierHand > 0.001F ? fovModifierHand : (Float) ObfuscationReflectionHelper.getPrivateValue(
+				EntityRenderer.class, Minecraft.getMinecraft().entityRenderer, "fovModifierHand", "field_78507_R");
 		fovModifierHand += (f - fovModifierHand) * 0.5F;
 
 		if (fovModifierHand > 1.5F) {
@@ -59,7 +60,8 @@ public class ClientProxy extends CommonProxy {
 			fovModifierHand = 0.1F;
 		}
 
-		ObfuscationReflectionHelper.setPrivateValue(EntityRenderer.class, Minecraft.getMinecraft().entityRenderer, fovModifierHand, "fovModifierHand", "field_78507_R");
+		ObfuscationReflectionHelper.setPrivateValue(EntityRenderer.class, Minecraft.getMinecraft().entityRenderer, fovModifierHand,
+				"fovModifierHand", "field_78507_R");
 	}
 
 	@Override
@@ -96,15 +98,66 @@ public class ClientProxy extends CommonProxy {
 				for (int i = 0; i < (biggerTools == 1 ? 1 : 5); i++) {
 					for (int j = 8; j < 12; j++)
 						MinecraftForgeClient.registerItemRenderer(SimpleOresEW.item[i][j].itemID, render);
-					MinecraftForgeClient.registerItemRenderer(SimpleOresEW.extendedfyriteSword.itemID, render);
-					MinecraftForgeClient.registerItemRenderer(SimpleOresEW.extendedillumeniteSword.itemID, render);
-					MinecraftForgeClient.registerItemRenderer(SimpleOresEW.extendedfyritePick.itemID, render);
 				}
+				MinecraftForgeClient.registerItemRenderer(SimpleOresEW.extendedfyriteSword.itemID, render);
+				MinecraftForgeClient.registerItemRenderer(SimpleOresEW.extendedillumeniteSword.itemID, render);
+				MinecraftForgeClient.registerItemRenderer(SimpleOresEW.extendedfyritePick.itemID, render);
 			}
 			if (PluginChecks.getSilverInstalled()) {
 				for (int i = 0; i < (biggerTools == 1 ? 1 : 5); i++)
 					for (int j = 12; j < 13; j++)
 						MinecraftForgeClient.registerItemRenderer(SimpleOresEW.item[i][j].itemID, render);
+			}
+			if (PluginChecks.getNetherFusionInstalled()) {
+				MinecraftForgeClient.registerItemRenderer(SimpleOresEW.extendedcinderstoneSword.itemID, render);
+				MinecraftForgeClient.registerItemRenderer(SimpleOresEW.extendedthrakaPick.itemID, render);
+				MinecraftForgeClient.registerItemRenderer(SimpleOresEW.extendedthrakaAxe.itemID, render);
+				MinecraftForgeClient.registerItemRenderer(SimpleOresEW.extendedthrakaShovel.itemID, render);
+				MinecraftForgeClient.registerItemRenderer(SimpleOresEW.extendedthrakaSword.itemID, render);
+				MinecraftForgeClient.registerItemRenderer(SimpleOresEW.extendedthrakaHoe.itemID, render);
+				MinecraftForgeClient.registerItemRenderer(SimpleOresEW.extendedpyralisPick.itemID, render);
+				MinecraftForgeClient.registerItemRenderer(SimpleOresEW.extendedpyralisAxe.itemID, render);
+				MinecraftForgeClient.registerItemRenderer(SimpleOresEW.extendedpyralisShovel.itemID, render);
+				MinecraftForgeClient.registerItemRenderer(SimpleOresEW.extendedpyralisSword.itemID, render);
+				MinecraftForgeClient.registerItemRenderer(SimpleOresEW.extendedpyralisHoe.itemID, render);
+				MinecraftForgeClient.registerItemRenderer(SimpleOresEW.extendeddragonbezoarAxe.itemID, render);
+				MinecraftForgeClient.registerItemRenderer(SimpleOresEW.extendeddragonbezoarPick.itemID, render);
+				MinecraftForgeClient.registerItemRenderer(SimpleOresEW.extendeddragonbezoarShovel.itemID, render);
+				MinecraftForgeClient.registerItemRenderer(SimpleOresEW.extendeddragonbezoarSword.itemID, render);
+				MinecraftForgeClient.registerItemRenderer(SimpleOresEW.extendeddragonbezoarHoe.itemID, render);
+			}
+			if (PluginChecks.getArsenicInstalled()) {
+				for (int i = 0; i < (biggerTools == 1 ? 1 : 5); i++)
+					for (int j = 13; j < 17; j++)
+						MinecraftForgeClient.registerItemRenderer(SimpleOresEW.item[i][j].itemID, render);
+			}
+			if (PluginChecks.getAlchemyInstalled()) {
+				for (int i = 0; i < (biggerTools == 1 ? 1 : 5); i++)
+					for (int j = 17; j < 20; j++)
+						MinecraftForgeClient.registerItemRenderer(SimpleOresEW.item[i][j].itemID, render);
+				for (int i = 0; i < (biggerTools == 1 ? 1 : 4); i++)
+					for (int j = 20; j < 22; j++)
+						MinecraftForgeClient.registerItemRenderer(SimpleOresEW.item[i][j].itemID, render);
+			}
+			if (PluginChecks.getCthonInstalled()) {
+				for (int i = 0; i < (biggerTools == 1 ? 1 : 5); i++)
+					for (int j = 22; j < 23; j++)
+						MinecraftForgeClient.registerItemRenderer(SimpleOresEW.item[i][j].itemID, render);
+			}
+			if (PluginChecks.getGlitterInstalled()) {
+
+			}
+			if (PluginChecks.getHaditeInstalled()) {
+
+			}
+			if (PluginChecks.getCobaltInstalled()) {
+
+			}
+			if (PluginChecks.getTungstenInstalled()) {
+
+			}
+			if (PluginChecks.getSterlingInstalled()) {
+
 			}
 		}
 	}

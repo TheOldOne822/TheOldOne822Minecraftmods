@@ -26,34 +26,35 @@ public class HandlerTick implements ITickHandler {
 	 */
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData) {
-		if (PluginChecks.getFusionInstalled()) {
-			float zoomAmount = new Float(SimpleOres.plugins.fusion.Settings.thyriumBowZoomModifier / new Float(100));
-		}
 		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 
 		if (type.equals(EnumSet.of(TickType.RENDER))) {
 			if (player != null && player.isUsingItem()) {
 				int itemID = player.getItemInUse().itemID;
-				if (PluginChecks.getSimpleInstalled()) {
-					if (itemID == SimpleOresEW.extendedmythrilBow.itemID || itemID == SimpleOresEW.extendedonyxBow.itemID) {
-						SimpleOresEW.proxy.onBowUse(player.getItemInUse(), player);
-						this.zoomAmount = 0.25F;
-					}
-				}
-				if (PluginChecks.getFusionInstalled()) {
-					if (itemID == SimpleOresEW.extendedsinisiteBow.itemID || itemID == SimpleOresEW.extendedthyriumBow.itemID) {
-						SimpleOresEW.proxy.onBowUse(player.getItemInUse(), player);
-						if (itemID == SimpleOresEW.extendedthyriumBow.itemID) {
-							this.zoomAmount = (float) zoomAmount;
-						} else {
-							this.zoomAmount = 0.25F;
-						}
-					}
-				}		if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID){
+				if (PluginChecks.getSimpleInstalled()
+						&& (itemID == SimpleOresEW.extendedmythrilBow.itemID || itemID == SimpleOresEW.extendedonyxBow.itemID)) {
 					SimpleOresEW.proxy.onBowUse(player.getItemInUse(), player);
 					this.zoomAmount = 0.25F;
 				}
-
+				if (PluginChecks.getFusionInstalled()
+						&& (itemID == SimpleOresEW.extendedsinisiteBow.itemID || itemID == SimpleOresEW.extendedthyriumBow.itemID)) {
+					SimpleOresEW.proxy.onBowUse(player.getItemInUse(), player);
+					if (itemID == SimpleOresEW.extendedthyriumBow.itemID) {
+						float zoomAmount = new Float(SimpleOres.plugins.fusion.Settings.thyriumBowZoomModifier / new Float(100));
+						this.zoomAmount = (float) zoomAmount;
+					} else {
+						this.zoomAmount = 0.25F;
+					}
+				}
+				if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID) {
+					SimpleOresEW.proxy.onBowUse(player.getItemInUse(), player);
+					this.zoomAmount = 0.25F;
+				}
+				if (PluginChecks.getNetherInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID){
+					SimpleOresEW.proxy.onBowUse(player.getItemInUse(), player);
+					float zoomAmount = new Float(theoldone822.NetherrocksFusion.Settings.dragonbezoarBowZoomModifier / new Float(100));
+					this.zoomAmount = (float) zoomAmount;
+				}
 			}
 
 			else {

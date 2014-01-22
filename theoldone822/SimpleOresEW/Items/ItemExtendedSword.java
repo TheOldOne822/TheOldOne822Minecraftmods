@@ -53,18 +53,27 @@ public class ItemExtendedSword extends ItemSword {
 	 */
 	@Override
 	public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLivingBase, EntityLivingBase par3EntityLivingBase) {
-		if (PluginChecks.getFusionInstalled() && itemID == SimpleOresEW.extendedfyriteSword.itemID) {
+		if ((PluginChecks.getNetherInstalled() && itemID == SimpleOresEW.extendedfyriteSword.itemID) || (PluginChecks.getNetherFusionInstalled() && (itemID == SimpleOresEW.extendedcinderstoneSword.itemID || itemID == SimpleOresEW.extendeddragonbezoarSword.itemID))) {
 			par1ItemStack.damageItem(1, par3EntityLivingBase);
 			par2EntityLivingBase.setFire(100);
 		}
 
-		if (PluginChecks.getFusionInstalled() && itemID == SimpleOresEW.extendedillumeniteSword.itemID) {
+		if ((PluginChecks.getNetherInstalled() && itemID == SimpleOresEW.extendedillumeniteSword.itemID) || (PluginChecks.getNetherFusionInstalled() && (itemID == SimpleOresEW.extendedcinderstoneSword.itemID || itemID == SimpleOresEW.extendeddragonbezoarSword.itemID))) {
 			par1ItemStack.damageItem(1, par3EntityLivingBase);
 			par3EntityLivingBase.addPotionEffect(new PotionEffect(Potion.nightVision.id, 3600));
 			par2EntityLivingBase.addPotionEffect(new PotionEffect(Potion.blindness.id, 60));
 
 			if (!(par2EntityLivingBase instanceof EntityPlayer)) {
 				par2EntityLivingBase.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 200, 3));
+			}
+		}
+		if (PluginChecks.getNetherFusionInstalled() && this.itemID == SimpleOresEW.extendedpyralisSword.itemID) {
+			par1ItemStack.damageItem(1, par3EntityLivingBase);
+			par2EntityLivingBase.setFire(50);
+			par3EntityLivingBase.addPotionEffect(new PotionEffect(Potion.nightVision.id, 1200));
+			par2EntityLivingBase.addPotionEffect(new PotionEffect(Potion.blindness.id, 20));
+			if (!(par2EntityLivingBase instanceof EntityPlayer)) {
+				par2EntityLivingBase.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 100, 2));
 			}
 		}
 		if (PluginChecks.getArsenicInstalled()) {
@@ -90,7 +99,7 @@ public class ItemExtendedSword extends ItemSword {
 	@Override
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7,
 			float par8, float par9, float par10) {
-		if (PluginChecks.getFusionInstalled() && itemID == SimpleOresEW.extendedfyriteSword.itemID) {
+		if ((PluginChecks.getNetherInstalled() && itemID == SimpleOresEW.extendedfyriteSword.itemID) || (PluginChecks.getNetherFusionInstalled() && (itemID == SimpleOresEW.extendedcinderstoneSword.itemID || itemID == SimpleOresEW.extendeddragonbezoarSword.itemID || this.itemID == SimpleOresEW.extendedpyralisSword.itemID))) {
 			if (par7 == 0) {
 				--par5;
 			}

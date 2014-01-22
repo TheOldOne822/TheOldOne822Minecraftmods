@@ -65,6 +65,47 @@ public class SimpleOresEW {
 
 	public static Item extendedsilverBow;
 
+	public static Item extendedcthonHelm;
+	public static Item extendedcthonChest;
+	public static Item extendedcthonLegs;
+	public static Item extendedcthonBoots;
+
+	public static Item extendedcinderstoneSword;
+	public static Item extendedthrakaPick;
+	public static Item extendedthrakaAxe;
+	public static Item extendedthrakaShovel;
+	public static Item extendedthrakaSword;
+	public static Item extendedthrakaHoe;
+	public static Item extendedpyralisPick;
+	public static Item extendedpyralisAxe;
+	public static Item extendedpyralisShovel;
+	public static Item extendedpyralisSword;
+	public static Item extendedpyralisHoe;
+	public static Item extendeddragonbezoarPick;
+	public static Item extendeddragonbezoarAxe;
+	public static Item extendeddragonbezoarShovel;
+	public static Item extendeddragonbezoarSword;
+	public static Item extendeddragonbezoarHoe;
+	public static Item extendeddragonbezoarBow;
+	public static Item extendeddragonbezoarShears;
+
+	public static Item extendedcinderstoneHelm;
+	public static Item extendedcinderstoneChest;
+	public static Item extendedcinderstoneLegs;
+	public static Item extendedcinderstoneBoots;
+	public static Item extendedthrakaHelm;
+	public static Item extendedthrakaChest;
+	public static Item extendedthrakaLegs;
+	public static Item extendedthrakaBoots;
+	public static Item extendedpyralisHelm;
+	public static Item extendedpyralisChest;
+	public static Item extendedpyralisLegs;
+	public static Item extendedpyralisBoots;
+	public static Item extendeddragonbezoarHelm;
+	public static Item extendeddragonbezoarChest;
+	public static Item extendeddragonbezoarLegs;
+	public static Item extendeddragonbezoarBoots;
+
 	public static class extendedValues {
 
 		// sword
@@ -94,6 +135,11 @@ public class SimpleOresEW {
 		// efficiency is doubled
 
 	}
+
+	public static int rendererextendedCinderstone;
+	public static int rendererextendedThraka;
+	public static int rendererextendedPyralis;
+	public static int rendererextendedDragonBezoar;
 
 	public static Configuration config;
 
@@ -572,6 +618,253 @@ public class SimpleOresEW {
 
 		}
 		if (PluginChecks.getNetherFusionInstalled()) {
+			if (FMLCommonHandler.instance().getEffectiveSide().isClient()) {
+				rendererextendedCinderstone = RenderingRegistry.addNewArmourRendererPrefix("extendedcinderstone");
+
+				rendererextendedThraka = RenderingRegistry.addNewArmourRendererPrefix("extendedthraka");
+				rendererextendedPyralis = RenderingRegistry.addNewArmourRendererPrefix("extendedpyralis");
+				rendererextendedDragonBezoar = RenderingRegistry.addNewArmourRendererPrefix("extendeddragonbezoar");
+			}
+			extendedcinderstoneHelm = new ItemExtendedArmor(theoldone822.NetherrocksFusion.IDs.extendedcinderstoneHelmID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.armorCinderstone, rendererextendedCinderstone, 0, "cinderstone")
+					.setUnlocalizedName("netherrocksfusion:extendedcinderstoneHelm")
+					.setTextureName("netherrocksfusion:extendedcinderstoneHelm");
+			extendedcinderstoneChest = new ItemExtendedArmor(theoldone822.NetherrocksFusion.IDs.extendedcinderstoneChestID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.armorCinderstone, rendererextendedCinderstone, 1, "cinderstone")
+					.setUnlocalizedName("netherrocksfusion:extendedcinderstoneChest").setTextureName(
+							"netherrocksfusion:extendedcinderstoneChest");
+			extendedcinderstoneLegs = new ItemExtendedArmor(theoldone822.NetherrocksFusion.IDs.extendedcinderstoneLegsID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.armorCinderstone, rendererextendedCinderstone, 2, "cinderstone")
+					.setUnlocalizedName("netherrocksfusion:extendedcinderstoneLegs")
+					.setTextureName("netherrocksfusion:extendedcinderstoneLegs");
+			extendedcinderstoneBoots = new ItemExtendedArmor(theoldone822.NetherrocksFusion.IDs.extendedcinderstoneBootsID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.armorCinderstone, rendererextendedCinderstone, 3, "cinderstone")
+					.setUnlocalizedName("netherrocksfusion:extendedcinderstoneBoots").setTextureName(
+							"netherrocksfusion:extendedcinderstoneBoots");
+			extendedthrakaHelm = new ItemExtendedArmor(theoldone822.NetherrocksFusion.IDs.extendedthrakaHelmID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.armorThraka, rendererextendedThraka, 0, "thraka").setUnlocalizedName(
+					"netherrocksfusion:extendedthrakaHelm").setTextureName("netherrocksfusion:extendedthrakaHelm");
+			extendedthrakaChest = new ItemExtendedArmor(theoldone822.NetherrocksFusion.IDs.extendedthrakaChestID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.armorThraka, rendererextendedThraka, 1, "thraka").setUnlocalizedName(
+					"netherrocksfusion:extendedthrakaChest").setTextureName("netherrocksfusion:extendedthrakaChest");
+			extendedthrakaLegs = new ItemExtendedArmor(theoldone822.NetherrocksFusion.IDs.extendedthrakaLegsID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.armorThraka, rendererextendedThraka, 2, "thraka").setUnlocalizedName(
+					"netherrocksfusion:extendedthrakaLegs").setTextureName("netherrocksfusion:extendedthrakaLegs");
+			extendedthrakaBoots = new ItemExtendedArmor(theoldone822.NetherrocksFusion.IDs.extendedthrakaBootsID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.armorThraka, rendererextendedThraka, 3, "thraka").setUnlocalizedName(
+					"netherrocksfusion:extendedthrakaBoots").setTextureName("netherrocksfusion:extendedthrakaBoots");
+			extendedpyralisHelm = new ItemExtendedArmor(theoldone822.NetherrocksFusion.IDs.extendedpyralisHelmID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.armorPyralis, rendererextendedPyralis, 0, "pyralis").setUnlocalizedName(
+					"netherrocksfusion:extendedpyralisHelm").setTextureName("netherrocksfusion:extendedpyralisHelm");
+			extendedpyralisChest = new ItemExtendedArmor(theoldone822.NetherrocksFusion.IDs.extendedpyralisChestID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.armorPyralis, rendererextendedPyralis, 1, "pyralis").setUnlocalizedName(
+					"netherrocksfusion:extendedpyralisChest").setTextureName("netherrocksfusion:extendedpyralisChest");
+			extendedpyralisLegs = new ItemExtendedArmor(theoldone822.NetherrocksFusion.IDs.extendedpyralisLegsID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.armorPyralis, rendererextendedPyralis, 2, "pyralis").setUnlocalizedName(
+					"netherrocksfusion:extendedpyralisLegs").setTextureName("netherrocksfusion:extendedpyralisLegs");
+			extendedpyralisBoots = new ItemExtendedArmor(theoldone822.NetherrocksFusion.IDs.extendedpyralisBootsID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.armorPyralis, rendererextendedPyralis, 3, "pyralis").setUnlocalizedName(
+					"netherrocksfusion:extendedpyralisBoots").setTextureName("netherrocksfusion:extendedpyralisBoots");
+			extendeddragonbezoarHelm = new ItemExtendedArmor(theoldone822.NetherrocksFusion.IDs.extendeddragonbezoarHelmID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.armorDragonBezoar, rendererextendedDragonBezoar, 0, "dragonbezoar")
+					.setUnlocalizedName("netherrocksfusion:extendeddragonbezoarHelm").setTextureName(
+							"netherrocksfusion:extendeddragonbezoarHelm");
+			extendeddragonbezoarChest = new ItemExtendedArmor(theoldone822.NetherrocksFusion.IDs.extendeddragonbezoarChestID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.armorDragonBezoar, rendererextendedDragonBezoar, 1, "dragonbezoar")
+					.setUnlocalizedName("netherrocksfusion:extendeddragonbezoarChest").setTextureName(
+							"netherrocksfusion:extendeddragonbezoarChest");
+			extendeddragonbezoarLegs = new ItemExtendedArmor(theoldone822.NetherrocksFusion.IDs.extendeddragonbezoarLegsID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.armorDragonBezoar, rendererextendedDragonBezoar, 2, "dragonbezoar")
+					.setUnlocalizedName("netherrocksfusion:extendeddragonbezoarLegs").setTextureName(
+							"netherrocksfusion:extendeddragonbezoarLegs");
+			extendeddragonbezoarBoots = new ItemExtendedArmor(theoldone822.NetherrocksFusion.IDs.extendeddragonbezoarBootsID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.armorDragonBezoar, rendererextendedDragonBezoar, 3, "dragonbezoar")
+					.setUnlocalizedName("netherrocksfusion:extendeddragonbezoarBoots").setTextureName(
+							"netherrocksfusion:extendeddragonbezoarBoots");
+
+			LanguageRegistry.addName(extendedcinderstoneHelm, "Extended Cinderstone Helmet");
+			LanguageRegistry.addName(extendedcinderstoneChest, "Extended Cinderstone Chestplate");
+			LanguageRegistry.addName(extendedcinderstoneLegs, "Extended Cinderstone Leggings");
+			LanguageRegistry.addName(extendedcinderstoneBoots, "Extended Cinderstone Boots");
+
+			LanguageRegistry.addName(extendedthrakaHelm, "Extended Thraka Helmet");
+			LanguageRegistry.addName(extendedthrakaChest, "Extended Thraka Chestplate");
+			LanguageRegistry.addName(extendedthrakaLegs, "Extended Thraka Leggings");
+			LanguageRegistry.addName(extendedthrakaBoots, "Extended Thraka Boots");
+
+			LanguageRegistry.addName(extendedpyralisHelm, "Extended Pyralis Helmet");
+			LanguageRegistry.addName(extendedpyralisChest, "Extended Pyralis Chestplate");
+			LanguageRegistry.addName(extendedpyralisLegs, "Extended Pyralis Leggings");
+			LanguageRegistry.addName(extendedpyralisBoots, "Extended Pyralis Boots");
+
+			LanguageRegistry.addName(extendeddragonbezoarHelm, "Extended Dragon Bezoar Helmet");
+			LanguageRegistry.addName(extendeddragonbezoarChest, "Extended Dragon Bezoar Chestplate");
+			LanguageRegistry.addName(extendeddragonbezoarLegs, "Extended Dragon Bezoar Leggings");
+			LanguageRegistry.addName(extendeddragonbezoarBoots, "Extended Dragon Bezoar Boots");
+
+			extendedcinderstoneSword = new ItemExtendedSword(theoldone822.NetherrocksFusion.IDs.extendedcinderstoneSwordID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.toolCinderstone)
+					.setUnlocalizedName("extendedWorkbenchnf:cinderstoneSword").setTextureName("netherrocksfusion:extendedcinderstoneSword");
+			extendedthrakaPick = new ItemExtendedPickaxe(theoldone822.NetherrocksFusion.IDs.extendedthrakaPickID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.toolThraka).setUnlocalizedName("extendedWorkbenchnf:thrakaPick")
+					.setTextureName("netherrocksfusion:extendedthrakaPick");
+			extendedthrakaAxe = new ItemExtendedAxe(theoldone822.NetherrocksFusion.IDs.extendedthrakaAxeID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.toolThraka).setUnlocalizedName("extendedWorkbenchnf:thrakaAxe")
+					.setTextureName("netherrocksfusion:extendedthrakaAxe");
+			extendedthrakaShovel = new ItemExtendedShovel(theoldone822.NetherrocksFusion.IDs.extendedthrakaShovelID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.toolThraka).setUnlocalizedName("extendedWorkbenchnf:thrakaShovel")
+					.setTextureName("netherrocksfusion:extendedthrakaShovel");
+			extendedthrakaSword = new ItemExtendedSword(theoldone822.NetherrocksFusion.IDs.extendedthrakaSwordID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.toolThraka).setUnlocalizedName("extendedWorkbenchnf:thrakaSword")
+					.setTextureName("netherrocksfusion:extendedthrakaSword");
+			extendedthrakaHoe = new ItemExtendedHoe(theoldone822.NetherrocksFusion.IDs.extendedthrakaHoeID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.toolThraka).setUnlocalizedName("extendedWorkbenchnf:thrakaHoe")
+					.setTextureName("netherrocksfusion:extendedthrakaHoe");
+			extendedpyralisPick = new ItemExtendedPickaxe(theoldone822.NetherrocksFusion.IDs.extendedpyralisPickID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.toolPyralis).setUnlocalizedName("extendedWorkbenchnf:pyralisPick")
+					.setTextureName("netherrocksfusion:extendedpyralisPick");
+			extendedpyralisAxe = new ItemExtendedAxe(theoldone822.NetherrocksFusion.IDs.extendedpyralisAxeID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.toolPyralis).setUnlocalizedName("extendedWorkbenchnf:pyralisAxe")
+					.setTextureName("netherrocksfusion:extendedpyralisAxe");
+			extendedpyralisShovel = new ItemExtendedShovel(theoldone822.NetherrocksFusion.IDs.extendedpyralisShovelID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.toolPyralis).setUnlocalizedName("extendedWorkbenchnf:pyralisShovel")
+					.setTextureName("netherrocksfusion:extendedpyralisShovel");
+			extendedpyralisSword = new ItemExtendedSword(theoldone822.NetherrocksFusion.IDs.extendedpyralisSwordID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.toolPyralis).setUnlocalizedName("extendedWorkbenchnf:pyralisSword")
+					.setTextureName("netherrocksfusion:extendedpyralisSword");
+			extendedpyralisHoe = new ItemExtendedHoe(theoldone822.NetherrocksFusion.IDs.extendedpyralisHoeID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.toolPyralis).setUnlocalizedName("extendedWorkbenchnf:pyralisHoe")
+					.setTextureName("netherrocksfusion:extendedpyralisHoe");
+			extendeddragonbezoarPick = new ItemExtendedPickaxe(theoldone822.NetherrocksFusion.IDs.extendeddragonbezoarPickID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.toolDragonBezoar).setUnlocalizedName(
+					"extendedWorkbenchnf:dragonbezoarPick").setTextureName("netherrocksfusion:extendeddragonbezoarPick");
+			extendeddragonbezoarAxe = new ItemExtendedAxe(theoldone822.NetherrocksFusion.IDs.extendeddragonbezoarAxeID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.toolDragonBezoar)
+					.setUnlocalizedName("extendedWorkbenchnf:dragonbezoarAxe").setTextureName("netherrocksfusion:extendeddragonbezoarAxe");
+			extendeddragonbezoarShovel = new ItemExtendedShovel(theoldone822.NetherrocksFusion.IDs.extendeddragonbezoarShovelID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.toolDragonBezoar).setUnlocalizedName(
+					"extendedWorkbenchnf:dragonbezoarShovel").setTextureName("netherrocksfusion:extendeddragonbezoarShovel");
+			extendeddragonbezoarSword = new ItemExtendedSword(theoldone822.NetherrocksFusion.IDs.extendeddragonbezoarSwordID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.toolDragonBezoar).setUnlocalizedName(
+					"extendedWorkbenchnf:dragonbezoarSword").setTextureName("netherrocksfusion:extendeddragonbezoarSword");
+			extendeddragonbezoarHoe = new ItemExtendedHoe(theoldone822.NetherrocksFusion.IDs.extendeddragonbezoarHoeID,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.toolDragonBezoar)
+					.setUnlocalizedName("extendedWorkbenchnf:dragonbezoarHoe").setTextureName("netherrocksfusion:extendeddragonbezoarHoe");
+			extendeddragonbezoarBow = (ItemBow) new ItemExtendedBow(theoldone822.NetherrocksFusion.IDs.extendeddragonbezoarBowID, 1200,
+					theoldone822.NetherrocksFusion.NetherrocksFusion.toolPyralis).setFull3D()
+					.setUnlocalizedName("extendedWorkbenchnf:dragonbezoarBow").setTextureName("netherrocksfusion:extendeddragonbezoarBow");
+			extendeddragonbezoarShears = new ItemExtendedShears(theoldone822.NetherrocksFusion.IDs.extendeddragonbezoarShearsID, 9300)
+					.setUnlocalizedName("extendedWorkbenchnf:dragonbezoarShears")
+					.setTextureName("netherrocksfusion:extendeddragonbezoarShears");
+
+			LanguageRegistry.addName(extendedcinderstoneSword, "Extended Cinderstone Sword");
+			LanguageRegistry.addName(extendedthrakaPick, "Extended Thraka Pickaxe");
+			LanguageRegistry.addName(extendedthrakaAxe, "Extended Thraka Axe");
+			LanguageRegistry.addName(extendedthrakaShovel, "Extended Thraka Shovel");
+			LanguageRegistry.addName(extendedthrakaSword, "Extended Thraka Sword");
+			LanguageRegistry.addName(extendedthrakaHoe, "Extended Thraka Hoe");
+			LanguageRegistry.addName(extendedpyralisPick, "Extended Pyralis Pickaxe");
+			LanguageRegistry.addName(extendedpyralisAxe, "Extended Pyralis Axe");
+			LanguageRegistry.addName(extendedpyralisShovel, "Extended Pyralis Shovel");
+			LanguageRegistry.addName(extendedpyralisSword, "Extended Pyralis Sword");
+			LanguageRegistry.addName(extendedpyralisHoe, "Extended Pyralis Hoe");
+			LanguageRegistry.addName(extendeddragonbezoarPick, "Extended Dragon Bezoar Pickaxe");
+			LanguageRegistry.addName(extendeddragonbezoarAxe, "Extended Dragon Bezoar Axe");
+			LanguageRegistry.addName(extendeddragonbezoarShovel, "Extended Dragon Bezoar Shovel");
+			LanguageRegistry.addName(extendeddragonbezoarSword, "Extended Dragon Bezoar Sword");
+			LanguageRegistry.addName(extendeddragonbezoarHoe, "Extended Dragon Bezoar Hoe");
+			LanguageRegistry.addName(extendeddragonbezoarBow, "Extended Dragon Bezoar Bow");
+			LanguageRegistry.addName(extendeddragonbezoarShears, "Extended Dragon Bezoar Shears");
+
+			MinecraftForge.setToolClass(extendedthrakaPick, "pickaxe", theoldone822.NetherrocksFusion.Settings.thrakaMiningLevel);
+			MinecraftForge.setToolClass(extendedthrakaShovel, "shovel", theoldone822.NetherrocksFusion.Settings.thrakaMiningLevel);
+			MinecraftForge.setToolClass(extendedthrakaAxe, "axe", theoldone822.NetherrocksFusion.Settings.thrakaMiningLevel);
+			MinecraftForge.setToolClass(extendedpyralisPick, "pickaxe", theoldone822.NetherrocksFusion.Settings.pyralisMiningLevel);
+			MinecraftForge.setToolClass(extendedpyralisShovel, "shovel", theoldone822.NetherrocksFusion.Settings.pyralisMiningLevel);
+			MinecraftForge.setToolClass(extendedpyralisAxe, "axe", theoldone822.NetherrocksFusion.Settings.pyralisMiningLevel);
+			MinecraftForge.setToolClass(extendeddragonbezoarPick, "pickaxe", theoldone822.NetherrocksFusion.Settings.dragonbezoarMiningLevel);
+			MinecraftForge.setToolClass(extendeddragonbezoarShovel, "shovel", theoldone822.NetherrocksFusion.Settings.dragonbezoarMiningLevel);
+			MinecraftForge.setToolClass(extendeddragonbezoarAxe, "axe", theoldone822.NetherrocksFusion.Settings.dragonbezoarMiningLevel);
+
+			// Armor
+			EWAPI.addRecipe(new ItemStack(extendedcinderstoneBoots, 1), new Object[] { "X X", "X X", "X X", ('X'),
+					theoldone822.NetherrocksFusion.Content.cinderstoneIngot });
+			EWAPI.addRecipe(new ItemStack(extendedcinderstoneLegs, 1), new Object[] { "XXX", "XXX", "X X", "X X", ('X'),
+					theoldone822.NetherrocksFusion.Content.cinderstoneIngot });
+			EWAPI.addRecipe(new ItemStack(extendedcinderstoneChest, 1), new Object[] { "X X", "XXX", "XXX", "XXX", ('X'),
+					theoldone822.NetherrocksFusion.Content.cinderstoneIngot });
+			EWAPI.addRecipe(new ItemStack(extendedcinderstoneHelm, 1), new Object[] { "XXX", "XXX", "X X", ('X'),
+					theoldone822.NetherrocksFusion.Content.cinderstoneIngot });
+
+			EWAPI.addRecipe(new ItemStack(extendedthrakaBoots, 1), new Object[] { "X X", "X X", "X X", ('X'),
+					theoldone822.NetherrocksFusion.Content.thrakaIngot });
+			EWAPI.addRecipe(new ItemStack(extendedthrakaLegs, 1), new Object[] { "XXX", "XXX", "X X", "X X", ('X'),
+					theoldone822.NetherrocksFusion.Content.thrakaIngot });
+			EWAPI.addRecipe(new ItemStack(extendedthrakaChest, 1), new Object[] { "X X", "XXX", "XXX", "XXX", ('X'),
+					theoldone822.NetherrocksFusion.Content.thrakaIngot });
+			EWAPI.addRecipe(new ItemStack(extendedthrakaHelm, 1), new Object[] { "XXX", "XXX", "X X", ('X'),
+					theoldone822.NetherrocksFusion.Content.thrakaIngot });
+
+			EWAPI.addRecipe(new ItemStack(extendedpyralisBoots, 1), new Object[] { "X X", "X X", "X X", ('X'),
+					theoldone822.NetherrocksFusion.Content.pyralisIngot });
+			EWAPI.addRecipe(new ItemStack(extendedpyralisLegs, 1), new Object[] { "XXX", "XXX", "X X", "X X", ('X'),
+					theoldone822.NetherrocksFusion.Content.pyralisIngot });
+			EWAPI.addRecipe(new ItemStack(extendedpyralisChest, 1), new Object[] { "X X", "XXX", "XXX", "XXX", ('X'),
+					theoldone822.NetherrocksFusion.Content.pyralisIngot });
+			EWAPI.addRecipe(new ItemStack(extendedpyralisHelm, 1), new Object[] { "XXX", "XXX", "X X", ('X'),
+					theoldone822.NetherrocksFusion.Content.pyralisIngot });
+
+			EWAPI.addRecipe(new ItemStack(extendeddragonbezoarBoots, 1), new Object[] { "X X", "X X", "X X", ('X'),
+					theoldone822.NetherrocksFusion.Content.dragonbezoarIngot });
+			EWAPI.addRecipe(new ItemStack(extendeddragonbezoarLegs, 1), new Object[] { "XXX", "XXX", "X X", "X X", ('X'),
+					theoldone822.NetherrocksFusion.Content.dragonbezoarIngot });
+			EWAPI.addRecipe(new ItemStack(extendeddragonbezoarChest, 1), new Object[] { "X X", "XXX", "XXX", "XXX", ('X'),
+					theoldone822.NetherrocksFusion.Content.dragonbezoarIngot });
+			EWAPI.addRecipe(new ItemStack(extendeddragonbezoarHelm, 1), new Object[] { "XXX", "XXX", "X X", ('X'),
+					theoldone822.NetherrocksFusion.Content.dragonbezoarIngot });
+
+			// Tools
+			EWAPI.addRecipe(new ItemStack(extendedcinderstoneSword, 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'),
+					theoldone822.NetherrocksFusion.Content.cinderstoneIngot, ('Y'), Item.ingotIron });
+
+			EWAPI.addRecipe(new ItemStack(extendedthrakaSword, 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'),
+					theoldone822.NetherrocksFusion.Content.thrakaIngot, ('Y'), SimpleOres.core.Items.mythrilIngot });
+			EWAPI.addRecipe(new ItemStack(extendedthrakaShovel, 1), new Object[] { " X ", " X ", " Y ", " Y ", " Y ", " Y ", ('X'),
+					theoldone822.NetherrocksFusion.Content.thrakaIngot, ('Y'), SimpleOres.core.Items.mythrilIngot });
+			EWAPI.addRecipe(new ItemStack(extendedthrakaPick, 1), new Object[] { "XX ", " XX", " YX", " Y ", " Y ", " Y ", ('X'),
+					theoldone822.NetherrocksFusion.Content.thrakaIngot, ('Y'), SimpleOres.core.Items.mythrilIngot });
+			EWAPI.addRecipe(new ItemStack(extendedthrakaAxe, 1), new Object[] { "X  ", "XXX", "XY ", " Y ", " Y ", " Y ", ('X'),
+					theoldone822.NetherrocksFusion.Content.thrakaIngot, ('Y'), SimpleOres.core.Items.mythrilIngot });
+			EWAPI.addRecipe(new ItemStack(extendedthrakaHoe, 1), new Object[] { " X ", " XX", " Y ", " Y ", " Y ", " Y ", ('X'),
+					theoldone822.NetherrocksFusion.Content.thrakaIngot, ('Y'), SimpleOres.core.Items.mythrilIngot });
+
+			EWAPI.addRecipe(new ItemStack(extendedpyralisSword, 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'),
+					theoldone822.NetherrocksFusion.Content.pyralisIngot, ('Y'), Netherrocks.core.Items.argoniteIngot });
+			EWAPI.addRecipe(new ItemStack(extendedpyralisShovel, 1), new Object[] { " X ", " X ", " Y ", " Y ", " Y ", " Y ", ('X'),
+					theoldone822.NetherrocksFusion.Content.pyralisIngot, ('Y'), Netherrocks.core.Items.argoniteIngot });
+			EWAPI.addRecipe(new ItemStack(extendedpyralisPick, 1), new Object[] { "XX ", " XX", " YX", " Y ", " Y ", " Y ", ('X'),
+					theoldone822.NetherrocksFusion.Content.pyralisIngot, ('Y'), Netherrocks.core.Items.argoniteIngot });
+			EWAPI.addRecipe(new ItemStack(extendedpyralisAxe, 1), new Object[] { "X  ", "XXX", "XY ", " Y ", " Y ", " Y ", ('X'),
+					theoldone822.NetherrocksFusion.Content.pyralisIngot, ('Y'), Netherrocks.core.Items.argoniteIngot });
+			EWAPI.addRecipe(new ItemStack(extendedpyralisHoe, 1), new Object[] { " X ", " XX", " Y ", " Y ", " Y ", " Y ", ('X'),
+					theoldone822.NetherrocksFusion.Content.pyralisIngot, ('Y'), Netherrocks.core.Items.argoniteIngot });
+
+			EWAPI.addRecipe(new ItemStack(extendeddragonbezoarSword, 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'),
+					theoldone822.NetherrocksFusion.Content.dragonbezoarIngot, ('Y'), theoldone822.NetherrocksFusion.Content.pyralisIngot });
+			EWAPI.addRecipe(new ItemStack(extendeddragonbezoarShovel, 1), new Object[] { " X ", " X ", " Y ", " Y ", " Y ", " Y ", ('X'),
+					theoldone822.NetherrocksFusion.Content.dragonbezoarIngot, ('Y'), theoldone822.NetherrocksFusion.Content.pyralisIngot });
+			EWAPI.addRecipe(new ItemStack(extendeddragonbezoarPick, 1), new Object[] { "XX ", " XX", " YX", " Y ", " Y ", " Y ", ('X'),
+					theoldone822.NetherrocksFusion.Content.dragonbezoarIngot, ('Y'), theoldone822.NetherrocksFusion.Content.pyralisIngot });
+			EWAPI.addRecipe(new ItemStack(extendeddragonbezoarAxe, 1), new Object[] { "X  ", "XXX", "XY ", " Y ", " Y ", " Y ", ('X'),
+					theoldone822.NetherrocksFusion.Content.dragonbezoarIngot, ('Y'), theoldone822.NetherrocksFusion.Content.pyralisIngot });
+			EWAPI.addRecipe(new ItemStack(extendeddragonbezoarHoe, 1), new Object[] { " X ", " XX", " Y ", " Y ", " Y ", " Y ", ('X'),
+					theoldone822.NetherrocksFusion.Content.dragonbezoarIngot, ('Y'), theoldone822.NetherrocksFusion.Content.pyralisIngot });
+
+			EWAPI.addRecipe(new ItemStack(extendeddragonbezoarBow, 1), new Object[] { " YX", "Y X", "Z X", "Z X", "Y X", " YX", ('X'),
+					Item.silk, ('Y'), theoldone822.NetherrocksFusion.Content.dragonbezoarRod, ('Z'),
+					theoldone822.NetherrocksFusion.Content.pyralisIngot });
+			EWAPI.addRecipe(new ItemStack(extendeddragonbezoarShears, 1), new Object[] { "X ", " X", "X ", " X", "X ", ('X'),
+					theoldone822.NetherrocksFusion.Content.dragonbezoarIngot });
 
 		}
 		if (PluginChecks.getArsenicInstalled()) {
@@ -591,7 +884,7 @@ public class SimpleOresEW {
 						SimpleOres.plugins.akkamaddi.arsenic.code.ArsenicAndLace.toolTenebrium };
 				Object[] handle = new Object[] { Block.planks, Block.planks, Item.ingotIron, Item.ingotIron, Item.diamond, Block.cobblestone,
 						Item.ingotIron, Item.diamond, Item.ingotIron, Item.ingotIron, Item.diamond, Item.ingotIron, Item.ingotIron,
-						Block.planks, SimpleOres.plugins.akkamaddi.arsenic.code.ArsenicAndLace.arsenicIngot,
+						Block.cobblestone, SimpleOres.plugins.akkamaddi.arsenic.code.ArsenicAndLace.arsenicIngot,
 						SimpleOres.plugins.akkamaddi.arsenic.code.ArsenicAndLace.arsenicIngot,
 						SimpleOres.plugins.akkamaddi.arsenic.code.ArsenicAndLace.arsenicIngot };
 
@@ -788,12 +1081,195 @@ public class SimpleOresEW {
 					EWAPI.addRecipe(new ItemStack(armor[i][0], 1), new Object[] { "XXX", "XXX", "X X", ('X'), material[i] });
 				}
 			}
-
 		}
 		if (PluginChecks.getCthonInstalled()) {
+			item[0][22] = new ItemExtendedSword((config.getItem("Cthon Base ID", 24284)).getInt() + 0,
+					SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.toolCthon).setUnlocalizedName("extendedWorkbenchnr:tool022")
+					.setTextureName("SimpleOresEW:toolCthonSword");
+			item[1][22] = new ItemExtendedShovel((config.getItem("Cthon Base ID", 24284)).getInt() + 1,
+					SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.toolCthon).setUnlocalizedName("extendedWorkbenchnr:tool122")
+					.setTextureName("SimpleOresEW:toolCthonShovel");
+			item[2][22] = new ItemExtendedPickaxe((config.getItem("Cthon Base ID", 24284)).getInt() + 2,
+					SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.toolCthon).setUnlocalizedName("extendedWorkbenchnr:tool222")
+					.setTextureName("SimpleOresEW:toolCthonPickaxe");
+			item[3][22] = new ItemExtendedAxe((config.getItem("Cthon Base ID", 24284)).getInt() + 3,
+					SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.toolCthon).setUnlocalizedName("extendedWorkbenchnr:tool322")
+					.setTextureName("SimpleOresEW:toolCthonAxe");
+			item[4][22] = new ItemExtendedHoe((config.getItem("Cthon Base ID", 24284)).getInt() + 4,
+					SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.toolCthon).setUnlocalizedName("extendedWorkbenchnr:tool422")
+					.setTextureName("SimpleOresEW:toolCthonHoe");
 
+			MinecraftForge.setToolClass(item[2][22], "pickaxe", SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.toolCthon.getHarvestLevel());
+			MinecraftForge.setToolClass(item[1][22], "shovel", SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.toolCthon.getHarvestLevel());
+			MinecraftForge.setToolClass(item[3][22], "axe", SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.toolCthon.getHarvestLevel());
+
+			EWAPI.addRecipe(new ItemStack(item[0][22], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'),
+					SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.cthonIngot, ('Y'), Item.ingotIron });
+			EWAPI.addRecipe(new ItemStack(item[1][22], 1), new Object[] { " X ", " X ", " Y ", " Y ", " Y ", " Y ", ('X'),
+					SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.cthonIngot, ('Y'), Item.ingotIron });
+			EWAPI.addRecipe(new ItemStack(item[2][22], 1), new Object[] { "XX ", " XX", " YX", " Y ", " Y ", " Y ", ('X'),
+					SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.cthonIngot, ('Y'), Item.ingotIron });
+			EWAPI.addRecipe(new ItemStack(item[3][22], 1), new Object[] { "X  ", "XXX", "XY ", " Y ", " Y ", " Y ", ('X'),
+					SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.cthonIngot, ('Y'), Item.ingotIron });
+			EWAPI.addRecipe(new ItemStack(item[4][22], 1), new Object[] { " X ", " XX", " Y ", " Y ", " Y ", " Y ", ('X'),
+					SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.cthonIngot, ('Y'), Item.ingotIron });
+
+			for (int j = 0; j < 5; j++)
+				LanguageRegistry.addName(item[j][22], "Extended Cthon" + " " + (toolNames[j]));
+
+			extendedcthonHelm = new ItemExtendedArmor((config.getItem("Cthon Base ID", 24284)).getInt() + 5,
+					SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.armorCthon, armorRenderer[20], 0, "Cthon").setUnlocalizedName(
+					"extendedWorkbenchnr:armorCthonHelmet").setTextureName("SimpleOresEW:armorextendedCthonHelmet");
+			extendedcthonChest = new ItemExtendedArmor((config.getItem("Cthon Base ID", 24284)).getInt() + 6,
+					SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.armorCthon, armorRenderer[20], 1, "Cthon").setUnlocalizedName(
+					"extendedWorkbenchnr:armorCthonChestplate").setTextureName("SimpleOresEW:armorextendedCthonChestplate");
+			extendedcthonLegs = new ItemExtendedArmor((config.getItem("Cthon Base ID", 24284)).getInt() + 7,
+					SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.armorCthon, armorRenderer[20], 2, "Cthon").setUnlocalizedName(
+					"extendedWorkbenchnr:armorCthonLeggings").setTextureName("SimpleOresEW:armorextendedCthonLeggings");
+			extendedcthonBoots = new ItemExtendedArmor((config.getItem("Cthon Base ID", 24284)).getInt() + 8,
+					SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.armorCthon, armorRenderer[20], 3, "Cthon").setUnlocalizedName(
+					"extendedWorkbenchnr:armorCthonBoots").setTextureName("SimpleOresEW:armorextendedCthonBoots");
+
+			EWAPI.addRecipe(new ItemStack(extendedcthonHelm, 1), new Object[] { "X X", "X X", "X X", ('X'),
+					SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.cthonIngot });
+			EWAPI.addRecipe(new ItemStack(extendedcthonChest, 1), new Object[] { "XXX", "XXX", "X X", "X X", ('X'),
+					SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.cthonIngot });
+			EWAPI.addRecipe(new ItemStack(extendedcthonLegs, 1), new Object[] { "X X", "XXX", "XXX", "XXX", ('X'),
+					SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.cthonIngot });
+			EWAPI.addRecipe(new ItemStack(extendedcthonBoots, 1), new Object[] { "XXX", "XXX", "X X", ('X'),
+					SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.cthonIngot });
+
+			LanguageRegistry.addName(extendedcthonHelm, "Extended Cthon Helmet");
+			LanguageRegistry.addName(extendedcthonChest, "Extended Cthon Chestplate");
+			LanguageRegistry.addName(extendedcthonLegs, "Extended Cthon Leggings");
+			LanguageRegistry.addName(extendedcthonBoots, "Extended Cthon Boots");
 		}
 		if (PluginChecks.getGlitterInstalled()) {
+			{
+				Object[] material = new Object[] { Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+						Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+						Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+						Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+						SimpleOres.plugins.akkamaddi.goldenglitter.code.GoldenGlitterCore.roseGoldIngot,
+						SimpleOres.plugins.akkamaddi.goldenglitter.code.GoldenGlitterCore.erubescentGoldIngot,
+						SimpleOres.plugins.akkamaddi.goldenglitter.code.GoldenGlitterCore.scarlatiteGoldIngot,
+						SimpleOres.plugins.akkamaddi.goldenglitter.code.GoldenGlitterCore.hephaestanGoldIngot };
+				EnumToolMaterial[] sotool = new EnumToolMaterial[] { EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD,
+						EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD,
+						EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD,
+						EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD,
+						EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD,
+						SimpleOres.plugins.akkamaddi.goldenglitter.code.GoldenGlitterCore.toolRoseGold,
+						SimpleOres.plugins.akkamaddi.goldenglitter.code.GoldenGlitterCore.toolErubescentGold,
+						SimpleOres.plugins.akkamaddi.goldenglitter.code.GoldenGlitterCore.toolScarlatiteGold,
+						SimpleOres.plugins.akkamaddi.goldenglitter.code.GoldenGlitterCore.toolHephaestanGold };
+				Object[] handle = new Object[] { Block.planks, Block.planks, Item.ingotIron, Item.ingotIron, Item.diamond, Block.cobblestone,
+						Item.ingotIron, Item.diamond, Item.ingotIron, Item.ingotIron, Item.diamond, Item.ingotIron, Item.ingotIron,
+						Block.cobblestone, Block.cobblestone, Block.cobblestone, Item.ingotIron, SimpleOres.core.Items.tinIngot,
+						SimpleOres.core.Items.copperIngot, SimpleOres.plugins.fusion.Content.bronzeIngot,
+						SimpleOres.plugins.fusion.Content.bronzeIngot, SimpleOres.plugins.fusion.Content.bronzeIngot,
+						SimpleOres.plugins.fusion.Content.bronzeIngot, SimpleOres.core.Items.copperIngot, Item.ingotGold, Item.ingotGold,
+						Item.ingotGold };
+
+				for (int i = 23; i < 24; i++) {
+
+					item[0][i] = new ItemExtendedSword((config.getItem("Glittering Gold Base ID", 24293)).getInt() + (i - 23) * 5, sotool[i])
+							.setUnlocalizedName("extendedWorkbenchso:tool0" + i)
+							.setTextureName("SimpleOresEW:tool" + toolmatNames[i] + "Sword");
+					item[1][i] = new ItemExtendedShovel((config.getItem("Glittering Gold Base ID", 24293)).getInt() + (i - 23) * 5 + 1,
+							sotool[i]).setUnlocalizedName("extendedWorkbenchso:tool1" + i).setTextureName(
+							"SimpleOresEW:tool" + toolmatNames[i] + "Shovel");
+					item[2][i] = new ItemExtendedPickaxe((config.getItem("Glittering Gold Base ID", 24293)).getInt() + (i - 23) * 5 + 2,
+							sotool[i]).setUnlocalizedName("extendedWorkbenchso:tool2" + i).setTextureName(
+							"SimpleOresEW:tool" + toolmatNames[i] + "Pickaxe");
+					item[3][i] = new ItemExtendedAxe((config.getItem("Glittering Gold Base ID", 24293)).getInt() + (i - 23) * 5 + 3, sotool[i])
+							.setUnlocalizedName("extendedWorkbenchso:tool3" + i).setTextureName("SimpleOresEW:tool" + toolmatNames[i] + "Axe");
+					item[4][i] = new ItemExtendedHoe((config.getItem("Glittering Gold Base ID", 24293)).getInt() + (i - 23) * 5 + 4, sotool[i])
+							.setUnlocalizedName("extendedWorkbenchso:tool4" + i).setTextureName("SimpleOresEW:tool" + toolmatNames[i] + "Hoe");
+
+					MinecraftForge.setToolClass(item[2][i], "pickaxe", sotool[i].getHarvestLevel());
+					MinecraftForge.setToolClass(item[1][i], "shovel", sotool[i].getHarvestLevel());
+					MinecraftForge.setToolClass(item[3][i], "axe", sotool[i].getHarvestLevel());
+
+					EWAPI.addRecipe(new ItemStack(item[0][i], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[1][i], 1), new Object[] { " X ", " X ", " Y ", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[2][i], 1), new Object[] { "XX ", " XX", " YX", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[3][i], 1), new Object[] { "X  ", "XXX", "XY ", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[4][i], 1), new Object[] { " X ", " XX", " Y ", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+
+					for (int j = 0; j < 5; j++)
+						LanguageRegistry.addName(item[j][i], "Extended " + (toolmatNames[i]) + " " + (toolNames[j]));
+				}
+				for (int i = 24; i < 27; i++) {
+
+					item[0][i] = new ItemExtendedSword((config.getItem("Glittering Gold Base ID", 24293)).getInt() + (i - 24) * 4 + 5,
+							sotool[i]).setUnlocalizedName("extendedWorkbenchso:tool0" + i).setTextureName(
+							"SimpleOresEW:tool" + toolmatNames[i] + "Sword");
+					item[1][i] = new ItemExtendedShovel((config.getItem("Glittering Gold Base ID", 24293)).getInt() + (i - 24) * 4 + 6,
+							sotool[i]).setUnlocalizedName("extendedWorkbenchso:tool1" + i).setTextureName(
+							"SimpleOresEW:tool" + toolmatNames[i] + "Shovel");
+					item[2][i] = new ItemExtendedPickaxe((config.getItem("Glittering Gold Base ID", 24293)).getInt() + (i - 24) * 4 + 7,
+							sotool[i]).setUnlocalizedName("extendedWorkbenchso:tool2" + i).setTextureName(
+							"SimpleOresEW:tool" + toolmatNames[i] + "Pickaxe");
+					item[3][i] = new ItemExtendedAxe((config.getItem("Glittering Gold Base ID", 24293)).getInt() + (i - 24) * 4 + 8,
+							sotool[i]).setUnlocalizedName("extendedWorkbenchso:tool3" + i).setTextureName(
+							"SimpleOresEW:tool" + toolmatNames[i] + "Axe");
+
+					MinecraftForge.setToolClass(item[2][i], "pickaxe", sotool[i].getHarvestLevel());
+					MinecraftForge.setToolClass(item[1][i], "shovel", sotool[i].getHarvestLevel());
+					MinecraftForge.setToolClass(item[3][i], "axe", sotool[i].getHarvestLevel());
+
+					EWAPI.addRecipe(new ItemStack(item[0][i], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[1][i], 1), new Object[] { " X ", " X ", " Y ", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[2][i], 1), new Object[] { "XX ", " XX", " YX", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[3][i], 1), new Object[] { "X  ", "XXX", "XY ", " Y ", " Y ", " Y ", ('X'), material[i],
+							('Y'), handle[i] });
+
+					for (int j = 0; j < 4; j++)
+						LanguageRegistry.addName(item[j][i], "Extended " + (toolmatNames[i]) + " " + (toolNames[j]));
+				}
+			}
+
+			{
+				Object[] material = new Object[] { Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+						Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+						Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+						Item.ingotIron, Item.ingotIron, SimpleOres.plugins.akkamaddi.goldenglitter.code.GoldenGlitterCore.roseGoldIngot };
+				EnumArmorMaterial[] soarmor = new EnumArmorMaterial[] { EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
+						EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
+						EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
+						EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
+						EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
+						SimpleOres.plugins.akkamaddi.goldenglitter.code.GoldenGlitterCore.armorRoseGold };
+
+				for (int i = 21; i < 22; i++) {
+					for (int j = 0; j < 4; j++) {
+						armor[i][j] = (ItemArmor) new ItemExtendedArmor((config.getItem("Glittering Gold Base ID", 24293)).getInt() + 17
+								+ (i - 21) * 4 + j, soarmor[i], armorRenderer[i], j, armormatNames[i]).setUnlocalizedName(
+								"extendedWorkbenchso:armor" + i + j).setTextureName(
+								"SimpleOresEW:armorextended" + armormatNames[i] + armorNames[j]);
+						LanguageRegistry.addName(armor[i][j], "Extended " + armormatNames[i] + " " + armorNames[j]);
+					}
+
+					EWAPI.addRecipe(new ItemStack(armor[i][3], 1), new Object[] { "X X", "X X", "X X", ('X'), material[i] });
+					EWAPI.addRecipe(new ItemStack(armor[i][2], 1), new Object[] { "XXX", "XXX", "X X", "X X", ('X'), material[i] });
+					EWAPI.addRecipe(new ItemStack(armor[i][1], 1), new Object[] { "X X", "XXX", "XXX", "XXX", ('X'), material[i] });
+					EWAPI.addRecipe(new ItemStack(armor[i][0], 1), new Object[] { "XXX", "XXX", "X X", ('X'), material[i] });
+				}
+			}
+			if (SimpleOres.plugins.akkamaddi.goldenglitter.code.GoldenGlitterCore.werewolfEffectiveness)
+				try {
+					MinecraftForge.EVENT_BUS.register(new WerewolfHandler());
+				} catch (Exception ignored) {
+				}
 
 		}
 		if (PluginChecks.getHaditeInstalled()) {
