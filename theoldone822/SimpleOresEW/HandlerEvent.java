@@ -31,7 +31,8 @@ public class HandlerEvent {
 									|| helmet.getItem() == SimpleOresEW.extendeddragonbezoarHelm
 									|| helmet.getItem() == theoldone822.NetherrocksFusion.Content.dragonbezoarHelm || helmet
 									.getItem() == theoldone822.NetherrocksFusion.Content.dragonbezoarChainHelm)) || (PluginChecks
-							.getTungstenInstalled() && helmet.getItem() == SimpleOres.plugins.akkamaddi.simpletungsten.SimpleTungstenCore.valframHelm))
+							.getTungstenInstalled() && (helmet.getItem() == SimpleOres.plugins.akkamaddi.simpletungsten.SimpleTungstenCore.valframHelm || helmet
+							.getItem() == SimpleOresEW.armor[28][0])))
 							&& ((PluginChecks.getNetherInstalled() && (chest.getItem() == Netherrocks.core.Armor.fyriteChest || chest
 									.getItem() == SimpleOresEW.extendedfyriteChest))
 									|| (PluginChecks.getNetherFusionInstalled() && (chest.getItem() == SimpleOresEW.extendedcinderstoneChest
@@ -39,7 +40,8 @@ public class HandlerEvent {
 											|| chest.getItem() == SimpleOresEW.extendeddragonbezoarChest
 											|| chest.getItem() == theoldone822.NetherrocksFusion.Content.dragonbezoarChest || chest
 											.getItem() == theoldone822.NetherrocksFusion.Content.dragonbezoarChainChest)) || (PluginChecks
-									.getTungstenInstalled() && chest.getItem() == SimpleOres.plugins.akkamaddi.simpletungsten.SimpleTungstenCore.valframChest))
+									.getTungstenInstalled() && (chest.getItem() == SimpleOres.plugins.akkamaddi.simpletungsten.SimpleTungstenCore.valframChest || helmet
+									.getItem() == SimpleOresEW.armor[28][1])))
 							&& ((PluginChecks.getNetherInstalled() && (legs.getItem() == Netherrocks.core.Armor.fyriteLegs || legs
 									.getItem() == SimpleOresEW.extendedfyriteLegs))
 									|| (PluginChecks.getNetherFusionInstalled() && (legs.getItem() == SimpleOresEW.extendedcinderstoneLegs
@@ -47,7 +49,8 @@ public class HandlerEvent {
 											|| legs.getItem() == SimpleOresEW.extendeddragonbezoarLegs
 											|| legs.getItem() == theoldone822.NetherrocksFusion.Content.dragonbezoarLegs || legs
 											.getItem() == theoldone822.NetherrocksFusion.Content.dragonbezoarChainLegs)) || (PluginChecks
-									.getTungstenInstalled() && legs.getItem() == SimpleOres.plugins.akkamaddi.simpletungsten.SimpleTungstenCore.valframLegs))
+									.getTungstenInstalled() && (legs.getItem() == SimpleOres.plugins.akkamaddi.simpletungsten.SimpleTungstenCore.valframLegs || helmet
+									.getItem() == SimpleOresEW.armor[28][2])))
 							&& ((PluginChecks.getNetherInstalled() && (boots.getItem() == Netherrocks.core.Armor.fyriteBoots || boots
 									.getItem() == SimpleOresEW.extendedfyriteBoots))
 									|| (PluginChecks.getNetherFusionInstalled() && (boots.getItem() == SimpleOresEW.extendedcinderstoneBoots
@@ -55,7 +58,8 @@ public class HandlerEvent {
 											|| boots.getItem() == SimpleOresEW.extendeddragonbezoarBoots
 											|| boots.getItem() == theoldone822.NetherrocksFusion.Content.dragonbezoarBoots || boots
 											.getItem() == theoldone822.NetherrocksFusion.Content.dragonbezoarChainBoots)) || (PluginChecks
-									.getTungstenInstalled() && boots.getItem() == SimpleOres.plugins.akkamaddi.simpletungsten.SimpleTungstenCore.valframBoots))) {
+									.getTungstenInstalled() && (boots.getItem() == SimpleOres.plugins.akkamaddi.simpletungsten.SimpleTungstenCore.valframBoots || helmet
+									.getItem() == SimpleOresEW.armor[28][3])))) {
 						if (event.source.equals(DamageSource.lava) || event.source.equals(DamageSource.inFire)
 								|| event.source.equals(DamageSource.onFire)) {
 							event.setCanceled(true);
@@ -80,14 +84,53 @@ public class HandlerEvent {
 
 				if (helmet != null && chest != null && legs != null && boots != null) {
 
-					if ((PluginChecks.getNetherInstalled() && (helmet.getItem() == Netherrocks.core.Armor.illumeniteHelm || helmet
+					if (((PluginChecks.getNetherInstalled() && (helmet.getItem() == Netherrocks.core.Armor.illumeniteHelm || helmet
 							.getItem() == SimpleOresEW.extendedillumeniteHelm))
-							&& (PluginChecks.getNetherInstalled() && (chest.getItem() == Netherrocks.core.Armor.illumeniteChest || chest
+
+							|| (PluginChecks.getNetherFusionInstalled() && (helmet.getItem() == SimpleOresEW.extendedcinderstoneHelm
+									|| helmet.getItem() == theoldone822.NetherrocksFusion.Content.cinderstoneHelm
+									|| helmet.getItem() == SimpleOresEW.extendeddragonbezoarHelm
+									|| helmet.getItem() == theoldone822.NetherrocksFusion.Content.dragonbezoarHelm || helmet
+									.getItem() == theoldone822.NetherrocksFusion.Content.dragonbezoarChainHelm))
+
+					|| (PluginChecks.getCobaltInstalled() && (helmet.getItem() == SimpleOres.plugins.akkamaddi.simplecobalt.SimpleCobaltCore.blueDriftSteelHelm || helmet
+							.getItem() == SimpleOresEW.armor[23][0])))
+
+							&& ((PluginChecks.getNetherInstalled() && (chest.getItem() == Netherrocks.core.Armor.illumeniteChest || chest
 									.getItem() == SimpleOresEW.extendedillumeniteChest))
-							&& (PluginChecks.getNetherInstalled() && (legs.getItem() == Netherrocks.core.Armor.illumeniteLegs || legs
+
+									|| (PluginChecks.getNetherFusionInstalled() && (chest.getItem() == SimpleOresEW.extendedcinderstoneChest
+											|| chest.getItem() == theoldone822.NetherrocksFusion.Content.cinderstoneChest
+											|| chest.getItem() == SimpleOresEW.extendeddragonbezoarChest
+											|| chest.getItem() == theoldone822.NetherrocksFusion.Content.dragonbezoarChest || chest
+											.getItem() == theoldone822.NetherrocksFusion.Content.dragonbezoarChainChest))
+
+							|| (PluginChecks.getCobaltInstalled() && (chest.getItem() == SimpleOres.plugins.akkamaddi.simplecobalt.SimpleCobaltCore.blueDriftSteelChest || chest
+									.getItem() == SimpleOresEW.armor[23][1])))
+
+							&& ((PluginChecks.getNetherInstalled() && (legs.getItem() == Netherrocks.core.Armor.illumeniteLegs || legs
 									.getItem() == SimpleOresEW.extendedillumeniteLegs))
-							&& (PluginChecks.getNetherInstalled() && (boots.getItem() == Netherrocks.core.Armor.illumeniteBoots || boots
-									.getItem() == SimpleOresEW.extendedillumeniteBoots))) {
+
+									|| (PluginChecks.getNetherFusionInstalled() && (legs.getItem() == SimpleOresEW.extendedcinderstoneLegs
+											|| legs.getItem() == theoldone822.NetherrocksFusion.Content.cinderstoneLegs
+											|| legs.getItem() == SimpleOresEW.extendeddragonbezoarLegs
+											|| legs.getItem() == theoldone822.NetherrocksFusion.Content.dragonbezoarLegs || legs
+											.getItem() == theoldone822.NetherrocksFusion.Content.dragonbezoarChainLegs))
+
+							|| (PluginChecks.getCobaltInstalled() && (legs.getItem() == SimpleOres.plugins.akkamaddi.simplecobalt.SimpleCobaltCore.blueDriftSteelLegs || legs
+									.getItem() == SimpleOresEW.armor[23][3])))
+
+							&& ((PluginChecks.getNetherInstalled() && (boots.getItem() == Netherrocks.core.Armor.illumeniteBoots || boots
+									.getItem() == SimpleOresEW.extendedillumeniteBoots))
+
+									|| (PluginChecks.getNetherFusionInstalled() && (boots.getItem() == SimpleOresEW.extendedcinderstoneBoots
+											|| boots.getItem() == theoldone822.NetherrocksFusion.Content.cinderstoneBoots
+											|| boots.getItem() == SimpleOresEW.extendeddragonbezoarBoots
+											|| boots.getItem() == theoldone822.NetherrocksFusion.Content.dragonbezoarBoots || boots
+											.getItem() == theoldone822.NetherrocksFusion.Content.dragonbezoarChainBoots))
+
+							|| (PluginChecks.getCobaltInstalled() && (boots.getItem() == SimpleOres.plugins.akkamaddi.simplecobalt.SimpleCobaltCore.blueDriftSteelBoots || boots
+									.getItem() == SimpleOresEW.armor[23][3])))) {
 						if (event.source.equals(DamageSource.fall)) {
 							event.setCanceled(true);
 						}

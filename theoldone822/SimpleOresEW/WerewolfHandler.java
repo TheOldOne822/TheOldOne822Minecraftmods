@@ -44,16 +44,26 @@ public class WerewolfHandler {
 			return;
 
 		if ((PluginChecks.getSilverInstalled() && OnlySilver.code.conf.Config.werewolfEffectiveness.get() && (stack.getItem().itemID == SimpleOresEW.item[0][12].itemID
-				|| stack.getItem().itemID == SimpleOresEW.item[1][12].itemID || stack.getItem().itemID == SimpleOresEW.item[2][12].itemID || stack
-				.getItem().itemID == SimpleOresEW.item[3][12].itemID)) || (PluginChecks.getArsenicInstalled() && SimpleOres.plugins.akkamaddi.arsenic.code.ArsenicAndLace.werewolfEffectiveness && (stack
-						.getItem().itemID == SimpleOresEW.item[2][15].itemID || stack.getItem().itemID == SimpleOresEW.item[0][15].itemID
+				|| stack.getItem().itemID == SimpleOresEW.item[1][12].itemID
+				|| stack.getItem().itemID == SimpleOresEW.item[2][12].itemID || stack.getItem().itemID == SimpleOresEW.item[3][12].itemID))
+				|| (PluginChecks.getArsenicInstalled()
+						&& SimpleOres.plugins.akkamaddi.arsenic.code.ArsenicAndLace.werewolfEffectiveness && (stack.getItem().itemID == SimpleOresEW.item[2][15].itemID
+						|| stack.getItem().itemID == SimpleOresEW.item[0][15].itemID
 						|| stack.getItem().itemID == SimpleOresEW.item[1][15].itemID || stack.getItem().itemID == SimpleOresEW.item[3][15].itemID))
-				|| (PluginChecks.getGlitterInstalled() && (stack.getItem().itemID == SimpleOresEW.item[0][24].itemID || stack.getItem().itemID == SimpleOresEW.item[1][24].itemID
-						|| stack.getItem().itemID == SimpleOresEW.item[2][24].itemID || stack.getItem().itemID == SimpleOresEW.item[3][24].itemID
-						|| stack.getItem().itemID == SimpleOresEW.item[0][25].itemID || stack.getItem().itemID == SimpleOresEW.item[1][25].itemID
-						|| stack.getItem().itemID == SimpleOresEW.item[2][25].itemID || stack.getItem().itemID == SimpleOresEW.item[3][25].itemID
-						|| stack.getItem().itemID == SimpleOresEW.item[0][26].itemID || stack.getItem().itemID == SimpleOresEW.item[1][26].itemID
-						|| stack.getItem().itemID == SimpleOresEW.item[2][26].itemID || stack.getItem().itemID == SimpleOresEW.item[3][26].itemID)))
+				|| (PluginChecks.getGlitterInstalled() && (stack.getItem().itemID == SimpleOresEW.item[0][24].itemID
+						|| stack.getItem().itemID == SimpleOresEW.item[1][24].itemID
+						|| stack.getItem().itemID == SimpleOresEW.item[2][24].itemID
+						|| stack.getItem().itemID == SimpleOresEW.item[3][24].itemID
+						|| stack.getItem().itemID == SimpleOresEW.item[0][25].itemID
+						|| stack.getItem().itemID == SimpleOresEW.item[1][25].itemID
+						|| stack.getItem().itemID == SimpleOresEW.item[2][25].itemID
+						|| stack.getItem().itemID == SimpleOresEW.item[3][25].itemID
+						|| stack.getItem().itemID == SimpleOresEW.item[0][26].itemID
+						|| stack.getItem().itemID == SimpleOresEW.item[1][26].itemID
+						|| stack.getItem().itemID == SimpleOresEW.item[2][26].itemID || stack.getItem().itemID == SimpleOresEW.item[3][26].itemID))
+				|| (PluginChecks.getSterlingInstalled() && (stack.getItem().itemID == SimpleOresEW.item[0][37].itemID
+						|| stack.getItem().itemID == SimpleOresEW.item[1][37].itemID
+						|| stack.getItem().itemID == SimpleOresEW.item[2][37].itemID || stack.getItem().itemID == SimpleOresEW.item[3][37].itemID)))
 			event.ammount += 5;
 
 	}

@@ -145,18 +145,36 @@ public class ClientProxy extends CommonProxy {
 						MinecraftForgeClient.registerItemRenderer(SimpleOresEW.item[i][j].itemID, render);
 			}
 			if (PluginChecks.getGlitterInstalled()) {
+				for (int i = 0; i < (biggerTools == 1 ? 1 : 5); i++)
+					for (int j = 23; j < 24; j++)
+						MinecraftForgeClient.registerItemRenderer(SimpleOresEW.item[i][j].itemID, render);
+				for (int i = 0; i < (biggerTools == 1 ? 1 : 4); i++)
+					for (int j = 24; j < 27; j++)
+						MinecraftForgeClient.registerItemRenderer(SimpleOresEW.item[i][j].itemID, render);
 
 			}
 			if (PluginChecks.getHaditeInstalled()) {
+				for (int i = 0; i < (biggerTools == 1 ? 1 : 4); i++)
+					for (int j = 27; j < 29; j++)
+						MinecraftForgeClient.registerItemRenderer(SimpleOresEW.item[i][j].itemID, render);
 
 			}
 			if (PluginChecks.getCobaltInstalled()) {
+				for (int i = 0; i < (biggerTools == 1 ? 1 : 5); i++)
+					for (int j = 29; j < 33; j++)
+						MinecraftForgeClient.registerItemRenderer(SimpleOresEW.item[i][j].itemID, render);
 
 			}
 			if (PluginChecks.getTungstenInstalled()) {
+				for (int i = 0; i < (biggerTools == 1 ? 1 : 5); i++)
+					for (int j = 33; j < 36; j++)
+						MinecraftForgeClient.registerItemRenderer(SimpleOresEW.item[i][j].itemID, render);
 
 			}
 			if (PluginChecks.getSterlingInstalled()) {
+				for (int i = 0; i < (biggerTools == 1 ? 1 : 5); i++)
+					for (int j = 36; j < 38; j++)
+						MinecraftForgeClient.registerItemRenderer(SimpleOresEW.item[i][j].itemID, render);
 
 			}
 		}
