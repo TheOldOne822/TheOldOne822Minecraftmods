@@ -4,6 +4,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 public class CommonProxy implements IGuiHandler {
 	// WILL NOT WORK WITHOUT THIS
@@ -26,7 +28,14 @@ public class CommonProxy implements IGuiHandler {
 	 {
 
 	 }
-	public void preInit() {
+
+	 public void registerServerTickHandler()
+    {
+        // TODO Auto-generated method stub
+        TickRegistry.registerTickHandler(new ServerTick(), Side.SERVER);
+    }
+
+	 public void preInit() {
 
 	}
 

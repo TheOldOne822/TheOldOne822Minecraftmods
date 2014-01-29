@@ -151,11 +151,11 @@ public class ItemExtendedBow extends ItemBow {
 		silverBow2 = iconRegister.registerIcon("simpleoresew:" + "silverBow2");
 		silverBow3 = iconRegister.registerIcon("simpleoresew:" + "silverBow3");
 		silverBow4 = iconRegister.registerIcon("simpleoresew:" + "silverBow4");
-		extendeddragonbezoarBow = iconRegister.registerIcon("netherrocksfusion:" + "extendeddragonbezoarBow");
-		extendeddragonbezoarBow1 = iconRegister.registerIcon("netherrocksfusion:" + "extendeddragonbezoarBow1");
-		extendeddragonbezoarBow2 = iconRegister.registerIcon("netherrocksfusion:" + "extendeddragonbezoarBow2");
-		extendeddragonbezoarBow3 = iconRegister.registerIcon("netherrocksfusion:" + "extendeddragonbezoarBow3");
-		extendeddragonbezoarBow4 = iconRegister.registerIcon("netherrocksfusion:" + "extendeddragonbezoarBow4");
+		extendeddragonbezoarBow = iconRegister.registerIcon("simpleoresew:" + "extendeddragonbezoarBow");
+		extendeddragonbezoarBow1 = iconRegister.registerIcon("simpleoresew:" + "extendeddragonbezoarBow1");
+		extendeddragonbezoarBow2 = iconRegister.registerIcon("simpleoresew:" + "extendeddragonbezoarBow2");
+		extendeddragonbezoarBow3 = iconRegister.registerIcon("simpleoresew:" + "extendeddragonbezoarBow3");
+		extendeddragonbezoarBow4 = iconRegister.registerIcon("simpleoresew:" + "extendeddragonbezoarBow4");
 	}
 
 	/**

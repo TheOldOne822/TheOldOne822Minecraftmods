@@ -227,7 +227,7 @@ public class SuperFusionFurnaceTileEntity extends TileEntity implements ISidedIn
      */
     public int getCookProgressScaled(int par1)
     {
-        return this.furnaceCookTime * par1 / (600 / Settings.dragonbezoarFurnaceSpeed);
+        return (int) (this.furnaceCookTime * par1 / (600 / Settings.dragonbezoarFurnaceSpeed));
     }
 
     @SideOnly(Side.CLIENT)
@@ -240,7 +240,7 @@ public class SuperFusionFurnaceTileEntity extends TileEntity implements ISidedIn
     {
         if (this.currentItemBurnTime == 0)
         {
-            this.currentItemBurnTime = 600 / Settings.dragonbezoarFurnaceSpeed;
+            this.currentItemBurnTime = (int) (600 / Settings.dragonbezoarFurnaceSpeed);
         }
 
         return this.furnaceBurnTime * par1 / this.currentItemBurnTime;
@@ -421,29 +421,29 @@ public class SuperFusionFurnaceTileEntity extends TileEntity implements ISidedIn
 
                 if (block == Block.woodSingleSlab)
                 {
-                    return 1125 / 4 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed;
+                    return (int) (1125 / 4 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed);
                 }
 
                 if (block.blockMaterial == Material.wood)
                 {
-                    return 1125 / 2 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed;
+                    return (int) (1125 / 2 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed);
                 }
                 
                 if (block == Block.coalBlock)
                 {
-                    return 30000 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed;
+                    return (int) (30000 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed);
                 }
             }
 
-            if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 375 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed;
-            if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 375 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed;
-            if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().equals("WOOD")) return 375 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed;
-            if (i == Item.stick.itemID) return 375 / 2 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed;
-            if (i == Item.coal.itemID) return 3000 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed;
-            if (i == Item.bucketLava.itemID) return 37500 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed;
-            if (i == Block.sapling.blockID) return 375 / 2 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed;
-            if (i == Item.blazeRod.itemID) return 4500 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed;
-            return GameRegistry.getFuelValue(par0ItemStack) * 1875 / 1000 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed;
+            if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return (int) (375 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed);
+            if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return (int) (375 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed);
+            if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().equals("WOOD")) return (int) (375 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed);
+            if (i == Item.stick.itemID) return (int) (375 / 2 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed);
+            if (i == Item.coal.itemID) return (int) (3000 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed);
+            if (i == Item.bucketLava.itemID) return (int) (37500 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed);
+            if (i == Block.sapling.blockID) return (int) (375 / 2 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed);
+            if (i == Item.blazeRod.itemID) return (int) (4500 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed);
+            return (int) (GameRegistry.getFuelValue(par0ItemStack) * 1875 / 1000 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed);
         }
     }
 

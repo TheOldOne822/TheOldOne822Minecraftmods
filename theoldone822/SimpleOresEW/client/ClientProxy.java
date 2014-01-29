@@ -167,13 +167,13 @@ public class ClientProxy extends CommonProxy {
 			}
 			if (PluginChecks.getTungstenInstalled()) {
 				for (int i = 0; i < (biggerTools == 1 ? 1 : 5); i++)
-					for (int j = 33; j < 36; j++)
+					for (int j = 33; j < 38; j++)
 						MinecraftForgeClient.registerItemRenderer(SimpleOresEW.item[i][j].itemID, render);
 
 			}
 			if (PluginChecks.getSterlingInstalled()) {
 				for (int i = 0; i < (biggerTools == 1 ? 1 : 5); i++)
-					for (int j = 36; j < 38; j++)
+					for (int j = 38; j < 40; j++)
 						MinecraftForgeClient.registerItemRenderer(SimpleOresEW.item[i][j].itemID, render);
 
 			}

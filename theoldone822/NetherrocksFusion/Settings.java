@@ -7,15 +7,15 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 public class Settings {
 	//Custom Furnaces
-	public static int dragonbezoarFurnaceFuelMultiplier;
+	public static float dragonbezoarFurnaceFuelMultiplier;
 	public static int dragonbezoarFurnaceMultiplier;
 	public static int dragonbezoarFurnaceMultiChance;
 	public static int dragonbezoarFurnaceExtra;
 	public static int dragonbezoarFurnaceExtraChance;
-	public static int dragonbezoarFurnaceSpeed;
+	public static float dragonbezoarFurnaceSpeed;
 	public static int dragonbezoarFurnaceHardness;
 	public static int dragonbezoarFurnaceResistance;
-	public static int dragonbezoarFurnaceLightValue;
+	public static float dragonbezoarFurnaceLightValue;
 
 	//Bow Modifiers
 	public static int dragonbezoarBowDamageModifier;
@@ -70,6 +70,7 @@ public class Settings {
 	//Cinderstone
 	public static float cinderstoneBlockHardness;
 	public static float cinderstoneBlockResistance;
+	public static float cinderstoneBlockLightValue;
 
 	//Thraka
 	public static float thrakaBlockHardness;
@@ -78,10 +79,12 @@ public class Settings {
 	//Pyralis
 	public static float pyralisBlockHardness;
 	public static float pyralisBlockResistance;
+	public static float pyralisBlockLightValue;
 
 	//DragonBezoar
 	public static float dragonbezoarBlockHardness;
 	public static float dragonbezoarBlockResistance;
+	public static float dragonbezoarBlockLightValue;
 
 
 	/**
@@ -96,15 +99,15 @@ public class Settings {
 	settings.load();
 
 	//Custom Furnace Multipliers
-	dragonbezoarFurnaceFuelMultiplier = settings.get("Furnace", "Dragon Bezoar Furnace Fuel Multiplier", 2).getInt();
+	dragonbezoarFurnaceFuelMultiplier = (float) settings.get("Furnace", "Dragon Bezoar Furnace Fuel Multiplier", 2.0).getDouble(dragonbezoarFurnaceFuelMultiplier);
 	dragonbezoarFurnaceMultiplier = settings.get("Furnace", "Dragon Bezoar Furnace Multiplier", 2).getInt();
 	dragonbezoarFurnaceMultiChance = settings.get("Furnace", "Dragon Bezoar Furnace Multiplier Chance", 25).getInt();
 	dragonbezoarFurnaceExtra = settings.get("Furnace", "Dragon Bezoar Furnace Extra Amount", 1).getInt();
 	dragonbezoarFurnaceExtraChance = settings.get("Furnace", "Dragon Bezoar Furnace Extra Chance", 50).getInt();
-	dragonbezoarFurnaceSpeed = settings.get("Furnace", "Dragon Bezoar Furnace Speed Multiplier", 3).getInt();
+	dragonbezoarFurnaceSpeed = (float) settings.get("Furnace", "Dragon Bezoar Furnace Speed Multiplier", 3.0).getDouble(dragonbezoarFurnaceSpeed);
 	dragonbezoarFurnaceHardness = settings.get("Furnace", "Dragon Bezoar Furnace Hardness", 60).getInt();
 	dragonbezoarFurnaceResistance = settings.get("Furnace", "Dragon Bezoar Furnace Resistance", 120).getInt();
-	dragonbezoarFurnaceLightValue = settings.get("Furnace", "Dragon Bezoar Furnace Light Value", 1).getInt();
+	dragonbezoarFurnaceLightValue = (float) settings.get("Furnace", "Dragon Bezoar Furnace Light Value", 1.0).getDouble(dragonbezoarFurnaceLightValue);
 
 	//Bow Modifiers
 	dragonbezoarBowDamageModifier = settings.get("Bow Modifiers", "Dragon Bezoar Bow Damage Modifier", 7).getInt();
@@ -162,15 +165,18 @@ public class Settings {
 	//Block Stat Modifiers
 	cinderstoneBlockHardness = (float) settings.get("Block Stats", "Cinderstone Block Hardness", 5.0).getDouble(cinderstoneBlockHardness);
 	cinderstoneBlockResistance = (float) settings.get("Block Stats", "Cinderstone Block Resistance", 8.0).getDouble(cinderstoneBlockResistance);
+	cinderstoneBlockLightValue = (float) settings.get("Furnace", "Dragon Bezoar Furnace Light Value", 1.0).getDouble(cinderstoneBlockLightValue);
 
 	thrakaBlockHardness = (float) settings.get("Block Stats", "Thraka Block Hardness", 7.0).getDouble(thrakaBlockHardness);
 	thrakaBlockResistance = (float) settings.get("Block Stats", "Thraka Block Resistance", 12.0).getDouble(thrakaBlockResistance);
 
 	pyralisBlockHardness = (float) settings.get("Block Stats", "Pyralis Block Hardness", 10.0).getDouble(pyralisBlockHardness);
 	pyralisBlockResistance = (float) settings.get("Block Stats", "Pyralis Block Resistance", 20.0).getDouble(pyralisBlockResistance);
+	pyralisBlockLightValue = (float) settings.get("Furnace", "Dragon Bezoar Furnace Light Value", 0.7).getDouble(pyralisBlockLightValue);
 
 	dragonbezoarBlockHardness = (float) settings.get("Block Stats", "Dragon Bezoar Block Hardness", 12.0).getDouble(dragonbezoarBlockHardness);
 	dragonbezoarBlockResistance = (float) settings.get("Block Stats", "Dragon Bezoar Block Resistance", 40.0).getDouble(dragonbezoarBlockResistance);
+	dragonbezoarBlockLightValue = (float) settings.get("Furnace", "Dragon Bezoar Furnace Light Value", 1.0).getDouble(dragonbezoarBlockLightValue);
 
 	settings.save();
 }}

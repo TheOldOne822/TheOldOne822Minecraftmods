@@ -61,9 +61,9 @@ public class WerewolfHandler {
 						|| stack.getItem().itemID == SimpleOresEW.item[0][26].itemID
 						|| stack.getItem().itemID == SimpleOresEW.item[1][26].itemID
 						|| stack.getItem().itemID == SimpleOresEW.item[2][26].itemID || stack.getItem().itemID == SimpleOresEW.item[3][26].itemID))
-				|| (PluginChecks.getSterlingInstalled() && (stack.getItem().itemID == SimpleOresEW.item[0][37].itemID
-						|| stack.getItem().itemID == SimpleOresEW.item[1][37].itemID
-						|| stack.getItem().itemID == SimpleOresEW.item[2][37].itemID || stack.getItem().itemID == SimpleOresEW.item[3][37].itemID)))
+				|| (PluginChecks.getSterlingInstalled() && (stack.getItem().itemID == SimpleOresEW.item[0][39].itemID
+						|| stack.getItem().itemID == SimpleOresEW.item[1][39].itemID
+						|| stack.getItem().itemID == SimpleOresEW.item[2][39].itemID || stack.getItem().itemID == SimpleOresEW.item[3][39].itemID)))
 			event.ammount += 5;
 
 	}
