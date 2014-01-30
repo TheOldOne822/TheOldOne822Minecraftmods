@@ -123,7 +123,7 @@ public class ItemExtendedBow extends ItemBow {
 			this.itemIcon = iconRegister.registerIcon("simpleoresew:" + "silverBow0");
 
 		if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
-			this.itemIcon = iconRegister.registerIcon("netherrocksfusion:" + "extendeddragonbezoarBow");
+			this.itemIcon = iconRegister.registerIcon("simpleoresew:" + "extendeddragonbezoarBow");
 		}
 
 		mythrilBow = iconRegister.registerIcon("simpleoresew:" + "mythrilBow0");

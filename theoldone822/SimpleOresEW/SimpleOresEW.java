@@ -1824,7 +1824,7 @@ public class SimpleOresEW {
 								Block.cobblestone, Block.cobblestone, Item.ingotIron, Item.ingotIron, Item.ingotIron,
 								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron };
 
-				for (int i = 33; i < 37; i++) {
+				for (int i = 33; i < 38; i++) {
 
 					item[0][i] =
 							new ItemExtendedSword(tungstenID + (i - 33) * 5 + 0, sotool[i]).setUnlocalizedName(
@@ -1890,7 +1890,7 @@ public class SimpleOresEW {
 								SimpleOres.plugins.akkamaddi.simpletungsten.SimpleTungstenCore.armorTungstenCarbide,
 								SimpleOres.plugins.akkamaddi.simpletungsten.SimpleTungstenCore.armorValfram, SimpleOres.plugins.akkamaddi.simpletungsten.SimpleTungstenCore.armorTungstenSteel, SimpleOres.plugins.akkamaddi.simpletungsten.SimpleTungstenCore.armorPrasinos };
 
-				for (int i = 26; i < 30; i++) {
+				for (int i = 26; i < 31; i++) {
 					for (int j = 0; j < 4; j++) {
 						armor[i][j] =
 								(ItemArmor) new ItemExtendedArmor(tungstenID + 25 + (i - 26) * 4 + j, soarmor[i],
@@ -1947,26 +1947,26 @@ public class SimpleOresEW {
 								OnlySilver.code.api.OnlySilverAPI.silverIngot.get(),
 								OnlySilver.code.api.OnlySilverAPI.silverIngot.get() };
 
-				for (int i = 37; i < 40; i++) {
+				for (int i = 38; i < 40; i++) {
 
 					item[0][i] =
-							new ItemExtendedSword(sterlingID + (i - 37) * 5 + 0, sotool[i]).setUnlocalizedName(
+							new ItemExtendedSword(sterlingID + (i - 38) * 5 + 0, sotool[i]).setUnlocalizedName(
 									"extendedWorkbenchso:tool0" + i).setTextureName(
 									"SimpleOresEW:tool" + toolmatNames[i] + "Sword");
 					item[1][i] =
-							new ItemExtendedShovel(sterlingID + (i - 37) * 5 + 1, sotool[i]).setUnlocalizedName(
+							new ItemExtendedShovel(sterlingID + (i - 38) * 5 + 1, sotool[i]).setUnlocalizedName(
 									"extendedWorkbenchso:tool1" + i).setTextureName(
 									"SimpleOresEW:tool" + toolmatNames[i] + "Shovel");
 					item[2][i] =
-							new ItemExtendedPickaxe(sterlingID + (i - 37) * 5 + 2, sotool[i]).setUnlocalizedName(
+							new ItemExtendedPickaxe(sterlingID + (i - 38) * 5 + 2, sotool[i]).setUnlocalizedName(
 									"extendedWorkbenchso:tool2" + i).setTextureName(
 									"SimpleOresEW:tool" + toolmatNames[i] + "Pickaxe");
 					item[3][i] =
-							new ItemExtendedAxe(sterlingID + (i - 37) * 5 + 3, sotool[i]).setUnlocalizedName(
+							new ItemExtendedAxe(sterlingID + (i - 38) * 5 + 3, sotool[i]).setUnlocalizedName(
 									"extendedWorkbenchso:tool3" + i).setTextureName(
 									"SimpleOresEW:tool" + toolmatNames[i] + "Axe");
 					item[4][i] =
-							new ItemExtendedHoe(sterlingID + (i - 37) * 5 + 4, sotool[i]).setUnlocalizedName(
+							new ItemExtendedHoe(sterlingID + (i - 38) * 5 + 4, sotool[i]).setUnlocalizedName(
 									"extendedWorkbenchso:tool4" + i).setTextureName(
 									"SimpleOresEW:tool" + toolmatNames[i] + "Hoe");
 
