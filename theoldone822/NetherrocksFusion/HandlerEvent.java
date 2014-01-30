@@ -2,7 +2,6 @@ package theoldone822.NetherrocksFusion;
 
 import java.util.Random;
 
-import Netherrocks.core.Armor;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
@@ -24,10 +23,10 @@ public class HandlerEvent {
 				EntityPlayer eventPlayer = (EntityPlayer) event.entity;
 
 				if (helmet != null && chest != null && legs != null && boots != null) {
-					if ((helmet.getItem() == Armor.fyriteHelm || helmet.getItem() == Content.cinderstoneHelm || helmet.getItem() == Content.dragonbezoarHelm || helmet.getItem() == Content.dragonbezoarChainHelm || (PluginChecks.getTungstenInstalled() && helmet.getItem() ==  SimpleOres.plugins.akkamaddi.simpletungsten.SimpleTungstenCore.valframHelm))
-							&& (chest.getItem() == Armor.fyriteChest || chest.getItem() == Content.cinderstoneChest || chest.getItem() == Content.dragonbezoarChest || chest.getItem() == Content.dragonbezoarChainChest || (PluginChecks.getTungstenInstalled() && chest.getItem() == SimpleOres.plugins.akkamaddi.simpletungsten.SimpleTungstenCore.valframChest))
-							&& (legs.getItem() == Armor.fyriteLegs || legs.getItem() == Content.cinderstoneLegs || legs.getItem() == Content.dragonbezoarLegs || legs.getItem() == Content.dragonbezoarChainLegs || (PluginChecks.getTungstenInstalled() && legs.getItem() == SimpleOres.plugins.akkamaddi.simpletungsten.SimpleTungstenCore.valframLegs))
-							&& (boots.getItem() == Armor.fyriteBoots || boots.getItem() == Content.cinderstoneBoots || boots.getItem() == Content.dragonbezoarBoots || boots.getItem() == Content.dragonbezoarChainBoots || (PluginChecks.getTungstenInstalled() && boots.getItem() == SimpleOres.plugins.akkamaddi.simpletungsten.SimpleTungstenCore.valframBoots))) {
+					if ((helmet.getItem() == alexndr.SimpleOres.plugins.netherrocks.Content.fyriteHelm || helmet.getItem() == Content.cinderstoneHelm || helmet.getItem() == Content.dragonbezoarHelm || helmet.getItem() == Content.dragonbezoarChainHelm || (PluginChecks.getTungstenInstalled() && helmet.getItem() ==  akkamaddi.simpletungsten.code.SimpleTungstenCore.valframHelm))
+							&& (chest.getItem() == alexndr.SimpleOres.plugins.netherrocks.Content.fyriteChest || chest.getItem() == Content.cinderstoneChest || chest.getItem() == Content.dragonbezoarChest || chest.getItem() == Content.dragonbezoarChainChest || (PluginChecks.getTungstenInstalled() && chest.getItem() == akkamaddi.simpletungsten.code.SimpleTungstenCore.valframChest))
+							&& (legs.getItem() == alexndr.SimpleOres.plugins.netherrocks.Content.fyriteLegs || legs.getItem() == Content.cinderstoneLegs || legs.getItem() == Content.dragonbezoarLegs || legs.getItem() == Content.dragonbezoarChainLegs || (PluginChecks.getTungstenInstalled() && legs.getItem() == akkamaddi.simpletungsten.code.SimpleTungstenCore.valframLegs))
+							&& (boots.getItem() == alexndr.SimpleOres.plugins.netherrocks.Content.fyriteBoots || boots.getItem() == Content.cinderstoneBoots || boots.getItem() == Content.dragonbezoarBoots || boots.getItem() == Content.dragonbezoarChainBoots || (PluginChecks.getTungstenInstalled() && boots.getItem() == akkamaddi.simpletungsten.code.SimpleTungstenCore.valframBoots))) {
 						if (event.source.equals(DamageSource.lava) || event.source.equals(DamageSource.inFire) || event.source.equals(DamageSource.onFire)) {
 							event.setCanceled(true);
 						}
@@ -50,10 +49,10 @@ public class HandlerEvent {
 				EntityPlayer eventPlayer = (EntityPlayer) event.entity;
 
 				if (helmet != null && chest != null && legs != null && boots != null) {
-					if ((helmet.getItem() == Content.dragonbezoarHelm || (PluginChecks.getCthonInstalled() && helmet.getItem() == SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.cthonHelm))
-							&& (chest.getItem() == Content.dragonbezoarChest || (PluginChecks.getCthonInstalled() && chest.getItem() == SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.cthonChest))
-							&& (legs.getItem() == Content.dragonbezoarLegs || (PluginChecks.getCthonInstalled() && legs.getItem() == SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.cthonLegs))
-							&& (boots.getItem() == Content.dragonbezoarBoots || (PluginChecks.getCthonInstalled() && boots.getItem() == SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.cthonBoots))) {
+					if ((helmet.getItem() == Content.dragonbezoarHelm || (PluginChecks.getCthonInstalled() && helmet.getItem() == akkamaddi.cthon.core.SimpleCthonCore.cthonHelm))
+							&& (chest.getItem() == Content.dragonbezoarChest || (PluginChecks.getCthonInstalled() && chest.getItem() == akkamaddi.cthon.core.SimpleCthonCore.cthonChest))
+							&& (legs.getItem() == Content.dragonbezoarLegs || (PluginChecks.getCthonInstalled() && legs.getItem() == akkamaddi.cthon.core.SimpleCthonCore.cthonLegs))
+							&& (boots.getItem() == Content.dragonbezoarBoots || (PluginChecks.getCthonInstalled() && boots.getItem() == akkamaddi.cthon.core.SimpleCthonCore.cthonBoots))) {
 						if (event.source.equals(DamageSource.wither)) {
 							event.setCanceled(true);
 						}
@@ -77,10 +76,10 @@ public class HandlerEvent {
 				EntityPlayer eventPlayer = (EntityPlayer) event.entity;
 
 				if (helmet != null && chest != null && legs != null && boots != null) {
-					if ((helmet.getItem() == Armor.illumeniteHelm || helmet.getItem() == Content.cinderstoneHelm || helmet.getItem() == Content.dragonbezoarHelm || helmet.getItem() == Content.dragonbezoarChainHelm || (PluginChecks.getCobaltInstalled() && helmet.getItem() == SimpleOres.plugins.akkamaddi.simplecobalt.SimpleCobaltCore.blueDriftSteelHelm))
-							&& (chest.getItem() == Armor.illumeniteChest || chest.getItem() == Content.cinderstoneChest || chest.getItem() == Content.dragonbezoarChest || chest.getItem() == Content.dragonbezoarChainChest || (PluginChecks.getCobaltInstalled() && chest.getItem() == SimpleOres.plugins.akkamaddi.simplecobalt.SimpleCobaltCore.blueDriftSteelChest))
-							&& (legs.getItem() == Armor.illumeniteLegs || legs.getItem() == Content.cinderstoneLegs || legs.getItem() == Content.dragonbezoarLegs || legs.getItem() == Content.dragonbezoarChainLegs || (PluginChecks.getCobaltInstalled() && legs.getItem() == SimpleOres.plugins.akkamaddi.simplecobalt.SimpleCobaltCore.blueDriftSteelLegs))
-							&& (boots.getItem() == Armor.illumeniteBoots || boots.getItem() == Content.cinderstoneBoots || boots.getItem() == Content.dragonbezoarBoots || boots.getItem() == Content.dragonbezoarChainBoots || (PluginChecks.getCobaltInstalled() && boots.getItem() == SimpleOres.plugins.akkamaddi.simplecobalt.SimpleCobaltCore.blueDriftSteelBoots))) {
+					if ((helmet.getItem() == alexndr.SimpleOres.plugins.netherrocks.Content.illumeniteHelm || helmet.getItem() == Content.cinderstoneHelm || helmet.getItem() == Content.dragonbezoarHelm || helmet.getItem() == Content.dragonbezoarChainHelm || (PluginChecks.getCobaltInstalled() && helmet.getItem() == akkamaddi.simplecobalt.code.SimpleCobaltCore.blueDriftSteelHelm))
+							&& (chest.getItem() == alexndr.SimpleOres.plugins.netherrocks.Content.illumeniteChest || chest.getItem() == Content.cinderstoneChest || chest.getItem() == Content.dragonbezoarChest || chest.getItem() == Content.dragonbezoarChainChest || (PluginChecks.getCobaltInstalled() && chest.getItem() == akkamaddi.simplecobalt.code.SimpleCobaltCore.blueDriftSteelChest))
+							&& (legs.getItem() == alexndr.SimpleOres.plugins.netherrocks.Content.illumeniteLegs || legs.getItem() == Content.cinderstoneLegs || legs.getItem() == Content.dragonbezoarLegs || legs.getItem() == Content.dragonbezoarChainLegs || (PluginChecks.getCobaltInstalled() && legs.getItem() == akkamaddi.simplecobalt.code.SimpleCobaltCore.blueDriftSteelLegs))
+							&& (boots.getItem() == alexndr.SimpleOres.plugins.netherrocks.Content.illumeniteBoots || boots.getItem() == Content.cinderstoneBoots || boots.getItem() == Content.dragonbezoarBoots || boots.getItem() == Content.dragonbezoarChainBoots || (PluginChecks.getCobaltInstalled() && boots.getItem() == akkamaddi.simplecobalt.code.SimpleCobaltCore.blueDriftSteelBoots))) {
 						if (event.source.equals(DamageSource.fall)) {
 							event.setCanceled(true);
 						}

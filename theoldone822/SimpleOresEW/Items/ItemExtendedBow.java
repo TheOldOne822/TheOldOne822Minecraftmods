@@ -123,7 +123,7 @@ public class ItemExtendedBow extends ItemBow {
 			this.itemIcon = iconRegister.registerIcon("simpleoresew:" + "silverBow0");
 
 		if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
-			this.itemIcon = iconRegister.registerIcon("netherrocksfusion:" + "extendeddragonbezoarBow");
+			this.itemIcon = iconRegister.registerIcon("simpleoresew:" + "extendeddragonbezoarBow");
 		}
 
 		mythrilBow = iconRegister.registerIcon("simpleoresew:" + "mythrilBow0");
@@ -450,23 +450,23 @@ public class ItemExtendedBow extends ItemBow {
 
 				if (PluginChecks.getSimpleInstalled()) {
 					if (itemID == SimpleOresEW.extendedmythrilBow.itemID) {
-						var8.setDamage(var8.getDamage() + SimpleOres.core.Settings.mythrilBowDamageModifier * increaseBowDamage * 0.5D + 0.5D);
+						var8.setDamage(var8.getDamage() + alexndr.SimpleOres.api.helpers.CoreHelper.coreSettings.mythrilBowDamageModifier * increaseBowDamage * 0.5D + 0.5D);
 					}
 
 					if (itemID == SimpleOresEW.extendedonyxBow.itemID) {
-						var8.setDamage(var8.getDamage() + SimpleOres.core.Settings.onyxBowDamageModifier * increaseBowDamage * 0.5D + 0.5D);
+						var8.setDamage(var8.getDamage() + alexndr.SimpleOres.api.helpers.CoreHelper.coreSettings.onyxBowDamageModifier * increaseBowDamage * 0.5D + 0.5D);
 					}
 				}
 				if (PluginChecks.getFusionInstalled()) {
 					if (itemID == SimpleOresEW.extendedthyriumBow.itemID) {
-						var8.setDamage(var8.getDamage() + SimpleOres.plugins.fusion.Settings.thyriumBowDamageModifier * increaseBowDamage
+						var8.setDamage(var8.getDamage() + alexndr.SimpleOres.plugins.fusion.Settings.thyriumBowDamageModifier * increaseBowDamage
 								* 0.5D + 0.5D);
 					}
 
 					if (itemID == SimpleOresEW.extendedsinisiteBow.itemID) {
-						var8.setDamage(var8.getDamage() + SimpleOres.plugins.fusion.Settings.sinisiteBowDamageModifier * increaseBowDamage
+						var8.setDamage(var8.getDamage() + alexndr.SimpleOres.plugins.fusion.Settings.sinisiteBowDamageModifier * increaseBowDamage
 								* 0.5D + 0.5D);
-						var8.setKnockbackStrength(k + SimpleOres.plugins.fusion.Settings.sinisiteBowKnockbackModifier);
+						var8.setKnockbackStrength(k + alexndr.SimpleOres.plugins.fusion.Settings.sinisiteBowKnockbackModifier);
 					}
 				}
 				if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)

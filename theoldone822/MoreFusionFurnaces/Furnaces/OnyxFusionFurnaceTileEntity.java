@@ -2,8 +2,8 @@ package theoldone822.MoreFusionFurnaces.Furnaces;
 
 import java.util.Random;
 
-import SimpleOres.core.Settings;
-import SimpleOres.plugins.fusion.FusionRecipes;
+import alexndr.SimpleOres.api.helpers.CoreHelper;
+import alexndr.SimpleOres.plugins.fusion.FusionRecipes;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -345,9 +345,9 @@ public class OnyxFusionFurnaceTileEntity extends TileEntity implements ISidedInv
     	int k;
     	int r = generator.nextInt(100);
     	
-    	if(r <= Settings.onyxFurnaceMultiChance)
+    	if(r <= CoreHelper.coreSettings.onyxFurnaceMultiChance)
     	{
-    		k = Settings.onyxFurnaceMultiplier;
+    		k = CoreHelper.coreSettings.onyxFurnaceMultiplier;
     	}
     	
        	else

@@ -97,12 +97,12 @@ public class NetherrocksFusion {
 		GameRegistry.registerTileEntity(SuperFusionFurnaceTileEntity.class, "dragonbezoarFusionFurnace");
 		GameRegistry.registerTileEntity(SuperFurnaceTileEntity.class, "dragonbezoarFurnace");
 
-		rendererCinderstone = SimpleOres.core.SimpleOres.proxy.addArmor("cinderstone");
-		rendererThraka = SimpleOres.core.SimpleOres.proxy.addArmor("thraka");
-		rendererPyralis = SimpleOres.core.SimpleOres.proxy.addArmor("pyralis");
-		rendererPyralis = SimpleOres.core.SimpleOres.proxy.addArmor("pyralischain");
-		rendererDragonBezoar = SimpleOres.core.SimpleOres.proxy.addArmor("dragonbezoar");
-		rendererDragonBezoar = SimpleOres.core.SimpleOres.proxy.addArmor("dragonbezoarchain");
+		rendererCinderstone = alexndr.SimpleOres.core.SimpleOres.proxy.addArmor("cinderstone");
+		rendererThraka = alexndr.SimpleOres.core.SimpleOres.proxy.addArmor("thraka");
+		rendererPyralis = alexndr.SimpleOres.core.SimpleOres.proxy.addArmor("pyralis");
+		rendererPyralis = alexndr.SimpleOres.core.SimpleOres.proxy.addArmor("pyralischain");
+		rendererDragonBezoar = alexndr.SimpleOres.core.SimpleOres.proxy.addArmor("dragonbezoar");
+		rendererDragonBezoar = alexndr.SimpleOres.core.SimpleOres.proxy.addArmor("dragonbezoarchain");
 		
         toolCinderstone.customCraftingMaterial = Content.cinderstoneIngot;
         toolPyralis.customCraftingMaterial = Content.pyralisIngot;

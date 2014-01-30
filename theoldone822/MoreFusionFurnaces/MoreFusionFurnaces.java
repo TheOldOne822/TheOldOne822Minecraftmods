@@ -3,8 +3,8 @@ package theoldone822.MoreFusionFurnaces;
 import java.io.File;
 import java.util.Arrays;
 
-import SimpleOres.core.Settings;
-import SimpleOres.plugins.fusion.Content;
+import alexndr.SimpleOres.api.helpers.CoreHelper;
+import alexndr.SimpleOres.plugins.fusion.Content;
 import theoldone822.MoreFusionFurnaces.Furnaces.MythrilFusionFurnace;
 import theoldone822.MoreFusionFurnaces.Furnaces.MythrilFusionFurnaceTileEntity;
 import theoldone822.MoreFusionFurnaces.Furnaces.OnyxFusionFurnace;
@@ -59,10 +59,10 @@ public class MoreFusionFurnaces {
 		onyxFusionFurnaceID = config.getBlock("Blocks", "Onyx Fusion Furnace", 487).getInt();
 		onyxFusionFurnaceOnID = config.getBlock("Blocks", "Onyx Fusion Furnace On", 488).getInt();
 		
-		mythrilFusionFurnace = new MythrilFusionFurnace(mythrilFusionFurnaceID, false).setHardness(Settings.mythrilFurnaceHardness).setResistance(Settings.mythrilFurnaceResistance).setUnlocalizedName("morefusionfurnaces:mythrilFusionFurnace");
-		mythrilFusionFurnaceOn = new MythrilFusionFurnace(mythrilFusionFurnaceOnID, true).setHardness(Settings.mythrilFurnaceHardness).setResistance(Settings.mythrilFurnaceResistance).setLightValue(Settings.mythrilFurnaceLightValue).setUnlocalizedName("morefusionfurnaces:mythrilFusionFurnaceOn");
-		onyxFusionFurnace = new OnyxFusionFurnace(onyxFusionFurnaceID, false).setHardness(Settings.onyxFurnaceHardness).setResistance(Settings.onyxFurnaceResistance).setUnlocalizedName("morefusionfurnaces:onyxFusionFurnace");
-		onyxFusionFurnaceOn = new OnyxFusionFurnace(onyxFusionFurnaceOnID, true).setHardness(Settings.onyxFurnaceHardness).setResistance(Settings.onyxFurnaceResistance).setLightValue(Settings.onyxFurnaceLightValue).setUnlocalizedName("morefusionfurnaces:onyxFusionFurnaceOn");
+		mythrilFusionFurnace = new MythrilFusionFurnace(mythrilFusionFurnaceID, false).setHardness(CoreHelper.coreSettings.mythrilFurnaceHardness).setResistance(CoreHelper.coreSettings.mythrilFurnaceResistance).setUnlocalizedName("morefusionfurnaces:mythrilFusionFurnace");
+		mythrilFusionFurnaceOn = new MythrilFusionFurnace(mythrilFusionFurnaceOnID, true).setHardness(CoreHelper.coreSettings.mythrilFurnaceHardness).setResistance(CoreHelper.coreSettings.mythrilFurnaceResistance).setLightValue(CoreHelper.coreSettings.mythrilFurnaceLightValue).setUnlocalizedName("morefusionfurnaces:mythrilFusionFurnaceOn");
+		onyxFusionFurnace = new OnyxFusionFurnace(onyxFusionFurnaceID, false).setHardness(CoreHelper.coreSettings.onyxFurnaceHardness).setResistance(CoreHelper.coreSettings.onyxFurnaceResistance).setUnlocalizedName("morefusionfurnaces:onyxFusionFurnace");
+		onyxFusionFurnaceOn = new OnyxFusionFurnace(onyxFusionFurnaceOnID, true).setHardness(CoreHelper.coreSettings.onyxFurnaceHardness).setResistance(CoreHelper.coreSettings.onyxFurnaceResistance).setLightValue(CoreHelper.coreSettings.onyxFurnaceLightValue).setUnlocalizedName("morefusionfurnaces:onyxFusionFurnaceOn");
 
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(mythrilFusionFurnace, true, new Object[]{
 				"XXX", "XYX", "XXX", Character.valueOf('X'), "ingotMythril", Character.valueOf('Y'), Content.fusionFurnace}));

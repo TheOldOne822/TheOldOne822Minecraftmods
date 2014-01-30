@@ -17,7 +17,7 @@ public class PluginChecks {
 
 	private static Class getFUSION() {
 		try {
-			return Class.forName("SimpleOres.plugins.fusion.FusionPlugin");
+			return Class.forName("alexndr.SimpleOres.plugins.fusion.FusionPlugin");
 		} catch (ClassNotFoundException e) {
 			return null;
 		}
@@ -25,7 +25,7 @@ public class PluginChecks {
 
 	private static Class getSIMPLE() {
 		try {
-			return Class.forName("SimpleOres.core.SimpleOres");
+			return Class.forName("alexndr.SimpleOres.core.SimpleOres");
 		} catch (ClassNotFoundException e) {
 			return null;
 		}
@@ -33,7 +33,7 @@ public class PluginChecks {
 
 	private static Class getNETHER() {
 		try {
-			return Class.forName("Netherrocks.core.Netherrocks");
+			return Class.forName("alexndr.SimpleOres.plugins.netherrocks.Netherrocks");
 		} catch (ClassNotFoundException e) {
 			return null;
 		}
@@ -57,7 +57,7 @@ public class PluginChecks {
 
 	private static Class getARSENIC() {
 		try {
-			return Class.forName("SimpleOres.plugins.akkamaddi.arsenic.code.ArsenicAndLace");
+			return Class.forName("akkamaddi.arsenic.code.ArsenicAndLace");
 		} catch (ClassNotFoundException e) {
 			return null;
 		}
@@ -65,7 +65,7 @@ public class PluginChecks {
 
 	private static Class getALCHEMY() {
 		try {
-			return Class.forName("SimpleOres.plugins.akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore");
+			return Class.forName("akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore");
 		} catch (ClassNotFoundException e) {
 			return null;
 		}
@@ -73,7 +73,7 @@ public class PluginChecks {
 
 	private static Class getCTHON() {
 		try {
-			return Class.forName("SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore");
+			return Class.forName("akkamaddi.cthon.core.SimpleCthonCore");
 		} catch (ClassNotFoundException e) {
 			return null;
 		}
@@ -81,7 +81,7 @@ public class PluginChecks {
 
 	private static Class getGLITTER() {
 		try {
-			return Class.forName("SimpleOres.plugins.akkamaddi.goldenglitter.code.GoldenGlitterCore");
+			return Class.forName("akkamaddi.goldenglitter.code.GoldenGlitterCore");
 		} catch (ClassNotFoundException e) {
 			return null;
 		}
@@ -89,7 +89,7 @@ public class PluginChecks {
 
 	private static Class getHADITE() {
 		try {
-			return Class.forName("SimpleOres.plugins.akkamaddi.hadite.code.HaditeCoalCore");
+			return Class.forName("akkamaddi.hadite.code.HaditeCoalCore");
 		} catch (ClassNotFoundException e) {
 			return null;
 		}
@@ -97,7 +97,7 @@ public class PluginChecks {
 
 	private static Class getCOBALT() {
 		try {
-			return Class.forName("SimpleOres.plugins.akkamaddi.simplecobalt.SimpleCobaltCore");
+			return Class.forName("akkamaddi.simplecobalt.code.SimpleCobaltCore");
 		} catch (ClassNotFoundException e) {
 			return null;
 		}
@@ -105,7 +105,7 @@ public class PluginChecks {
 
 	private static Class getTUNGSTEN() {
 		try {
-			return Class.forName("SimpleOres.plugins.akkamaddi.simpletungsten.SimpleTungstenCore");
+			return Class.forName("akkamaddi.simpletungsten.code.SimpleTungstenCore");
 		} catch (ClassNotFoundException e) {
 			return null;
 		}
@@ -113,7 +113,7 @@ public class PluginChecks {
 
 	private static Class getSTERLING() {
 		try {
-			return Class.forName("SimpleOres.plugins.akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore");
+			return Class.forName("akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore");
 		} catch (ClassNotFoundException e) {
 			return null;
 		}

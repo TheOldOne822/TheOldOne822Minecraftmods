@@ -1,6 +1,6 @@
 package theoldone822.NetherrocksFusion.Furnaces;
 
-import SimpleOres.plugins.fusion.FusionRecipes;
+import alexndr.SimpleOres.plugins.fusion.FusionRecipes;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;

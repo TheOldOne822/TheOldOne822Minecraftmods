@@ -1,7 +1,7 @@
 package theoldone822.MoreFusionFurnaces.Furnaces;
 
-import SimpleOres.core.Settings;
-import SimpleOres.plugins.fusion.FusionRecipes;
+import alexndr.SimpleOres.api.helpers.CoreHelper;
+import alexndr.SimpleOres.plugins.fusion.FusionRecipes;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -396,29 +396,29 @@ public class MythrilFusionFurnaceTileEntity extends TileEntity implements ISided
 
                 if (block == Block.woodSingleSlab)
                 {
-                    return 1125 / 4 * Settings.mythrilFurnaceMultiplier;
+                    return 1125 / 4 * CoreHelper.coreSettings.mythrilFurnaceMultiplier;
                 }
 
                 if (block.blockMaterial == Material.wood)
                 {
-                    return 1125 / 2 * Settings.mythrilFurnaceMultiplier;
+                    return 1125 / 2 * CoreHelper.coreSettings.mythrilFurnaceMultiplier;
                 }
                 
                 if (block == Block.coalBlock)
                 {
-                    return 30000 * Settings.mythrilFurnaceMultiplier;
+                    return 30000 * CoreHelper.coreSettings.mythrilFurnaceMultiplier;
                 }
             }
 
-            if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 375 * Settings.mythrilFurnaceMultiplier;
-            if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 375 * Settings.mythrilFurnaceMultiplier;
-            if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().equals("WOOD")) return 375 * Settings.mythrilFurnaceMultiplier;
-            if (i == Item.stick.itemID) return 375 / 2 * Settings.mythrilFurnaceMultiplier;
-            if (i == Item.coal.itemID) return 3000 * Settings.mythrilFurnaceMultiplier;
-            if (i == Item.bucketLava.itemID) return 37500 * Settings.mythrilFurnaceMultiplier;
-            if (i == Block.sapling.blockID) return 375 / 2 * Settings.mythrilFurnaceMultiplier;
-            if (i == Item.blazeRod.itemID) return 4500 * Settings.mythrilFurnaceMultiplier;
-            return GameRegistry.getFuelValue(par0ItemStack) * 1875 / 1000 * Settings.mythrilFurnaceMultiplier;
+            if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 375 * CoreHelper.coreSettings.mythrilFurnaceMultiplier;
+            if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 375 * CoreHelper.coreSettings.mythrilFurnaceMultiplier;
+            if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().equals("WOOD")) return 375 * CoreHelper.coreSettings.mythrilFurnaceMultiplier;
+            if (i == Item.stick.itemID) return 375 / 2 * CoreHelper.coreSettings.mythrilFurnaceMultiplier;
+            if (i == Item.coal.itemID) return 3000 * CoreHelper.coreSettings.mythrilFurnaceMultiplier;
+            if (i == Item.bucketLava.itemID) return 37500 * CoreHelper.coreSettings.mythrilFurnaceMultiplier;
+            if (i == Block.sapling.blockID) return 375 / 2 * CoreHelper.coreSettings.mythrilFurnaceMultiplier;
+            if (i == Item.blazeRod.itemID) return 4500 * CoreHelper.coreSettings.mythrilFurnaceMultiplier;
+            return GameRegistry.getFuelValue(par0ItemStack) * 1875 / 1000 * CoreHelper.coreSettings.mythrilFurnaceMultiplier;
         }
     }
 

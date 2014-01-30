@@ -21,10 +21,10 @@ public class ServerTick implements ITickHandler {
 			ItemStack boots = player.getCurrentItemOrArmor(1);
 
 			if (PluginChecks.getSterlingInstalled()
-					&& ((chest.getItem() == SimpleOres.plugins.akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.sterlingSteelChest || chest
+					&& ((chest.getItem() == akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.sterlingSteelChest || chest
 							.getItem() == SimpleOresEW.armor[31][1])
-							&& (legs.getItem() == SimpleOres.plugins.akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.sterlingSteelLegs || legs
-									.getItem() == SimpleOresEW.armor[31][2]) && (boots.getItem() == SimpleOres.plugins.akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.sterlingSteelBoots || boots
+							&& (legs.getItem() == akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.sterlingSteelLegs || legs
+									.getItem() == SimpleOresEW.armor[31][2]) && (boots.getItem() == akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.sterlingSteelBoots || boots
 							.getItem() == SimpleOresEW.armor[31][3]))) {
 				player.addPotionEffect(new PotionEffect(Potion.jump.getId(), 40, 0));
 			}
@@ -37,10 +37,10 @@ public class ServerTick implements ITickHandler {
 			ItemStack legs = player.getCurrentItemOrArmor(2);
 
 			if (PluginChecks.getSterlingInstalled()
-					&& ((helmet.getItem() == SimpleOres.plugins.akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.sterlingSteelHelm || helmet
+					&& ((helmet.getItem() == akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.sterlingSteelHelm || helmet
 							.getItem() == SimpleOresEW.armor[31][0])
-							&& (chest.getItem() == SimpleOres.plugins.akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.sterlingSteelChest || chest
-									.getItem() == SimpleOresEW.armor[31][1]) && (legs.getItem() == SimpleOres.plugins.akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.sterlingSteelLegs || legs
+							&& (chest.getItem() == akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.sterlingSteelChest || chest
+									.getItem() == SimpleOresEW.armor[31][1]) && (legs.getItem() == akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.sterlingSteelLegs || legs
 							.getItem() == SimpleOresEW.armor[31][2]))) {
 				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 40, 0));
 			}
@@ -54,12 +54,12 @@ public class ServerTick implements ITickHandler {
 			ItemStack boots = player.getCurrentItemOrArmor(1);
 
 			if (PluginChecks.getSterlingInstalled()
-					&& ((helmet.getItem() == SimpleOres.plugins.akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.blackSilverHelm || helmet
+					&& ((helmet.getItem() == akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.blackSilverHelm || helmet
 							.getItem() == SimpleOresEW.armor[32][0])
-							&& (chest.getItem() == SimpleOres.plugins.akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.blackSilverChest || chest
+							&& (chest.getItem() == akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.blackSilverChest || chest
 									.getItem() == SimpleOresEW.armor[32][1])
-							&& (legs.getItem() == SimpleOres.plugins.akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.blackSilverLegs || legs
-									.getItem() == SimpleOresEW.armor[32][2]) && (boots.getItem() == SimpleOres.plugins.akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.blackSilverBoots || boots
+							&& (legs.getItem() == akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.blackSilverLegs || legs
+									.getItem() == SimpleOresEW.armor[32][2]) && (boots.getItem() == akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.blackSilverBoots || boots
 							.getItem() == SimpleOresEW.armor[32][3]))) {
 				player.addPotionEffect(new PotionEffect(Potion.digSpeed.getId(), 40, 0));
 			}

@@ -3,9 +3,9 @@ package theoldone822.FusionItemGenerator;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import SimpleOres.core.Items;
-import SimpleOres.plugins.fusion.Content;
-import SimpleOres.plugins.fusion.FusionRecipes;
+import alexndr.SimpleOres.api.helpers.CoreHelper;
+import alexndr.SimpleOres.plugins.fusion.Content;
+import alexndr.SimpleOres.plugins.fusion.FusionRecipes;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -25,13 +25,13 @@ public class FusionItemGenerator {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
     	FusionRecipes.smelting().addSmelting(new ItemStack(Item.bucketWater, 0, 0), new ItemStack(Item.bucketLava, 0, 0), new ItemStack(Block.cobblestone, 0, 0), new ItemStack(Block.cobblestone, 1, 0), 0.0F);
-    	FusionRecipes.smelting().addSmelting(new ItemStack(Items.copperBucketWater, 0, 0), new ItemStack(Item.bucketLava, 0, 0), new ItemStack(Block.cobblestone, 0, 0), new ItemStack(Block.cobblestone, 1, 0), 0.0F);
+    	FusionRecipes.smelting().addSmelting(new ItemStack(CoreHelper.coreContent.copperBucketWater, 0, 0), new ItemStack(Item.bucketLava, 0, 0), new ItemStack(Block.cobblestone, 0, 0), new ItemStack(Block.cobblestone, 1, 0), 0.0F);
     	FusionRecipes.smelting().addSmelting(new ItemStack(Item.bucketWater, 0, 0), new ItemStack(Block.dirt, 0, 0), new ItemStack(Item.seeds, 0, 0), new ItemStack(Item.wheat, 1, 0), 0.0F);
     	FusionRecipes.smelting().addSmelting(new ItemStack(Item.bucketWater, 0, 0), new ItemStack(Block.dirt, 0, 0), new ItemStack(Item.pumpkinSeeds, 0, 0), new ItemStack(Block.pumpkin, 1, 0), 0.0F);
     	FusionRecipes.smelting().addSmelting(new ItemStack(Item.bucketWater, 0, 0), new ItemStack(Block.dirt, 0, 0), new ItemStack(Item.melonSeeds, 0, 0), new ItemStack(Item.melon, 1, 0), 0.0F);
-    	FusionRecipes.smelting().addSmelting(new ItemStack(Items.copperBucketWater, 0, 0), new ItemStack(Block.dirt, 0, 0), new ItemStack(Item.seeds, 0, 0), new ItemStack(Item.wheat, 1, 0), 0.0F);
-    	FusionRecipes.smelting().addSmelting(new ItemStack(Items.copperBucketWater, 0, 0), new ItemStack(Block.dirt, 0, 0), new ItemStack(Item.pumpkinSeeds, 0, 0), new ItemStack(Block.pumpkin, 1, 0), 0.0F);
-    	FusionRecipes.smelting().addSmelting(new ItemStack(Items.copperBucketWater, 0, 0), new ItemStack(Block.dirt, 0, 0), new ItemStack(Item.melonSeeds, 0, 0), new ItemStack(Item.melon, 1, 0), 0.0F);
+    	FusionRecipes.smelting().addSmelting(new ItemStack(CoreHelper.coreContent.copperBucketWater, 0, 0), new ItemStack(Block.dirt, 0, 0), new ItemStack(Item.seeds, 0, 0), new ItemStack(Item.wheat, 1, 0), 0.0F);
+    	FusionRecipes.smelting().addSmelting(new ItemStack(CoreHelper.coreContent.copperBucketWater, 0, 0), new ItemStack(Block.dirt, 0, 0), new ItemStack(Item.pumpkinSeeds, 0, 0), new ItemStack(Block.pumpkin, 1, 0), 0.0F);
+    	FusionRecipes.smelting().addSmelting(new ItemStack(CoreHelper.coreContent.copperBucketWater, 0, 0), new ItemStack(Block.dirt, 0, 0), new ItemStack(Item.melonSeeds, 0, 0), new ItemStack(Item.melon, 1, 0), 0.0F);
     	FusionRecipes.smelting().addSmelting(new ItemStack(Block.sapling, 0, 0), new ItemStack(Block.sapling, 0, 0), new ItemStack(Item.appleRed, 0, 0), new ItemStack(Item.appleRed, 1, 0), 0.0F);
     	FusionRecipes.smelting().addSmelting(new ItemStack(Block.sapling, 0, 0), new ItemStack(Block.sapling, 0, 0), new ItemStack(Block.sapling, 0, 0), new ItemStack(Block.wood, 1, 0), 0.0F);
     	FusionRecipes.smelting().addSmelting(new ItemStack(Block.sapling, 0, 1), new ItemStack(Block.sapling, 0, 1), new ItemStack(Block.sapling, 0, 1), new ItemStack(Block.wood, 1, 1), 0.0F);
