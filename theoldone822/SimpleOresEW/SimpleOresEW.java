@@ -38,7 +38,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 @Mod(
 		modid = "simpleoresew",
 		name = "Simple Ore Extended Work Bench Plugin",
-		version = "1.7",
+		version = "1.8",
 		dependencies = "required-after:extendedWorkbench; after:simpleores; after:simpleoresfusion; after:onlysilver; after:MoCreatures; after:SimpleArsenic; after:netherrocksfusion; after:netherrocks; after:classicalalchemy; after:simplecthon; after:goldenglitter; after:haditecoal; after:simplecobalt; after:simpletungsten; after:sterlingandblack")
 public class SimpleOresEW {
 
@@ -1752,7 +1752,7 @@ public class SimpleOresEW {
 						new Object[] { Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
 								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
 								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
-								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
 								Item.ingotIron, SimpleOres.plugins.akkamaddi.simplecobalt.SimpleCobaltCore.cobaltIngot,
 								SimpleOres.plugins.akkamaddi.simplecobalt.SimpleCobaltCore.blueDriftSteelIngot,
 								SimpleOres.plugins.akkamaddi.simplecobalt.SimpleCobaltCore.blueCeladonIngot,
@@ -1763,7 +1763,7 @@ public class SimpleOresEW {
 								EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
 								EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
 								EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
-								EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
+								EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
 								EnumArmorMaterial.IRON, SimpleOres.plugins.akkamaddi.simplecobalt.SimpleCobaltCore.armorCobalt,
 								SimpleOres.plugins.akkamaddi.simplecobalt.SimpleCobaltCore.armorBlueDriftSteel,
 								SimpleOres.plugins.akkamaddi.simplecobalt.SimpleCobaltCore.armorBlueCeladon,
@@ -1873,7 +1873,7 @@ public class SimpleOresEW {
 								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
 								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
 								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
-								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+								Item.ingotIron, Item.ingotIron, Item.ingotIron,
 								SimpleOres.plugins.akkamaddi.simpletungsten.SimpleTungstenCore.tungstenIngot,
 								SimpleOres.plugins.akkamaddi.simpletungsten.SimpleTungstenCore.tungstenCarbideIngot,
 								SimpleOres.plugins.akkamaddi.simpletungsten.SimpleTungstenCore.valframIngot, SimpleOres.plugins.akkamaddi.simpletungsten.SimpleTungstenCore.tungstenSteelIngot, SimpleOres.plugins.akkamaddi.simpletungsten.SimpleTungstenCore.prasinosIngot };
@@ -1884,7 +1884,7 @@ public class SimpleOresEW {
 								EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
 								EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
 								EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
-								EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
+								EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
 								EnumArmorMaterial.IRON,
 								SimpleOres.plugins.akkamaddi.simpletungsten.SimpleTungstenCore.armorTungsten,
 								SimpleOres.plugins.akkamaddi.simpletungsten.SimpleTungstenCore.armorTungstenCarbide,
@@ -1997,7 +1997,7 @@ public class SimpleOresEW {
 								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
 								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
 								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
-								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+								Item.ingotIron, Item.ingotIron,
 								SimpleOres.plugins.akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.sterlingSteelIngot,
 								SimpleOres.plugins.akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.blackSilverIngot };
 				EnumArmorMaterial[] soarmor =
@@ -2008,7 +2008,7 @@ public class SimpleOresEW {
 								EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
 								EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
 								EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
-								EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
+								EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
 								SimpleOres.plugins.akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.armorSterlingSteel,
 								SimpleOres.plugins.akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.armorBlackSilver };
 
