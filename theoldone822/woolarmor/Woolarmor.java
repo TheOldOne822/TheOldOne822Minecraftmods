@@ -4,12 +4,11 @@ import java.util.Arrays;
 
 import org.omg.CosNaming.BindingIterator;
 
-import theoldone822.woolarmor.Items.ItemExtendedArmor;
-import net.minecraftforge.common.Configuration;
-import net.minecraftforge.common.EnumHelper;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraft.block.Block;
-import net.minecraft.item.EnumArmorMaterial;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
@@ -24,16 +23,13 @@ import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@NetworkMod(clientSideRequired = true, serverSideRequired = false)
-@Mod(modid = "woolarmor", name = "Wool Armor", version = "1.1")
+@Mod(modid = "woolarmor", name = "Wool Armor", version = "1.2")
 public class Woolarmor {
 
-	public static Configuration config;
-	public static EnumArmorMaterial armorWool;
+	public static ArmorMaterial armorWool;
 	public static Item woolHelm;
 	public static Item woolChest;
 	public static Item woolLegs;
@@ -42,15 +38,6 @@ public class Woolarmor {
 	public static Item extendedwoolChest;
 	public static Item extendedwoolLegs;
 	public static Item extendedwoolBoots;
-
-	public static class extendedValues {
-
-		// armor
-		public static float increaseArmorDurability = 1.5f;
-		// damage reduction increased
-
-
-	}
 
 	@SidedProxy(clientSide = "theoldone822.woolarmor.client.ClientProxy", serverSide = "theoldone822.woolarmor.CommonProxy")
 	public static CommonProxy proxy;
@@ -67,13 +54,12 @@ public class Woolarmor {
 		metadata.authorList = Arrays.asList("theoldone822");
 		metadata.description = "Adds wool armor.";
 
-		config = new Configuration(event.getSuggestedConfigurationFile());
-		config.load();
+
 		armorWool = EnumHelper.addArmorMaterial("WOOL", 3, new int[] { 1, 2, 1, 1 }, 8);
-		woolHelm = new ItemArmor((config.getItem("ID", 26040)).getInt(), armorWool, 0, 0).setUnlocalizedName("woolarmor:woolHelmet").setTextureName("WoolArmor:WoolHelmet");
-		woolChest = new ItemArmor((config.getItem("ID", 26040)).getInt() + 1, armorWool, 0, 1).setUnlocalizedName("woolarmor:woolChestplate").setTextureName("WoolArmor:WoolChestplate");
-		woolLegs = new ItemArmor((config.getItem("ID", 26040)).getInt() + 2, armorWool, 0, 2).setUnlocalizedName("woolarmor:woolLeggings").setTextureName("WoolArmor:WoolLeggings");
-		woolBoots = new ItemArmor((config.getItem("ID", 26040)).getInt() + 3, armorWool, 0, 3).setUnlocalizedName("woolarmor:woolBoots").setTextureName("WoolArmor:WoolBoots");
+		woolHelm = new ItemArmor(armorWool, 0, 0).setUnlocalizedName("woolarmor:woolHelmet").setTextureName("WoolArmor:WoolHelmet");
+		woolChest = new ItemArmor(armorWool, 0, 1).setUnlocalizedName("woolarmor:woolChestplate").setTextureName("WoolArmor:WoolChestplate");
+		woolLegs = new ItemArmor(armorWool, 0, 2).setUnlocalizedName("woolarmor:woolLeggings").setTextureName("WoolArmor:WoolLeggings");
+		woolBoots = new ItemArmor(armorWool, 0, 3).setUnlocalizedName("woolarmor:woolBoots").setTextureName("WoolArmor:WoolBoots");
 
 		LanguageRegistry.addName(woolHelm, "Wool Helmet");
 		LanguageRegistry.addName(woolChest, "Wool Chestplate");
@@ -85,39 +71,14 @@ public class Woolarmor {
 		GameRegistry.registerItem(woolLegs, "WoolLeggings");
 		GameRegistry.registerItem(woolBoots, "WoolBoots");
 		
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(woolHelm, true, new Object[] { "XXX", "X X", Character.valueOf('X'), Block.cloth }));
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(woolChest, true, new Object[] { "X X", "XXX", "XXX", Character.valueOf('X'), Block.cloth }));
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(woolLegs, true, new Object[] { "XXX", "X X", "X X", Character.valueOf('X'), Block.cloth }));
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(woolBoots, true, new Object[] { "X X", "X X", Character.valueOf('X'), Block.cloth }));
-
-
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(woolHelm, true, new Object[] { "XXX", "X X", Character.valueOf('X'), Blocks.wool }));
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(woolChest, true, new Object[] { "X X", "XXX", "XXX", Character.valueOf('X'), Blocks.wool }));
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(woolLegs, true, new Object[] { "XXX", "X X", "X X", Character.valueOf('X'), Blocks.wool }));
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(woolBoots, true, new Object[] { "X X", "X X", Character.valueOf('X'), Blocks.wool }));
 	}
 
 	@EventHandler
 	public void Initiatewoolarmor(FMLInitializationEvent initEvent) {
 
-		if (EWAPI.getEWInstalled()) {
-			int armorRenderer[] = new int[1];
-
-			if (FMLCommonHandler.instance().getEffectiveSide().isClient())
-				armorRenderer = new int[] { RenderingRegistry.addNewArmourRendererPrefix("extendedCloth") };
-
-			extendedwoolHelm = (ItemArmor) new ItemExtendedArmor((config.getItem("ID", 26040)).getInt() + 4, armorWool, armorRenderer[0], 0).setUnlocalizedName("extendedWorkbenchwa:woolHelmet").setTextureName("WoolArmor:extendedWoolHelmet");
-			extendedwoolChest = (ItemArmor) new ItemExtendedArmor((config.getItem("ID", 26040)).getInt() + 5, armorWool, armorRenderer[0], 1).setUnlocalizedName("extendedWorkbenchwa:woolChestplate").setTextureName("WoolArmor:extendedWoolChestplate");
-			extendedwoolLegs = (ItemArmor) new ItemExtendedArmor((config.getItem("ID", 26040)).getInt() + 6, armorWool, armorRenderer[0], 2).setUnlocalizedName("extendedWorkbenchwa:woolLeggings").setTextureName("WoolArmor:extendedWoolLeggings");
-			extendedwoolBoots = (ItemArmor) new ItemExtendedArmor((config.getItem("ID", 26040)).getInt() + 7, armorWool, armorRenderer[0], 3).setUnlocalizedName("extendedWorkbenchwa:woolBoots").setTextureName("WoolArmor:extendedWoolBoots");
-
-			LanguageRegistry.addName(extendedwoolHelm, "Extended Wool Helmet");
-			LanguageRegistry.addName(extendedwoolChest, "Extended Wool Chestplate");
-			LanguageRegistry.addName(extendedwoolLegs, "Extended Wool Leggings");
-			LanguageRegistry.addName(extendedwoolBoots, "Extended Wool Boots");
-
-			EWAPI.addRecipe(new ItemStack(extendedwoolBoots, 1), new Object[] { "X X", "X X", "X X", ('X'), Block.cloth });
-			EWAPI.addRecipe(new ItemStack(extendedwoolLegs, 1), new Object[] { "XXX", "XXX", "X X", "X X", ('X'), Block.cloth });
-			EWAPI.addRecipe(new ItemStack(extendedwoolChest, 1), new Object[] { "X X", "XXX", "XXX", "XXX", ('X'), Block.cloth });
-			EWAPI.addRecipe(new ItemStack(extendedwoolHelm, 1), new Object[] { "XXX", "XXX", "X X", ('X'), Block.cloth });
-
-		}
-		config.save();
 	}
 }
