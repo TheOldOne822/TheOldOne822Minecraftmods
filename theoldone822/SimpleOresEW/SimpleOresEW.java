@@ -679,21 +679,21 @@ public class SimpleOresEW {
 							"Illumenite").setUnlocalizedName("extendedWorkbenchnr:armorIllumeniteBoots").setTextureName(
 							"SimpleOresEW:armorextendedIllumeniteBoots");
 
-			EWAPI.addRecipe(new ItemStack(extendedfyriteHelm, 1), new Object[] { "X X", "X X", "X X", ('X'),
+			EWAPI.addRecipe(new ItemStack(extendedfyriteBoots, 1), new Object[] { "X X", "X X", "X X", ('X'),
 					Netherrocks.core.Items.fyriteIngot });
-			EWAPI.addRecipe(new ItemStack(extendedfyriteChest, 1), new Object[] { "XXX", "XXX", "X X", "X X", ('X'),
+			EWAPI.addRecipe(new ItemStack(extendedfyriteLegs, 1), new Object[] { "XXX", "XXX", "X X", "X X", ('X'),
 					Netherrocks.core.Items.fyriteIngot });
-			EWAPI.addRecipe(new ItemStack(extendedfyriteLegs, 1), new Object[] { "X X", "XXX", "XXX", "XXX", ('X'),
+			EWAPI.addRecipe(new ItemStack(extendedfyriteChest, 1), new Object[] { "X X", "XXX", "XXX", "XXX", ('X'),
 					Netherrocks.core.Items.fyriteIngot });
-			EWAPI.addRecipe(new ItemStack(extendedfyriteBoots, 1), new Object[] { "XXX", "XXX", "X X", ('X'),
+			EWAPI.addRecipe(new ItemStack(extendedfyriteHelm, 1), new Object[] { "XXX", "XXX", "X X", ('X'),
 					Netherrocks.core.Items.fyriteIngot });
-			EWAPI.addRecipe(new ItemStack(extendedillumeniteHelm, 1), new Object[] { "X X", "X X", "X X", ('X'),
+			EWAPI.addRecipe(new ItemStack(extendedillumeniteBoots, 1), new Object[] { "X X", "X X", "X X", ('X'),
 					Netherrocks.core.Items.illumeniteIngot });
-			EWAPI.addRecipe(new ItemStack(extendedillumeniteChest, 1), new Object[] { "XXX", "XXX", "X X", "X X", ('X'),
+			EWAPI.addRecipe(new ItemStack(extendedillumeniteLegs, 1), new Object[] { "XXX", "XXX", "X X", "X X", ('X'),
 					Netherrocks.core.Items.illumeniteIngot });
-			EWAPI.addRecipe(new ItemStack(extendedillumeniteLegs, 1), new Object[] { "X X", "XXX", "XXX", "XXX", ('X'),
+			EWAPI.addRecipe(new ItemStack(extendedillumeniteChest, 1), new Object[] { "X X", "XXX", "XXX", "XXX", ('X'),
 					Netherrocks.core.Items.illumeniteIngot });
-			EWAPI.addRecipe(new ItemStack(extendedillumeniteBoots, 1), new Object[] { "XXX", "XXX", "X X", ('X'),
+			EWAPI.addRecipe(new ItemStack(extendedillumeniteHelm, 1), new Object[] { "XXX", "XXX", "X X", ('X'),
 					Netherrocks.core.Items.illumeniteIngot });
 
 			LanguageRegistry.addName(extendedfyriteHelm, "Extended Fyrite Helmet");
