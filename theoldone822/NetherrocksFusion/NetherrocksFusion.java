@@ -30,7 +30,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
-@Mod(modid = "netherrocksfusion", name = "Netherrocks Fusion", version = "1.6", dependencies = "required-after:simpleores; required-after:simpleoresfusion; required-after:netherrocks")
+@Mod(modid = "netherrocksfusion", name = "Netherrocks Fusion", version = "1.7", dependencies = "required-after:simpleores; required-after:simpleoresfusion; required-after:netherrocks")
 public class NetherrocksFusion {
 
 	@SidedProxy(clientSide = "theoldone822.NetherrocksFusion.ProxyClient", serverSide = "theoldone822.NetherrocksFusion.ProxyCommon")	

@@ -171,7 +171,51 @@ public class Recipes {
 		GameRegistry.addSmelting(Content.largePyralisChunk.itemID, new ItemStack(Content.pyralisIngot, 1, 0), 0.6F);
 		GameRegistry.addSmelting(Content.largeDragonBezoarChunk.itemID, new ItemStack(Content.dragonbezoarIngot, 1, 0), 1.0F);
 
-		// Extended recipes
+		if (Settings.enableRecycling) {
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.cinderstoneHelm, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.netherQuartz, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.largeCinderstoneChunk), 15.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.cinderstoneChest, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack, 2, 0), new ItemStack(Item.netherQuartz, 2, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.largeCinderstoneChunk, 2, 0), 30.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.cinderstoneLegs, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack, 2, 0), new ItemStack(Item.netherQuartz, 2, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.largeCinderstoneChunk, 2, 0), 30.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.cinderstoneBoots, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.netherQuartz, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.largeCinderstoneChunk), 15.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.cinderstoneSword, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.netherQuartz, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.largeCinderstoneChunk), 15.0F);
+
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.thrakaHelm, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.glowstone, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.largeThrakaChunk), 15.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.thrakaChest, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack, 2, 0), new ItemStack(Item.glowstone, 2, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.largeThrakaChunk, 2, 0), 30.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.thrakaLegs, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack, 2, 0), new ItemStack(Item.glowstone, 2, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.largeThrakaChunk, 2, 0), 30.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.thrakaBoots, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.glowstone, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.largeThrakaChunk), 15.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.thrakaSword, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.glowstone, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.largeThrakaChunk), 15.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.thrakaShovel, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.glowstone, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.largeThrakaChunk), 15.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.thrakaPick, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.glowstone, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.largeThrakaChunk), 15.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.thrakaAxe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.glowstone, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.largeThrakaChunk), 15.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.thrakaHoe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.glowstone, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.largeThrakaChunk), 15.0F);
+
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.pyralisChainHelm, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.blazePowder), new ItemStack(Content.largePyralisChunk), 20.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.pyralisChainChest, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack, 2, 0), new ItemStack(Item.blazePowder), new ItemStack(Content.largePyralisChunk, 2, 0), 40.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.pyralisChainLegs, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack, 2, 0), new ItemStack(Item.blazePowder), new ItemStack(Content.largePyralisChunk, 2, 0), 40.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.pyralisBoots, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.blazePowder), new ItemStack(Content.largePyralisChunk), 20.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.pyralisChainHelm, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.blazePowder), new ItemStack(Content.largePyralisChunk), 20.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.pyralisChest, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack, 2, 0), new ItemStack(Item.blazePowder), new ItemStack(Content.largePyralisChunk, 2, 0), 40.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.pyralisLegs, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack, 2, 0), new ItemStack(Item.blazePowder), new ItemStack(Content.largePyralisChunk, 2, 0), 40.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.pyralisBoots, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.blazePowder), new ItemStack(Content.largePyralisChunk), 20.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.pyralisSword, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.blazePowder), new ItemStack(Content.largePyralisChunk), 20.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.pyralisShovel, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.blazePowder), new ItemStack(Content.largePyralisChunk), 20.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.pyralisPick, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.blazePowder), new ItemStack(Content.largePyralisChunk), 20.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.pyralisAxe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.blazePowder), new ItemStack(Content.largePyralisChunk), 20.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.pyralisHoe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.blazePowder), new ItemStack(Content.largePyralisChunk), 20.0F);
+
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.dragonbezoarChainHelm, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.blazePowder), new ItemStack(Content.largeDragonBezoarChunk), 20.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.dragonbezoarChainChest, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack, 2, 0), new ItemStack(Item.blazePowder), new ItemStack(Content.largeDragonBezoarChunk, 2, 0), 40.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.dragonbezoarChainLegs, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack, 2, 0), new ItemStack(Item.blazePowder), new ItemStack(Content.largeDragonBezoarChunk, 2, 0), 40.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.dragonbezoarChainBoots, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.blazePowder), new ItemStack(Content.largeDragonBezoarChunk), 20.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.dragonbezoarHelm, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.blazePowder), new ItemStack(Content.largeDragonBezoarChunk), 20.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.dragonbezoarChest, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack, 2, 0), new ItemStack(Item.blazePowder), new ItemStack(Content.largeDragonBezoarChunk, 2, 0), 40.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.dragonbezoarLegs, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack, 2, 0), new ItemStack(Item.blazePowder), new ItemStack(Content.largeDragonBezoarChunk, 2, 0), 40.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.dragonbezoarBoots, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.blazePowder), new ItemStack(Content.largeDragonBezoarChunk), 20.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.dragonbezoarSword, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.blazePowder), new ItemStack(Content.largeDragonBezoarChunk), 20.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.dragonbezoarShovel, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.blazePowder), new ItemStack(Content.largeDragonBezoarChunk), 20.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.dragonbezoarPick, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.blazePowder), new ItemStack(Content.largeDragonBezoarChunk), 20.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.dragonbezoarAxe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.blazePowder), new ItemStack(Content.largeDragonBezoarChunk), 20.0F);
+			FusionRecipes.smelting().addSmelting(new ItemStack(Content.dragonbezoarHoe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.netherrack), new ItemStack(Item.blazePowder), new ItemStack(Content.largeDragonBezoarChunk), 20.0F);
+		}
 
 	}
 }

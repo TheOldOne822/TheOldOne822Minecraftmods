@@ -86,6 +86,8 @@ public class Settings {
 	public static float dragonbezoarBlockResistance;
 	public static float dragonbezoarBlockLightValue;
 
+    public static boolean enableRecycling;
+
 
 	/**
 	 * The method that loads/creates the settings file. Values can be changed from true to false depending on user preference, and certain other values can be set. This is called by the main SimpleOres class.
@@ -177,6 +179,9 @@ public class Settings {
 	dragonbezoarBlockHardness = (float) settings.get("Block Stats", "Dragon Bezoar Block Hardness", 12.0).getDouble(dragonbezoarBlockHardness);
 	dragonbezoarBlockResistance = (float) settings.get("Block Stats", "Dragon Bezoar Block Resistance", 40.0).getDouble(dragonbezoarBlockResistance);
 	dragonbezoarBlockLightValue = (float) settings.get("Furnace", "Dragon Bezoar Furnace Light Value", 1.0).getDouble(dragonbezoarBlockLightValue);
+
+    // Recycling
+    enableRecycling= settings.get("Enable Recycling", "Enable item recycling recipes: false or true?", false).getBoolean(false);
 
 	settings.save();
 }}
