@@ -70,14 +70,15 @@ public class MithrilEW {
 		Object[] material = new Object [] {mod_Mithril.ingotSbBronze, mod_Mithril.ingotMithril};
 		Object[] handle = new Object[] {Block.cobblestone, Item.ingotIron};
 		String s = "extendedWorkbenchmi:tool" + (biggerTools == 0 ? "" : "b");
+		String t = "mithrilew:tool" + (biggerTools == 0 ? "" : "b");
 		
 		for(int i = 0; i < 2; i++)
 		{
-			item[0][i] = new ItemExtendedSword	(ID + i * 5 + 0, Enumtool[i]).setUnlocalizedName(s + "0" + i).setTextureName("mithrilew:tool" + "0" + i);
-			item[1][i] = new ItemExtendedShovel	(ID + i * 5 + 1, Enumtool[i]).setUnlocalizedName(s + "1" + i).setTextureName("mithrilew:tool" + "1" + i);
-			item[2][i] = new ItemExtendedPickaxe(ID + i * 5 + 2, Enumtool[i]).setUnlocalizedName(s + "2" + i).setTextureName("mithrilew:tool" + "2" + i);
-			item[3][i] = new ItemExtendedAxe	(ID + i * 5 + 3, Enumtool[i]).setUnlocalizedName(s + "3" + i).setTextureName("mithrilew:tool" + "3" + i);
-			item[4][i] = new ItemExtendedHoe	(ID + i * 5 + 4, Enumtool[i]).setUnlocalizedName(s + "4" + i).setTextureName("mithrilew:tool" + "4" + i);
+			item[0][i] = new ItemExtendedSword	(ID + i * 5 + 0, Enumtool[i]).setUnlocalizedName(s + "0" + i).setTextureName(t + "0" + i);
+			item[1][i] = new ItemExtendedShovel	(ID + i * 5 + 1, Enumtool[i]).setUnlocalizedName(s + "1" + i).setTextureName(t + "1" + i);
+			item[2][i] = new ItemExtendedPickaxe(ID + i * 5 + 2, Enumtool[i]).setUnlocalizedName(s + "2" + i).setTextureName(t + "2" + i);
+			item[3][i] = new ItemExtendedAxe	(ID + i * 5 + 3, Enumtool[i]).setUnlocalizedName(s + "3" + i).setTextureName(t + "3" + i);
+			item[4][i] = new ItemExtendedHoe	(ID + i * 5 + 4, Enumtool[i]).setUnlocalizedName(s + "4" + i).setTextureName(t + "4" + i);
 
 			EWAPI.addRecipe(new ItemStack(item[0][i], 1), new Object[] {" X ", " X ", " X ", " X ", "YXY", " Y ", ('X'), material[i], ('Y'), handle[i]});
 			EWAPI.addRecipe(new ItemStack(item[1][i], 1), new Object[] {" X ", " X ", " Y ", " Y ", " Y ", " Y ", ('X'), material[i], ('Y'), handle[i]});
