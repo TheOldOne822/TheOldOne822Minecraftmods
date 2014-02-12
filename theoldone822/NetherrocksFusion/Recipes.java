@@ -17,6 +17,18 @@ public class Recipes {
 		OreDictionary.registerOre("ingotThraka", new ItemStack(Content.thrakaIngot));
 		OreDictionary.registerOre("ingotPyralis", new ItemStack(Content.pyralisIngot));
 		OreDictionary.registerOre("ingotDragonBezoar", new ItemStack(Content.dragonbezoarIngot));
+		OreDictionary.registerOre("ingotFyrite", new ItemStack(Netherrocks.core.Items.fyriteIngot));
+		OreDictionary.registerOre("ingotMalachite", new ItemStack(Netherrocks.core.Items.malachiteIngot));
+		OreDictionary.registerOre("gemAshstone", new ItemStack(Netherrocks.core.Items.ashstoneGem));
+		OreDictionary.registerOre("ingotIllumenite", new ItemStack(Netherrocks.core.Items.illumeniteIngot));
+		OreDictionary.registerOre("gemDragonStone", new ItemStack(Netherrocks.core.Items.dragonstoneGem));
+		OreDictionary.registerOre("ingotArgonite", new ItemStack(Netherrocks.core.Items.argoniteIngot));
+		OreDictionary.registerOre("oreFyrite", new ItemStack(Netherrocks.core.Blocks.fyriteOre));
+		OreDictionary.registerOre("oreMalachite", new ItemStack(Netherrocks.core.Blocks.malachiteOre));
+		OreDictionary.registerOre("oreAshstone", new ItemStack(Netherrocks.core.Blocks.ashstoneOre));
+		OreDictionary.registerOre("oreIllumenite", new ItemStack(Netherrocks.core.Blocks.illumeniteOre));
+		OreDictionary.registerOre("oreDragonStone", new ItemStack(Netherrocks.core.Blocks.dragonstoneOre));
+		OreDictionary.registerOre("oreArgonite", new ItemStack(Netherrocks.core.Blocks.argoniteOre));
 
 		// Furnace
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.dragonbezoarFusionFurnace, true, new Object[] { "XXX", "XYX", "XXX", Character.valueOf('X'), "ingotDragonBezoar", Character.valueOf('Y'),
