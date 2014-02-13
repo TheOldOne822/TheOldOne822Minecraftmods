@@ -19,7 +19,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
-@Mod(modid = "wootzpigngray", name = "Wootz Pig and Gray", version = "1.0", dependencies = "required-after:simpleores; required-after:simpleoresfusion")
+@Mod(modid = "wootzpigngray", name = "Wootz Pig and Gray", version = "1.0", dependencies = "required-after:simpleores; required-after:simpleoresfusion; after:haditecoal; after:sterlingandblack")
 public class WootzPignGray {
 	@SidedProxy(clientSide = "theoldone822.WootzPignGray.ProxyClient", serverSide = "theoldone822.WootzPignGray.ProxyCommon")	
 	public static ProxyCommon proxy;

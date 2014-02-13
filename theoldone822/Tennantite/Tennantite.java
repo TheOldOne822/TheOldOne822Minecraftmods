@@ -46,8 +46,8 @@ public class Tennantite {
         config.load();
         oreTennantiteID = config.getBlock("Tennantite Ore", "Tennantite Ore", 3999).getInt();
         tennantiteSpawnRate = config.get("Tennantite Ore", "Tennantite Spawn Rate", 7).getInt();
-        tennantiteVeinSize = config.get("Tennantite Ore", "Tennantite Vein Size", 5).getInt();
-        tennantiteSpawnHeight = config.get("Tennantite Ore", "Tennantite Maximum Spawn Height", 36).getInt();
+        tennantiteVeinSize = config.get("Tennantite Ore", "Tennantite Vein Size", 6).getInt();
+        tennantiteSpawnHeight = config.get("Tennantite Ore", "Tennantite Maximum Spawn Height", 38).getInt();
         tennantiteMinSpawnHeight = config.get("Tennantite Ore", "Tennantite Minimum Spawn Height", 0).getInt();
 
         enableHigherDimensionGen = config.get("Higher World Gen", "Spawn Tennantite in higher dimensions? (Advanced)", false).getBoolean(enableHigherDimensionGen);

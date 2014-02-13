@@ -70,6 +70,7 @@ public class Settings {
 	public static float grayBlockResistance;
 
     public static boolean enableRecycling;
+    public static boolean enableOtherPigiron;
 
 
 	/**
@@ -125,7 +126,9 @@ public class Settings {
 	grayBlockResistance = (float) settings.get("Block Stats", "Gray Block Resistance", 10.0).getDouble(grayBlockResistance);
 
     // Recycling
-    enableRecycling= settings.get("Enable Recycling", "Enable item recycling recipes: false or true?", false).getBoolean(false);
+    enableRecycling = settings.get("Enable Recycling", "Enable item recycling recipes: false or true?", false).getBoolean(false);
 
-	settings.save();
+    enableOtherPigiron = settings.get("Extend Pigiron", "Enable use of Pigiron to make Hadite and Sterling Steel: false or true?", false).getBoolean(false);
+
+    settings.save();
 }}
