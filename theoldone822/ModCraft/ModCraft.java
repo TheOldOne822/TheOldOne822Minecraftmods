@@ -34,7 +34,8 @@ public class ModCraft {
 		
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Block.workbench, 1), true, new Object[]{"X", Character.valueOf('X'), "crafterWood",}));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Block.workbench, 1), true, new Object[]{"X", Character.valueOf('X'), "craftingTableWood",}));
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Block.planks, 3), true, new Object[]{"XX", "X ", Character.valueOf('X'), "plankWood",}));
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Block.planks, 2), true, new Object[]{" X", "X ", Character.valueOf('X'), "plankWood",}));
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Block.planks, 2), true, new Object[]{"X ", " X", Character.valueOf('X'), "plankWood",}));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Item.stick, 1), true, new Object[]{"X", Character.valueOf('X'), "stickWood",}));
 		
 	}

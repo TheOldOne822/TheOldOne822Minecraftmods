@@ -152,13 +152,14 @@ public class Settings {
 	pyralisArmorEnchantability = settings.get("Armor Stats", "Pyralis Armor Enchantability", 29).getInt();
 	pyralisArmorResistance = settings.get("Armor Stats", "Pyralis Armor Resistance", 50).getInt();
 
-	pyralischainArmorDurability = settings.get("Armor Stats", "Pyralis Armor Durability", 20).getInt();
-	pyralischainArmorDamageReduction = settings.get("Armor Stats", "Pyralis Armor Damage Reduction Array", new int[] {2, 6, 5, 2}).getIntList();
-	pyralischainArmorEnchantability = settings.get("Armor Stats", "Pyralis Armor Enchantability", 31).getInt();
+	pyralischainArmorDurability = settings.get("Armor Stats", "Pyralis Chain Armor Durability", 20).getInt();
+	pyralischainArmorDamageReduction = settings.get("Armor Stats", "Pyralis Chain Armor Damage Reduction Array", new int[] {2, 6, 5, 2}).getIntList();
+	pyralischainArmorEnchantability = settings.get("Armor Stats", "Pyralis Chain Armor Enchantability", 31).getInt();
+	pyralischainArmorResistance = settings.get("Armor Stats", "Pyralis Chain Armor Resistance", 50).getInt();
 
-	dragonbezoarchainArmorDurability = settings.get("Armor Stats", "Dragon Bezoar Armor Durability", 51).getInt();
-	dragonbezoarchainArmorDamageReduction = settings.get("Armor Stats", "Dragon Bezoar Armor Damage Reduction Array", new int[] {4, 7, 6, 4}).getIntList();
-	dragonbezoarchainArmorEnchantability = settings.get("Armor Stats", "Dragon Bezoar Armor Enchantability", 40).getInt();
+	dragonbezoarchainArmorDurability = settings.get("Armor Stats", "Dragon Bezoar Chain Armor Durability", 51).getInt();
+	dragonbezoarchainArmorDamageReduction = settings.get("Armor Stats", "Dragon Chain Bezoar Armor Damage Reduction Array", new int[] {4, 7, 6, 4}).getIntList();
+	dragonbezoarchainArmorEnchantability = settings.get("Armor Stats", "Dragon Chain Bezoar Armor Enchantability", 40).getInt();
 
 	dragonbezoarArmorDurability = settings.get("Armor Stats", "Dragon Bezoar Armor Durability", 62).getInt();
 	dragonbezoarArmorDamageReduction = settings.get("Armor Stats", "Dragon Bezoar Armor Damage Reduction Array", new int[] {6, 9, 8, 7}).getIntList();
@@ -167,18 +168,18 @@ public class Settings {
 	//Block Stat Modifiers
 	cinderstoneBlockHardness = (float) settings.get("Block Stats", "Cinderstone Block Hardness", 5.0).getDouble(cinderstoneBlockHardness);
 	cinderstoneBlockResistance = (float) settings.get("Block Stats", "Cinderstone Block Resistance", 8.0).getDouble(cinderstoneBlockResistance);
-	cinderstoneBlockLightValue = (float) settings.get("Furnace", "Dragon Bezoar Furnace Light Value", 1.0).getDouble(cinderstoneBlockLightValue);
+	cinderstoneBlockLightValue = (float) settings.get("Block Stats", "Cinderstone Block Light Value", 1.0).getDouble(cinderstoneBlockLightValue);
 
 	thrakaBlockHardness = (float) settings.get("Block Stats", "Thraka Block Hardness", 7.0).getDouble(thrakaBlockHardness);
 	thrakaBlockResistance = (float) settings.get("Block Stats", "Thraka Block Resistance", 12.0).getDouble(thrakaBlockResistance);
 
 	pyralisBlockHardness = (float) settings.get("Block Stats", "Pyralis Block Hardness", 10.0).getDouble(pyralisBlockHardness);
 	pyralisBlockResistance = (float) settings.get("Block Stats", "Pyralis Block Resistance", 20.0).getDouble(pyralisBlockResistance);
-	pyralisBlockLightValue = (float) settings.get("Furnace", "Dragon Bezoar Furnace Light Value", 0.7).getDouble(pyralisBlockLightValue);
+	pyralisBlockLightValue = (float) settings.get("Block Stats", "Pyralis Block Light Value", 0.7).getDouble(pyralisBlockLightValue);
 
 	dragonbezoarBlockHardness = (float) settings.get("Block Stats", "Dragon Bezoar Block Hardness", 12.0).getDouble(dragonbezoarBlockHardness);
 	dragonbezoarBlockResistance = (float) settings.get("Block Stats", "Dragon Bezoar Block Resistance", 40.0).getDouble(dragonbezoarBlockResistance);
-	dragonbezoarBlockLightValue = (float) settings.get("Furnace", "Dragon Bezoar Furnace Light Value", 1.0).getDouble(dragonbezoarBlockLightValue);
+	dragonbezoarBlockLightValue = (float) settings.get("Block Stats", "Dragon Bezoar Block Light Value", 1.0).getDouble(dragonbezoarBlockLightValue);
 
     // Recycling
     enableRecycling= settings.get("Enable Recycling", "Enable item recycling recipes: false or true?", false).getBoolean(false);

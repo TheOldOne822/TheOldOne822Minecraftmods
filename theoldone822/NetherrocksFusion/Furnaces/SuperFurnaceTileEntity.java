@@ -28,6 +28,7 @@ public class SuperFurnaceTileEntity extends TileEntity implements ISidedInventor
 	private static final int[] slots_top = new int[] { 0 };
 	private static final int[] slots_bottom = new int[] { 2, 1 };
 	private static final int[] slots_sides = new int[] { 1 };
+	private static int cooktime = (int) (200 / Settings.dragonbezoarFurnaceSpeed);
 
 	/**
 	 * The ItemStacks that hold the items currently being used in the furnace
@@ -192,7 +193,7 @@ public class SuperFurnaceTileEntity extends TileEntity implements ISidedInventor
 	 * cooked
 	 */
 	public int getCookProgressScaled(int par1) {
-		return (int) (this.furnaceCookTime * par1 / (200 / Settings.dragonbezoarFurnaceSpeed));
+		return this.furnaceCookTime * par1 / cooktime;
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -202,7 +203,7 @@ public class SuperFurnaceTileEntity extends TileEntity implements ISidedInventor
 	 */
 	public int getBurnTimeRemainingScaled(int par1) {
 		if (this.currentItemBurnTime == 0) {
-			this.currentItemBurnTime = (int) (200 / Settings.dragonbezoarFurnaceSpeed);
+			this.currentItemBurnTime = cooktime;
 		}
 
 		return this.furnaceBurnTime * par1 / this.currentItemBurnTime;
@@ -247,7 +248,7 @@ public class SuperFurnaceTileEntity extends TileEntity implements ISidedInventor
 			if (this.isBurning() && this.canSmelt()) {
 				++this.furnaceCookTime;
 
-				if (this.furnaceCookTime == 200 / Settings.dragonbezoarFurnaceSpeed) {
+				if (this.furnaceCookTime == cooktime) {
 					this.furnaceCookTime = 0;
 					this.smeltItem();
 					flag1 = true;

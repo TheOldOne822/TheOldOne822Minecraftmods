@@ -109,7 +109,7 @@ public class HandlerEvent {
 							&& (legs.getItem() == Content.pyralisLegs || legs.getItem() == Content.pyralisChainLegs)
 							&& (boots.getItem() == Content.pyralisBoots || boots.getItem() == Content.pyralisChainBoots)) {
 						int r = generator.nextInt(100);
-						if (r <= Settings.pyralisArmorResistance) {
+						if ((r <= Settings.pyralischainArmorResistance) || (r <= Settings.pyralisArmorResistance && helmet.getItem() == Content.pyralisHelm && chest.getItem() == Content.pyralisChest && legs.getItem() == Content.pyralisLegs && boots.getItem() == Content.pyralisBoots)) {
 							if (event.source.equals(DamageSource.wither) || event.source.equals(DamageSource.lava) || event.source.equals(DamageSource.inFire)
 									|| event.source.equals(DamageSource.onFire) || event.source.equals(DamageSource.fall)) {
 								event.setCanceled(true);
