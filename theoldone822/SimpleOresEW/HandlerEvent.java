@@ -44,7 +44,7 @@ public class HandlerEvent {
 								|| legs.getItem() == SimpleOresEW.extendedpyralisLegs
 								|| boots.getItem() == SimpleOresEW.extendedpyralisBoots) {
 							int r = generator.nextInt(100);
-							if (r <= theoldone822.NetherrocksFusion.Settings.pyralisArmorResistance) {
+							if (r <= theoldone822.NetherrocksFusion.Settings.pyralischainArmorResistance || (r <= theoldone822.NetherrocksFusion.Settings.pyralisArmorResistance && !(helmet.getItem() == theoldone822.NetherrocksFusion.Content.pyralisChainHelm || chest.getItem() == theoldone822.NetherrocksFusion.Content.pyralisChainChest || legs.getItem() == theoldone822.NetherrocksFusion.Content.pyralisChainLegs || boots.getItem() == theoldone822.NetherrocksFusion.Content.pyralisChainBoots))) {
 								if (event.source.equals(DamageSource.wither) || event.source.equals(DamageSource.lava)
 										|| event.source.equals(DamageSource.inFire) || event.source.equals(DamageSource.onFire)
 										|| event.source.equals(DamageSource.fall)) {
