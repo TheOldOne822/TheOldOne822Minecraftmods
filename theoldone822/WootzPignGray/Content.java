@@ -45,14 +45,19 @@ public class Content
 	/**
 	 * Creating the item int's. Fairly obvious.
 	 */
+	public static Item rawPigiron;
 	public static Item pigironIngot;
 	public static Item wootzIngot;
 	public static Item rePigironIngot;
 	public static Item grayIngot;
 	
+
+	public static Item smallWootzsteelChunk;
+	public static Item mediumWootzsteelChunk;
 	public static Item largeWootzsteelChunk;
 	public static Item packedIron;
 	public static Item graphite;
+	public static Item mediumGrayChunk;
 	public static Item largeGrayChunk;
 	
 	/**
@@ -120,7 +125,7 @@ public class Content
 		pigironBlock = new SimpleOre(IDs.pigironBlockID, Material.iron, "wootzpigngray", SimpleOres.tabSimpleBlocks).setHardness(Settings.pigironBlockHardness).setResistance(Settings.pigironBlockResistance).setCreativeTab(SimpleOres.tabSimpleBlocks).setUnlocalizedName("pigironBlock").setTextureName("wootzpigngray:pigironBlock");
 		wootzBlock = new SimpleOre(IDs.wootzBlockID, Material.iron, "wootzpigngray", SimpleOres.tabSimpleBlocks).setHardness(Settings.wootzBlockHardness).setResistance(Settings.wootzBlockResistance).setCreativeTab(SimpleOres.tabSimpleBlocks).setUnlocalizedName("wootzBlock").setTextureName("wootzpigngray:wootzBlock");
 		rePigironBlock = new SimpleOre(IDs.rePigironBlockID, Material.iron, "wootzpigngray", SimpleOres.tabSimpleBlocks).setHardness(Settings.rePigironBlockHardness).setResistance(Settings.rePigironBlockResistance).setCreativeTab(SimpleOres.tabSimpleBlocks).setUnlocalizedName("rePigironBlock").setTextureName("wootzpigngray:rePigironBlock");
-		grayBlock = new SimpleGemOre(IDs.grayBlockID, Material.iron, "wootzpigngray", 0, 3, 6, SimpleOres.tabSimpleBlocks).setHardness(Settings.grayBlockHardness).setResistance(Settings.grayBlockResistance).setCreativeTab(SimpleOres.tabSimpleBlocks).setUnlocalizedName("grayBlock").setTextureName("wootzpigngray:grayBlock");
+		grayBlock = new SimpleGemOre(IDs.grayBlockID, Material.iron, "wootzpigngray", IDs.graphiteID, 3, 6, SimpleOres.tabSimpleBlocks).setHardness(Settings.grayBlockHardness).setResistance(Settings.grayBlockResistance).setCreativeTab(SimpleOres.tabSimpleBlocks).setUnlocalizedName("grayBlock").setTextureName("wootzpigngray:grayBlock");
 		grayFurnace = new GrayFurnace(IDs.grayFurnaceID, false).setHardness(Settings.grayFurnaceHardness).setResistance(Settings.grayFurnaceResistance).setUnlocalizedName("grayFurnace");
 		grayFurnaceOn = new GrayFurnace(IDs.grayFurnaceOnID, true).setHardness(Settings.grayFurnaceHardness).setResistance(Settings.grayFurnaceResistance).setLightValue(Settings.grayFurnaceLightValue).setUnlocalizedName("grayFurnaceOn");
 		grayFusionFurnace = new GrayFusionFurnace(IDs.grayFusionFurnaceID, false).setHardness(Settings.grayFurnaceHardness).setResistance(Settings.grayFurnaceResistance).setUnlocalizedName("grayFusionFurnace");
@@ -153,22 +158,30 @@ public class Content
 	public static void doItems()
 	{
 		//Item Details
+		rawPigiron = new SimpleIngot(IDs.rawPigironID, "wootzpigngray", SimpleOres.tabSimpleMaterials).setUnlocalizedName("rawPigiron").setTextureName("wootzpigngray:rawPigiron");
 		pigironIngot = new SimpleIngot(IDs.pigironIngotID, "wootzpigngray", SimpleOres.tabSimpleMaterials).setUnlocalizedName("pigironIngot").setTextureName("wootzpigngray:pigironIngot");
 		rePigironIngot = new SimpleIngot(IDs.rePigironIngotID, "wootzpigngray", SimpleOres.tabSimpleMaterials).setUnlocalizedName("rePigironIngot").setTextureName("wootzpigngray:rePigironIngot");
 		wootzIngot = new SimpleIngot(IDs.wootzIngotID, "wootzpigngray", SimpleOres.tabSimpleMaterials).setUnlocalizedName("wootzIngot").setTextureName("wootzpigngray:wootzIngot");
 		grayIngot = new SimpleIngot(IDs.grayIngotID, "wootzpigngray", SimpleOres.tabSimpleMaterials).setUnlocalizedName("grayIngot").setTextureName("wootzpigngray:grayIngot");
-		largeWootzsteelChunk = new SimpleIngot(IDs.largeWootzsteelChunkID, "wootzpigngray", SimpleOres.tabSimpleMaterials).setUnlocalizedName("largeWootz steelChunk").setTextureName("wootzpigngray:largeWootz steelChunk");
+		smallWootzsteelChunk = new SimpleIngot(IDs.smallWootzsteelChunkID, "wootzpigngray", SimpleOres.tabSimpleMaterials).setUnlocalizedName("smallWootzsteelChunk").setTextureName("wootzpigngray:largeWootz steelChunk");
+		mediumWootzsteelChunk = new SimpleIngot(IDs.mediumWootzsteelChunkID, "wootzpigngray", SimpleOres.tabSimpleMaterials).setUnlocalizedName("mediumWootzsteelChunk").setTextureName("wootzpigngray:largeWootz steelChunk");
+		largeWootzsteelChunk = new SimpleIngot(IDs.largeWootzsteelChunkID, "wootzpigngray", SimpleOres.tabSimpleMaterials).setUnlocalizedName("largeWootzsteelChunk").setTextureName("wootzpigngray:largeWootz steelChunk");
 		packedIron = new SimpleIngot(IDs.packedIronID, "wootzpigngray", SimpleOres.tabSimpleMaterials).setUnlocalizedName("packedIron").setTextureName("wootzpigngray:packedIron");
 		graphite = new SimpleIngot(IDs.graphiteID, "wootzpigngray", SimpleOres.tabSimpleMaterials).setUnlocalizedName("graphite").setTextureName("wootzpigngray:graphite");
+		mediumGrayChunk = new SimpleIngot(IDs.mediumGrayChunkID, "wootzpigngray", SimpleOres.tabSimpleMaterials).setUnlocalizedName("mediumGrayChunk").setTextureName("wootzpigngray:mediumGrayChunk");
 		largeGrayChunk = new SimpleIngot(IDs.largeGrayChunkID, "wootzpigngray", SimpleOres.tabSimpleMaterials).setUnlocalizedName("largeGrayChunk").setTextureName("wootzpigngray:largeGrayChunk");
 
+		LanguageRegistry.addName(rawPigiron, "Raw Pigiron");
 		LanguageRegistry.addName(pigironIngot, "Pigiron Ingot");
 		LanguageRegistry.addName(wootzIngot, "Wootz steel Ingot");
 		LanguageRegistry.addName(rePigironIngot, "Refined Pigiron Ingot");
 		LanguageRegistry.addName(grayIngot, "Gray Iron Ingot");
+		LanguageRegistry.addName(smallWootzsteelChunk, "Small Wootz steel Chunk");
+		LanguageRegistry.addName(mediumWootzsteelChunk, "Medium Wootz steel Chunk");
 		LanguageRegistry.addName(largeWootzsteelChunk, "Large Wootz steel Chunk");
 		LanguageRegistry.addName(packedIron, "Packed Iron");
 		LanguageRegistry.addName(graphite, "Graphite");
+		LanguageRegistry.addName(mediumGrayChunk, "Medium Gray Iron Chunk");
 		LanguageRegistry.addName(largeGrayChunk, "Large Gray Iron Chunk");
 	}
 	
@@ -209,4 +222,50 @@ public class Content
         MinecraftForge.setToolClass(hardenedsteelAxe, "axe", Settings.hardenedsteelMiningLevel);
 
 		}
+	public static void doLoot()
+	{
+		HandlerLoot.lootHandler().addLoot("villageBlacksmith", wootzIngot, 1, 2, 2);
+		HandlerLoot.lootHandler().addLoot("villageBlacksmith", grayIngot, 1, 2, 5);
+		HandlerLoot.lootHandler().addLoot("villageBlacksmith", rePigironIngot, 1, 2, 4);
+		HandlerLoot.lootHandler().addLoot("villageBlacksmith", pigironIngot, 1, 2, 1);
+		HandlerLoot.lootHandler().addLoot("villageBlacksmith", rawPigiron, 2, 6, 1);
+		HandlerLoot.lootHandler().addLoot("villageBlacksmith", graphite, 2, 4, 1);
+		HandlerLoot.lootHandler().addLoot("villageBlacksmith", wootzHelm, 1, 2, 1);
+		HandlerLoot.lootHandler().addLoot("villageBlacksmith", wootzChest, 2, 6, 1);
+		HandlerLoot.lootHandler().addLoot("villageBlacksmith", wootzLegs, 2, 4, 1);
+		HandlerLoot.lootHandler().addLoot("villageBlacksmith", wootzBoots, 1, 1, 1);
+		HandlerLoot.lootHandler().addLoot("villageBlacksmith", wootzPick, 1, 5, 1);
+		HandlerLoot.lootHandler().addLoot("villageBlacksmith", wootzAxe, 1, 2, 1);
+		HandlerLoot.lootHandler().addLoot("villageBlacksmith", wootzShovel, 1, 1, 1);
+		HandlerLoot.lootHandler().addLoot("villageBlacksmith", wootzSword, 1, 2, 1);
+		HandlerLoot.lootHandler().addLoot("villageBlacksmith", wootzHoe, 1, 1, 1);
+		HandlerLoot.lootHandler().addLoot("dungeonChest", wootzIngot, 1, 2, 4);
+		HandlerLoot.lootHandler().addLoot("dungeonChest", wootzHelm, 1, 2, 5);
+		HandlerLoot.lootHandler().addLoot("dungeonChest", wootzChest, 1, 2, 4);
+		HandlerLoot.lootHandler().addLoot("dungeonChest", wootzLegs, 3, 5, 1);
+		HandlerLoot.lootHandler().addLoot("dungeonChest", wootzBoots, 2, 6, 1);
+		HandlerLoot.lootHandler().addLoot("dungeonChest", wootzPick, 2, 4, 1);
+		HandlerLoot.lootHandler().addLoot("dungeonChest", wootzAxe, 1, 1, 1);
+		HandlerLoot.lootHandler().addLoot("dungeonChest", wootzShovel, 1, 3, 1);
+		HandlerLoot.lootHandler().addLoot("dungeonChest", wootzSword, 1, 2, 1);
+		HandlerLoot.lootHandler().addLoot("strongholdCorridor", wootzIngot, 1, 1, 1);
+		HandlerLoot.lootHandler().addLoot("strongholdCorridor", wootzSword, 1, 1, 2);
+		HandlerLoot.lootHandler().addLoot("strongholdCrossing", wootzIngot, 1, 1, 4);
+		HandlerLoot.lootHandler().addLoot("strongholdCrossing", wootzSword, 1, 1, 6);
+		HandlerLoot.lootHandler().addLoot("strongholdLibrary", wootzHelm, 1, 1, 2);
+		HandlerLoot.lootHandler().addLoot("strongholdLibrary", wootzChest, 1, 1, 1);
+		HandlerLoot.lootHandler().addLoot("strongholdLibrary", wootzLegs, 1, 1, 1);
+		HandlerLoot.lootHandler().addLoot("strongholdLibrary", wootzBoots, 1, 1, 1);
+		HandlerLoot.lootHandler().addLoot("mineshaftCorridor", wootzIngot, 1, 2, 2);
+		HandlerLoot.lootHandler().addLoot("mineshaftCorridor", wootzSword, 1, 1, 1);
+		HandlerLoot.lootHandler().addLoot("mineshaftCorridor", wootzShovel, 1, 3, 1);
+		HandlerLoot.lootHandler().addLoot("mineshaftCorridor", wootzAxe, 1, 1, 1);
+		HandlerLoot.lootHandler().addLoot("mineshaftCorridor", wootzPick, 1, 3, 1);
+		HandlerLoot.lootHandler().addLoot("pyramidDesertyChest", wootzSword, 3, 9, 3);
+		HandlerLoot.lootHandler().addLoot("pyramidDesertyChest", wootzAxe, 1, 2, 2);
+		HandlerLoot.lootHandler().addLoot("pyramidDesertyChest", wootzShovel, 1, 2, 1);
+		HandlerLoot.lootHandler().addLoot("pyramidJungleChest", wootzSword, 2, 4, 6);
+		HandlerLoot.lootHandler().addLoot("pyramidJungleChest", wootzChest, 1, 1, 2);
+	}
+
 }

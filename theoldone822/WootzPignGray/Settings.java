@@ -70,6 +70,7 @@ public class Settings {
 	public static float grayBlockResistance;
 
     public static boolean enableRecycling;
+    public static boolean requirePigiron;
     public static boolean enableOtherPigiron;
 
 
@@ -79,8 +80,8 @@ public class Settings {
 	public static void doSettings(FMLPreInitializationEvent event)
 	{
 	File installDir = event.getModConfigurationDirectory();
-	File configDir = new File(installDir, "WootzPignGray Configuration");
-	Configuration settings = new Configuration(new File(configDir, "WootzPignGray Settings.cfg"));
+	File configDir = new File(installDir, "Wootz Pig and Gray Configuration");
+	Configuration settings = new Configuration(new File(configDir, "Wootz Pig and Gray Settings.cfg"));
 
 	settings.load();
 
@@ -128,7 +129,8 @@ public class Settings {
     // Recycling
     enableRecycling = settings.get("Enable Recycling", "Enable item recycling recipes: false or true?", false).getBoolean(false);
 
-    enableOtherPigiron = settings.get("Extend Pigiron", "Enable use of Pigiron to make Hadite and Sterling Steel: false or true?", false).getBoolean(false);
+    requirePigiron = settings.get("Extend Pigiron", "Require use of Pigiron for wootz", false).getBoolean(false);
+    enableOtherPigiron = settings.get("Extend Pigiron", "Enable Pigiron for Hadite and Sterling Steel: false or true?", false).getBoolean(false);
 
     settings.save();
 }}

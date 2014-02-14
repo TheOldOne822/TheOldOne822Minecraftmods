@@ -57,6 +57,7 @@ public class WootzPignGray {
 		Content.doBlocks();
 		Content.doItems();
 		Content.doTools();
+		Content.doLoot();
 		Recipes.doRecipes();
 	}
 	

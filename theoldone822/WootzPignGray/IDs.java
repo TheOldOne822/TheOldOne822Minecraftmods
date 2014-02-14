@@ -17,13 +17,17 @@ public class IDs {
 	public static int grayFusionFurnaceOnID;
 
 	//Items
+	public static int rawPigironID;
 	public static int pigironIngotID;
 	public static int wootzIngotID;
 	public static int rePigironIngotID;
 	public static int grayIngotID;
+	public static int smallWootzsteelChunkID;
+	public static int mediumWootzsteelChunkID;
 	public static int largeWootzsteelChunkID;
 	public static int packedIronID;
 	public static int graphiteID;
+	public static int mediumGrayChunkID;
 	public static int largeGrayChunkID;
 
 	//Tools
@@ -68,13 +72,17 @@ public class IDs {
 	grayFusionFurnaceOnID = config.getBlock("Blocks", "Gray Fusion Furnace On", 1439).getInt();
 
 	//Item ID's
-	pigironIngotID = config.getItem("Items", "Pigiron Ingot", 4800).getInt();
-	wootzIngotID = config.getItem("Items", "Wootz steel Ingot", 4801).getInt();
-	rePigironIngotID = config.getItem("Items", "Refined Pigiron Ingot", 4802).getInt();
-	grayIngotID = config.getItem("Items", "Gray Ingot", 4803).getInt();
-	largeWootzsteelChunkID = config.getItem("Items", "Wootz steel Chunk Large", 4804).getInt();
-	packedIronID = config.getItem("Items", "Packed Iron", 4805).getInt();
-	graphiteID = config.getItem("Items", "Graphite", 4806).getInt();
+	rawPigironID = config.getItem("Items", "Raw Pigiron", 4798).getInt();
+	pigironIngotID = config.getItem("Items", "Pigiron Ingot", 4799).getInt();
+	wootzIngotID = config.getItem("Items", "Wootz steel Ingot", 4800).getInt();
+	rePigironIngotID = config.getItem("Items", "Refined Pigiron Ingot", 4801).getInt();
+	grayIngotID = config.getItem("Items", "Gray Ingot", 4802).getInt();
+	smallWootzsteelChunkID = config.getItem("Items", "Wootz steel Chunk Small", 4803).getInt();
+	mediumWootzsteelChunkID = config.getItem("Items", "Wootz steel Chunk Medium", 4804).getInt();
+	largeWootzsteelChunkID = config.getItem("Items", "Wootz steel Chunk Large", 4805).getInt();
+	packedIronID = config.getItem("Items", "Packed Iron", 4796).getInt();
+	graphiteID = config.getItem("Items", "Graphite", 4797).getInt();
+	mediumGrayChunkID = config.getItem("Items", "Gray Chunk Medium", 4806).getInt();
 	largeGrayChunkID = config.getItem("Items", "Gray Chunk Large", 4807).getInt();
 
 	//Tool ID's

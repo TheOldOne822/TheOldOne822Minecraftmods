@@ -43,42 +43,58 @@ public class Recipes {
 		GameRegistry.addShapelessRecipe(new ItemStack(Content.wootzIngot, 9), new Object[] { Content.wootzBlock });
 		GameRegistry.addShapelessRecipe(new ItemStack(Content.grayIngot, 9), new Object[] { Content.grayBlock });
 
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.packedIron, true, new Object[] { "XXX", "XYX", "XXX", Character.valueOf('X'), Block.woodenButton, Character.valueOf('Y'), "ingotPigIron" }));
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.packedIron, true, new Object[] { "XXX", "XYX", "XXX", Character.valueOf('X'), Block.woodenButton, Character.valueOf('Y'), Item.ingotIron }));
+		GameRegistry.addShapelessRecipe(new ItemStack(Content.largeWootzsteelChunk, 1), new Object[] { Content.smallWootzsteelChunk, Content.smallWootzsteelChunk, Content.smallWootzsteelChunk, Content.smallWootzsteelChunk, Content.smallWootzsteelChunk });
+		GameRegistry.addShapelessRecipe(new ItemStack(Content.largeWootzsteelChunk, 1), new Object[] { Content.mediumWootzsteelChunk, Content.mediumWootzsteelChunk, Content.smallWootzsteelChunk, Content.smallWootzsteelChunk });
+		GameRegistry.addShapelessRecipe(new ItemStack(Content.largeWootzsteelChunk, 1), new Object[] { Content.mediumWootzsteelChunk, Content.mediumWootzsteelChunk, Content.mediumWootzsteelChunk });
 
+		GameRegistry.addShapelessRecipe(new ItemStack(Content.largeGrayChunk, 1), new Object[] { Content.mediumGrayChunk, Content.mediumGrayChunk, Content.mediumGrayChunk });
+
+		GameRegistry.addShapelessRecipe(new ItemStack(Content.pigironIngot, 1), new Object[] { Content.rawPigiron, Content.rawPigiron, Content.rawPigiron });
+
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.packedIron, true, new Object[] { "XXX", "XYX", "XXX", Character.valueOf('X'), Block.woodenButton, Character.valueOf('Y'), "ingotPigIron" }));
+
+		if (!Settings.requirePigiron){
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.packedIron, true, new Object[] { "XXX", "XYX", "XXX", Character.valueOf('X'), Block.woodenButton, Character.valueOf('Y'), Item.ingotIron }));
+		}
+		
 		// Tools
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.wootzPick, true, new Object[] { "XXX", " Y ", " Y ", Character.valueOf('X'), "ingotWootz", Character.valueOf('Y'), "stickWood" }));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.wootzAxe, true, new Object[] { "XX ", "XY ", " Y ", Character.valueOf('X'), "ingotWootz", Character.valueOf('Y'), "stickWood" }));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.wootzShovel, true, new Object[] { "X", "Y", "Y", Character.valueOf('X'), "ingotWootz", Character.valueOf('Y'), "stickWood" }));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.wootzSword, true, new Object[] { "X", "X", "Y", Character.valueOf('X'), "ingotWootz", Character.valueOf('Y'), "stickWood" }));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.wootzHoe, true, new Object[] { "XX ", " Y ", " Y ", Character.valueOf('X'), "ingotWootz", Character.valueOf('Y'), "stickWood" }));
-		
+
+		FusionRecipes.smelting().addSmelting(new ItemStack(Content.wootzSword, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.hardenedsteelSword), 15.0F);
+		FusionRecipes.smelting().addSmelting(new ItemStack(Content.wootzShovel, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.hardenedsteelShovel), 15.0F);
+		FusionRecipes.smelting().addSmelting(new ItemStack(Content.wootzPick, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.hardenedsteelPick), 15.0F);
+		FusionRecipes.smelting().addSmelting(new ItemStack(Content.wootzAxe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.hardenedsteelAxe), 15.0F);
+		FusionRecipes.smelting().addSmelting(new ItemStack(Content.wootzHoe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.hardenedsteelHoe), 15.0F);
+
 		// Armor
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.wootzHelm, true, new Object[] { "XXX", "X X", Character.valueOf('X'), "ingotWootz" }));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.wootzChest, true, new Object[] { "X X", "XXX", "XXX", Character.valueOf('X'), "ingotWootz" }));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.wootzLegs, true, new Object[] { "XXX", "X X", "X X", Character.valueOf('X'), "ingotWootz" }));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.wootzBoots, true, new Object[] { "X X", "X X", Character.valueOf('X'), "ingotWootz" }));
 
-		// Smelting
-		FusionRecipes.smelting().addSmelting(new ItemStack(Item.ingotIron), new ItemStack(Block.sand), new ItemStack(Item.coal, 3, OreDictionary.WILDCARD_VALUE),
-				new ItemStack(Content.pigironIngot, 2), 1.0F);
-
-		FusionRecipes.smelting().addSmelting(new ItemStack(Content.packedIron), new ItemStack(Block.leaves, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.clay),
-				new ItemStack(Content.largeWootzsteelChunk), 1.0F);
-
-		FusionRecipes.smelting().addSmelting(new ItemStack(Content.rePigironIngot), new ItemStack(Item.ingotIron), new ItemStack(Block.sand), new ItemStack(Content.largeGrayChunk), 1.0F);
-
-		FusionRecipes.smelting().addSmelting(new ItemStack(Content.graphite), new ItemStack(Block.gravel), new ItemStack(Item.netherQuartz), new ItemStack(Block.oreRedstone), 1.0F);
-
 		FusionRecipes.smelting().addSmelting(new ItemStack(Content.wootzHelm, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.hardenedsteelHelm), 15.0F);
 		FusionRecipes.smelting().addSmelting(new ItemStack(Content.wootzChest, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.hardenedsteelChest), 30.0F);
 		FusionRecipes.smelting().addSmelting(new ItemStack(Content.wootzLegs, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.hardenedsteelLegs), 30.0F);
 		FusionRecipes.smelting().addSmelting(new ItemStack(Content.wootzBoots, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.hardenedsteelBoots), 15.0F);
-		FusionRecipes.smelting().addSmelting(new ItemStack(Content.wootzSword, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.hardenedsteelSword), 15.0F);
-		FusionRecipes.smelting().addSmelting(new ItemStack(Content.wootzShovel, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.hardenedsteelShovel), 15.0F);
-		FusionRecipes.smelting().addSmelting(new ItemStack(Content.wootzPick, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.hardenedsteelPick), 15.0F);
-		FusionRecipes.smelting().addSmelting(new ItemStack(Content.wootzAxe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.hardenedsteelAxe), 15.0F);
-		FusionRecipes.smelting().addSmelting(new ItemStack(Content.wootzHoe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Content.hardenedsteelHoe), 15.0F);
+
+		// Smelting
+		FusionRecipes.smelting().addSmelting(new ItemStack(Item.ingotIron), new ItemStack(Block.sand), new ItemStack(Item.coal, 2, OreDictionary.WILDCARD_VALUE),
+				new ItemStack(Content.rawPigiron, 4), 1.0F);
+
+		FusionRecipes.smelting().addSmelting(new ItemStack(Content.packedIron), new ItemStack(Block.leaves, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.clay),
+				new ItemStack(Content.smallWootzsteelChunk), 1.0F);
+		FusionRecipes.smelting().addSmelting(new ItemStack(Content.packedIron), new ItemStack(Block.sapling, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.blockClay),
+				new ItemStack(Content.mediumWootzsteelChunk), 1.0F);
+		FusionRecipes.smelting().addSmelting(new ItemStack(Content.packedIron), new ItemStack(Block.leaves, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.blockClay),
+				new ItemStack(Content.largeWootzsteelChunk), 1.0F);
+
+		FusionRecipes.smelting().addSmelting(new ItemStack(Content.rePigironIngot), new ItemStack(Item.ingotIron), new ItemStack(Block.sand), new ItemStack(Content.mediumGrayChunk), 1.0F);
+
+		FusionRecipes.smelting().addSmelting(new ItemStack(Content.graphite), new ItemStack(Block.gravel), new ItemStack(Item.netherQuartz), new ItemStack(Block.oreRedstone), 1.0F);
 
 		GameRegistry.addSmelting(Content.largeGrayChunk.itemID, new ItemStack(Content.grayIngot, 1, 0), 0.3F);
 		GameRegistry.addSmelting(Content.largeWootzsteelChunk.itemID, new ItemStack(Content.wootzIngot, 1, 0), 0.6F);
