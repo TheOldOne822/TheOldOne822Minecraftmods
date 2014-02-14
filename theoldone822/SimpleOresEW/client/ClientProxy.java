@@ -177,6 +177,12 @@ public class ClientProxy extends CommonProxy {
 						MinecraftForgeClient.registerItemRenderer(SimpleOresEW.item[i][j].itemID, render);
 
 			}
+			if (PluginChecks.getWootzInstalled()) {
+				for (int i = 0; i < (biggerTools == 1 ? 1 : 5); i++)
+					for (int j = 40; j < 41; j++)
+						MinecraftForgeClient.registerItemRenderer(SimpleOresEW.item[i][j].itemID, render);
+				
+			}
 		}
 	}
 }
