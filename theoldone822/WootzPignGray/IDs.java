@@ -47,10 +47,6 @@ public class IDs {
 	public static int wootzChestID;
 	public static int wootzLegsID;
 	public static int wootzBootsID;
-	public static int hardenedHelmID;
-	public static int hardenedChestID;
-	public static int hardenedLegsID;
-	public static int hardenedBootsID;
 
 	public static void doConfig(FMLPreInitializationEvent event)
 	{
@@ -102,10 +98,6 @@ public class IDs {
 	wootzChestID = config.getItem("Armor", "Wootz steel Chestplate", 4819).getInt();
 	wootzLegsID = config.getItem("Armor", "Wootz steel Leggings", 4820).getInt();
 	wootzBootsID = config.getItem("Armor", "Wootz steel Boots", 4821).getInt();
-	hardenedHelmID = config.getItem("Armor", "Hardened steel Helmet", 4822).getInt();
-	hardenedChestID = config.getItem("Armor", "Hardened steel Chestplate", 4823).getInt();
-	hardenedLegsID = config.getItem("Armor", "Hardened steel Leggings", 4824).getInt();
-	hardenedBootsID = config.getItem("Armor", "Hardened steel Boots", 4825).getInt();
 
 	config.save();
 	}

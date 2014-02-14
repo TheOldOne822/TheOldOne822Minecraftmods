@@ -28,7 +28,6 @@ public class WootzPignGray {
 	public static EnumToolMaterial toolHardenedsteel;
 
 	public static EnumArmorMaterial armorWootz;
-	public static EnumArmorMaterial armorHardenedsteel;
 
 	public static int rendererWootz;
 	public static int rendererHardenedsteel;
@@ -51,7 +50,6 @@ public class WootzPignGray {
 		toolHardenedsteel = EnumHelper.addToolMaterial("HARDENEDSTEEL", Settings.hardenedsteelMiningLevel, Settings.hardenedsteelUsesNum, Settings.hardenedsteelMiningSpeed, Settings.hardenedsteelDamageVsEntity, Settings.hardenedsteelEnchantability);
 
 		armorWootz = EnumHelper.addArmorMaterial("WOOTZ", Settings.wootzArmorDurability, Settings.wootzArmorDamageReduction, Settings.wootzArmorEnchantability);
-		armorHardenedsteel = EnumHelper.addArmorMaterial("HARDENEDSTEEL", Settings.hardenedsteelArmorDurability, Settings.hardenedsteelArmorDamageReduction, Settings.hardenedsteelEnchantability);
 
 		Content.doArmor();
 		Content.doBlocks();

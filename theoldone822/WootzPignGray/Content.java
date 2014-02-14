@@ -2,7 +2,6 @@ package theoldone822.WootzPignGray;
 
 import theoldone822.WootzPignGray.Furnaces.GrayFurnace;
 import theoldone822.WootzPignGray.Furnaces.GrayFusionFurnace;
-import theoldone822.WootzPignGray.Items.HardenedArmor;
 import theoldone822.WootzPignGray.Items.HardenedAxe;
 import theoldone822.WootzPignGray.Items.HardenedHoe;
 import theoldone822.WootzPignGray.Items.HardenedPickaxe;
@@ -81,10 +80,6 @@ public class Content
 	public static Item wootzChest;
 	public static Item wootzLegs;
 	public static Item wootzBoots;
-	public static Item hardenedsteelHelm;
-	public static Item hardenedsteelChest;
-	public static Item hardenedsteelLegs;
-	public static Item hardenedsteelBoots;
 	
 	/**
 	 * Creating the tool items.
@@ -99,20 +94,11 @@ public class Content
 		wootzChest = new SimpleArmor(IDs.wootzChestID, mod.armorWootz, mod.rendererWootz, 1, "wootz", "wootzpigngray", SimpleOres.tabSimpleCombat).setUnlocalizedName("wootzChest").setTextureName("wootzpigngray:wootzChest");
 		wootzLegs = new SimpleArmor(IDs.wootzLegsID, mod.armorWootz, mod.rendererWootz, 2, "wootz", "wootzpigngray", SimpleOres.tabSimpleCombat).setUnlocalizedName("wootzLegs").setTextureName("wootzpigngray:wootzLegs");
 		wootzBoots = new SimpleArmor(IDs.wootzBootsID, mod.armorWootz, mod.rendererWootz, 3, "wootz", "wootzpigngray", SimpleOres.tabSimpleCombat).setUnlocalizedName("wootzBoots").setTextureName("wootzpigngray:wootzBoots");
-		hardenedsteelHelm = new HardenedArmor(IDs.hardenedHelmID, mod.armorHardenedsteel, mod.rendererHardenedsteel, 0, "hardenedsteel", "wootzpigngray", SimpleOres.tabSimpleCombat).setUnlocalizedName("hardenedsteelHelm").setTextureName("wootzpigngray:hardenedsteelHelm");
-		hardenedsteelChest = new HardenedArmor(IDs.hardenedChestID, mod.armorHardenedsteel, mod.rendererHardenedsteel, 1, "hardenedsteel", "wootzpigngray", SimpleOres.tabSimpleCombat).setUnlocalizedName("hardenedsteelChest").setTextureName("wootzpigngray:hardenedsteelChest");
-		hardenedsteelLegs = new HardenedArmor(IDs.hardenedLegsID, mod.armorHardenedsteel, mod.rendererHardenedsteel, 2, "hardenedsteel", "wootzpigngray", SimpleOres.tabSimpleCombat).setUnlocalizedName("hardenedsteelLegs").setTextureName("wootzpigngray:hardenedsteelLegs");
-		hardenedsteelBoots = new HardenedArmor(IDs.hardenedBootsID, mod.armorHardenedsteel, mod.rendererHardenedsteel, 3, "hardenedsteel", "wootzpigngray", SimpleOres.tabSimpleCombat).setUnlocalizedName("hardenedsteelBoots").setTextureName("wootzpigngray:hardenedsteelBoots");
 
 		LanguageRegistry.addName(wootzHelm, "Wootz steel Helmet");
 		LanguageRegistry.addName(wootzChest, "Wootz steel Chestplate");
 		LanguageRegistry.addName(wootzLegs, "Wootz steel Leggings");
 		LanguageRegistry.addName(wootzBoots, "Wootz steel Boots");
-
-		LanguageRegistry.addName(hardenedsteelHelm, "Hardenedsteel Helmet");
-		LanguageRegistry.addName(hardenedsteelChest, "Hardenedsteel Chestplate");
-		LanguageRegistry.addName(hardenedsteelLegs, "Hardenedsteel Leggings");
-		LanguageRegistry.addName(hardenedsteelBoots, "Hardenedsteel Boots");
 
 }
 	
