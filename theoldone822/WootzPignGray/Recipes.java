@@ -78,7 +78,7 @@ public class Recipes {
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.wootzBoots, true, new Object[] { "X X", "X X", Character.valueOf('X'), "ingotWootz" }));
 
 		// Items
-		CraftingManager.getInstance().getRecipeList().add(new ShapelessOreRecipe(Item.writableBook, true, new Object[] { Item.book, Content.graphite, "stickWood" }));
+		CraftingManager.getInstance().getRecipeList().add(new ShapelessOreRecipe(Item.writableBook, new Object[] { Item.book, Content.graphite, "stickWood" }));
 		
 		// Smelting
 		FusionRecipes.smelting().addSmelting(new ItemStack(Item.ingotIron), new ItemStack(Block.sand), new ItemStack(Item.coal, 2, OreDictionary.WILDCARD_VALUE),
