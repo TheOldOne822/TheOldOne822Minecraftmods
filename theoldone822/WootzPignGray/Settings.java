@@ -48,9 +48,6 @@ public class Settings {
 	public static int wootzArmorDurability;
 	public static int[] wootzArmorDamageReduction;
 	public static int wootzArmorEnchantability;
-	public static int hardenedsteelArmorDurability;
-	public static int[] hardenedsteelArmorDamageReduction;
-	public static int hardenedsteelArmorEnchantability;
 
 	//Block Stats
 	//Wootz
@@ -73,6 +70,7 @@ public class Settings {
     public static boolean requirePigiron;
     public static boolean enableOtherPigiron;
 
+    public static boolean graphiteToRedstone;
 
 	/**
 	 * The method that loads/creates the settings file. Values can be changed from true to false depending on user preference, and certain other values can be set. This is called by the main SimpleOres class.
@@ -99,19 +97,15 @@ public class Settings {
 	wootzDamageVsEntity = settings.get("Tool Stats", "Wootz steel Damage Vs Entity", 2).getInt();
 	wootzEnchantability = settings.get("Tool Stats", "Wootz steel Enchantability", 10).getInt();
 	hardenedsteelMiningLevel = settings.get("Tool Stats", "Hardened steel Mining Level", 3).getInt();
-	hardenedsteelUsesNum = settings.get("Tool Stats", "Hardened steel Uses Number", 36).getInt();
-	hardenedsteelMiningSpeed = (float) settings.get("Tool Stats", "Hardened steel Mining Speed", 12).getDouble(hardenedsteelMiningSpeed);
+	hardenedsteelUsesNum = settings.get("Tool Stats", "Hardened steel Uses Number", 28).getInt();
+	hardenedsteelMiningSpeed = (float) settings.get("Tool Stats", "Hardened steel Mining Speed", 10.0).getDouble(hardenedsteelMiningSpeed);
 	hardenedsteelDamageVsEntity = settings.get("Tool Stats", "Hardened steel Damage Vs Entity", 3).getInt();
 	hardenedsteelEnchantability = settings.get("Tool Stats", "Hardened steel Enchantability", 3).getInt();
 
 	//Armor Stat Modifiers
 	wootzArmorDurability = settings.get("Armor Stats", "Wootz steel Armor Durability", 16).getInt();
-	wootzArmorDamageReduction = settings.get("Armor Stats", "Wootz steel Armor Damage Reduction Array", new int[] {3, 6, 5, 3}).getIntList();
+	wootzArmorDamageReduction = settings.get("Armor Stats", "Wootz steel Armor Damage Reduction Array", new int[] {3, 6, 5, 2}).getIntList();
 	wootzArmorEnchantability = settings.get("Armor Stats", "Wootz steel Armor Enchantability", 10).getInt();
-
-	hardenedsteelArmorDurability = settings.get("Armor Stats", "Hardened steel Armor Durability", 6).getInt();
-	hardenedsteelArmorDamageReduction = settings.get("Armor Stats", "Hardened steel Armor Damage Reduction Array", new int[] {3, 7, 6, 3}).getIntList();
-	hardenedsteelArmorEnchantability = settings.get("Armor Stats", "Hardened steel Armor Enchantability", 3).getInt();
 
 	//Block Stat Modifiers
 	wootzBlockHardness = (float) settings.get("Block Stats", "Wootz steel Block Hardness", 5.0).getDouble(wootzBlockHardness);
@@ -130,7 +124,9 @@ public class Settings {
     enableRecycling = settings.get("Enable Recycling", "Enable item recycling recipes: false or true?", false).getBoolean(false);
 
     requirePigiron = settings.get("Extend Pigiron", "Require use of Pigiron for wootz", false).getBoolean(false);
-    enableOtherPigiron = settings.get("Extend Pigiron", "Enable Pigiron for Hadite and Sterling Steel: false or true?", false).getBoolean(false);
+    enableOtherPigiron = settings.get("Extend Pigiron", "Enable Pigiron for Akkamaddis Steel: false or true?", false).getBoolean(false);
+
+    graphiteToRedstone = settings.get("Extra", "Allow graphite to be used to make Redstone: false or true?", false).getBoolean(false);
 
     settings.save();
 }}

@@ -150,12 +150,12 @@ public class Settings {
 	pyralisArmorDurability = settings.get("Armor Stats", "Pyralis Armor Durability", 25).getInt();
 	pyralisArmorDamageReduction = settings.get("Armor Stats", "Pyralis Armor Damage Reduction Array", new int[] {3, 8, 6, 3}).getIntList();
 	pyralisArmorEnchantability = settings.get("Armor Stats", "Pyralis Armor Enchantability", 29).getInt();
-	pyralisArmorResistance = settings.get("Armor Stats", "Pyralis Armor Resistance", 50).getInt();
+	pyralisArmorResistance = settings.get("Armor Stats", "Pyralis Armor Resistance", 55).getInt();
 
 	pyralischainArmorDurability = settings.get("Armor Stats", "Pyralis Chain Armor Durability", 20).getInt();
 	pyralischainArmorDamageReduction = settings.get("Armor Stats", "Pyralis Chain Armor Damage Reduction Array", new int[] {2, 6, 5, 2}).getIntList();
 	pyralischainArmorEnchantability = settings.get("Armor Stats", "Pyralis Chain Armor Enchantability", 31).getInt();
-	pyralischainArmorResistance = settings.get("Armor Stats", "Pyralis Chain Armor Resistance", 50).getInt();
+	pyralischainArmorResistance = settings.get("Armor Stats", "Pyralis Chain Armor Resistance", 45).getInt();
 
 	dragonbezoarchainArmorDurability = settings.get("Armor Stats", "Dragon Bezoar Chain Armor Durability", 51).getInt();
 	dragonbezoarchainArmorDamageReduction = settings.get("Armor Stats", "Dragon Chain Bezoar Armor Damage Reduction Array", new int[] {4, 7, 6, 4}).getIntList();
