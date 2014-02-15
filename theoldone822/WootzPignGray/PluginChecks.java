@@ -1,12 +1,14 @@
-package theoldone822.NetherrocksFusion;
+package theoldone822.WootzPignGray;
 
 public class PluginChecks {
-	private static final Class cthon = getCTHON();
+	private static final Class hadite = getHADITE();
 	private static final Class cobalt = getCOBALT();
 	private static final Class tungsten = getTUNGSTEN();
-	private static Class getCTHON() {
+	private static final Class sterling = getSTERLING();
+
+	private static Class getHADITE() {
 		try {
-			return Class.forName("akkamaddi.simplecobalt.code.SimpleCobaltCore");
+			return Class.forName("akkamaddi.hadite.code.HaditeCoalCore");
 		} catch (ClassNotFoundException e) {
 			return null;
 		}
@@ -14,7 +16,7 @@ public class PluginChecks {
 
 	private static Class getCOBALT() {
 		try {
-			return Class.forName("SimpleOres.plugins.akkamaddi.simplecobalt.SimpleCobaltCore");
+			return Class.forName("akkamaddi.simplecobalt.code.SimpleCobaltCore");
 		} catch (ClassNotFoundException e) {
 			return null;
 		}
@@ -28,8 +30,16 @@ public class PluginChecks {
 		}
 	}
 
-	public static boolean getCthonInstalled() {
-		return cthon != null;
+	private static Class getSTERLING() {
+		try {
+			return Class.forName("akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore");
+		} catch (ClassNotFoundException e) {
+			return null;
+		}
+	}
+
+	public static boolean getHaditeInstalled() {
+		return hadite != null;
 	}
 
 	public static boolean getCobaltInstalled() {
@@ -40,4 +50,7 @@ public class PluginChecks {
 		return tungsten != null;
 	}
 
+	public static boolean getSterlingInstalled() {
+		return sterling != null;
+	}
 }

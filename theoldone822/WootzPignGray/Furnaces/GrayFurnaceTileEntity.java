@@ -1,9 +1,8 @@
-package theoldone822.NetherrocksFusion.Furnaces;
+package theoldone822.WootzPignGray.Furnaces;
 
 import java.util.Random;
 
-import theoldone822.NetherrocksFusion.NetherrocksFusion;
-import theoldone822.NetherrocksFusion.Settings;
+import theoldone822.WootzPignGray.Settings;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -24,11 +23,11 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.ForgeDummyContainer;
 
-public class SuperFurnaceTileEntity extends TileEntity implements ISidedInventory {
+public class GrayFurnaceTileEntity extends TileEntity implements ISidedInventory {
 	private static final int[] slots_top = new int[] { 0 };
 	private static final int[] slots_bottom = new int[] { 2, 1 };
 	private static final int[] slots_sides = new int[] { 1 };
-	private static int cooktime = (int) (200 / Settings.dragonbezoarFurnaceSpeed);
+	private static int cooktime = (int) (200 / Settings.grayFurnaceSpeed);
 
 	/**
 	 * The ItemStacks that hold the items currently being used in the furnace
@@ -259,7 +258,7 @@ public class SuperFurnaceTileEntity extends TileEntity implements ISidedInventor
 
 			if (flag != this.furnaceBurnTime > 0) {
 				flag1 = true;
-				SuperFurnace.updateFurnaceBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+				GrayFurnace.updateFurnaceBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
 			}
 		}
 
@@ -293,44 +292,25 @@ public class SuperFurnaceTileEntity extends TileEntity implements ISidedInventor
 	 * Turn one item from the furnace source stack into the appropriate smelted item in the furnace result stack
 	 */
 	public void smeltItem() {
-		int k;
-		int j;
-		int r = generator.nextInt(100);
-
-		if (r <= Settings.dragonbezoarFurnaceMultiChance) {
-			k = Settings.dragonbezoarFurnaceMultiplier;
-		}
-
-		else {
-			k = 1;
-		}
-		r = generator.nextInt(100);
-		if (r <= Settings.dragonbezoarFurnaceExtraChance) {
-			j = Settings.dragonbezoarFurnaceExtra;
-		}
-
-		else {
-			j = 0;
-		}
-
 		if (this.canSmelt()) {
-			ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0]);
+            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0]);
 
-			if (this.furnaceItemStacks[2] == null) {
-				this.furnaceItemStacks[2] = itemstack.copy();
-				this.furnaceItemStacks[2].stackSize *= k;
-				this.furnaceItemStacks[2].stackSize += j;
+            if (this.furnaceItemStacks[2] == null)
+            {
+                this.furnaceItemStacks[2] = itemstack.copy();
+            }
+            else if (this.furnaceItemStacks[2].isItemEqual(itemstack))
+            {
+                furnaceItemStacks[2].stackSize += itemstack.stackSize;
+            }
 
-			} else if (this.furnaceItemStacks[2].isItemEqual(itemstack)) {
-				furnaceItemStacks[2].stackSize += itemstack.stackSize * k + j;
-			}
+            --this.furnaceItemStacks[0].stackSize;
 
-			--this.furnaceItemStacks[0].stackSize;
-
-			if (this.furnaceItemStacks[0].stackSize <= 0) {
-				this.furnaceItemStacks[0] = null;
-			}
-		}
+            if (this.furnaceItemStacks[0].stackSize <= 0)
+            {
+                this.furnaceItemStacks[0] = null;
+            }
+        }
 	}
 
 	/**
@@ -347,35 +327,35 @@ public class SuperFurnaceTileEntity extends TileEntity implements ISidedInventor
 				Block block = Block.blocksList[i];
 
 				if (block == Block.woodSingleSlab) {
-					return (int) (150 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed);
+					return (int) (150 * Settings.grayFurnaceFuelMultiplier / Settings.grayFurnaceSpeed);
 				}
 
 				if (block.blockMaterial == Material.wood) {
-					return (int) (300 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed);
+					return (int) (300 * Settings.grayFurnaceFuelMultiplier / Settings.grayFurnaceSpeed);
 				}
 
 				if (block == Block.coalBlock) {
-					return (int) (16000 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed);
+					return (int) (16000 * Settings.grayFurnaceFuelMultiplier / Settings.grayFurnaceSpeed);
 				}
 			}
 
 			if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD"))
-				return (int) (200 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed);
+				return (int) (200 * Settings.grayFurnaceFuelMultiplier / Settings.grayFurnaceSpeed);
 			if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD"))
-				return (int) (200 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed);
+				return (int) (200 * Settings.grayFurnaceFuelMultiplier / Settings.grayFurnaceSpeed);
 			if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().equals("WOOD"))
-				return (int) (200 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed);
+				return (int) (200 * Settings.grayFurnaceFuelMultiplier / Settings.grayFurnaceSpeed);
 			if (i == Item.stick.itemID)
-				return (int) (100 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed);
+				return (int) (100 * Settings.grayFurnaceFuelMultiplier / Settings.grayFurnaceSpeed);
 			if (i == Item.coal.itemID)
-				return (int) (1600 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed);
+				return (int) (1600 * Settings.grayFurnaceFuelMultiplier / Settings.grayFurnaceSpeed);
 			if (i == Item.bucketLava.itemID)
-				return (int) (20000 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed);
+				return (int) (20000 * Settings.grayFurnaceFuelMultiplier / Settings.grayFurnaceSpeed);
 			if (i == Block.sapling.blockID)
-				return (int) (100 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed);
+				return (int) (100 * Settings.grayFurnaceFuelMultiplier / Settings.grayFurnaceSpeed);
 			if (i == Item.blazeRod.itemID)
-				return (int) (2400 * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed);
-			return (int) (GameRegistry.getFuelValue(par0ItemStack) * Settings.dragonbezoarFurnaceFuelMultiplier / Settings.dragonbezoarFurnaceSpeed);
+				return (int) (2400 * Settings.grayFurnaceFuelMultiplier / Settings.grayFurnaceSpeed);
+			return (int) (GameRegistry.getFuelValue(par0ItemStack) * Settings.grayFurnaceFuelMultiplier / Settings.grayFurnaceSpeed);
 		}
 	}
 

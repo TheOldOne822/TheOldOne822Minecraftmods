@@ -14,6 +14,7 @@ public class PluginChecks {
 	private static final Class cobalt = getCOBALT();
 	private static final Class tungsten = getTUNGSTEN();
 	private static final Class sterling = getSTERLING();
+	private static final Class wootz = getWOOTZ();
 
 	private static Class getFUSION() {
 		try {
@@ -41,7 +42,7 @@ public class PluginChecks {
 
 	private static Class getSILVER() {
 		try {
-			return Class.forName("OnlySilver.code.OnlySilver");
+			return Class.forName("zotmc.onlysilver.OnlySilver");
 		} catch (ClassNotFoundException e) {
 			return null;
 		}
@@ -119,6 +120,14 @@ public class PluginChecks {
 		}
 	}
 
+	private static Class getWOOTZ() {
+		try {
+			return Class.forName("theoldone822.WootzPignGray.WootzPignGray");
+		} catch (ClassNotFoundException e) {
+			return null;
+		}
+	}
+
 	public static boolean getFusionInstalled() {
 		return fusion != null;
 	}
@@ -168,6 +177,10 @@ public class PluginChecks {
 	}
 
 	public static boolean getSterlingInstalled() {
+		return sterling != null;
+	}
+
+	public static boolean getWootzInstalled() {
 		return sterling != null;
 	}
 }
