@@ -43,7 +43,7 @@ public class WerewolfHandler {
 		if (stack == null)
 			return;
 
-		if ((PluginChecks.getSilverInstalled() && OnlySilver.code.conf.Config.werewolfEffectiveness.get() && (stack.getItem().itemID == SimpleOresEW.item[0][12].itemID
+		if ((PluginChecks.getSilverInstalled() && zotmc.onlysilver.Config.werewolfEffectiveness.get() && (stack.getItem().itemID == SimpleOresEW.item[0][12].itemID
 				|| stack.getItem().itemID == SimpleOresEW.item[1][12].itemID
 				|| stack.getItem().itemID == SimpleOresEW.item[2][12].itemID || stack.getItem().itemID == SimpleOresEW.item[3][12].itemID))
 				|| (PluginChecks.getArsenicInstalled()

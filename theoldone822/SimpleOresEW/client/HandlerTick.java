@@ -50,7 +50,7 @@ public class HandlerTick implements ITickHandler {
 					SimpleOresEW.proxy.onBowUse(player.getItemInUse(), player);
 					this.zoomAmount = 0.25F;
 				}
-				if (PluginChecks.getNetherInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID){
+				if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID){
 					SimpleOresEW.proxy.onBowUse(player.getItemInUse(), player);
 					float zoomAmount = new Float(theoldone822.NetherrocksFusion.Settings.dragonbezoarBowZoomModifier / new Float(100));
 					this.zoomAmount = (float) zoomAmount;

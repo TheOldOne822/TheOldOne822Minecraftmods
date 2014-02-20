@@ -109,21 +109,21 @@ public class ItemExtendedBow extends ItemBow {
 			if (itemID == SimpleOresEW.extendedonyxBow.itemID) {
 				this.itemIcon = iconRegister.registerIcon("simpleoresew:" + "onyxBow0");
 			}
-		}
-		if (PluginChecks.getFusionInstalled()) {
-			if (itemID == SimpleOresEW.extendedthyriumBow.itemID) {
-				this.itemIcon = iconRegister.registerIcon("simpleoresew:" + "thyriumBow0");
-			}
+			if (PluginChecks.getFusionInstalled()) {
+				if (itemID == SimpleOresEW.extendedthyriumBow.itemID) {
+					this.itemIcon = iconRegister.registerIcon("simpleoresew:" + "thyriumBow0");
+				}
 
-			if (itemID == SimpleOresEW.extendedsinisiteBow.itemID) {
-				this.itemIcon = iconRegister.registerIcon("simpleoresew:" + "sinisiteBow0");
+				if (itemID == SimpleOresEW.extendedsinisiteBow.itemID) {
+					this.itemIcon = iconRegister.registerIcon("simpleoresew:" + "sinisiteBow0");
+				}
+				if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
+					this.itemIcon = iconRegister.registerIcon("simpleoresew:" + "extendeddragonbezoarBow");
+				}
 			}
 		}
-		if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
+		if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID) {
 			this.itemIcon = iconRegister.registerIcon("simpleoresew:" + "silverBow0");
-
-		if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
-			this.itemIcon = iconRegister.registerIcon("simpleoresew:" + "extendeddragonbezoarBow");
 		}
 
 		mythrilBow = iconRegister.registerIcon("simpleoresew:" + "mythrilBow0");
@@ -188,23 +188,26 @@ public class ItemExtendedBow extends ItemBow {
 				if (itemID == SimpleOresEW.extendedonyxBow.itemID) {
 					return onyxBow4;
 				}
-			}
-			if (PluginChecks.getFusionInstalled()) {
-				if (itemID == SimpleOresEW.extendedthyriumBow.itemID) {
-					return thyriumBow4;
-				}
+				if (PluginChecks.getFusionInstalled()) {
+					if (itemID == SimpleOresEW.extendedthyriumBow.itemID) {
+						return thyriumBow4;
+					}
 
-				if (itemID == SimpleOresEW.extendedsinisiteBow.itemID) {
-					return sinisiteBow4;
+					if (itemID == SimpleOresEW.extendedsinisiteBow.itemID) {
+						return sinisiteBow4;
+					}
+					if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
+						return extendeddragonbezoarBow4;
+					}
 				}
 			}
 
-			if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
+			if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID) {
 				return silverBow4;
-			if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
-				return extendeddragonbezoarBow4;
 			}
+
 		}
+
 		if (var8 >= 18 * increaseBowTime) {
 			if (PluginChecks.getSimpleInstalled()) {
 				if (itemID == SimpleOresEW.extendedmythrilBow.itemID) {
@@ -222,13 +225,14 @@ public class ItemExtendedBow extends ItemBow {
 					if (itemID == SimpleOresEW.extendedsinisiteBow.itemID) {
 						return sinisiteBow3;
 					}
+					if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
+						return extendeddragonbezoarBow3;
+					}
 				}
 			}
 
-			if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
+			if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID) {
 				return silverBow3;
-			if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
-				return extendeddragonbezoarBow3;
 			}
 		}
 		if (var8 > 13 * increaseBowTime) {
@@ -240,21 +244,22 @@ public class ItemExtendedBow extends ItemBow {
 				if (itemID == SimpleOresEW.extendedonyxBow.itemID) {
 					return onyxBow2;
 				}
-			}
-			if (PluginChecks.getFusionInstalled()) {
-				if (itemID == SimpleOresEW.extendedthyriumBow.itemID) {
-					return thyriumBow2;
-				}
+				if (PluginChecks.getFusionInstalled()) {
+					if (itemID == SimpleOresEW.extendedthyriumBow.itemID) {
+						return thyriumBow2;
+					}
 
-				if (itemID == SimpleOresEW.extendedsinisiteBow.itemID) {
-					return sinisiteBow2;
+					if (itemID == SimpleOresEW.extendedsinisiteBow.itemID) {
+						return sinisiteBow2;
+					}
+					if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
+						return extendeddragonbezoarBow2;
+					}
 				}
 			}
 
-			if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
+			if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID) {
 				return silverBow2;
-			if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
-				return extendeddragonbezoarBow2;
 			}
 		}
 		if (var8 > 0) {
@@ -266,21 +271,22 @@ public class ItemExtendedBow extends ItemBow {
 				if (itemID == SimpleOresEW.extendedonyxBow.itemID) {
 					return onyxBow1;
 				}
-			}
-			if (PluginChecks.getFusionInstalled()) {
-				if (itemID == SimpleOresEW.extendedthyriumBow.itemID) {
-					return thyriumBow1;
-				}
+				if (PluginChecks.getFusionInstalled()) {
+					if (itemID == SimpleOresEW.extendedthyriumBow.itemID) {
+						return thyriumBow1;
+					}
 
-				if (itemID == SimpleOresEW.extendedsinisiteBow.itemID) {
-					return sinisiteBow1;
+					if (itemID == SimpleOresEW.extendedsinisiteBow.itemID) {
+						return sinisiteBow1;
+					}
+					if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
+						return extendeddragonbezoarBow1;
+					}
 				}
 			}
 
-			if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
+			if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID) {
 				return silverBow1;
-			if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
-				return extendeddragonbezoarBow1;
 			}
 		}
 
@@ -320,26 +326,27 @@ public class ItemExtendedBow extends ItemBow {
 				par3List.add(StatCollector.translateToLocal("tips.damageTooltip"));
 				par3List.add(StatCollector.translateToLocal("tips.flameTooltip"));
 			}
-		}
-		if (PluginChecks.getFusionInstalled()) {
-			if (itemID == SimpleOresEW.extendedthyriumBow.itemID) {
-				par3List.add(StatCollector.translateToLocal("tips.damageTooltip"));
-				par3List.add(StatCollector.translateToLocal("tips.zoomTooltip"));
-			}
+			if (PluginChecks.getFusionInstalled()) {
+				if (itemID == SimpleOresEW.extendedthyriumBow.itemID) {
+					par3List.add(StatCollector.translateToLocal("tips.damageTooltip"));
+					par3List.add(StatCollector.translateToLocal("tips.zoomTooltip"));
+				}
 
-			if (itemID == SimpleOresEW.extendedsinisiteBow.itemID) {
-				par3List.add(StatCollector.translateToLocal("tips.damageTooltip"));
-				par3List.add(StatCollector.translateToLocal("tips.knockbackTooltip"));
+				if (itemID == SimpleOresEW.extendedsinisiteBow.itemID) {
+					par3List.add(StatCollector.translateToLocal("tips.damageTooltip"));
+					par3List.add(StatCollector.translateToLocal("tips.knockbackTooltip"));
+				}
+				if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
+					par3List.add(StatCollector.translateToLocal("tips.damageTooltip"));
+					par3List.add(StatCollector.translateToLocal("tips.zoomTooltip"));
+					par3List.add(StatCollector.translateToLocal("tips.knockbackTooltip"));
+					par3List.add(StatCollector.translateToLocal("tips.efficiencyTooltip"));
+					par3List.add(StatCollector.translateToLocal("tips.flameTooltip"));
+				}
 			}
 		}
-		if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
+		if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID) {
 			par3List.add(StatCollector.translateToLocal("tips.knockbackTooltip"));
-		if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
-			par3List.add(StatCollector.translateToLocal("tips.damageTooltip"));
-			par3List.add(StatCollector.translateToLocal("tips.zoomTooltip"));
-			par3List.add(StatCollector.translateToLocal("tips.knockbackTooltip"));
-			par3List.add(StatCollector.translateToLocal("tips.efficiencyTooltip"));
-			par3List.add(StatCollector.translateToLocal("tips.flameTooltip"));
 		}
 	}
 
@@ -363,8 +370,9 @@ public class ItemExtendedBow extends ItemBow {
 		}
 
 		var6 = event.charge;
-		boolean flag = (par3EntityPlayer.capabilities.isCreativeMode)
-				|| (EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, par1ItemStack) > 0);
+		boolean flag =
+				(par3EntityPlayer.capabilities.isCreativeMode)
+						|| (EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, par1ItemStack) > 0);
 
 		if ((flag) || (par3EntityPlayer.inventory.hasItem(Item.arrow.itemID))) {
 			int i = getMaxItemUseDuration(par1ItemStack) - par4;
@@ -391,8 +399,8 @@ public class ItemExtendedBow extends ItemBow {
 			}
 
 			if (f >= 1.0F
-					&& ((PluginChecks.getSimpleInstalled() && itemID == SimpleOresEW.extendedonyxBow.itemID) || (PluginChecks
-							.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID))) {
+					&& PluginChecks.getSimpleInstalled()
+					&& (itemID == SimpleOresEW.extendedonyxBow.itemID || (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID))) {
 				var8.setIsCritical(true);
 				var8.setFire(100);
 			}
@@ -414,7 +422,8 @@ public class ItemExtendedBow extends ItemBow {
 			}
 
 			par1ItemStack.damageItem(1, par3EntityPlayer);
-			par2World.playSoundAtEntity(par3EntityPlayer, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+			par2World.playSoundAtEntity(par3EntityPlayer, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f
+					* 0.5F);
 
 			var8.setDamage(var8.getDamage() * increaseBowDamage);
 
@@ -433,8 +442,8 @@ public class ItemExtendedBow extends ItemBow {
 
 			if (!flag) {
 				if (z == 1
-						&& ((PluginChecks.getSimpleInstalled() && itemID == SimpleOresEW.extendedmythrilBow.itemID) || (PluginChecks
-								.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID))) {
+						&& PluginChecks.getSimpleInstalled()
+						&& (itemID == SimpleOresEW.extendedmythrilBow.itemID || (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID))) {
 					var8.canBePickedUp = 0;
 				} else {
 					par3EntityPlayer.inventory.consumeInventoryItem(Item.arrow.itemID);
@@ -450,32 +459,37 @@ public class ItemExtendedBow extends ItemBow {
 
 				if (PluginChecks.getSimpleInstalled()) {
 					if (itemID == SimpleOresEW.extendedmythrilBow.itemID) {
-						var8.setDamage(var8.getDamage() + SimpleOres.core.Settings.mythrilBowDamageModifier * increaseBowDamage * 0.5D + 0.5D);
+						var8.setDamage(var8.getDamage() + SimpleOres.core.Settings.mythrilBowDamageModifier * increaseBowDamage
+								* 0.5D + 0.5D);
 					}
 
 					if (itemID == SimpleOresEW.extendedonyxBow.itemID) {
-						var8.setDamage(var8.getDamage() + SimpleOres.core.Settings.onyxBowDamageModifier * increaseBowDamage * 0.5D + 0.5D);
-					}
-				}
-				if (PluginChecks.getFusionInstalled()) {
-					if (itemID == SimpleOresEW.extendedthyriumBow.itemID) {
-						var8.setDamage(var8.getDamage() + SimpleOres.plugins.fusion.Settings.thyriumBowDamageModifier * increaseBowDamage
+						var8.setDamage(var8.getDamage() + SimpleOres.core.Settings.onyxBowDamageModifier * increaseBowDamage
 								* 0.5D + 0.5D);
 					}
 
-					if (itemID == SimpleOresEW.extendedsinisiteBow.itemID) {
-						var8.setDamage(var8.getDamage() + SimpleOres.plugins.fusion.Settings.sinisiteBowDamageModifier * increaseBowDamage
-								* 0.5D + 0.5D);
-						var8.setKnockbackStrength(k + SimpleOres.plugins.fusion.Settings.sinisiteBowKnockbackModifier);
+					if (PluginChecks.getFusionInstalled()) {
+						if (itemID == SimpleOresEW.extendedthyriumBow.itemID) {
+							var8.setDamage(var8.getDamage() + SimpleOres.plugins.fusion.Settings.thyriumBowDamageModifier
+									* increaseBowDamage * 0.5D + 0.5D);
+						}
+
+						if (itemID == SimpleOresEW.extendedsinisiteBow.itemID) {
+							var8.setDamage(var8.getDamage() + SimpleOres.plugins.fusion.Settings.sinisiteBowDamageModifier
+									* increaseBowDamage * 0.5D + 0.5D);
+							var8.setKnockbackStrength(k + SimpleOres.plugins.fusion.Settings.sinisiteBowKnockbackModifier);
+						}
+						if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
+							var8.setDamage(var8.getDamage()
+									+ theoldone822.NetherrocksFusion.Settings.dragonbezoarBowDamageModifier * increaseBowDamage
+									* 0.5D + 0.5D);
+							var8.setKnockbackStrength(k
+									+ theoldone822.NetherrocksFusion.Settings.dragonbezoarBowKnockbackModifier);
+						}
 					}
 				}
-				if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
+				if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID) {
 					var8.setKnockbackStrength(k + 2);
-				
-				if (itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
-					var8.setDamage(var8.getDamage() + theoldone822.NetherrocksFusion.Settings.dragonbezoarBowDamageModifier * increaseBowDamage
-							* 0.5D + 0.5D);
-					var8.setKnockbackStrength(k + theoldone822.NetherrocksFusion.Settings.dragonbezoarBowKnockbackModifier);
 				}
 			}
 		}
@@ -531,6 +545,7 @@ public class ItemExtendedBow extends ItemBow {
 	 */
 	@Override
 	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
-		return this.material.getToolCraftingMaterial() == par2ItemStack.itemID ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
+		return this.material.getToolCraftingMaterial() == par2ItemStack.itemID ? true : super.getIsRepairable(par1ItemStack,
+				par2ItemStack);
 	}
 }

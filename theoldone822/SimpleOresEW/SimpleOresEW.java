@@ -38,7 +38,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 @Mod(
 		modid = "simpleoresew",
 		name = "Simple Ore Extended Work Bench Plugin",
-		version = "1.9",
+		version = "1.11",
 		dependencies = "required-after:extendedWorkbench; after:simpleores; after:simpleoresfusion; after:onlysilver; after:MoCreatures; after:SimpleArsenic; after:netherrocksfusion; after:netherrocks; after:classicalalchemy; after:simplecthon; after:goldenglitter; after:haditecoal; after:simplecobalt; after:simpletungsten; after:sterlingandblack")
 public class SimpleOresEW {
 
@@ -735,24 +735,24 @@ public class SimpleOresEW {
 		}
 		if (PluginChecks.getSilverInstalled()) {
 			item[0][12] =
-					new ItemExtendedSword(silverID + 0, OnlySilver.code.Items.toolSilver).setUnlocalizedName(
+					new ItemExtendedSword(silverID + 0, zotmc.onlysilver.Items.toolSilver).setUnlocalizedName(
 							"extendedWorkbenchnr:tool012").setTextureName("SimpleOresEW:toolSilverSword");
 			item[1][12] =
-					new ItemExtendedShovel(silverID + 1, OnlySilver.code.Items.toolSilver).setUnlocalizedName(
+					new ItemExtendedShovel(silverID + 1, zotmc.onlysilver.Items.toolSilver).setUnlocalizedName(
 							"extendedWorkbenchnr:tool112").setTextureName("SimpleOresEW:toolSilverShovel");
 			item[2][12] =
-					new ItemExtendedPickaxe(silverID + 2, OnlySilver.code.Items.toolSilver).setUnlocalizedName(
+					new ItemExtendedPickaxe(silverID + 2, zotmc.onlysilver.Items.toolSilver).setUnlocalizedName(
 							"extendedWorkbenchnr:tool212").setTextureName("SimpleOresEW:toolSilverPickaxe");
 			item[3][12] =
-					new ItemExtendedAxe(silverID + 3, OnlySilver.code.Items.toolSilver).setUnlocalizedName(
+					new ItemExtendedAxe(silverID + 3, zotmc.onlysilver.Items.toolSilver).setUnlocalizedName(
 							"extendedWorkbenchnr:tool312").setTextureName("SimpleOresEW:toolSilverAxe");
 			item[4][12] =
-					new ItemExtendedHoe(silverID + 4, OnlySilver.code.Items.toolSilver).setUnlocalizedName(
+					new ItemExtendedHoe(silverID + 4, zotmc.onlysilver.Items.toolSilver).setUnlocalizedName(
 							"extendedWorkbenchnr:tool412").setTextureName("SimpleOresEW:toolSilverHoe");
 
-			MinecraftForge.setToolClass(item[2][12], "pickaxe", OnlySilver.code.Items.toolSilver.getHarvestLevel());
-			MinecraftForge.setToolClass(item[1][12], "shovel", OnlySilver.code.Items.toolSilver.getHarvestLevel());
-			MinecraftForge.setToolClass(item[3][12], "axe", OnlySilver.code.Items.toolSilver.getHarvestLevel());
+			MinecraftForge.setToolClass(item[2][12], "pickaxe", zotmc.onlysilver.Items.toolSilver.getHarvestLevel());
+			MinecraftForge.setToolClass(item[1][12], "shovel", zotmc.onlysilver.Items.toolSilver.getHarvestLevel());
+			MinecraftForge.setToolClass(item[3][12], "axe", zotmc.onlysilver.Items.toolSilver.getHarvestLevel());
 
 			EWAPI.addRecipe(new ItemStack(item[0][12], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'),
 					OnlySilver.code.api.OnlySilverAPI.silverIngot.get(), ('Y'), Block.cobblestone });
@@ -769,19 +769,19 @@ public class SimpleOresEW {
 				LanguageRegistry.addName(item[j][12], "Extended Silver" + " " + (toolNames[j]));
 
 			extendedsilverHelm =
-					new ItemExtendedArmor(silverID + 5, OnlySilver.code.Items.armorSilver, armorRenderer[12], 0, "Silver")
+					new ItemExtendedArmor(silverID + 5, zotmc.onlysilver.Items.armorSilver, armorRenderer[12], 0, "Silver")
 							.setUnlocalizedName("extendedWorkbenchnr:armorSilverHelmet").setTextureName(
 									"SimpleOresEW:armorextendedSilverHelmet");
 			extendedsilverChest =
-					new ItemExtendedArmor(silverID + 6, OnlySilver.code.Items.armorSilver, armorRenderer[12], 1, "Silver")
+					new ItemExtendedArmor(silverID + 6, zotmc.onlysilver.Items.armorSilver, armorRenderer[12], 1, "Silver")
 							.setUnlocalizedName("extendedWorkbenchnr:armorSilverChestplate").setTextureName(
 									"SimpleOresEW:armorextendedSilverChestplate");
 			extendedsilverLegs =
-					new ItemExtendedArmor(silverID + 7, OnlySilver.code.Items.armorSilver, armorRenderer[12], 2, "Silver")
+					new ItemExtendedArmor(silverID + 7, zotmc.onlysilver.Items.armorSilver, armorRenderer[12], 2, "Silver")
 							.setUnlocalizedName("extendedWorkbenchnr:armorSilverLeggings").setTextureName(
 									"SimpleOresEW:armorextendedSilverLeggings");
 			extendedsilverBoots =
-					new ItemExtendedArmor(silverID + 8, OnlySilver.code.Items.armorSilver, armorRenderer[12], 3, "Silver")
+					new ItemExtendedArmor(silverID + 8, zotmc.onlysilver.Items.armorSilver, armorRenderer[12], 3, "Silver")
 							.setUnlocalizedName("extendedWorkbenchnr:armorSilverBoots").setTextureName(
 									"SimpleOresEW:armorextendedSilverBoots");
 
@@ -800,14 +800,14 @@ public class SimpleOresEW {
 			LanguageRegistry.addName(extendedsilverBoots, "Extended Silver Boots");
 
 			extendedsilverBow =
-					(ItemBow) new ItemExtendedBow(silverID + 9, 500, OnlySilver.code.Items.toolSilver).setFull3D()
+					(ItemBow) new ItemExtendedBow(silverID + 9, 500, zotmc.onlysilver.Items.toolSilver).setFull3D()
 							.setUnlocalizedName("extendedWorkbenchso:silverBow");
-			EWAPI.addRecipe(new ItemStack(extendedthyriumBow, 1), new Object[] { " YX", "Y X", "Z X", "Z X", "Y X", " YX",
+			EWAPI.addRecipe(new ItemStack(extendedsilverBow, 1), new Object[] { " YX", "Y X", "Z X", "Z X", "Y X", " YX",
 					('X'), Item.silk, ('Y'), OnlySilver.code.api.OnlySilverAPI.silverRod.get(), ('Z'), Item.ingotIron });
 
 			LanguageRegistry.addName(extendedsilverBow, "Extended Silver Bow");
 
-			if (OnlySilver.code.conf.Config.werewolfEffectiveness.get())
+			if (zotmc.onlysilver.Config.werewolfEffectiveness.get())
 				try {
 					MinecraftForge.EVENT_BUS.register(new WerewolfHandler());
 				} catch (Exception ignored) {

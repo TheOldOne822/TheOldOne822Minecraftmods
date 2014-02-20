@@ -42,7 +42,7 @@ public class PluginChecks {
 
 	private static Class getSILVER() {
 		try {
-			return Class.forName("OnlySilver.code.OnlySilver");
+			return Class.forName("zotmc.onlysilver.OnlySilver");
 		} catch (ClassNotFoundException e) {
 			return null;
 		}
@@ -181,6 +181,6 @@ public class PluginChecks {
 	}
 
 	public static boolean getWootzInstalled() {
-		return sterling != null;
+		return wootz != null;
 	}
 }
