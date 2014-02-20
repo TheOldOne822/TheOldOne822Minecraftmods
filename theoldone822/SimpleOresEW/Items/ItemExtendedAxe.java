@@ -50,7 +50,7 @@ public class ItemExtendedAxe extends ItemAxe
 			}
 
 		}
-		if (this.itemID == SimpleOresEW.extendedpyralisAxe.itemID) {
+		if (PluginChecks.getNetherFusionInstalled() && this.itemID == SimpleOresEW.extendedpyralisAxe.itemID) {
 			par1ItemStack.damageItem(1, par3EntityLivingBase);
 			par2EntityLivingBase.setFire(50);
 			par3EntityLivingBase.addPotionEffect(new PotionEffect(Potion.nightVision.id, 1200));
@@ -64,7 +64,7 @@ public class ItemExtendedAxe extends ItemAxe
 	}
 
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
-		if (this.itemID == SimpleOresEW.extendeddragonbezoarAxe.itemID || this.itemID == SimpleOresEW.extendedpyralisAxe.itemID) {
+		if (PluginChecks.getNetherFusionInstalled() && (this.itemID == SimpleOresEW.extendeddragonbezoarAxe.itemID || this.itemID == SimpleOresEW.extendedpyralisAxe.itemID)) {
 			if (par7 == 0) {
 				par5--;
 			}
@@ -96,7 +96,7 @@ public class ItemExtendedAxe extends ItemAxe
 		return true;
 	}public boolean onBlockStartBreak(ItemStack itemstack, int i, int j, int k, EntityPlayer player) {
 		Random random = new Random();
-		if (PluginChecks.getNetherFusionInstalled() && (itemID == SimpleOresEW.extendeddragonbezoarAxe.itemID && !player.capabilities.isCreativeMode)) {
+		if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarAxe.itemID && !player.capabilities.isCreativeMode) {
 			Boolean flag = false;
 			World world = player.worldObj;
 			int blockID = world.getBlockId(i, j, k);
