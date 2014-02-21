@@ -17,7 +17,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
-@Mod(modid = "fusionitemgenerator", name = "Fusion Item Generator", version = "1.0", dependencies = "required-after:simpleores; required-after:simpleoresfusion")
+@Mod(modid = "fusionitemgenerator", name = "Fusion Item Generator", version = "2.0beta", dependencies = "required-after:simpleores; required-after:simpleoresfusion")
 
 public class FusionItemGenerator {
 

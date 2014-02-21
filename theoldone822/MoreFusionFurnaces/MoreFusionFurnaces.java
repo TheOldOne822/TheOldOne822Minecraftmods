@@ -26,7 +26,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
-@Mod(modid = "morefusionfurnaces", name = "More Fusion Furnaces", version = "1.0", dependencies = "required-after:simpleores; required-after:simpleoresfusion")
+@Mod(modid = "morefusionfurnaces", name = "More Fusion Furnaces", version = "2.0beta", dependencies = "required-after:simpleores; required-after:simpleoresfusion")
 public class MoreFusionFurnaces {
 	@SidedProxy(clientSide = "theoldone822.MoreFusionFurnaces.ProxyClient", serverSide = "theoldone822.MoreFusionFurnaces.ProxyCommon")	
 	public static ProxyCommon proxy;

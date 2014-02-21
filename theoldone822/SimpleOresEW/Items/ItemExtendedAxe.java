@@ -7,6 +7,7 @@ import static theoldone822.SimpleOresEW.SimpleOresEW.extendedValues.increaseTool
 import java.util.ArrayList;
 import java.util.Random;
 
+import theoldone822.SimpleOresEW.PluginChecks;
 import theoldone822.SimpleOresEW.SimpleOresEW;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
@@ -49,7 +50,7 @@ public class ItemExtendedAxe extends ItemAxe
 			}
 
 		}
-		if (PluginChecks.getNetherFusionInstalled() && (PluginChecks.getNetherFusionInstalled() && this.itemID == SimpleOresEW.extendedpyralisAxe.itemID)) {
+		if (PluginChecks.getNetherFusionInstalled() && this.itemID == SimpleOresEW.extendedpyralisAxe.itemID) {
 			par1ItemStack.damageItem(1, par3EntityLivingBase);
 			par2EntityLivingBase.setFire(50);
 			par3EntityLivingBase.addPotionEffect(new PotionEffect(Potion.nightVision.id, 1200));

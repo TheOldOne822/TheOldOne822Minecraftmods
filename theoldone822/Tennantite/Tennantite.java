@@ -17,7 +17,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "Tennantite", name = "Tennantite ore for Simple Arsenic, and Old Lace", version = "1.0", dependencies = "required-after:simpleores; required-after:SimpleArsenic")
+@Mod(modid = "Tennantite", name = "Tennantite ore for Simple Arsenic, and Old Lace", version = "2.0beta", dependencies = "required-after:simpleores; required-after:SimpleArsenic")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 
 public class Tennantite {
