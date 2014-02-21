@@ -181,6 +181,6 @@ public class PluginChecks {
 	}
 
 	public static boolean getWootzInstalled() {
-		return sterling != null;
+		return wootz != null;
 	}
 }

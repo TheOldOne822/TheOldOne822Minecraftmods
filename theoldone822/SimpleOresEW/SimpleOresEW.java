@@ -38,7 +38,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 @Mod(
 		modid = "simpleoresew",
 		name = "Simple Ore Extended Work Bench Plugin",
-		version = "1.9",
+		version = "2.0",
 		dependencies = "required-after:extendedWorkbench; after:simpleores; after:simpleoresfusion; after:onlysilver; after:MoCreatures; after:SimpleArsenic; after:netherrocksfusion; after:netherrocks; after:classicalalchemy; after:simplecthon; after:goldenglitter; after:haditecoal; after:simplecobalt; after:simpletungsten; after:sterlingandblack")
 public class SimpleOresEW {
 
@@ -802,7 +802,7 @@ public class SimpleOresEW {
 			extendedsilverBow =
 					(ItemBow) new ItemExtendedBow(silverID + 9, 500, zotmc.onlysilver.Items.toolSilver).setFull3D()
 							.setUnlocalizedName("extendedWorkbenchso:silverBow");
-			EWAPI.addRecipe(new ItemStack(extendedthyriumBow, 1), new Object[] { " YX", "Y X", "Z X", "Z X", "Y X", " YX",
+			EWAPI.addRecipe(new ItemStack(extendedsilverBow, 1), new Object[] { " YX", "Y X", "Z X", "Z X", "Y X", " YX",
 					('X'), Item.silk, ('Y'), OnlySilver.code.api.OnlySilverAPI.silverRod.get(), ('Z'), Item.ingotIron });
 
 			LanguageRegistry.addName(extendedsilverBow, "Extended Silver Bow");
