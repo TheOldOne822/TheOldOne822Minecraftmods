@@ -19,8 +19,6 @@ public class Recipes {
 		OreDictionary.registerOre("ingotPigIron", new ItemStack(Content.pigironIngot));
 		OreDictionary.registerOre("ingotRefinedPigiron", new ItemStack(Content.rePigironIngot));
 		OreDictionary.registerOre("ingotRefinedPigIron", new ItemStack(Content.rePigironIngot));
-		OreDictionary.registerOre("ingotRefinedIron", new ItemStack(Content.rePigironIngot));
-		OreDictionary.registerOre("ingotRefinediron", new ItemStack(Content.rePigironIngot));
 		OreDictionary.registerOre("ingotWootz", new ItemStack(Content.wootzIngot));
 		OreDictionary.registerOre("ingotWootzsteel", new ItemStack(Content.wootzIngot));
 		OreDictionary.registerOre("ingotWootzSteel", new ItemStack(Content.wootzIngot));

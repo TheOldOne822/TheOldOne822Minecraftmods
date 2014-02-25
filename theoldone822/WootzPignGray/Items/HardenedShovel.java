@@ -1,5 +1,6 @@
 package theoldone822.WootzPignGray.Items;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -25,7 +26,14 @@ public class HardenedShovel extends ItemSpade
 		
 	}
 	
-    /**
+	public HardenedShovel setUnlocalizedName(String unlocalizedName)
+	{
+		super.setUnlocalizedName(unlocalizedName);
+		GameRegistry.registerItem(this, unlocalizedName);
+		return this;
+	}
+
+	/**
      * Sets the icon for the item. 
      */
     @Override

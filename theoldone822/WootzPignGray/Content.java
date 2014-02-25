@@ -196,9 +196,6 @@ public class Content
 		LanguageRegistry.addName(hardenedsteelHoe, "Hardened steel Hoe");
 
 		//Tool Registering
-        MinecraftForge.setToolClass(wootzPick, "pickaxe", Settings.wootzMiningLevel);
-        MinecraftForge.setToolClass(wootzShovel, "shovel", Settings.wootzMiningLevel);
-        MinecraftForge.setToolClass(wootzAxe, "axe", Settings.wootzMiningLevel);
         MinecraftForge.setToolClass(hardenedsteelPick, "pickaxe", Settings.hardenedsteelMiningLevel);
         MinecraftForge.setToolClass(hardenedsteelShovel, "shovel", Settings.hardenedsteelMiningLevel);
         MinecraftForge.setToolClass(hardenedsteelAxe, "axe", Settings.hardenedsteelMiningLevel);

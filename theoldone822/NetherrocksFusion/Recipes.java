@@ -17,18 +17,6 @@ public class Recipes {
 		OreDictionary.registerOre("ingotThraka", new ItemStack(Content.thrakaIngot));
 		OreDictionary.registerOre("ingotPyralis", new ItemStack(Content.pyralisIngot));
 		OreDictionary.registerOre("ingotDragonBezoar", new ItemStack(Content.dragonbezoarIngot));
-		OreDictionary.registerOre("ingotFyrite", new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.fyriteIngot));
-		OreDictionary.registerOre("ingotMalachite", new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.malachiteIngot));
-		OreDictionary.registerOre("gemAshstone", new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.ashstoneGem));
-		OreDictionary.registerOre("ingotIllumenite", new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.illumeniteIngot));
-		OreDictionary.registerOre("gemDragonStone", new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.dragonstoneGem));
-		OreDictionary.registerOre("ingotArgonite", new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.argoniteIngot));
-		OreDictionary.registerOre("oreFyrite", new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.fyriteOre));
-		OreDictionary.registerOre("oreMalachite", new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.malachiteOre));
-		OreDictionary.registerOre("oreAshstone", new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.ashstoneOre));
-		OreDictionary.registerOre("oreIllumenite", new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.illumeniteOre));
-		OreDictionary.registerOre("oreDragonStone", new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.dragonstoneOre));
-		OreDictionary.registerOre("oreArgonite", new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.argoniteOre));
 
 		// Furnace
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.dragonbezoarFusionFurnace, true, new Object[] { "XXX", "XYX", "XXX", Character.valueOf('X'), "ingotDragonBezoar", Character.valueOf('Y'),

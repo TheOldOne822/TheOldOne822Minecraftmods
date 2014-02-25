@@ -78,7 +78,7 @@ public class Settings {
 	public static void doSettings(FMLPreInitializationEvent event)
 	{
 	File installDir = event.getModConfigurationDirectory();
-	File configDir = new File(installDir, "Wootz Pig and Gray Configuration");
+	File configDir = new File(installDir, "Wootz Pig and Gray");
 	Configuration settings = new Configuration(new File(configDir, "Wootz Pig and Gray Settings.cfg"));
 
 	settings.load();

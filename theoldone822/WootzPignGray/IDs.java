@@ -51,7 +51,7 @@ public class IDs {
 	public static void doConfig(FMLPreInitializationEvent event)
 	{
 	File installDir = event.getModConfigurationDirectory();
-	File configDir = new File(installDir, "Wootz Pig and Gray Configuration");
+	File configDir = new File(installDir, "Wootz Pig and Gray");
 	Configuration config = new Configuration(new File(configDir, "IDs.cfg"));
 
 

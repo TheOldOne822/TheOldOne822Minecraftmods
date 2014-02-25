@@ -6,20 +6,23 @@ import theoldone822.WootzPignGray.Furnaces.GrayFurnaceTileEntity;
 import theoldone822.WootzPignGray.Furnaces.GrayFusionFurnaceTileEntity;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.EnumHelper;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
-@Mod(modid = "wootzpigngray", name = "Wootz Pig and Gray", version = "2.0beta", dependencies = "required-after:simpleores; required-after:simpleoresfusion; after:haditecoal; after:sterlingandblack")
+@Mod(modid = "wootzpigngray", name = "Wootz Pig and Gray", version = "2.0", dependencies = "required-after:simpleores; required-after:simpleoresfusion; after:haditecoal; after:sterlingandblack")
 public class WootzPignGray {
 	@SidedProxy(clientSide = "theoldone822.WootzPignGray.ProxyClient", serverSide = "theoldone822.WootzPignGray.ProxyCommon")	
 	public static ProxyCommon proxy;
@@ -65,5 +68,12 @@ public class WootzPignGray {
 		NetworkRegistry.instance().registerGuiHandler(instance, proxy);
 		GameRegistry.registerTileEntity(GrayFurnaceTileEntity.class, "grayFurnace");
 		GameRegistry.registerTileEntity(GrayFusionFurnaceTileEntity.class, "grayFusionFurnace");
-	}
+
+		if (Loader.isModLoaded("TreeCapitator")) {
+			NBTTagCompound c = new NBTTagCompound();
+			c.setString("modID", "wootzpigngray");
+			c.setString("axeIDList", String.valueOf(Content.wootzAxe.itemID) + "; " + String.valueOf(Content.hardenedsteelAxe.itemID));
+			FMLInterModComms.sendMessage("TreeCapitator", "ThirdPartyModConfig", c);
+		}
+}
 }

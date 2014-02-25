@@ -1,5 +1,7 @@
 package theoldone822.WootzPignGray.Items;
 
+import alexndr.SimpleOres.api.content.SimpleArmor;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -31,7 +33,14 @@ public class HardenedAxe extends ItemAxe
 		
 	}
 	
-    /**
+	public HardenedAxe setUnlocalizedName(String unlocalizedName)
+	{
+		super.setUnlocalizedName(unlocalizedName);
+		GameRegistry.registerItem(this, unlocalizedName);
+		return this;
+	}
+
+	/**
      * Sets the icon for the item. 
      */
     @Override
