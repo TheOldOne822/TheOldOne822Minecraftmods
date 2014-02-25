@@ -2,9 +2,6 @@ package theoldone822.WootzPignGray;
 
 import java.util.Random;
 
-import SimpleOres.core.Items;
-import SimpleOres.core.Settings;
-import SimpleOres.core.SimpleOres;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -36,11 +33,6 @@ public class SimpleGemOre extends Block
 		this.modName = mod;
 		this.itemDrop = itemToDrop + 256;
 		
-    	if(Settings.enableSeparateTabs == true)
-    	{
-            this.setCreativeTab(tab);
-    	}
-    	else this.setCreativeTab(SimpleOres.tabSimpleBlocks);
 	}
 
 	/**
@@ -52,7 +44,7 @@ public class SimpleGemOre extends Block
 	 * @param minAmount = base amount to drop
 	 * @param maxExtra = max random exrta to drop 
 	 */
-	public SimpleGemOre(int id, Material material, String mod, int itemToDrop, int minAmount, int maxExtra, CreativeTabs tab)
+	public SimpleGemOre(int id, Material material, String mod, int itemToDrop, int minAmount, int maxExtra)
 	{
 		super(id, material);
 		this.modName = mod;
@@ -60,11 +52,6 @@ public class SimpleGemOre extends Block
 		this.Amount = minAmount;
 		this.Extra = maxExtra;
 		
-    	if(Settings.enableSeparateTabs == true)
-    	{
-            this.setCreativeTab(tab);
-    	}
-    	else this.setCreativeTab(SimpleOres.tabSimpleBlocks);
 	}
 	
 	/**

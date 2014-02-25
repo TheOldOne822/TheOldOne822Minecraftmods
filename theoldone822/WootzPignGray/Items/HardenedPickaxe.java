@@ -1,9 +1,8 @@
 package theoldone822.WootzPignGray.Items;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import SimpleOres.core.Settings;
-import SimpleOres.core.SimpleOres;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumArmorMaterial;
@@ -21,20 +20,22 @@ public class HardenedPickaxe extends ItemPickaxe
     private String modName;
     
 
-	public HardenedPickaxe(int i, EnumToolMaterial enumtoolmaterial, String mod, CreativeTabs tab) 
+	public HardenedPickaxe(int i, EnumToolMaterial enumtoolmaterial, String mod) 
 	{
 		super(i, enumtoolmaterial);
 		material = enumtoolmaterial;
 		modName = mod;
 		
-    	if(Settings.enableSeparateTabs == true)
-    	{
-            this.setCreativeTab(tab);
-    	}
-    	else this.setCreativeTab(SimpleOres.tabSimpleBlocks);
 	}
 	
-    /**
+	public HardenedPickaxe setUnlocalizedName(String unlocalizedName)
+	{
+		super.setUnlocalizedName(unlocalizedName);
+		GameRegistry.registerItem(this, unlocalizedName);
+		return this;
+	}
+
+	/**
      * Sets the icon for the item. 
      */
     @Override

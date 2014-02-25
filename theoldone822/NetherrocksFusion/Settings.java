@@ -95,7 +95,7 @@ public class Settings {
 	public static void doSettings(FMLPreInitializationEvent event)
 	{
 	File installDir = event.getModConfigurationDirectory();
-	File configDir = new File(installDir, "Netherrocks Fusions Configuration");
+	File configDir = new File(installDir, "Netherrocks Fusions");
 	Configuration settings = new Configuration(new File(configDir, "Netherrocks Fusions Settings.cfg"));
 
 	settings.load();
@@ -147,12 +147,12 @@ public class Settings {
 	thrakaArmorDamageReduction = settings.get("Armor Stats", "Thraka Armor Damage Reduction Array", new int[] {3, 5, 4, 2}).getIntList();
 	thrakaArmorEnchantability = settings.get("Armor Stats", "Thraka Armor Enchantability", 34).getInt();
 
-	pyralisArmorDurability = settings.get("Armor Stats", "Pyralis Armor Durability", 25).getInt();
+	pyralisArmorDurability = settings.get("Armor Stats", "Pyralis Armor Durability", 35).getInt();
 	pyralisArmorDamageReduction = settings.get("Armor Stats", "Pyralis Armor Damage Reduction Array", new int[] {3, 8, 6, 3}).getIntList();
 	pyralisArmorEnchantability = settings.get("Armor Stats", "Pyralis Armor Enchantability", 29).getInt();
 	pyralisArmorResistance = settings.get("Armor Stats", "Pyralis Armor Resistance", 55).getInt();
 
-	pyralischainArmorDurability = settings.get("Armor Stats", "Pyralis Chain Armor Durability", 20).getInt();
+	pyralischainArmorDurability = settings.get("Armor Stats", "Pyralis Chain Armor Durability", 28).getInt();
 	pyralischainArmorDamageReduction = settings.get("Armor Stats", "Pyralis Chain Armor Damage Reduction Array", new int[] {2, 6, 5, 2}).getIntList();
 	pyralischainArmorEnchantability = settings.get("Armor Stats", "Pyralis Chain Armor Enchantability", 31).getInt();
 	pyralischainArmorResistance = settings.get("Armor Stats", "Pyralis Chain Armor Resistance", 45).getInt();

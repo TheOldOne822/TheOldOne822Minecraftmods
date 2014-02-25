@@ -43,11 +43,11 @@ public class WerewolfHandler {
 		if (stack == null)
 			return;
 
-		if ((PluginChecks.getSilverInstalled() && OnlySilver.code.conf.Config.werewolfEffectiveness.get() && (stack.getItem().itemID == SimpleOresEW.item[0][12].itemID
+		if ((PluginChecks.getSilverInstalled() && zotmc.onlysilver.Config.werewolfEffectiveness.get() && (stack.getItem().itemID == SimpleOresEW.item[0][12].itemID
 				|| stack.getItem().itemID == SimpleOresEW.item[1][12].itemID
 				|| stack.getItem().itemID == SimpleOresEW.item[2][12].itemID || stack.getItem().itemID == SimpleOresEW.item[3][12].itemID))
 				|| (PluginChecks.getArsenicInstalled()
-						&& SimpleOres.plugins.akkamaddi.arsenic.code.ArsenicAndLace.werewolfEffectiveness && (stack.getItem().itemID == SimpleOresEW.item[2][15].itemID
+						&& akkamaddi.arsenic.code.ArsenicAndLace.werewolfEffectiveness && (stack.getItem().itemID == SimpleOresEW.item[2][15].itemID
 						|| stack.getItem().itemID == SimpleOresEW.item[0][15].itemID
 						|| stack.getItem().itemID == SimpleOresEW.item[1][15].itemID || stack.getItem().itemID == SimpleOresEW.item[3][15].itemID))
 				|| (PluginChecks.getGlitterInstalled() && (stack.getItem().itemID == SimpleOresEW.item[0][24].itemID

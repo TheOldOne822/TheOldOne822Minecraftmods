@@ -2,7 +2,6 @@ package theoldone822.WootzPignGray.Furnaces;
 
 import java.util.Random;
 
-import SimpleOres.plugins.fusion.FusionRecipes;
 import theoldone822.WootzPignGray.Settings;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;

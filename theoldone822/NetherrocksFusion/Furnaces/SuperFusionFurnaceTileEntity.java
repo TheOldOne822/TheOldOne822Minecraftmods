@@ -4,7 +4,7 @@ import java.util.Random;
 
 import theoldone822.NetherrocksFusion.NetherrocksFusion;
 import theoldone822.NetherrocksFusion.Settings;
-import SimpleOres.plugins.fusion.FusionRecipes;
+import alexndr.SimpleOres.plugins.fusion.FusionRecipes;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

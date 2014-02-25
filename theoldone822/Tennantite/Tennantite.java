@@ -1,7 +1,7 @@
 package theoldone822.Tennantite;
 
-import SimpleOres.core.api.SimpleOre;
-import SimpleOres.plugins.akkamaddi.arsenic.code.ArsenicAndLace;
+import alexndr.SimpleOres.api.content.SimpleOre;
+import akkamaddi.arsenic.code.ArsenicAndLace;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
@@ -17,7 +17,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "Tennantite", name = "Tennantite ore for Simple Arsenic, and Old Lace", version = "1.0", dependencies = "required-after:simpleores; required-after:SimpleArsenic")
+@Mod(modid = "Tennantite", name = "Tennantite ore for Simple Arsenic, and Old Lace", version = "2.0", dependencies = "required-after:simpleores; required-after:SimpleArsenic")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 
 public class Tennantite {
@@ -77,8 +77,7 @@ public class Tennantite {
 
         config.save();
 
-        oreTennantite = new SimpleOre(oreTennantiteID, Material.iron, "Tennantite", ArsenicAndLace.tabAkkamaddiArsenic).setHardness(4.0F).setResistance(10.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("oreTennantite");
-        GameRegistry.registerBlock(oreTennantite, "oreTennantite");
+        oreTennantite = new SimpleOre(oreTennantiteID, Material.iron).modId("Tennantite").setHardness(4.0F).setResistance(10.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("oreTennantite");
         
         OreDictionary.registerOre("oreTennantite", new ItemStack(oreTennantite));
         GameRegistry.addSmelting(oreTennantite.blockID, new ItemStack(ArsenicAndLace.arsenideBronzeIngot), 0.8F);

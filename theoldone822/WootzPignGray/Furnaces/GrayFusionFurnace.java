@@ -1,7 +1,6 @@
 package theoldone822.WootzPignGray.Furnaces;
 
-import SimpleOres.core.Settings;
-import SimpleOres.core.SimpleOres;
+import alexndr.SimpleOres.api.helpers.CoreHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -29,7 +28,6 @@ import net.minecraft.world.World;
 
 public class GrayFusionFurnace extends BlockContainer
 {
-	public static SimpleOres simpleores;
     /**
      * Is the random generator used by furnace to drop the inventory contents in random directions.
      */
@@ -55,11 +53,11 @@ public class GrayFusionFurnace extends BlockContainer
         
         if(par2 == false)
 		{
-        	if(Settings.enableSeparateTabs == true)
+        	if(CoreHelper.coreSettings.enableSeparateTabs == true)
         	{
-    			this.setCreativeTab(simpleores.tabSimpleDecorations);
+    			this.setCreativeTab(CoreHelper.simpleores.tabSimpleDecorations);
         	}
-        	else this.setCreativeTab(simpleores.tabSimpleBlocks);      		
+        	else this.setCreativeTab(CoreHelper.simpleores.tabSimpleBlocks);      		
 		}
     }
 

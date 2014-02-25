@@ -86,7 +86,7 @@ public class IDs {
 	public static void doConfig(FMLPreInitializationEvent event)
 	{
 	File installDir = event.getModConfigurationDirectory();
-	File configDir = new File(installDir, "Netherrocks Fusions Configuration");
+	File configDir = new File(installDir, "Netherrocks Fusions");
 	Configuration config = new Configuration(new File(configDir, "IDs.cfg"));
 
 

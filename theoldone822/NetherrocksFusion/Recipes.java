@@ -1,6 +1,6 @@
 package theoldone822.NetherrocksFusion;
 
-import SimpleOres.plugins.fusion.FusionRecipes;
+import alexndr.SimpleOres.plugins.fusion.FusionRecipes;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.block.Block;
@@ -17,22 +17,10 @@ public class Recipes {
 		OreDictionary.registerOre("ingotThraka", new ItemStack(Content.thrakaIngot));
 		OreDictionary.registerOre("ingotPyralis", new ItemStack(Content.pyralisIngot));
 		OreDictionary.registerOre("ingotDragonBezoar", new ItemStack(Content.dragonbezoarIngot));
-		OreDictionary.registerOre("ingotFyrite", new ItemStack(Netherrocks.core.Items.fyriteIngot));
-		OreDictionary.registerOre("ingotMalachite", new ItemStack(Netherrocks.core.Items.malachiteIngot));
-		OreDictionary.registerOre("gemAshstone", new ItemStack(Netherrocks.core.Items.ashstoneGem));
-		OreDictionary.registerOre("ingotIllumenite", new ItemStack(Netherrocks.core.Items.illumeniteIngot));
-		OreDictionary.registerOre("gemDragonStone", new ItemStack(Netherrocks.core.Items.dragonstoneGem));
-		OreDictionary.registerOre("ingotArgonite", new ItemStack(Netherrocks.core.Items.argoniteIngot));
-		OreDictionary.registerOre("oreFyrite", new ItemStack(Netherrocks.core.Blocks.fyriteOre));
-		OreDictionary.registerOre("oreMalachite", new ItemStack(Netherrocks.core.Blocks.malachiteOre));
-		OreDictionary.registerOre("oreAshstone", new ItemStack(Netherrocks.core.Blocks.ashstoneOre));
-		OreDictionary.registerOre("oreIllumenite", new ItemStack(Netherrocks.core.Blocks.illumeniteOre));
-		OreDictionary.registerOre("oreDragonStone", new ItemStack(Netherrocks.core.Blocks.dragonstoneOre));
-		OreDictionary.registerOre("oreArgonite", new ItemStack(Netherrocks.core.Blocks.argoniteOre));
 
 		// Furnace
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.dragonbezoarFusionFurnace, true, new Object[] { "XXX", "XYX", "XXX", Character.valueOf('X'), "ingotDragonBezoar", Character.valueOf('Y'),
-						SimpleOres.plugins.fusion.Content.fusionFurnace }));
+				alexndr.SimpleOres.plugins.fusion.Content.fusionFurnace }));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.dragonbezoarFurnace, true, new Object[] { "XXX", "XYX", "XXX", Character.valueOf('X'), "ingotDragonBezoar", Character.valueOf('Y'),
 						Block.furnaceIdle }));
 
@@ -51,10 +39,10 @@ public class Recipes {
 		GameRegistry.addShapelessRecipe(new ItemStack(Content.dragonbezoarIngot, 9), new Object[] { Content.dragonbezoarBlock });
 
 		GameRegistry.addRecipe(new ItemStack(Content.pyralisChain, 8), new Object[] { " X ", "X X", " X ", Character.valueOf('X'), Content.pyralisIngot});
-		GameRegistry.addRecipe(new ItemStack(Content.pyralisChain, 6), new Object[] { " Y ", "X X", " X ", Character.valueOf('X'), Content.pyralisIngot, Character.valueOf('Y'), Netherrocks.core.Items.dragonstoneGem});
-		GameRegistry.addRecipe(new ItemStack(Content.pyralisChain, 6), new Object[] { " X ", "Y X", " X ", Character.valueOf('X'), Content.pyralisIngot, Character.valueOf('Y'), Netherrocks.core.Items.dragonstoneGem});
-		GameRegistry.addRecipe(new ItemStack(Content.pyralisChain, 6), new Object[] { " X ", "X Y", " X ", Character.valueOf('X'), Content.pyralisIngot, Character.valueOf('Y'), Netherrocks.core.Items.dragonstoneGem});
-		GameRegistry.addRecipe(new ItemStack(Content.pyralisChain, 6), new Object[] { " X ", "X X", " Y ", Character.valueOf('X'), Content.pyralisIngot, Character.valueOf('Y'), Netherrocks.core.Items.dragonstoneGem});
+		GameRegistry.addRecipe(new ItemStack(Content.pyralisChain, 6), new Object[] { " Y ", "X X", " X ", Character.valueOf('X'), Content.pyralisIngot, Character.valueOf('Y'), alexndr.SimpleOres.plugins.netherrocks.Content.dragonstoneGem});
+		GameRegistry.addRecipe(new ItemStack(Content.pyralisChain, 6), new Object[] { " X ", "Y X", " X ", Character.valueOf('X'), Content.pyralisIngot, Character.valueOf('Y'), alexndr.SimpleOres.plugins.netherrocks.Content.dragonstoneGem});
+		GameRegistry.addRecipe(new ItemStack(Content.pyralisChain, 6), new Object[] { " X ", "X Y", " X ", Character.valueOf('X'), Content.pyralisIngot, Character.valueOf('Y'), alexndr.SimpleOres.plugins.netherrocks.Content.dragonstoneGem});
+		GameRegistry.addRecipe(new ItemStack(Content.pyralisChain, 6), new Object[] { " X ", "X X", " Y ", Character.valueOf('X'), Content.pyralisIngot, Character.valueOf('Y'), alexndr.SimpleOres.plugins.netherrocks.Content.dragonstoneGem});
 
 		GameRegistry.addRecipe(new ItemStack(Content.dragonbezoarChain, 8), new Object[] { " X ", "X X", " X ", Character.valueOf('X'), Content.dragonbezoarIngot});
 		GameRegistry.addRecipe(new ItemStack(Content.dragonbezoarChain, 6), new Object[] { " Y ", "X X", " X ", Character.valueOf('X'), Content.dragonbezoarIngot, Character.valueOf('Y'), Content.pyralisIngot});
@@ -138,32 +126,32 @@ public class Recipes {
 		GameRegistry.addRecipe(new ItemStack(Content.dragonbezoarChainBoots, 1), new Object[] { "X X", "X X", Character.valueOf('X'), Content.dragonbezoarChain });
 
 		// Smelting
-		FusionRecipes.smelting().addSmelting(new ItemStack(Netherrocks.core.Items.fyriteIngot), new ItemStack(Netherrocks.core.Items.illumeniteIngot), new ItemStack(Item.gunpowder),
+		FusionRecipes.smelting().addSmelting(new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.fyriteIngot), new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.illumeniteIngot), new ItemStack(Item.gunpowder),
 				new ItemStack(Content.smallCinderstoneChunk), 2.0F);
-		FusionRecipes.smelting().addSmelting(new ItemStack(Netherrocks.core.Items.fyriteIngot), new ItemStack(Netherrocks.core.Items.illumeniteIngot), new ItemStack(Item.redstone),
+		FusionRecipes.smelting().addSmelting(new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.fyriteIngot), new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.illumeniteIngot), new ItemStack(Item.redstone),
 				new ItemStack(Content.mediumCinderstoneChunk), 3.0F);
-		FusionRecipes.smelting().addSmelting(new ItemStack(Netherrocks.core.Items.fyriteIngot), new ItemStack(Netherrocks.core.Items.illumeniteIngot), new ItemStack(Item.blazePowder),
+		FusionRecipes.smelting().addSmelting(new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.fyriteIngot), new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.illumeniteIngot), new ItemStack(Item.blazePowder),
 				new ItemStack(Content.largeCinderstoneChunk), 10.0F);
 
-		FusionRecipes.smelting().addSmelting(new ItemStack(Netherrocks.core.Items.malachiteIngot), new ItemStack(Netherrocks.core.Items.ashstoneGem), new ItemStack(Item.redstone),
+		FusionRecipes.smelting().addSmelting(new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.malachiteIngot), new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.ashstoneGem), new ItemStack(Item.redstone),
 				new ItemStack(Content.smallThrakaChunk), 6.0F);
-		FusionRecipes.smelting().addSmelting(new ItemStack(Netherrocks.core.Items.malachiteIngot), new ItemStack(Netherrocks.core.Items.ashstoneGem), new ItemStack(Item.blazePowder),
+		FusionRecipes.smelting().addSmelting(new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.malachiteIngot), new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.ashstoneGem), new ItemStack(Item.blazePowder),
 				new ItemStack(Content.mediumThrakaChunk), 10.0F);
-		FusionRecipes.smelting().addSmelting(new ItemStack(Netherrocks.core.Items.malachiteIngot), new ItemStack(Netherrocks.core.Items.ashstoneGem), new ItemStack(Item.ghastTear),
+		FusionRecipes.smelting().addSmelting(new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.malachiteIngot), new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.ashstoneGem), new ItemStack(Item.ghastTear),
 				new ItemStack(Content.largeThrakaChunk), 30.0F);
 
-		FusionRecipes.smelting().addSmelting(new ItemStack(Content.largeCinderstoneChunk), new ItemStack(Netherrocks.core.Items.dragonstoneGem), new ItemStack(Item.blazePowder),
+		FusionRecipes.smelting().addSmelting(new ItemStack(Content.largeCinderstoneChunk), new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.dragonstoneGem), new ItemStack(Item.blazePowder),
 				new ItemStack(Content.smallPyralisChunk), 6.0F);
-		FusionRecipes.smelting().addSmelting(new ItemStack(Content.largeCinderstoneChunk), new ItemStack(Netherrocks.core.Items.dragonstoneGem), new ItemStack(Item.ghastTear),
+		FusionRecipes.smelting().addSmelting(new ItemStack(Content.largeCinderstoneChunk), new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.dragonstoneGem), new ItemStack(Item.ghastTear),
 				new ItemStack(Content.mediumPyralisChunk), 10.0F);
-		FusionRecipes.smelting().addSmelting(new ItemStack(Content.largeCinderstoneChunk), new ItemStack(Netherrocks.core.Items.dragonstoneGem), new ItemStack(Item.skull, 1, 1),
+		FusionRecipes.smelting().addSmelting(new ItemStack(Content.largeCinderstoneChunk), new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.dragonstoneGem), new ItemStack(Item.skull, 1, 1),
 				new ItemStack(Content.largePyralisChunk), 30.0F);
 
-		FusionRecipes.smelting().addSmelting(new ItemStack(SimpleOres.plugins.fusion.Content.largeSinisiteChunk), new ItemStack(Content.largePyralisChunk), new ItemStack(Item.skull, 1, 1),
+		FusionRecipes.smelting().addSmelting(new ItemStack(alexndr.SimpleOres.plugins.fusion.Content.largeSinisiteChunk), new ItemStack(Content.largePyralisChunk), new ItemStack(Item.skull, 1, 1),
 				new ItemStack(Content.smallDragonBezoarChunk), 12.0F);
-		FusionRecipes.smelting().addSmelting(new ItemStack(SimpleOres.plugins.fusion.Content.largeSinisiteChunk), new ItemStack(Content.largePyralisChunk), new ItemStack(Block.dragonEgg, 0),
+		FusionRecipes.smelting().addSmelting(new ItemStack(alexndr.SimpleOres.plugins.fusion.Content.largeSinisiteChunk), new ItemStack(Content.largePyralisChunk), new ItemStack(Block.dragonEgg, 0),
 				new ItemStack(Content.mediumDragonBezoarChunk), 20.0F);
-		FusionRecipes.smelting().addSmelting(new ItemStack(SimpleOres.plugins.fusion.Content.largeSinisiteChunk), new ItemStack(Content.largePyralisChunk), new ItemStack(Item.netherStar),
+		FusionRecipes.smelting().addSmelting(new ItemStack(alexndr.SimpleOres.plugins.fusion.Content.largeSinisiteChunk), new ItemStack(Content.largePyralisChunk), new ItemStack(Item.netherStar),
 				new ItemStack(Content.largeDragonBezoarChunk, 2), 60.0F);
 
 		GameRegistry.addSmelting(Content.largeCinderstoneChunk.itemID, new ItemStack(Content.cinderstoneIngot, 1, 0), 0.3F);

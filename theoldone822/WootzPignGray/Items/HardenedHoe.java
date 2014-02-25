@@ -1,9 +1,8 @@
 package theoldone822.WootzPignGray.Items;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import SimpleOres.core.Settings;
-import SimpleOres.core.SimpleOres;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumToolMaterial;
@@ -25,20 +24,22 @@ public class HardenedHoe extends ItemHoe
      * @param i = the items ID
      * @param enumtoolmaterial = the material of the tool. Determines speed, number of uses, etc.
      */
-	public HardenedHoe(int i, EnumToolMaterial enumtoolmaterial, String mod, CreativeTabs tab) 
+	public HardenedHoe(int i, EnumToolMaterial enumtoolmaterial, String mod) 
 	{
 		super(i, enumtoolmaterial);
 		material = enumtoolmaterial;
 		modName = mod;
 		
-    	if(Settings.enableSeparateTabs == true)
-    	{
-            this.setCreativeTab(tab);
-    	}
-    	else this.setCreativeTab(SimpleOres.tabSimpleBlocks);
 	}
 	
-    /**
+	public HardenedHoe setUnlocalizedName(String unlocalizedName)
+	{
+		super.setUnlocalizedName(unlocalizedName);
+		GameRegistry.registerItem(this, unlocalizedName);
+		return this;
+	}
+
+	/**
      * Sets the icon for the item. 
      */
     @Override

@@ -78,7 +78,7 @@ public class Settings {
 	public static void doSettings(FMLPreInitializationEvent event)
 	{
 	File installDir = event.getModConfigurationDirectory();
-	File configDir = new File(installDir, "Wootz Pig and Gray Configuration");
+	File configDir = new File(installDir, "Wootz Pig and Gray");
 	Configuration settings = new Configuration(new File(configDir, "Wootz Pig and Gray Settings.cfg"));
 
 	settings.load();
@@ -92,19 +92,19 @@ public class Settings {
 
 	//Tool Stat Modifiers
 	wootzMiningLevel = settings.get("Tool Stats", "Wootz steel Mining Level", 2).getInt();
-	wootzUsesNum = settings.get("Tool Stats", "Wootz steel Uses Number", 500).getInt();
+	wootzUsesNum = settings.get("Tool Stats", "Wootz steel Uses Number", 650).getInt();
 	wootzMiningSpeed = (float) settings.get("Tool Stats", "Wootz steel Mining Speed", 8.0).getDouble(wootzMiningSpeed);
 	wootzDamageVsEntity = settings.get("Tool Stats", "Wootz steel Damage Vs Entity", 2).getInt();
 	wootzEnchantability = settings.get("Tool Stats", "Wootz steel Enchantability", 10).getInt();
 	hardenedsteelMiningLevel = settings.get("Tool Stats", "Hardened steel Mining Level", 3).getInt();
-	hardenedsteelUsesNum = settings.get("Tool Stats", "Hardened steel Uses Number", 28).getInt();
+	hardenedsteelUsesNum = settings.get("Tool Stats", "Hardened steel Uses Number", 72).getInt();
 	hardenedsteelMiningSpeed = (float) settings.get("Tool Stats", "Hardened steel Mining Speed", 10.0).getDouble(hardenedsteelMiningSpeed);
 	hardenedsteelDamageVsEntity = settings.get("Tool Stats", "Hardened steel Damage Vs Entity", 3).getInt();
 	hardenedsteelEnchantability = settings.get("Tool Stats", "Hardened steel Enchantability", 3).getInt();
 
 	//Armor Stat Modifiers
-	wootzArmorDurability = settings.get("Armor Stats", "Wootz steel Armor Durability", 16).getInt();
-	wootzArmorDamageReduction = settings.get("Armor Stats", "Wootz steel Armor Damage Reduction Array", new int[] {3, 6, 5, 2}).getIntList();
+	wootzArmorDurability = settings.get("Armor Stats", "Wootz steel Armor Durability", 18).getInt();
+	wootzArmorDamageReduction = settings.get("Armor Stats", "Wootz steel Armor Damage Reduction Array", new int[] {3, 6, 5, 3}).getIntList();
 	wootzArmorEnchantability = settings.get("Armor Stats", "Wootz steel Armor Enchantability", 10).getInt();
 
 	//Block Stat Modifiers
