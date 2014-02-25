@@ -18,10 +18,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Init;
@@ -30,6 +32,7 @@ import cpw.mods.fml.common.Mod.PreInit;
 import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -38,10 +41,14 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 @Mod(
 		modid = "simpleoresew",
 		name = "Simple Ore Extended Work Bench Plugin",
-		version = "1.11",
+		version = "1.14",
 		dependencies = "required-after:extendedWorkbench; after:simpleores; after:simpleoresfusion; after:onlysilver; after:MoCreatures; after:SimpleArsenic; after:netherrocksfusion; after:netherrocks; after:classicalalchemy; after:simplecthon; after:goldenglitter; after:haditecoal; after:simplecobalt; after:simpletungsten; after:sterlingandblack")
 public class SimpleOresEW {
 
+
+	public static String treesetting;
+	public static String treehelper;
+	
 	public static int simpleID;
 	public static int fusionID;
 	public static int netherID;
@@ -373,6 +380,8 @@ public class SimpleOresEW {
 					MinecraftForge.setToolClass(item[1][i], "shovel", sotool[i].getHarvestLevel());
 					MinecraftForge.setToolClass(item[3][i], "axe", sotool[i].getHarvestLevel());
 
+					treesetting = treesetting + "; " + String.valueOf(item[3][i].itemID);
+					
 					EWAPI.addRecipe(new ItemStack(item[0][i], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ",
 							('X'), material[i], ('Y'), handle[i] });
 					EWAPI.addRecipe(new ItemStack(item[1][i], 1), new Object[] { " X ", " X ", " Y ", " Y ", " Y ", " Y ",
@@ -450,6 +459,7 @@ public class SimpleOresEW {
 			LanguageRegistry.addName(extendedadamantiumShears, "Extended Adamantium Shears");
 			LanguageRegistry.addName(extendedonyxShears, "Extended Onyx Shears");
 
+			treehelper = String.valueOf(extendedtinShears.itemID) + "; " + String.valueOf(extendedadamantiumShears.itemID) + "; " + String.valueOf(extendedonyxShears.itemID);
 		}
 
 		if (PluginChecks.getFusionInstalled()) {
@@ -494,6 +504,8 @@ public class SimpleOresEW {
 					MinecraftForge.setToolClass(item[2][i], "pickaxe", sotool[i].getHarvestLevel());
 					MinecraftForge.setToolClass(item[1][i], "shovel", sotool[i].getHarvestLevel());
 					MinecraftForge.setToolClass(item[3][i], "axe", sotool[i].getHarvestLevel());
+
+					treesetting = treesetting + "; " + String.valueOf(item[3][i].itemID);
 
 					EWAPI.addRecipe(new ItemStack(item[0][i], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ",
 							('X'), material[i], ('Y'), handle[i] });
@@ -603,6 +615,8 @@ public class SimpleOresEW {
 					MinecraftForge.setToolClass(item[2][i], "pickaxe", sotool[i].getHarvestLevel());
 					MinecraftForge.setToolClass(item[1][i], "shovel", sotool[i].getHarvestLevel());
 					MinecraftForge.setToolClass(item[3][i], "axe", sotool[i].getHarvestLevel());
+
+					treesetting = treesetting + "; " + String.valueOf(item[3][i].itemID);
 
 					EWAPI.addRecipe(new ItemStack(item[0][i], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ",
 							('X'), material[i], ('Y'), handle[i] });
@@ -733,26 +747,29 @@ public class SimpleOresEW {
 			MinecraftForge.setToolClass(extendedfyritePick, "pickaxe", 3);
 
 		}
+
 		if (PluginChecks.getSilverInstalled()) {
 			item[0][12] =
-					new ItemExtendedSword(silverID + 0, zotmc.onlysilver.Items.toolSilver).setUnlocalizedName(
+					new ItemExtendedSword(silverID + 0, zotmc.onlysilver.Contents.toolSilver).setUnlocalizedName(
 							"extendedWorkbenchnr:tool012").setTextureName("SimpleOresEW:toolSilverSword");
 			item[1][12] =
-					new ItemExtendedShovel(silverID + 1, zotmc.onlysilver.Items.toolSilver).setUnlocalizedName(
+					new ItemExtendedShovel(silverID + 1, zotmc.onlysilver.Contents.toolSilver).setUnlocalizedName(
 							"extendedWorkbenchnr:tool112").setTextureName("SimpleOresEW:toolSilverShovel");
 			item[2][12] =
-					new ItemExtendedPickaxe(silverID + 2, zotmc.onlysilver.Items.toolSilver).setUnlocalizedName(
+					new ItemExtendedPickaxe(silverID + 2, zotmc.onlysilver.Contents.toolSilver).setUnlocalizedName(
 							"extendedWorkbenchnr:tool212").setTextureName("SimpleOresEW:toolSilverPickaxe");
 			item[3][12] =
-					new ItemExtendedAxe(silverID + 3, zotmc.onlysilver.Items.toolSilver).setUnlocalizedName(
+					new ItemExtendedAxe(silverID + 3, zotmc.onlysilver.Contents.toolSilver).setUnlocalizedName(
 							"extendedWorkbenchnr:tool312").setTextureName("SimpleOresEW:toolSilverAxe");
 			item[4][12] =
-					new ItemExtendedHoe(silverID + 4, zotmc.onlysilver.Items.toolSilver).setUnlocalizedName(
+					new ItemExtendedHoe(silverID + 4, zotmc.onlysilver.Contents.toolSilver).setUnlocalizedName(
 							"extendedWorkbenchnr:tool412").setTextureName("SimpleOresEW:toolSilverHoe");
 
-			MinecraftForge.setToolClass(item[2][12], "pickaxe", zotmc.onlysilver.Items.toolSilver.getHarvestLevel());
-			MinecraftForge.setToolClass(item[1][12], "shovel", zotmc.onlysilver.Items.toolSilver.getHarvestLevel());
-			MinecraftForge.setToolClass(item[3][12], "axe", zotmc.onlysilver.Items.toolSilver.getHarvestLevel());
+			MinecraftForge.setToolClass(item[2][12], "pickaxe", zotmc.onlysilver.Contents.toolSilver.getHarvestLevel());
+			MinecraftForge.setToolClass(item[1][12], "shovel", zotmc.onlysilver.Contents.toolSilver.getHarvestLevel());
+			MinecraftForge.setToolClass(item[3][12], "axe", zotmc.onlysilver.Contents.toolSilver.getHarvestLevel());
+
+			treesetting = treesetting + "; " + String.valueOf(item[3][12].itemID);
 
 			EWAPI.addRecipe(new ItemStack(item[0][12], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'),
 					OnlySilver.code.api.OnlySilverAPI.silverIngot.get(), ('Y'), Block.cobblestone });
@@ -769,19 +786,19 @@ public class SimpleOresEW {
 				LanguageRegistry.addName(item[j][12], "Extended Silver" + " " + (toolNames[j]));
 
 			extendedsilverHelm =
-					new ItemExtendedArmor(silverID + 5, zotmc.onlysilver.Items.armorSilver, armorRenderer[12], 0, "Silver")
+					new ItemExtendedArmor(silverID + 5, zotmc.onlysilver.Contents.armorSilver, armorRenderer[12], 0, "Silver")
 							.setUnlocalizedName("extendedWorkbenchnr:armorSilverHelmet").setTextureName(
 									"SimpleOresEW:armorextendedSilverHelmet");
 			extendedsilverChest =
-					new ItemExtendedArmor(silverID + 6, zotmc.onlysilver.Items.armorSilver, armorRenderer[12], 1, "Silver")
+					new ItemExtendedArmor(silverID + 6, zotmc.onlysilver.Contents.armorSilver, armorRenderer[12], 1, "Silver")
 							.setUnlocalizedName("extendedWorkbenchnr:armorSilverChestplate").setTextureName(
 									"SimpleOresEW:armorextendedSilverChestplate");
 			extendedsilverLegs =
-					new ItemExtendedArmor(silverID + 7, zotmc.onlysilver.Items.armorSilver, armorRenderer[12], 2, "Silver")
+					new ItemExtendedArmor(silverID + 7, zotmc.onlysilver.Contents.armorSilver, armorRenderer[12], 2, "Silver")
 							.setUnlocalizedName("extendedWorkbenchnr:armorSilverLeggings").setTextureName(
 									"SimpleOresEW:armorextendedSilverLeggings");
 			extendedsilverBoots =
-					new ItemExtendedArmor(silverID + 8, zotmc.onlysilver.Items.armorSilver, armorRenderer[12], 3, "Silver")
+					new ItemExtendedArmor(silverID + 8, zotmc.onlysilver.Contents.armorSilver, armorRenderer[12], 3, "Silver")
 							.setUnlocalizedName("extendedWorkbenchnr:armorSilverBoots").setTextureName(
 									"SimpleOresEW:armorextendedSilverBoots");
 
@@ -800,7 +817,7 @@ public class SimpleOresEW {
 			LanguageRegistry.addName(extendedsilverBoots, "Extended Silver Boots");
 
 			extendedsilverBow =
-					(ItemBow) new ItemExtendedBow(silverID + 9, 500, zotmc.onlysilver.Items.toolSilver).setFull3D()
+					(ItemBow) new ItemExtendedBow(silverID + 9, 500, zotmc.onlysilver.Contents.toolSilver).setFull3D()
 							.setUnlocalizedName("extendedWorkbenchso:silverBow");
 			EWAPI.addRecipe(new ItemStack(extendedsilverBow, 1), new Object[] { " YX", "Y X", "Z X", "Z X", "Y X", " YX",
 					('X'), Item.silk, ('Y'), OnlySilver.code.api.OnlySilverAPI.silverRod.get(), ('Z'), Item.ingotIron });
@@ -1019,6 +1036,8 @@ public class SimpleOresEW {
 			LanguageRegistry.addName(extendeddragonbezoarBow, "Extended Dragon Bezoar Bow");
 			LanguageRegistry.addName(extendeddragonbezoarShears, "Extended Dragon Bezoar Shears");
 
+			treehelper = treehelper + "; " + String.valueOf(extendeddragonbezoarShears.itemID);
+					
 			MinecraftForge.setToolClass(extendedthrakaPick, "pickaxe",
 					theoldone822.NetherrocksFusion.Settings.thrakaMiningLevel);
 			MinecraftForge.setToolClass(extendedthrakaShovel, "shovel",
@@ -1035,6 +1054,8 @@ public class SimpleOresEW {
 					theoldone822.NetherrocksFusion.Settings.dragonbezoarMiningLevel);
 			MinecraftForge.setToolClass(extendeddragonbezoarAxe, "axe",
 					theoldone822.NetherrocksFusion.Settings.dragonbezoarMiningLevel);
+
+			treesetting = treesetting + "; " + String.valueOf(extendedthrakaAxe.itemID) + "; " + String.valueOf(extendedpyralisAxe.itemID) + "; " + String.valueOf(extendeddragonbezoarAxe.itemID);
 
 			// Armor
 			EWAPI.addRecipe(new ItemStack(extendedcinderstoneBoots, 1), new Object[] { "X X", "X X", "X X", ('X'),
@@ -1176,6 +1197,8 @@ public class SimpleOresEW {
 					MinecraftForge.setToolClass(item[1][i], "shovel", sotool[i].getHarvestLevel());
 					MinecraftForge.setToolClass(item[3][i], "axe", sotool[i].getHarvestLevel());
 
+					treesetting = treesetting + "; " + String.valueOf(item[3][i].itemID);
+
 					EWAPI.addRecipe(new ItemStack(item[0][i], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ",
 							('X'), material[i], ('Y'), handle[i] });
 					EWAPI.addRecipe(new ItemStack(item[1][i], 1), new Object[] { " X ", " X ", " Y ", " Y ", " Y ", " Y ",
@@ -1290,6 +1313,8 @@ public class SimpleOresEW {
 					MinecraftForge.setToolClass(item[2][i], "pickaxe", sotool[i].getHarvestLevel());
 					MinecraftForge.setToolClass(item[1][i], "shovel", sotool[i].getHarvestLevel());
 					MinecraftForge.setToolClass(item[3][i], "axe", sotool[i].getHarvestLevel());
+
+					treesetting = treesetting + "; " + String.valueOf(item[3][i].itemID);
 
 					EWAPI.addRecipe(new ItemStack(item[0][i], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ",
 							('X'), material[i], ('Y'), handle[i] });
@@ -1406,6 +1431,8 @@ public class SimpleOresEW {
 			MinecraftForge.setToolClass(item[3][22], "axe",
 					SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.toolCthon.getHarvestLevel());
 
+			treesetting = treesetting + "; " + String.valueOf(item[3][22].itemID);
+
 			EWAPI.addRecipe(new ItemStack(item[0][22], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'),
 					SimpleOres.plugins.akkamaddi.cthon.SimpleCthonCore.cthonIngot, ('Y'), Item.ingotIron });
 			EWAPI.addRecipe(new ItemStack(item[1][22], 1), new Object[] { " X ", " X ", " Y ", " Y ", " Y ", " Y ", ('X'),
@@ -1509,6 +1536,8 @@ public class SimpleOresEW {
 					MinecraftForge.setToolClass(item[1][i], "shovel", sotool[i].getHarvestLevel());
 					MinecraftForge.setToolClass(item[3][i], "axe", sotool[i].getHarvestLevel());
 
+					treesetting = treesetting + "; " + String.valueOf(item[3][i].itemID);
+
 					EWAPI.addRecipe(new ItemStack(item[0][i], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ",
 							('X'), material[i], ('Y'), handle[i] });
 					EWAPI.addRecipe(new ItemStack(item[1][i], 1), new Object[] { " X ", " X ", " Y ", " Y ", " Y ", " Y ",
@@ -1545,6 +1574,8 @@ public class SimpleOresEW {
 					MinecraftForge.setToolClass(item[2][i], "pickaxe", sotool[i].getHarvestLevel());
 					MinecraftForge.setToolClass(item[1][i], "shovel", sotool[i].getHarvestLevel());
 					MinecraftForge.setToolClass(item[3][i], "axe", sotool[i].getHarvestLevel());
+
+					treesetting = treesetting + "; " + String.valueOf(item[3][i].itemID);
 
 					EWAPI.addRecipe(new ItemStack(item[0][i], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ",
 							('X'), material[i], ('Y'), handle[i] });
@@ -1655,6 +1686,8 @@ public class SimpleOresEW {
 					MinecraftForge.setToolClass(item[1][i], "shovel", sotool[i].getHarvestLevel());
 					MinecraftForge.setToolClass(item[3][i], "axe", sotool[i].getHarvestLevel());
 
+					treesetting = treesetting + "; " + String.valueOf(item[3][i].itemID);
+
 					EWAPI.addRecipe(new ItemStack(item[0][i], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ",
 							('X'), material[i], ('Y'), handle[i] });
 					EWAPI.addRecipe(new ItemStack(item[1][i], 1), new Object[] { " X ", " X ", " Y ", " Y ", " Y ", " Y ",
@@ -1733,6 +1766,8 @@ public class SimpleOresEW {
 					MinecraftForge.setToolClass(item[2][i], "pickaxe", sotool[i].getHarvestLevel());
 					MinecraftForge.setToolClass(item[1][i], "shovel", sotool[i].getHarvestLevel());
 					MinecraftForge.setToolClass(item[3][i], "axe", sotool[i].getHarvestLevel());
+
+					treesetting = treesetting + "; " + String.valueOf(item[3][i].itemID);
 
 					EWAPI.addRecipe(new ItemStack(item[0][i], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ",
 							('X'), material[i], ('Y'), handle[i] });
@@ -1853,6 +1888,8 @@ public class SimpleOresEW {
 					MinecraftForge.setToolClass(item[2][i], "pickaxe", sotool[i].getHarvestLevel());
 					MinecraftForge.setToolClass(item[1][i], "shovel", sotool[i].getHarvestLevel());
 					MinecraftForge.setToolClass(item[3][i], "axe", sotool[i].getHarvestLevel());
+
+					treesetting = treesetting + "; " + String.valueOf(item[3][i].itemID);
 
 					EWAPI.addRecipe(new ItemStack(item[0][i], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ",
 							('X'), material[i], ('Y'), handle[i] });
@@ -1976,6 +2013,8 @@ public class SimpleOresEW {
 					MinecraftForge.setToolClass(item[2][i], "pickaxe", sotool[i].getHarvestLevel());
 					MinecraftForge.setToolClass(item[1][i], "shovel", sotool[i].getHarvestLevel());
 					MinecraftForge.setToolClass(item[3][i], "axe", sotool[i].getHarvestLevel());
+
+					treesetting = treesetting + "; " + String.valueOf(item[3][i].itemID);
 
 					EWAPI.addRecipe(new ItemStack(item[0][i], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ",
 							('X'), material[i], ('Y'), handle[i] });
@@ -2106,6 +2145,8 @@ public class SimpleOresEW {
 					MinecraftForge.setToolClass(item[1][i], "shovel", sotool[i].getHarvestLevel());
 					MinecraftForge.setToolClass(item[3][i], "axe", sotool[i].getHarvestLevel());
 
+					treesetting = treesetting + "; " + String.valueOf(item[3][i].itemID);
+
 					EWAPI.addRecipe(new ItemStack(item[0][i], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ",
 							('X'), material[i], ('Y'), handle[i] });
 					EWAPI.addRecipe(new ItemStack(item[1][i], 1), new Object[] { " X ", " X ", " Y ", " Y ", " Y ", " Y ",
@@ -2166,5 +2207,12 @@ public class SimpleOresEW {
 
 		proxy.registerRenderInformation();
 
+		if (Loader.isModLoaded("TreeCapitator")) {
+			NBTTagCompound c = new NBTTagCompound();
+			c.setString("modID", "simpleoresew");
+			c.setString("axeIDList", treesetting.substring(2));
+			c.setString("shearsIDList", treehelper);
+			FMLInterModComms.sendMessage("TreeCapitator", "ThirdPartyModConfig", c);
+		}
 	}
 }
