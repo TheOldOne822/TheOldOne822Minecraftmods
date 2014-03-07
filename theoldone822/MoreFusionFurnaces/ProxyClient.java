@@ -15,6 +15,6 @@ import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
 public class ProxyClient extends ProxyCommon
-{    protected float speedOnGround = 0.1F;
+{    
 
 }

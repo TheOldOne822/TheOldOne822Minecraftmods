@@ -49,6 +49,7 @@ public class HandlerEvent {
 										|| event.source.equals(DamageSource.inFire) || event.source.equals(DamageSource.onFire)
 										|| event.source.equals(DamageSource.fall)) {
 									event.setCanceled(true);
+				    	        	player.extinguish();
 								}
 							}
 						}
@@ -189,6 +190,7 @@ public class HandlerEvent {
 						if (event.source.equals(DamageSource.lava) || event.source.equals(DamageSource.inFire)
 								|| event.source.equals(DamageSource.onFire)) {
 							event.setCanceled(true);
+		    	        	player.extinguish();
 						}
 					}
 

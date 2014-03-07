@@ -75,5 +75,7 @@ public class WootzPignGray {
 			c.setString("axeIDList", String.valueOf(Content.wootzAxe.itemID) + "; " + String.valueOf(Content.hardenedsteelAxe.itemID));
 			FMLInterModComms.sendMessage("TreeCapitator", "ThirdPartyModConfig", c);
 		}
+		toolWootz.customCraftingMaterial = Content.wootzIngot;
+		armorWootz.customCraftingMaterial = Content.wootzIngot;
 }
 }

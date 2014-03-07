@@ -27,7 +27,6 @@ public class IDs {
 	public static int largeWootzsteelChunkID;
 	public static int packedIronID;
 	public static int graphiteID;
-	public static int mediumGrayChunkID;
 	public static int largeGrayChunkID;
 
 	//Tools
@@ -78,7 +77,6 @@ public class IDs {
 	largeWootzsteelChunkID = config.getItem("Items", "Wootz steel Chunk Large", 4805).getInt();
 	packedIronID = config.getItem("Items", "Packed Iron", 4796).getInt();
 	graphiteID = config.getItem("Items", "Graphite", 4797).getInt();
-	mediumGrayChunkID = config.getItem("Items", "Gray Chunk Medium", 4806).getInt();
 	largeGrayChunkID = config.getItem("Items", "Gray Chunk Large", 4807).getInt();
 
 	//Tool ID's

@@ -2,12 +2,12 @@ package theoldone822.MithrilEW;
 
 import static naruto1310.extendedWorkbench.EWConfig.biggerTools;
 import mithril.mod_Mithril;
-import naruto1310.extendedWorkbench.item.ItemExtendedArmor;
-import naruto1310.extendedWorkbench.item.ItemExtendedAxe;
-import naruto1310.extendedWorkbench.item.ItemExtendedHoe;
-import naruto1310.extendedWorkbench.item.ItemExtendedPickaxe;
-import naruto1310.extendedWorkbench.item.ItemExtendedShovel;
-import naruto1310.extendedWorkbench.item.ItemExtendedSword;
+import theoldone822.MithrilEW.Items.ItemExtendedArmor;
+import theoldone822.MithrilEW.Items.ItemExtendedAxe;
+import theoldone822.MithrilEW.Items.ItemExtendedHoe;
+import theoldone822.MithrilEW.Items.ItemExtendedPickaxe;
+import theoldone822.MithrilEW.Items.ItemExtendedShovel;
+import theoldone822.MithrilEW.Items.ItemExtendedSword;
 import net.minecraft.block.Block;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
@@ -108,7 +108,7 @@ public class MithrilEW {
 		{
 			for(int j = 0; j < 4; j++)
 			{
-				armor[i][j] = (ItemArmor) new ItemExtendedArmor(ID + 31 + i * 4 + j, Enumarmor[i], armorRenderer[i], j).setUnlocalizedName("extendedWorkbenchmi:armor" + i + j).setTextureName("mithrilew:armor" + i + j);
+				armor[i][j] = (ItemArmor) new ItemExtendedArmor(ID + 31 + i * 4 + j, Enumarmor[i], armorRenderer[i], j, matNames[i]).setUnlocalizedName("extendedWorkbenchmi:armor" + i + j).setTextureName("mithrilew:armor" + i + j);
 				LanguageRegistry.addName(armor[i][j], "Extended " + matNames[i] + " " + armorNames[j]);
 			}
 

@@ -227,6 +227,7 @@ public class ItemExtendedBow extends ItemBow {
 
 			if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
 				return silverBow3;
+			
 			if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
 				return extendeddragonbezoarBow3;
 			}
@@ -253,6 +254,7 @@ public class ItemExtendedBow extends ItemBow {
 
 			if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
 				return silverBow2;
+			
 			if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
 				return extendeddragonbezoarBow2;
 			}
@@ -279,6 +281,7 @@ public class ItemExtendedBow extends ItemBow {
 
 			if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
 				return silverBow1;
+			
 			if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
 				return extendeddragonbezoarBow1;
 			}
@@ -334,6 +337,7 @@ public class ItemExtendedBow extends ItemBow {
 		}
 		if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
 			par3List.add(StatCollector.translateToLocal("tips.knockbackTooltip"));
+		
 		if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
 			par3List.add(StatCollector.translateToLocal("tips.damageTooltip"));
 			par3List.add(StatCollector.translateToLocal("tips.zoomTooltip"));
@@ -472,7 +476,7 @@ public class ItemExtendedBow extends ItemBow {
 				if (PluginChecks.getSilverInstalled() && itemID == SimpleOresEW.extendedsilverBow.itemID)
 					var8.setKnockbackStrength(k + 2);
 				
-				if (itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
+				if (PluginChecks.getNetherFusionInstalled() && itemID == SimpleOresEW.extendeddragonbezoarBow.itemID) {
 					var8.setDamage(var8.getDamage() + theoldone822.NetherrocksFusion.Settings.dragonbezoarBowDamageModifier * increaseBowDamage
 							* 0.5D + 0.5D);
 					var8.setKnockbackStrength(k + theoldone822.NetherrocksFusion.Settings.dragonbezoarBowKnockbackModifier);

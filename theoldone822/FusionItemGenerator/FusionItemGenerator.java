@@ -5,6 +5,7 @@ import java.util.Arrays;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.Configuration;
 import alexndr.SimpleOres.api.helpers.CoreHelper;
 import alexndr.SimpleOres.plugins.fusion.FusionRecipes;
 import cpw.mods.fml.common.Mod;
@@ -21,6 +22,10 @@ import cpw.mods.fml.common.network.NetworkMod;
 
 public class FusionItemGenerator {
 
+    public static boolean enableCobble, enableFarming, enableTrees, enableChicken, enableNether, enableIron;
+	
+	public static Configuration config;
+
 	@Instance("fusionitemgenerator")
 	public static FusionItemGenerator instance;
 	
@@ -32,8 +37,23 @@ public class FusionItemGenerator {
 		metadata.authorList = Arrays.asList("theoldone822");
 		metadata.description = "Use the fusion furnace to 'farm' things.";
 
+		config = new Configuration(event.getSuggestedConfigurationFile());
+		config.load();
+
+		enableCobble = config.get("recipes", "Cobble", true).getBoolean(true);
+		enableFarming = config.get("recipes", "Farming", true).getBoolean(true);
+		enableTrees = config.get("recipes", "Trees", true).getBoolean(true);
+		enableChicken = config.get("recipes", "Chicken", true).getBoolean(true);
+		enableNether = config.get("recipes", "Nether Star", false).getBoolean(false);
+		enableIron = config.get("recipes", "Iron", false).getBoolean(false);
+		
+		config.save();
+		
+if(enableCobble){
 		FusionRecipes.smelting().addSmelting(new ItemStack(Item.bucketWater, 0, 0), new ItemStack(Item.bucketLava, 0, 0), new ItemStack(Block.cobblestone, 0, 0), new ItemStack(Block.cobblestone, 1, 0), 0.0F);
     	FusionRecipes.smelting().addSmelting(new ItemStack(CoreHelper.coreContent.copperBucketWater, 0, 0), new ItemStack(Item.bucketLava, 0, 0), new ItemStack(Block.cobblestone, 0, 0), new ItemStack(Block.cobblestone, 1, 0), 0.0F);
+}
+if(enableFarming){
     	FusionRecipes.smelting().addSmelting(new ItemStack(Item.bucketWater, 0, 0), new ItemStack(Block.dirt, 0, 0), new ItemStack(Item.seeds, 0, 0), new ItemStack(Item.wheat, 1, 0), 0.0F);
     	FusionRecipes.smelting().addSmelting(new ItemStack(Item.bucketWater, 0, 0), new ItemStack(Block.dirt, 0, 0), new ItemStack(Item.pumpkinSeeds, 0, 0), new ItemStack(Block.pumpkin, 1, 0), 0.0F);
     	FusionRecipes.smelting().addSmelting(new ItemStack(Item.bucketWater, 0, 0), new ItemStack(Block.dirt, 0, 0), new ItemStack(Item.melonSeeds, 0, 0), new ItemStack(Item.melon, 1, 0), 0.0F);
@@ -44,17 +64,25 @@ public class FusionItemGenerator {
     	FusionRecipes.smelting().addSmelting(new ItemStack(CoreHelper.coreContent.copperBucketWater, 0, 0), new ItemStack(Block.dirt, 0, 0), new ItemStack(Item.melonSeeds, 0, 0), new ItemStack(Item.melon, 1, 0), 0.0F);
     	FusionRecipes.smelting().addSmelting(new ItemStack(CoreHelper.coreContent.copperBucketWater, 0, 0), new ItemStack(Block.dirt, 0, 0), new ItemStack(Item.carrot, 0, 0), new ItemStack(Item.carrot, 1, 0), 0.0F);
     	FusionRecipes.smelting().addSmelting(new ItemStack(CoreHelper.coreContent.copperBucketWater, 0, 0), new ItemStack(Block.dirt, 0, 0), new ItemStack(Item.potato, 0, 0), new ItemStack(Item.potato, 1, 0), 0.0F);
+}    	
+if(enableTrees){
     	FusionRecipes.smelting().addSmelting(new ItemStack(Block.sapling, 0, 0), new ItemStack(Block.sapling, 0, 0), new ItemStack(Item.appleRed, 0, 0), new ItemStack(Item.appleRed, 1, 0), 0.0F);
     	FusionRecipes.smelting().addSmelting(new ItemStack(Block.sapling, 0, 0), new ItemStack(Block.sapling, 0, 0), new ItemStack(Block.sapling, 0, 0), new ItemStack(Block.wood, 1, 0), 0.0F);
     	FusionRecipes.smelting().addSmelting(new ItemStack(Block.sapling, 0, 1), new ItemStack(Block.sapling, 0, 1), new ItemStack(Block.sapling, 0, 1), new ItemStack(Block.wood, 1, 1), 0.0F);
     	FusionRecipes.smelting().addSmelting(new ItemStack(Block.sapling, 0, 2), new ItemStack(Block.sapling, 0, 2), new ItemStack(Block.sapling, 0, 2), new ItemStack(Block.wood, 1, 2), 0.0F);
     	FusionRecipes.smelting().addSmelting(new ItemStack(Block.sapling, 0, 3), new ItemStack(Block.sapling, 0, 3), new ItemStack(Block.sapling, 0, 3), new ItemStack(Block.wood, 1, 3), 0.0F);
+}
+if(enableChicken){
     	FusionRecipes.smelting().addSmelting(new ItemStack(Item.egg, 0, 0), new ItemStack(Item.egg, 0, 0), new ItemStack(Item.egg, 0, 0), new ItemStack(Item.egg, 1, 0), 0.0F);
     	FusionRecipes.smelting().addSmelting(new ItemStack(Item.egg, 0, 0), new ItemStack(Item.egg, 0, 0), new ItemStack(Item.chickenRaw, 0, 0), new ItemStack(Item.chickenRaw, 1, 0), 0.0F);
     	FusionRecipes.smelting().addSmelting(new ItemStack(Item.egg, 0, 0), new ItemStack(Item.egg, 0, 0), new ItemStack(Item.feather, 0, 0), new ItemStack(Item.feather, 1, 0), 0.0F);
-       	FusionRecipes.smelting().addSmelting(new ItemStack(Item.netherStar, 0, 0), new ItemStack(Item.netherStar, 0, 0), new ItemStack(Item.netherStar, 0, 0), new ItemStack(Item.netherStar, 1, 0), 0.0F);
+}
+if(enableNether){
+    	FusionRecipes.smelting().addSmelting(new ItemStack(Item.netherStar, 0, 0), new ItemStack(Item.netherStar, 0, 0), new ItemStack(Item.netherStar, 0, 0), new ItemStack(Item.netherStar, 1, 0), 0.0F);
        	FusionRecipes.smelting().addSmelting(new ItemStack(Item.netherStar, 0, 0), new ItemStack(Item.netherStar, 0, 0), new ItemStack(Item.skull, 0, 1), new ItemStack(Item.skull, 1, 1), 0.0F);
-    	FusionRecipes.smelting().addSmelting(new ItemStack(Item.expBottle, 0, 0), new ItemStack(Item.bucketLava, 0, 0), new ItemStack(Item.ingotIron, 0, 0), new ItemStack(Item.ingotIron, 1, 0), 0.0F);
+}
+if(enableIron){
+       	FusionRecipes.smelting().addSmelting(new ItemStack(Item.expBottle, 0, 0), new ItemStack(Item.bucketLava, 0, 0), new ItemStack(Item.ingotIron, 0, 0), new ItemStack(Item.ingotIron, 1, 0), 0.0F);
     	FusionRecipes.smelting().addSmelting(new ItemStack(Item.expBottle, 0, 0), new ItemStack(Item.bucketLava, 0, 0), new ItemStack(Block.plantRed, 0, 0), new ItemStack(Block.plantRed, 1, 0), 0.0F);
-      	}
+}      	}
 }

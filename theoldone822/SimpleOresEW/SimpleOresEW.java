@@ -4,6 +4,10 @@ import java.io.File;
 import java.util.Arrays;
 
 import theoldone822.SimpleOresEW.Items.ItemExtendedArmor;
+import theoldone822.SimpleOresEW.Items.ItemExtendedNetherAxe;
+import theoldone822.SimpleOresEW.Items.ItemExtendedNetherPickaxe;
+import theoldone822.SimpleOresEW.Items.ItemExtendedNetherShovel;
+import theoldone822.SimpleOresEW.Items.ItemExtendedNetherSword;
 import theoldone822.SimpleOresEW.Items.ItemExtendedAxe;
 import theoldone822.SimpleOresEW.Items.ItemExtendedBow;
 import theoldone822.SimpleOresEW.Items.ItemExtendedHoe;
@@ -771,15 +775,15 @@ public class SimpleOresEW {
 			LanguageRegistry.addName(extendedillumeniteBoots, "Extended Illumenite Boots");
 
 			extendedfyriteSword =
-					new ItemExtendedSword(netherID + 76, alexndr.SimpleOres.plugins.netherrocks.Netherrocks.toolFyrite)
+					new ItemExtendedNetherSword(netherID + 76, alexndr.SimpleOres.plugins.netherrocks.Netherrocks.toolFyrite)
 							.setUnlocalizedName("extendedWorkbenchnr:toolFyriteSword").setTextureName(
 									"SimpleOresEW:toolextendedFyriteSword");
 			extendedillumeniteSword =
-					new ItemExtendedSword(netherID + 77, alexndr.SimpleOres.plugins.netherrocks.Netherrocks.toolIllumenite)
+					new ItemExtendedNetherSword(netherID + 77, alexndr.SimpleOres.plugins.netherrocks.Netherrocks.toolIllumenite)
 							.setUnlocalizedName("extendedWorkbenchnr:toolIllumeniteSword").setTextureName(
 									"SimpleOresEW:toolextendedIllumeniteSword");
 			extendedfyritePick =
-					new ItemExtendedPickaxe(netherID + 78, alexndr.SimpleOres.plugins.netherrocks.Netherrocks.toolFyrite)
+					new ItemExtendedNetherPickaxe(netherID + 78, alexndr.SimpleOres.plugins.netherrocks.Netherrocks.toolFyrite)
 							.setUnlocalizedName("extendedWorkbenchnr:toolFyritePick").setTextureName(
 									"SimpleOresEW:toolextendedFyritePickaxe");
 
@@ -799,66 +803,66 @@ public class SimpleOresEW {
 		}
 		if (PluginChecks.getSilverInstalled()) {
 			item[0][12] =
-					new ItemExtendedSword(silverID + 0, zotmc.onlysilver.Contents.toolSilver).setUnlocalizedName(
+					new ItemExtendedSword(silverID + 0, zotmc.onlysilver.api.OnlySilverAPI.toolSilver.get()).setUnlocalizedName(
 							"extendedWorkbenchnr:tool012").setTextureName("SimpleOresEW:toolSilverSword");
 			item[1][12] =
-					new ItemExtendedShovel(silverID + 1, zotmc.onlysilver.Contents.toolSilver).setUnlocalizedName(
+					new ItemExtendedShovel(silverID + 1, zotmc.onlysilver.api.OnlySilverAPI.toolSilver.get()).setUnlocalizedName(
 							"extendedWorkbenchnr:tool112").setTextureName("SimpleOresEW:toolSilverShovel");
 			item[2][12] =
-					new ItemExtendedPickaxe(silverID + 2, zotmc.onlysilver.Contents.toolSilver).setUnlocalizedName(
+					new ItemExtendedPickaxe(silverID + 2, zotmc.onlysilver.api.OnlySilverAPI.toolSilver.get()).setUnlocalizedName(
 							"extendedWorkbenchnr:tool212").setTextureName("SimpleOresEW:toolSilverPickaxe");
 			item[3][12] =
-					new ItemExtendedAxe(silverID + 3, zotmc.onlysilver.Contents.toolSilver).setUnlocalizedName(
+					new ItemExtendedAxe(silverID + 3, zotmc.onlysilver.api.OnlySilverAPI.toolSilver.get()).setUnlocalizedName(
 							"extendedWorkbenchnr:tool312").setTextureName("SimpleOresEW:toolSilverAxe");
 			item[4][12] =
-					new ItemExtendedHoe(silverID + 4, zotmc.onlysilver.Contents.toolSilver).setUnlocalizedName(
+					new ItemExtendedHoe(silverID + 4, zotmc.onlysilver.api.OnlySilverAPI.toolSilver.get()).setUnlocalizedName(
 							"extendedWorkbenchnr:tool412").setTextureName("SimpleOresEW:toolSilverHoe");
 
-			MinecraftForge.setToolClass(item[2][12], "pickaxe", zotmc.onlysilver.Contents.toolSilver.getHarvestLevel());
-			MinecraftForge.setToolClass(item[1][12], "shovel", zotmc.onlysilver.Contents.toolSilver.getHarvestLevel());
-			MinecraftForge.setToolClass(item[3][12], "axe", zotmc.onlysilver.Contents.toolSilver.getHarvestLevel());
+			MinecraftForge.setToolClass(item[2][12], "pickaxe", zotmc.onlysilver.api.OnlySilverAPI.toolSilver.get().getHarvestLevel());
+			MinecraftForge.setToolClass(item[1][12], "shovel", zotmc.onlysilver.api.OnlySilverAPI.toolSilver.get().getHarvestLevel());
+			MinecraftForge.setToolClass(item[3][12], "axe", zotmc.onlysilver.api.OnlySilverAPI.toolSilver.get().getHarvestLevel());
 
 			treesetting = treesetting + "; " + String.valueOf(item[3][12].itemID);
 
 			EWAPI.addRecipe(new ItemStack(item[0][12], 1), new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'),
-					OnlySilver.code.api.OnlySilverAPI.silverIngot.get(), ('Y'), Block.cobblestone });
+					zotmc.onlysilver.api.OnlySilverAPI.silverIngot.get(), ('Y'), Block.cobblestone });
 			EWAPI.addRecipe(new ItemStack(item[1][12], 1), new Object[] { " X ", " X ", " Y ", " Y ", " Y ", " Y ", ('X'),
-					OnlySilver.code.api.OnlySilverAPI.silverIngot.get(), ('Y'), Block.cobblestone });
+					zotmc.onlysilver.api.OnlySilverAPI.silverIngot.get(), ('Y'), Block.cobblestone });
 			EWAPI.addRecipe(new ItemStack(item[2][12], 1), new Object[] { "XX ", " XX", " YX", " Y ", " Y ", " Y ", ('X'),
-					OnlySilver.code.api.OnlySilverAPI.silverIngot.get(), ('Y'), Block.cobblestone });
+					zotmc.onlysilver.api.OnlySilverAPI.silverIngot.get(), ('Y'), Block.cobblestone });
 			EWAPI.addRecipe(new ItemStack(item[3][12], 1), new Object[] { "X  ", "XXX", "XY ", " Y ", " Y ", " Y ", ('X'),
-					OnlySilver.code.api.OnlySilverAPI.silverIngot.get(), ('Y'), Block.cobblestone });
+					zotmc.onlysilver.api.OnlySilverAPI.silverIngot.get(), ('Y'), Block.cobblestone });
 			EWAPI.addRecipe(new ItemStack(item[4][12], 1), new Object[] { " X ", " XX", " Y ", " Y ", " Y ", " Y ", ('X'),
-					OnlySilver.code.api.OnlySilverAPI.silverIngot.get(), ('Y'), Block.cobblestone });
+					zotmc.onlysilver.api.OnlySilverAPI.silverIngot.get(), ('Y'), Block.cobblestone });
 
 			for (int j = 0; j < 5; j++)
 				LanguageRegistry.addName(item[j][12], "Extended Silver" + " " + (toolNames[j]));
 
 			extendedsilverHelm =
-					new ItemExtendedArmor(silverID + 5, zotmc.onlysilver.Contents.armorSilver, armorRenderer[12], 0, "Silver")
+					new ItemExtendedArmor(silverID + 5, zotmc.onlysilver.api.OnlySilverAPI.armorSilver.get(), armorRenderer[12], 0, "Silver")
 							.setUnlocalizedName("extendedWorkbenchnr:armorSilverHelmet").setTextureName(
 									"SimpleOresEW:armorextendedSilverHelmet");
 			extendedsilverChest =
-					new ItemExtendedArmor(silverID + 6, zotmc.onlysilver.Contents.armorSilver, armorRenderer[12], 1, "Silver")
+					new ItemExtendedArmor(silverID + 6, zotmc.onlysilver.api.OnlySilverAPI.armorSilver.get(), armorRenderer[12], 1, "Silver")
 							.setUnlocalizedName("extendedWorkbenchnr:armorSilverChestplate").setTextureName(
 									"SimpleOresEW:armorextendedSilverChestplate");
 			extendedsilverLegs =
-					new ItemExtendedArmor(silverID + 7, zotmc.onlysilver.Contents.armorSilver, armorRenderer[12], 2, "Silver")
+					new ItemExtendedArmor(silverID + 7, zotmc.onlysilver.api.OnlySilverAPI.armorSilver.get(), armorRenderer[12], 2, "Silver")
 							.setUnlocalizedName("extendedWorkbenchnr:armorSilverLeggings").setTextureName(
 									"SimpleOresEW:armorextendedSilverLeggings");
 			extendedsilverBoots =
-					new ItemExtendedArmor(silverID + 8, zotmc.onlysilver.Contents.armorSilver, armorRenderer[12], 3, "Silver")
+					new ItemExtendedArmor(silverID + 8, zotmc.onlysilver.api.OnlySilverAPI.armorSilver.get(), armorRenderer[12], 3, "Silver")
 							.setUnlocalizedName("extendedWorkbenchnr:armorSilverBoots").setTextureName(
 									"SimpleOresEW:armorextendedSilverBoots");
 
 			EWAPI.addRecipe(new ItemStack(extendedsilverHelm, 1), new Object[] { "X X", "X X", "X X", ('X'),
-					OnlySilver.code.api.OnlySilverAPI.silverIngot.get() });
+					zotmc.onlysilver.api.OnlySilverAPI.silverIngot.get() });
 			EWAPI.addRecipe(new ItemStack(extendedsilverChest, 1), new Object[] { "XXX", "XXX", "X X", "X X", ('X'),
-					OnlySilver.code.api.OnlySilverAPI.silverIngot.get() });
+					zotmc.onlysilver.api.OnlySilverAPI.silverIngot.get() });
 			EWAPI.addRecipe(new ItemStack(extendedsilverLegs, 1), new Object[] { "X X", "XXX", "XXX", "XXX", ('X'),
-					OnlySilver.code.api.OnlySilverAPI.silverIngot.get() });
+					zotmc.onlysilver.api.OnlySilverAPI.silverIngot.get() });
 			EWAPI.addRecipe(new ItemStack(extendedsilverBoots, 1), new Object[] { "XXX", "XXX", "X X", ('X'),
-					OnlySilver.code.api.OnlySilverAPI.silverIngot.get() });
+					zotmc.onlysilver.api.OnlySilverAPI.silverIngot.get() });
 
 			LanguageRegistry.addName(extendedsilverHelm, "Extended Silver Helmet");
 			LanguageRegistry.addName(extendedsilverChest, "Extended Silver Chestplate");
@@ -866,10 +870,10 @@ public class SimpleOresEW {
 			LanguageRegistry.addName(extendedsilverBoots, "Extended Silver Boots");
 
 			extendedsilverBow =
-					(ItemBow) new ItemExtendedBow(silverID + 9, 500, zotmc.onlysilver.Contents.toolSilver).setFull3D()
+					(ItemBow) new ItemExtendedBow(silverID + 9, 500, zotmc.onlysilver.api.OnlySilverAPI.toolSilver.get()).setFull3D()
 							.setUnlocalizedName("extendedWorkbenchso:silverBow");
 			EWAPI.addRecipe(new ItemStack(extendedsilverBow, 1), new Object[] { " YX", "Y X", "Z X", "Z X", "Y X", " YX",
-					('X'), Item.silk, ('Y'), OnlySilver.code.api.OnlySilverAPI.silverRod.get(), ('Z'), Item.ingotIron });
+					('X'), Item.silk, ('Y'), zotmc.onlysilver.api.OnlySilverAPI.silverRod.get(), ('Z'), Item.ingotIron });
 
 			LanguageRegistry.addName(extendedsilverBow, "Extended Silver Bow");
 
@@ -983,7 +987,7 @@ public class SimpleOresEW {
 			LanguageRegistry.addName(extendeddragonbezoarBoots, "Extended Dragon Bezoar Boots");
 
 			extendedcinderstoneSword =
-					new ItemExtendedSword(extendedcinderstoneSwordID,
+					new ItemExtendedNetherSword(extendedcinderstoneSwordID,
 							theoldone822.NetherrocksFusion.NetherrocksFusion.toolCinderstone).setUnlocalizedName(
 							"extendedWorkbenchnf:cinderstoneSword").setTextureName("SimpleOresEW:extendedcinderstoneSword");
 			extendedthrakaPick =
@@ -1007,19 +1011,19 @@ public class SimpleOresEW {
 							.setUnlocalizedName("extendedWorkbenchnf:thrakaHoe").setTextureName(
 									"SimpleOresEW:extendedthrakaHoe");
 			extendedpyralisPick =
-					new ItemExtendedPickaxe(extendedpyralisPickID, theoldone822.NetherrocksFusion.NetherrocksFusion.toolPyralis)
+					new ItemExtendedNetherPickaxe(extendedpyralisPickID, theoldone822.NetherrocksFusion.NetherrocksFusion.toolPyralis)
 							.setUnlocalizedName("extendedWorkbenchnf:pyralisPick").setTextureName(
 									"SimpleOresEW:extendedpyralisPick");
 			extendedpyralisAxe =
-					new ItemExtendedAxe(extendedpyralisAxeID, theoldone822.NetherrocksFusion.NetherrocksFusion.toolPyralis)
+					new ItemExtendedNetherAxe(extendedpyralisAxeID, theoldone822.NetherrocksFusion.NetherrocksFusion.toolPyralis)
 							.setUnlocalizedName("extendedWorkbenchnf:pyralisAxe").setTextureName(
 									"SimpleOresEW:extendedpyralisAxe");
 			extendedpyralisShovel =
-					new ItemExtendedShovel(extendedpyralisShovelID,
+					new ItemExtendedNetherShovel(extendedpyralisShovelID,
 							theoldone822.NetherrocksFusion.NetherrocksFusion.toolPyralis).setUnlocalizedName(
 							"extendedWorkbenchnf:pyralisShovel").setTextureName("SimpleOresEW:extendedpyralisShovel");
 			extendedpyralisSword =
-					new ItemExtendedSword(extendedpyralisSwordID, theoldone822.NetherrocksFusion.NetherrocksFusion.toolPyralis)
+					new ItemExtendedNetherSword(extendedpyralisSwordID, theoldone822.NetherrocksFusion.NetherrocksFusion.toolPyralis)
 							.setUnlocalizedName("extendedWorkbenchnf:pyralisSword").setTextureName(
 									"SimpleOresEW:extendedpyralisSword");
 			extendedpyralisHoe =
@@ -1027,19 +1031,19 @@ public class SimpleOresEW {
 							.setUnlocalizedName("extendedWorkbenchnf:pyralisHoe").setTextureName(
 									"SimpleOresEW:extendedpyralisHoe");
 			extendeddragonbezoarPick =
-					new ItemExtendedPickaxe(extendeddragonbezoarPickID,
+					new ItemExtendedNetherPickaxe(extendeddragonbezoarPickID,
 							theoldone822.NetherrocksFusion.NetherrocksFusion.toolDragonBezoar).setUnlocalizedName(
 							"extendedWorkbenchnf:dragonbezoarPick").setTextureName("SimpleOresEW:extendeddragonbezoarPick");
 			extendeddragonbezoarAxe =
-					new ItemExtendedAxe(extendeddragonbezoarAxeID,
+					new ItemExtendedNetherAxe(extendeddragonbezoarAxeID,
 							theoldone822.NetherrocksFusion.NetherrocksFusion.toolDragonBezoar).setUnlocalizedName(
 							"extendedWorkbenchnf:dragonbezoarAxe").setTextureName("SimpleOresEW:extendeddragonbezoarAxe");
 			extendeddragonbezoarShovel =
-					new ItemExtendedShovel(extendeddragonbezoarShovelID,
+					new ItemExtendedNetherShovel(extendeddragonbezoarShovelID,
 							theoldone822.NetherrocksFusion.NetherrocksFusion.toolDragonBezoar).setUnlocalizedName(
 							"extendedWorkbenchnf:dragonbezoarShovel").setTextureName("SimpleOresEW:extendeddragonbezoarShovel");
 			extendeddragonbezoarSword =
-					new ItemExtendedSword(extendeddragonbezoarSwordID,
+					new ItemExtendedNetherSword(extendeddragonbezoarSwordID,
 							theoldone822.NetherrocksFusion.NetherrocksFusion.toolDragonBezoar).setUnlocalizedName(
 							"extendedWorkbenchnf:dragonbezoarSword").setTextureName("SimpleOresEW:extendeddragonbezoarSword");
 			extendeddragonbezoarHoe =
@@ -1222,7 +1226,7 @@ public class SimpleOresEW {
 				for (int i = 13; i < 17; i++) {
 
 					item[0][i] =
-							new ItemExtendedSword(arsenicID + (i - 13) * 5, sotool[i]).setUnlocalizedName(
+							new ItemExtendedNetherSword(arsenicID + (i - 13) * 5, sotool[i]).setUnlocalizedName(
 									"extendedWorkbenchso:tool0" + i).setTextureName(
 									"SimpleOresEW:tool" + toolmatNames[i] + "Sword");
 					item[1][i] =
@@ -2058,8 +2062,8 @@ public class SimpleOresEW {
 								alexndr.SimpleOres.api.helpers.CoreHelper.coreContent.copperIngot, Item.ingotGold,
 								Item.ingotGold, Item.ingotGold, Block.cobblestone, Block.cobblestone, Item.ingotIron,
 								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
-								Item.ingotIron, Item.ingotIron, OnlySilver.code.api.OnlySilverAPI.silverIngot.get(),
-								OnlySilver.code.api.OnlySilverAPI.silverIngot.get() };
+								Item.ingotIron, Item.ingotIron, zotmc.onlysilver.api.OnlySilverAPI.silverIngot.get(),
+								zotmc.onlysilver.api.OnlySilverAPI.silverIngot.get() };
 
 				for (int i = 38; i < 40; i++) {
 

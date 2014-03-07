@@ -1,16 +1,16 @@
-package theoldone822.SimpleOresEW.Items;
+package theoldone822.MithrilEW.Items;
 
 import static naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseToolAttackDamage;
 import static naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseToolDurability;
 import static naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseToolPower;
 import net.minecraft.block.Block;
 import net.minecraft.item.EnumToolMaterial;
-import net.minecraft.item.ItemSpade;
+import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 
-public class ItemExtendedShovel extends ItemSpade
+public class ItemExtendedPickaxe extends ItemPickaxe
 {
-    public ItemExtendedShovel(int par1, EnumToolMaterial par2EnumToolMaterial)
+    public ItemExtendedPickaxe(int par1, EnumToolMaterial par2EnumToolMaterial)
     {
         super(par1, par2EnumToolMaterial);
         setMaxDamage((int)(getMaxDamage() * increaseToolDurability));

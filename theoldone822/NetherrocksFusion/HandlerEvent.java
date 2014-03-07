@@ -29,6 +29,7 @@ public class HandlerEvent {
 							&& (boots.getItem() == alexndr.SimpleOres.plugins.netherrocks.Content.fyriteBoots || boots.getItem() == Content.cinderstoneBoots || boots.getItem() == Content.dragonbezoarBoots || boots.getItem() == Content.dragonbezoarChainBoots || (PluginChecks.getTungstenInstalled() && boots.getItem() == akkamaddi.simpletungsten.code.SimpleTungstenCore.valframBoots))) {
 						if (event.source.equals(DamageSource.lava) || event.source.equals(DamageSource.inFire) || event.source.equals(DamageSource.onFire)) {
 							event.setCanceled(true);
+		    	        	player.extinguish();
 						}
 					}
 				}
@@ -112,6 +113,7 @@ public class HandlerEvent {
 							if (event.source.equals(DamageSource.wither) || event.source.equals(DamageSource.lava) || event.source.equals(DamageSource.inFire)
 									|| event.source.equals(DamageSource.onFire) || event.source.equals(DamageSource.fall)) {
 								event.setCanceled(true);
+			    	        	player.extinguish();
 							}
 						}
 					}

@@ -1,4 +1,4 @@
-package theoldone822.SimpleOresEW.Items;
+package theoldone822.MithrilEW.Items;
 
 import static naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseToolAttackDamage;
 import static naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseToolDurability;

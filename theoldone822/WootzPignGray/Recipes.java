@@ -47,8 +47,6 @@ public class Recipes {
 		GameRegistry.addShapelessRecipe(new ItemStack(Content.largeWootzsteelChunk, 1), new Object[] { Content.mediumWootzsteelChunk, Content.mediumWootzsteelChunk, Content.smallWootzsteelChunk, Content.smallWootzsteelChunk });
 		GameRegistry.addShapelessRecipe(new ItemStack(Content.largeWootzsteelChunk, 1), new Object[] { Content.mediumWootzsteelChunk, Content.mediumWootzsteelChunk, Content.mediumWootzsteelChunk });
 
-		GameRegistry.addShapelessRecipe(new ItemStack(Content.largeGrayChunk, 1), new Object[] { Content.mediumGrayChunk, Content.mediumGrayChunk, Content.mediumGrayChunk });
-
 		GameRegistry.addShapelessRecipe(new ItemStack(Content.pigironIngot, 1), new Object[] { Content.rawPigiron, Content.rawPigiron, Content.rawPigiron });
 
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.packedIron, true, new Object[] { "XXX", "XYX", "XXX", Character.valueOf('X'), Block.woodenButton, Character.valueOf('Y'), "ingotRefinedIron" }));
@@ -90,10 +88,10 @@ public class Recipes {
 		FusionRecipes.smelting().addSmelting(new ItemStack(Content.packedIron), new ItemStack(Block.leaves, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.blockClay),
 				new ItemStack(Content.largeWootzsteelChunk), 1.0F);
 
-		FusionRecipes.smelting().addSmelting(new ItemStack(Content.rePigironIngot), new ItemStack(Item.ingotIron), new ItemStack(Block.sand), new ItemStack(Content.mediumGrayChunk), 1.0F);
+		FusionRecipes.smelting().addSmelting(new ItemStack(Content.rePigironIngot), new ItemStack(Item.ingotIron), new ItemStack(Block.sand), new ItemStack(Content.largeGrayChunk), 1.0F);
 
 		if (Settings.graphiteToRedstone) {
-		FusionRecipes.smelting().addSmelting(new ItemStack(Content.graphite), new ItemStack(Block.gravel), new ItemStack(Item.netherQuartz), new ItemStack(Block.oreRedstone), 1.0F);
+		FusionRecipes.smelting().addSmelting(new ItemStack(Content.graphite), new ItemStack(Item.netherQuartz), new ItemStack(Item.goldNugget), new ItemStack(Item.redstone, 2), 1.0F);
 		}
 
 		GameRegistry.addSmelting(Content.largeGrayChunk.itemID, new ItemStack(Content.grayIngot, 1, 0), 0.3F);

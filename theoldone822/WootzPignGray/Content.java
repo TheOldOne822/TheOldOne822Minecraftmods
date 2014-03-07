@@ -55,7 +55,6 @@ public class Content
 	public static Item largeWootzsteelChunk;
 	public static Item packedIron;
 	public static Item graphite;
-	public static Item mediumGrayChunk;
 	public static Item largeGrayChunk;
 	
 	/**
@@ -150,7 +149,6 @@ public class Content
 		largeWootzsteelChunk = new SimpleIngot(IDs.largeWootzsteelChunkID).modId("wootzpigngray").setUnlocalizedName("largeWootzsteelChunk").setTextureName("wootzpigngray:largeWootz steelChunk");
 		packedIron = new SimpleIngot(IDs.packedIronID).modId("wootzpigngray").setUnlocalizedName("packedIron").setTextureName("wootzpigngray:packedIron");
 		graphite = new SimpleIngot(IDs.graphiteID).modId("wootzpigngray").setUnlocalizedName("graphite").setTextureName("wootzpigngray:graphite");
-		mediumGrayChunk = new SimpleIngot(IDs.mediumGrayChunkID).modId("wootzpigngray").setUnlocalizedName("mediumGrayChunk").setTextureName("wootzpigngray:mediumGrayChunk");
 		largeGrayChunk = new SimpleIngot(IDs.largeGrayChunkID).modId("wootzpigngray").setUnlocalizedName("largeGrayChunk").setTextureName("wootzpigngray:largeGrayChunk");
 
 		LanguageRegistry.addName(rawPigiron, "Raw Pigiron");
@@ -163,7 +161,6 @@ public class Content
 		LanguageRegistry.addName(largeWootzsteelChunk, "Large Wootz steel Chunk");
 		LanguageRegistry.addName(packedIron, "Packed Iron");
 		LanguageRegistry.addName(graphite, "Graphite");
-		LanguageRegistry.addName(mediumGrayChunk, "Medium Gray Iron Chunk");
 		LanguageRegistry.addName(largeGrayChunk, "Large Gray Iron Chunk");
 	}
 	

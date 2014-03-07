@@ -2,8 +2,8 @@ package theoldone822.MoreFusionFurnaces.Furnaces;
 
 import java.util.Random;
 
-import alexndr.SimpleOres.api.helpers.CoreHelper;
-import alexndr.SimpleOres.plugins.fusion.FusionRecipes;
+import theoldone822.MoreFusionFurnaces.MoreFusionFurnaces;
+import alexndr.SimpleOres.plugins.fusion.FusionHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -325,9 +325,9 @@ public class OnyxFusionFurnaceTileEntity extends TileEntity implements ISidedInv
     {
         if(this.furnaceItemStacks[0] != null && this.furnaceItemStacks[3] != null && this.furnaceItemStacks[4] != null)
         {
-        	ItemStack itemstack = FusionRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0], this.furnaceItemStacks[3], this.furnaceItemStacks[4]);
+        	ItemStack itemstack = FusionHelper.fusionFurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0], this.furnaceItemStacks[3], this.furnaceItemStacks[4]);
        		if (itemstack == null) return false;
-       		if(FusionRecipes.smelting().isStackBigEnough() == false) return false;
+       		if(FusionHelper.fusionFurnaceRecipes.smelting().isStackBigEnough() == false) return false;
     		if (this.furnaceItemStacks[2] == null) return true;
     		if (!this.furnaceItemStacks[2].isItemEqual(itemstack)) return false;
     		int result = furnaceItemStacks[2].stackSize + itemstack.stackSize;
@@ -345,9 +345,9 @@ public class OnyxFusionFurnaceTileEntity extends TileEntity implements ISidedInv
     	int k;
     	int r = generator.nextInt(100);
     	
-    	if(r <= CoreHelper.coreSettings.onyxFurnaceMultiChance)
+    	if(r <= MoreFusionFurnaces.onyxFurnaceMultiChance)
     	{
-    		k = CoreHelper.coreSettings.onyxFurnaceMultiplier;
+    		k = MoreFusionFurnaces.onyxFurnaceMultiplier;
     	}
     	
        	else
@@ -357,7 +357,7 @@ public class OnyxFusionFurnaceTileEntity extends TileEntity implements ISidedInv
     	
         if (this.canSmelt())
         {
-        	ItemStack itemstack = FusionRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0], this.furnaceItemStacks[3], this.furnaceItemStacks[4]);
+        	ItemStack itemstack = FusionHelper.fusionFurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0], this.furnaceItemStacks[3], this.furnaceItemStacks[4]);
 
             if (this.furnaceItemStacks[2] == null)
             {
@@ -370,9 +370,9 @@ public class OnyxFusionFurnaceTileEntity extends TileEntity implements ISidedInv
                 furnaceItemStacks[2].stackSize += itemstack.stackSize + k;
             }
             
-            this.furnaceItemStacks[0].stackSize = this.furnaceItemStacks[0].stackSize - FusionRecipes.smelting().decreaseStackBy(0);            
-            this.furnaceItemStacks[3].stackSize = this.furnaceItemStacks[3].stackSize - FusionRecipes.smelting().decreaseStackBy(1);           
-            this.furnaceItemStacks[4].stackSize = this.furnaceItemStacks[4].stackSize - FusionRecipes.smelting().decreaseStackBy(2);  
+            this.furnaceItemStacks[0].stackSize = this.furnaceItemStacks[0].stackSize - FusionHelper.fusionFurnaceRecipes.smelting().decreaseStackBy(0);            
+            this.furnaceItemStacks[3].stackSize = this.furnaceItemStacks[3].stackSize - FusionHelper.fusionFurnaceRecipes.smelting().decreaseStackBy(1);           
+            this.furnaceItemStacks[4].stackSize = this.furnaceItemStacks[4].stackSize - FusionHelper.fusionFurnaceRecipes.smelting().decreaseStackBy(2);  
 
             if (furnaceItemStacks[0] != null && this.furnaceItemStacks[0].stackSize <= 0)
             {

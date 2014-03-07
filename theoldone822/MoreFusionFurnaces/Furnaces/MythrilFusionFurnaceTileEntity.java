@@ -1,7 +1,8 @@
 package theoldone822.MoreFusionFurnaces.Furnaces;
 
+import theoldone822.MoreFusionFurnaces.MoreFusionFurnaces;
 import alexndr.SimpleOres.api.helpers.CoreHelper;
-import alexndr.SimpleOres.plugins.fusion.FusionRecipes;
+import alexndr.SimpleOres.plugins.fusion.FusionHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -323,9 +324,9 @@ public class MythrilFusionFurnaceTileEntity extends TileEntity implements ISided
     {
         if(this.furnaceItemStacks[0] != null && this.furnaceItemStacks[3] != null && this.furnaceItemStacks[4] != null)
         {
-        	ItemStack itemstack = FusionRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0], this.furnaceItemStacks[3], this.furnaceItemStacks[4]);
+        	ItemStack itemstack = FusionHelper.fusionFurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0], this.furnaceItemStacks[3], this.furnaceItemStacks[4]);
        		if (itemstack == null) return false;
-       		if(FusionRecipes.smelting().isStackBigEnough() == false) return false;
+       		if(FusionHelper.fusionFurnaceRecipes.smelting().isStackBigEnough() == false) return false;
     		if (this.furnaceItemStacks[2] == null) return true;
     		if (!this.furnaceItemStacks[2].isItemEqual(itemstack)) return false;
     		int result = furnaceItemStacks[2].stackSize + itemstack.stackSize;
@@ -342,7 +343,7 @@ public class MythrilFusionFurnaceTileEntity extends TileEntity implements ISided
     {
         if (this.canSmelt())
         {
-        	ItemStack itemstack = FusionRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0], this.furnaceItemStacks[3], this.furnaceItemStacks[4]);
+        	ItemStack itemstack = FusionHelper.fusionFurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0], this.furnaceItemStacks[3], this.furnaceItemStacks[4]);
 
             if (this.furnaceItemStacks[2] == null)
             {
@@ -354,9 +355,9 @@ public class MythrilFusionFurnaceTileEntity extends TileEntity implements ISided
                 furnaceItemStacks[2].stackSize += itemstack.stackSize;
             }
             
-            this.furnaceItemStacks[0].stackSize = this.furnaceItemStacks[0].stackSize - FusionRecipes.smelting().decreaseStackBy(0);            
-            this.furnaceItemStacks[3].stackSize = this.furnaceItemStacks[3].stackSize - FusionRecipes.smelting().decreaseStackBy(1);           
-            this.furnaceItemStacks[4].stackSize = this.furnaceItemStacks[4].stackSize - FusionRecipes.smelting().decreaseStackBy(2);  
+            this.furnaceItemStacks[0].stackSize = this.furnaceItemStacks[0].stackSize - FusionHelper.fusionFurnaceRecipes.smelting().decreaseStackBy(0);            
+            this.furnaceItemStacks[3].stackSize = this.furnaceItemStacks[3].stackSize - FusionHelper.fusionFurnaceRecipes.smelting().decreaseStackBy(1);           
+            this.furnaceItemStacks[4].stackSize = this.furnaceItemStacks[4].stackSize - FusionHelper.fusionFurnaceRecipes.smelting().decreaseStackBy(2);  
 
             if (furnaceItemStacks[0] != null && this.furnaceItemStacks[0].stackSize <= 0)
             {
@@ -396,29 +397,29 @@ public class MythrilFusionFurnaceTileEntity extends TileEntity implements ISided
 
                 if (block == Block.woodSingleSlab)
                 {
-                    return 1125 / 4 * CoreHelper.coreSettings.mythrilFurnaceMultiplier;
+                    return 1125 / 4 * MoreFusionFurnaces.mythrilFurnaceMultiplier;
                 }
 
                 if (block.blockMaterial == Material.wood)
                 {
-                    return 1125 / 2 * CoreHelper.coreSettings.mythrilFurnaceMultiplier;
+                    return 1125 / 2 * MoreFusionFurnaces.mythrilFurnaceMultiplier;
                 }
                 
                 if (block == Block.coalBlock)
                 {
-                    return 30000 * CoreHelper.coreSettings.mythrilFurnaceMultiplier;
+                    return 30000 * MoreFusionFurnaces.mythrilFurnaceMultiplier;
                 }
             }
 
-            if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 375 * CoreHelper.coreSettings.mythrilFurnaceMultiplier;
-            if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 375 * CoreHelper.coreSettings.mythrilFurnaceMultiplier;
-            if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().equals("WOOD")) return 375 * CoreHelper.coreSettings.mythrilFurnaceMultiplier;
-            if (i == Item.stick.itemID) return 375 / 2 * CoreHelper.coreSettings.mythrilFurnaceMultiplier;
-            if (i == Item.coal.itemID) return 3000 * CoreHelper.coreSettings.mythrilFurnaceMultiplier;
-            if (i == Item.bucketLava.itemID) return 37500 * CoreHelper.coreSettings.mythrilFurnaceMultiplier;
-            if (i == Block.sapling.blockID) return 375 / 2 * CoreHelper.coreSettings.mythrilFurnaceMultiplier;
-            if (i == Item.blazeRod.itemID) return 4500 * CoreHelper.coreSettings.mythrilFurnaceMultiplier;
-            return GameRegistry.getFuelValue(par0ItemStack) * 1875 / 1000 * CoreHelper.coreSettings.mythrilFurnaceMultiplier;
+            if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 375 * MoreFusionFurnaces.mythrilFurnaceMultiplier;
+            if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 375 * MoreFusionFurnaces.mythrilFurnaceMultiplier;
+            if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().equals("WOOD")) return 375 * MoreFusionFurnaces.mythrilFurnaceMultiplier;
+            if (i == Item.stick.itemID) return 375 / 2 * MoreFusionFurnaces.mythrilFurnaceMultiplier;
+            if (i == Item.coal.itemID) return 3000 * MoreFusionFurnaces.mythrilFurnaceMultiplier;
+            if (i == Item.bucketLava.itemID) return 37500 * MoreFusionFurnaces.mythrilFurnaceMultiplier;
+            if (i == Block.sapling.blockID) return 375 / 2 * MoreFusionFurnaces.mythrilFurnaceMultiplier;
+            if (i == Item.blazeRod.itemID) return 4500 * MoreFusionFurnaces.mythrilFurnaceMultiplier;
+            return GameRegistry.getFuelValue(par0ItemStack) * 1875 / 1000 * MoreFusionFurnaces.mythrilFurnaceMultiplier;
         }
     }
 
