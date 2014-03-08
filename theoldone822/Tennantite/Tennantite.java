@@ -1,9 +1,11 @@
 package theoldone822.Tennantite;
 
 import alexndr.SimpleOres.api.content.SimpleOre;
+import alexndr.SimpleOres.plugins.fusion.FusionRecipes;
 import akkamaddi.arsenic.code.ArsenicAndLace;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
@@ -25,8 +27,6 @@ public class Tennantite {
 	@Instance("tennantite")
     public static Tennantite instance;
 
-    public static int[] dimensionIDsArray;
-
     public static int oreTennantiteID;
     public static Configuration config;
 
@@ -37,8 +37,9 @@ public class Tennantite {
     public static int tennantiteSpawnHeight;
     public static int tennantiteMinSpawnHeight;
     
-    public static boolean enableHigherDimensionGen;
-    
+    public static boolean enableRecyclingOres;
+    public static boolean enableRecycling;
+
     @EventHandler // used in 1.6.2
     public void preInit(FMLPreInitializationEvent event)
     {
@@ -50,30 +51,9 @@ public class Tennantite {
         tennantiteSpawnHeight = config.get("Tennantite Ore", "Tennantite Maximum Spawn Height", 38).getInt();
         tennantiteMinSpawnHeight = config.get("Tennantite Ore", "Tennantite Minimum Spawn Height", 0).getInt();
 
-        enableHigherDimensionGen = config.get("Higher World Gen", "Spawn Tennantite in higher dimensions? (Advanced)", false).getBoolean(enableHigherDimensionGen);
-        
-        if (enableHigherDimensionGen)
-        {
-            dimensionIDsArray = config.get("Higher Dimensions", "Higher Dimensions ID List", new int[] {}).getIntList();
-            System.out.println("Number of dimension ID's in the array = " + dimensionIDsArray.length);
-
-            try
-            {
-                for (int i = 0; i < dimensionIDsArray.length; i++)
-                {
-                    config.get("Higher Dimension ID: " + dimensionIDsArray[i], "Tennantite Spawn Rate", 16).getInt();
-                    config.get("Higher Dimension ID: " + dimensionIDsArray[i], "Tennantite Maximum Spawn Height", 48).getInt();
-                    config.get("Higher Dimension ID: " + dimensionIDsArray[i], "Tennantite Minimum Spawn Height", 0).getInt();
-                    config.get("Higher Dimension ID: " + dimensionIDsArray[i], "Tennantite Vein Size", 6).getInt();
-                    System.out.println("Dimension ID in position " + i + " is " + dimensionIDsArray[i]);
-                }
-            }
-            catch (Exception e)
-            {
-            }
-        }
-        else
-            dimensionIDsArray = new int[] {};
+        enableRecyclingOres= config.get("Recycling", "Enable Arsenide Bronze item recycling into Tennantite recipes: false or true?", false).getBoolean(false);
+        enableRecycling= config.get("Recycling", "Enable other Simple Arsenic item recycling into large chunks recipes: false or true?", false).getBoolean(false);
+        config.addCustomCategoryComment("Recycling", "Recycling must be off in Simple Arsenic, and Old Lace config");
 
         config.save();
 
@@ -81,7 +61,55 @@ public class Tennantite {
         
         OreDictionary.registerOre("oreTennantite", new ItemStack(oreTennantite));
         GameRegistry.addSmelting(oreTennantite.blockID, new ItemStack(ArsenicAndLace.arsenideBronzeIngot), 0.8F);
+
+        if (!ArsenicAndLace.enableRecycling) {
+            if (enableRecyclingOres) {
+            // Arsenide Bronze
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.arsenideBronzeHelm, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.gravel), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeArsenideBronzeChunkItem), 10.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.arsenideBronzeChest, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.gravel, 2, 0), new ItemStack(Item.rottenFlesh, 2, 0), new ItemStack(ArsenicAndLace.largeArsenideBronzeChunkItem, 2, 0), 20.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.arsenideBronzeLegs, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.gravel, 2, 0), new ItemStack(Item.rottenFlesh, 2, 0), new ItemStack(ArsenicAndLace.largeArsenideBronzeChunkItem, 2, 0), 20.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.arsenideBronzeBoots, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.gravel), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeArsenideBronzeChunkItem), 10.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.arsenideBronzeSword, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.gravel), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeArsenideBronzeChunkItem), 10.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.arsenideBronzeShovel, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.gravel), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeArsenideBronzeChunkItem), 10.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.arsenideBronzePickaxe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.gravel), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeArsenideBronzeChunkItem), 10.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.arsenideBronzeAxe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.gravel), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeArsenideBronzeChunkItem), 10.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.arsenideBronzeHoe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.gravel), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeArsenideBronzeChunkItem), 10.0F);
+            }
+            if (enableRecycling) {
+            // Arsenic tools
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.arsenicSword, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.gravel), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeArsenicChunkItem), 10.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.arsenicShovel, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.gravel), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeArsenicChunkItem), 10.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.arsenicPickaxe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.gravel), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeArsenicChunkItem), 10.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.arsenicAxe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.gravel), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeArsenicChunkItem), 10.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.arsenicHoe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.gravel), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeArsenicChunkItem), 10.0F);
+            // other Arsenic
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.plateArsenic), new ItemStack(Block.gravel), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeArsenicChunkItem), 10.0F);
+            // Arsenide Gold
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.arsenideGoldHelm, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.gravel), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeArsenideGoldChunkItem), 15.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.arsenideGoldChest, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.gravel, 2, 0), new ItemStack(Item.rottenFlesh, 2, 0), new ItemStack(ArsenicAndLace.largeArsenideGoldChunkItem, 2, 0), 30.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.arsenideGoldLegs, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.gravel, 2, 0), new ItemStack(Item.rottenFlesh, 2, 0), new ItemStack(ArsenicAndLace.largeArsenideGoldChunkItem, 2, 0), 30.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.arsenideGoldBoots, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.gravel), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeArsenideGoldChunkItem), 15.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.arsenideGoldSword, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.gravel), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeArsenideGoldChunkItem), 15.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.arsenideGoldShovel, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.gravel), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeArsenideGoldChunkItem), 15.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.arsenideGoldPickaxe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.gravel), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeArsenideGoldChunkItem), 15.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.arsenideGoldAxe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.gravel), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeArsenideGoldChunkItem), 15.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.arsenideGoldHoe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.gravel), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeArsenideGoldChunkItem), 15.0F);
+            // Tenebrium
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.tenebriumHelm, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.netherQuartz), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeTenebriumChunkItem), 20.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.tenebriumChest, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.netherQuartz, 2, 0), new ItemStack(Item.rottenFlesh, 2, 0), new ItemStack(ArsenicAndLace.largeTenebriumChunkItem, 2, 0), 40.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.tenebriumLegs, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.netherQuartz, 2, 0), new ItemStack(Item.rottenFlesh, 2, 0), new ItemStack(ArsenicAndLace.largeTenebriumChunkItem, 2, 0), 40.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.tenebriumBoots, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.netherQuartz), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeTenebriumChunkItem), 20.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.tenebriumSword, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.netherQuartz), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeTenebriumChunkItem), 20.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.tenebriumShovel, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.netherQuartz), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeTenebriumChunkItem), 20.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.tenebriumPickaxe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.netherQuartz), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeTenebriumChunkItem), 20.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.tenebriumAxe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.netherQuartz), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeTenebriumChunkItem), 20.0F);
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.tenebriumHoe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.netherQuartz), new ItemStack(Item.rottenFlesh), new ItemStack(ArsenicAndLace.largeTenebriumChunkItem), 20.0F);
+            // Shrouds
+            FusionRecipes.smelting().addSmelting(new ItemStack(ArsenicAndLace.oldLaceChest, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.gravel), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Block.oreCoal), 15.0F);
+            }
         }
+    
+    }
 
     @EventHandler
     public void load(FMLInitializationEvent event)

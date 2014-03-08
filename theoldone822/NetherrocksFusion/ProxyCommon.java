@@ -85,5 +85,6 @@ if(machine instanceof SuperFurnaceTileEntity)
 	public void registerRenderInformation() {
 		// TODO Auto-generated method stub
 		
-	} 
+	}
+
 }

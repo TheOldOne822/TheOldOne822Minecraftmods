@@ -103,7 +103,7 @@ public class NetherrocksFusion {
 		rendererPyralis = alexndr.SimpleOres.core.SimpleOres.proxy.addArmor("pyralischain");
 		rendererDragonBezoar = alexndr.SimpleOres.core.SimpleOres.proxy.addArmor("dragonbezoar");
 		rendererDragonBezoar = alexndr.SimpleOres.core.SimpleOres.proxy.addArmor("dragonbezoarchain");
-		
+
         toolCinderstone.customCraftingMaterial = Content.cinderstoneIngot;
         toolPyralis.customCraftingMaterial = Content.pyralisIngot;
         toolThraka.customCraftingMaterial = Content.thrakaIngot;
