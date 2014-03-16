@@ -49,7 +49,7 @@ public class Recipes {
 
 		GameRegistry.addShapelessRecipe(new ItemStack(Content.pigironIngot, 1), new Object[] { Content.rawPigiron, Content.rawPigiron, Content.rawPigiron });
 
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.packedIron, true, new Object[] { "XXX", "XYX", "XXX", Character.valueOf('X'), Block.woodenButton, Character.valueOf('Y'), "ingotRefinedIron" }));
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.packedIron, true, new Object[] { "XXX", "XYX", "XXX", Character.valueOf('X'), Block.woodenButton, Character.valueOf('Y'), "ingotRefinedPigiron" }));
 
 		if (!Settings.requirePigiron){
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.packedIron, true, new Object[] { "XXX", "XYX", "XXX", Character.valueOf('X'), Block.woodenButton, Character.valueOf('Y'), Item.ingotIron }));
@@ -100,9 +100,9 @@ public class Recipes {
 		
 		if (Settings.enableOtherPigiron) {
 			if (PluginChecks.getSterlingInstalled()) {
-				FusionRecipes.smelting().addSmelting(new ItemStack(Content.rePigironIngot), new ItemStack(OnlySilver.code.api.OnlySilverAPI.silverIngot.get()), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.smallSterlingSteelChunkItem), 6.0F);
-				FusionRecipes.smelting().addSmelting(new ItemStack(Content.rePigironIngot), new ItemStack(OnlySilver.code.api.OnlySilverAPI.silverIngot.get()), new ItemStack(Item.dyePowder, 1, 4), new ItemStack(akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.mediumSterlingSteelChunkItem), 8.0F);
-				FusionRecipes.smelting().addSmelting(new ItemStack(Content.rePigironIngot), new ItemStack(OnlySilver.code.api.OnlySilverAPI.silverIngot.get()), new ItemStack(Item.glowstone), new ItemStack(akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.largeSterlingSteelChunkItem), 20.F);
+				FusionRecipes.smelting().addSmelting(new ItemStack(Content.rePigironIngot), new ItemStack(zotmc.onlysilver.api.OnlySilverAPI.silverIngot.get()), new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.smallSterlingSteelChunkItem), 6.0F);
+				FusionRecipes.smelting().addSmelting(new ItemStack(Content.rePigironIngot), new ItemStack(zotmc.onlysilver.api.OnlySilverAPI.silverIngot.get()), new ItemStack(Item.dyePowder, 1, 4), new ItemStack(akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.mediumSterlingSteelChunkItem), 8.0F);
+				FusionRecipes.smelting().addSmelting(new ItemStack(Content.rePigironIngot), new ItemStack(zotmc.onlysilver.api.OnlySilverAPI.silverIngot.get()), new ItemStack(Item.glowstone), new ItemStack(akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.largeSterlingSteelChunkItem), 20.F);
 			}
 
 			if (PluginChecks.getHaditeInstalled()) {

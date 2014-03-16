@@ -46,7 +46,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 		modid = "simpleoresew",
 		name = "Simple Ore Extended Work Bench Plugin",
 		version = "2.0",
-		dependencies = "required-after:extendedWorkbench; after:simpleores; after:simpleoresfusion; after:onlysilver; after:MoCreatures; after:SimpleArsenic; after:netherrocksfusion; after:netherrocks; after:classicalalchemy; after:simplecthon; after:goldenglitter; after:haditecoal; after:simplecobalt; after:simpletungsten; after:sterlingandblack")
+		dependencies = "required-after:extendedWorkbench; after:simpleores; after:simpleoresfusion; after:onlysilver; after:MoCreatures; after:SimpleArsenic; after:netherrocksfusion; after:netherrocks; after:classicalalchemy; after:simplecthon; after:goldenglitter; after:haditecoal; after:simplecobalt; after:simpletungsten; after:sterlingandblack; after:wootzpigngray")
 public class SimpleOresEW {
 
 	public static String treesetting;

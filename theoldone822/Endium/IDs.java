@@ -61,7 +61,6 @@ public class IDs {
 	File configDir = new File(installDir, "Endium");
 	Configuration config = new Configuration(new File(configDir, "IDs.cfg"));
 
-
 	config.load();
 	
 	FreeIdHelper.compileIdList();
