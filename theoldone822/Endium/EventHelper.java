@@ -6,6 +6,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
+import net.minecraftforge.event.entity.living.LivingFallEvent;
 
 public class EventHelper 
 {
@@ -33,7 +34,7 @@ public class EventHelper
 	}
 	
 	@ForgeSubscribe
-	public void onFallDamage(LivingAttackEvent event)
+	public void onFallDamage(LivingFallEvent event)
 	{  	
 		if(event.entity instanceof EntityPlayer)
 		{
@@ -49,13 +50,7 @@ public class EventHelper
 			{
 				if(helmet.getItem() == Content.TelosHelm && chest.getItem() == Content.TelosChest && legs.getItem() == Content.TelosLegs && boots.getItem() == Content.TelosBoots)
 				{	
-					if(event.source.equals(DamageSource.fall))
-					{
-						if(player.fallDistance < Settings.TelosArmorMinFallHeight)
-						{
-							event.setCanceled(true);
-						}
-					}
+							event.distance = event.distance - Settings.TelosArmorMinFallHeight;
 				}
 			}
 		}

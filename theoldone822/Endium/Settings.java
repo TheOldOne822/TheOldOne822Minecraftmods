@@ -97,8 +97,8 @@ public class Settings {
 	TelosArmorDurability = settings.get("Armor Stats", "Telos Armor Durability", 64).getInt();
 	TelosArmorDamageReduction = settings.get("Armor Stats", "Telos Armor Damage Reduction Array", new int[] {6, 9, 8, 6}).getIntList();
 	TelosArmorEnchantability = settings.get("Armor Stats", "Telos Armor Enchantability", 34).getInt();
-	TelosArmorMinFallHeight = (float) settings.get("Armor Stats", "Telos Armor Enchantability", 5.0).getDouble(TelosArmorMinFallHeight);
-	TelosArmorJumpBoostAmount = settings.get("Armor Stats", "Telos Armor Jump Boost Amount", 0.20).getDouble(TelosArmorJumpBoostAmount);
+	TelosArmorMinFallHeight = (float) settings.get("Armor Stats", "Telos Armor Fall Protection", 5.0).getDouble(TelosArmorMinFallHeight);
+	TelosArmorJumpBoostAmount = settings.get("Armor Stats", "Telos Armor Jump Boost Amount(0.2 lets you jump 2.5 blocks)", 0.20).getDouble(TelosArmorJumpBoostAmount);
 
 	SunteleiaArmorDurability = settings.get("Armor Stats", "Sunteleia Armor Durability", 96).getInt();
 	SunteleiaArmorDamageReduction = settings.get("Armor Stats", "Sunteleia Armor Damage Reduction Array", new int[] {7, 10, 9, 8}).getIntList();
