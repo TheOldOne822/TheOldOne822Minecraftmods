@@ -45,6 +45,9 @@ public class Settings {
 	public static float EndiumOreResistance;
 	public static float EndiumOreLightValue;
 
+	public static int EndiumSpawnRate;
+	public static int EndiumVeinSize;
+
 	//Telos
 	public static float TelosBlockHardness;
 	public static float TelosBlockResistance;
@@ -121,5 +124,8 @@ public class Settings {
     // Recycling
     enableRecycling= settings.get("Enable Recycling", "Enable item recycling recipes: false or true?", false).getBoolean(false);
 
-	settings.save();
+    EndiumSpawnRate = settings.get("Spawn", "Endium Spawn Rate", 15).getInt();
+    EndiumVeinSize = settings.get("Spawn", "Endium Vein Size", 7).getInt();
+
+    settings.save();
 }}

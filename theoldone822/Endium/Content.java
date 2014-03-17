@@ -128,7 +128,7 @@ public class Content
 		TelosBlock = new SimpleOre(IDs.TelosBlockID, Material.iron).modId("Endium").setHardness(Settings.TelosBlockHardness).setResistance(Settings.TelosBlockResistance).setUnlocalizedName("TelosBlock").setTextureName("Endium:TelosBlock");
 		SunteleiaBlock = new SimpleOre(IDs.SunteleiaBlockID, Material.iron).modId("Endium").setHardness(Settings.SunteleiaBlockHardness).setResistance(Settings.SunteleiaBlockResistance).setLightValue(Settings.SunteleiaBlockLightValue).setUnlocalizedName("SunteleiaBlock").setTextureName("Endium:SunteleiaBlock");
 
-    	MinecraftForge.setBlockHarvestLevel(EndiumOre, "pickaxe", 1);
+    	MinecraftForge.setBlockHarvestLevel(EndiumOre, "pickaxe", 5);
 
     	LanguageRegistry.addName(EndiumBlock, "Block of Endium");
 		LanguageRegistry.addName(TelosBlock, "Block of Telos");
