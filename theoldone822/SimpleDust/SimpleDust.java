@@ -15,7 +15,9 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLInterModComms;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -200,8 +202,46 @@ public class SimpleDust {
 		GameRegistry.addSmelting(adamantiumDust.itemID, new ItemStack(CoreHelper.coreContent.adamantiumIngot, 1, 0), 1.0F);
 
 		if (Loader.isModLoaded("ThermalExpansion")) {
+/*			NBTTagCompound toSendCopperore = new NBTTagCompound();
+			toSendCopperore.setInteger("energy", 4000);
+			toSendCopperore.setCompoundTag("input", new NBTTagCompound());
+			toSendCopperore.setCompoundTag("primaryOutput", new NBTTagCompound());
+			toSendCopperore.setCompoundTag("secondaryOutput", new NBTTagCompound());
+			new ItemStack(CoreHelper.coreContent.copperOre).writeToNBT(toSendCopperore.getCompoundTag("input"));
+			new ItemStack(copperDust, 2).writeToNBT(toSendCopperore.getCompoundTag("primaryOutput"));
+			(OreDictionary.getOres("dustGold").get(0)).writeToNBT(toSendCopperore.getCompoundTag("secondaryOutput"));
+			toSendCopperore.setInteger("secondaryChance", 10);
+			FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSendCopperore);
+*/		
+			NBTTagCompound toSendcopperIngot = new NBTTagCompound();
+			toSendcopperIngot.setInteger("energy", 2400);
+			toSendcopperIngot.setCompoundTag("input", new NBTTagCompound());
+			toSendcopperIngot.setCompoundTag("primaryOutput", new NBTTagCompound());
+			new ItemStack(CoreHelper.coreContent.copperIngot).writeToNBT(toSendcopperIngot.getCompoundTag("input"));
+			new ItemStack(copperDust).writeToNBT(toSendcopperIngot.getCompoundTag("primaryOutput"));
+			FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSendcopperIngot);
+
+/*			NBTTagCompound toSendTinore = new NBTTagCompound();
+			toSendTinore.setInteger("energy", 4000);
+			toSendTinore.setCompoundTag("input", new NBTTagCompound());
+			toSendTinore.setCompoundTag("primaryOutput", new NBTTagCompound());
+			toSendTinore.setCompoundTag("secondaryOutput", new NBTTagCompound());
+			new ItemStack(CoreHelper.coreContent.tinOre).writeToNBT(toSendTinore.getCompoundTag("input"));
+			new ItemStack(tinDust, 2).writeToNBT(toSendTinore.getCompoundTag("primaryOutput"));
+			(OreDictionary.getOres("dustIron").get(0)).writeToNBT(toSendTinore.getCompoundTag("secondaryOutput"));
+			toSendTinore.setInteger("secondaryChance", 10);
+			FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSendTinore);
+*/		
+			NBTTagCompound toSendTinIngot = new NBTTagCompound();
+			toSendTinIngot.setInteger("energy", 2400);
+			toSendTinIngot.setCompoundTag("input", new NBTTagCompound());
+			toSendTinIngot.setCompoundTag("primaryOutput", new NBTTagCompound());
+			new ItemStack(CoreHelper.coreContent.tinIngot).writeToNBT(toSendTinIngot.getCompoundTag("input"));
+			new ItemStack(tinDust).writeToNBT(toSendTinIngot.getCompoundTag("primaryOutput"));
+			FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSendTinIngot);
+
 			NBTTagCompound toSend1ore = new NBTTagCompound();
-			toSend1ore.setInteger("energy", 3200);
+			toSend1ore.setInteger("energy", 4000);
 			toSend1ore.setCompoundTag("input", new NBTTagCompound());
 			toSend1ore.setCompoundTag("primaryOutput", new NBTTagCompound());
 			new ItemStack(CoreHelper.coreContent.mythrilOre).writeToNBT(toSend1ore.getCompoundTag("input"));
@@ -209,7 +249,7 @@ public class SimpleDust {
 			FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend1ore);
 		
 			NBTTagCompound toSend1Ingot = new NBTTagCompound();
-			toSend1Ingot.setInteger("energy", 3200);
+			toSend1Ingot.setInteger("energy", 2400);
 			toSend1Ingot.setCompoundTag("input", new NBTTagCompound());
 			toSend1Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 			new ItemStack(CoreHelper.coreContent.mythrilIngot).writeToNBT(toSend1Ingot.getCompoundTag("input"));
@@ -217,7 +257,7 @@ public class SimpleDust {
 			FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend1Ingot);
 
 			NBTTagCompound toSend2ore = new NBTTagCompound();
-			toSend2ore.setInteger("energy", 3200);
+			toSend2ore.setInteger("energy", 4000);
 			toSend2ore.setCompoundTag("input", new NBTTagCompound());
 			toSend2ore.setCompoundTag("primaryOutput", new NBTTagCompound());
 			new ItemStack(CoreHelper.coreContent.adamantiumOre).writeToNBT(toSend2ore.getCompoundTag("input"));
@@ -225,7 +265,7 @@ public class SimpleDust {
 			FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend2ore);
 
 			NBTTagCompound toSend2Ingot = new NBTTagCompound();
-			toSend2Ingot.setInteger("energy", 3200);
+			toSend2Ingot.setInteger("energy", 2400);
 			toSend2Ingot.setCompoundTag("input", new NBTTagCompound());
 			toSend2Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 			new ItemStack(CoreHelper.coreContent.adamantiumIngot).writeToNBT(toSend2Ingot.getCompoundTag("input"));
@@ -233,7 +273,7 @@ public class SimpleDust {
 			FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend2Ingot);
 
 			NBTTagCompound toSend3ore = new NBTTagCompound();
-			toSend3ore.setInteger("energy", 3200);
+			toSend3ore.setInteger("energy", 4000);
 			toSend3ore.setCompoundTag("input", new NBTTagCompound());
 			toSend3ore.setCompoundTag("primaryOutput", new NBTTagCompound());
 			new ItemStack(CoreHelper.coreContent.onyxOre).writeToNBT(toSend3ore.getCompoundTag("input"));
@@ -259,8 +299,16 @@ public class SimpleDust {
 			GameRegistry.addSmelting(sinisiteDust.itemID, new ItemStack(alexndr.SimpleOres.plugins.fusion.FusionHelper.fusionContent.sinisiteIngot, 1, 0), 1.0F);
 
 			if (Loader.isModLoaded("ThermalExpansion")) {
+				NBTTagCompound toSend0Ingot = new NBTTagCompound();
+				toSend0Ingot.setInteger("energy", 2400);
+				toSend0Ingot.setCompoundTag("input", new NBTTagCompound());
+				toSend0Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
+				new ItemStack(alexndr.SimpleOres.plugins.fusion.FusionHelper.fusionContent.bronzeIngot).writeToNBT(toSend0Ingot.getCompoundTag("input"));
+				new ItemStack(bronzeDust).writeToNBT(toSend0Ingot.getCompoundTag("primaryOutput"));
+				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend0Ingot);
+
 				NBTTagCompound toSend1Ingot = new NBTTagCompound();
-				toSend1Ingot.setInteger("energy", 3200);
+				toSend1Ingot.setInteger("energy", 2400);
 				toSend1Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend1Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(alexndr.SimpleOres.plugins.fusion.FusionHelper.fusionContent.thyriumIngot).writeToNBT(toSend1Ingot.getCompoundTag("input"));
@@ -268,7 +316,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend1Ingot);
 
 				NBTTagCompound toSend2Ingot = new NBTTagCompound();
-				toSend2Ingot.setInteger("energy", 3200);
+				toSend2Ingot.setInteger("energy", 2400);
 				toSend2Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend2Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(CoreHelper.coreContent.adamantiumOre).writeToNBT(toSend2Ingot.getCompoundTag("input"));
@@ -300,7 +348,7 @@ public class SimpleDust {
 
 			if (Loader.isModLoaded("ThermalExpansion")) {
 				NBTTagCompound toSend1ore = new NBTTagCompound();
-				toSend1ore.setInteger("energy", 3200);
+				toSend1ore.setInteger("energy", 4000);
 				toSend1ore.setCompoundTag("input", new NBTTagCompound());
 				toSend1ore.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.fyriteOre).writeToNBT(toSend1ore.getCompoundTag("input"));
@@ -308,7 +356,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend1ore);
 			
 				NBTTagCompound toSend1Ingot = new NBTTagCompound();
-				toSend1Ingot.setInteger("energy", 3200);
+				toSend1Ingot.setInteger("energy", 2400);
 				toSend1Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend1Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.fyriteIngot).writeToNBT(toSend1Ingot.getCompoundTag("input"));
@@ -316,7 +364,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend1Ingot);
 
 				NBTTagCompound toSend2ore = new NBTTagCompound();
-				toSend2ore.setInteger("energy", 3200);
+				toSend2ore.setInteger("energy", 4000);
 				toSend2ore.setCompoundTag("input", new NBTTagCompound());
 				toSend2ore.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.malachiteOre).writeToNBT(toSend2ore.getCompoundTag("input"));
@@ -324,7 +372,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend2ore);
 
 				NBTTagCompound toSend2Ingot = new NBTTagCompound();
-				toSend2Ingot.setInteger("energy", 3200);
+				toSend2Ingot.setInteger("energy", 2400);
 				toSend2Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend2Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.malachiteIngot).writeToNBT(toSend2Ingot.getCompoundTag("input"));
@@ -332,18 +380,18 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend2Ingot);
 
 				NBTTagCompound toSend3ore = new NBTTagCompound();
-				toSend3ore.setInteger("energy", 3200);
+				toSend3ore.setInteger("energy", 4000);
 				toSend3ore.setCompoundTag("input", new NBTTagCompound());
 				toSend3ore.setCompoundTag("primaryOutput", new NBTTagCompound());
-				toSend1ore.setCompoundTag("secondaryOutput", new NBTTagCompound());
+				toSend3ore.setCompoundTag("secondaryOutput", new NBTTagCompound());
 				new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.illumeniteOre).writeToNBT(toSend3ore.getCompoundTag("input"));
 				new ItemStack(illumeniteDust, 2).writeToNBT(toSend3ore.getCompoundTag("primaryOutput"));
-				new ItemStack(Item.glowstone).writeToNBT(toSend1ore.getCompoundTag("secondaryOutput"));
-				toSend1ore.setInteger("secondaryChance", 15);
+				new ItemStack(Item.glowstone).writeToNBT(toSend3ore.getCompoundTag("secondaryOutput"));
+				toSend3ore.setInteger("secondaryChance", 15);
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend3ore);
 
 				NBTTagCompound toSend3Ingot = new NBTTagCompound();
-				toSend3Ingot.setInteger("energy", 3200);
+				toSend3Ingot.setInteger("energy", 2400);
 				toSend3Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend3Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.illumeniteIngot).writeToNBT(toSend3Ingot.getCompoundTag("input"));
@@ -351,7 +399,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend3Ingot);
 
 				NBTTagCompound toSend4ore = new NBTTagCompound();
-				toSend4ore.setInteger("energy", 3200);
+				toSend4ore.setInteger("energy", 4000);
 				toSend4ore.setCompoundTag("input", new NBTTagCompound());
 				toSend4ore.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.argoniteOre).writeToNBT(toSend4ore.getCompoundTag("input"));
@@ -359,7 +407,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend4ore);
 
 				NBTTagCompound toSend4Ingot = new NBTTagCompound();
-				toSend4Ingot.setInteger("energy", 3200);
+				toSend4Ingot.setInteger("energy", 2400);
 				toSend4Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend4Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.argoniteIngot).writeToNBT(toSend4Ingot.getCompoundTag("input"));
@@ -367,7 +415,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend4Ingot);
 
 				NBTTagCompound toSend5ore = new NBTTagCompound();
-				toSend5ore.setInteger("energy", 3200);
+				toSend5ore.setInteger("energy", 4000);
 				toSend5ore.setCompoundTag("input", new NBTTagCompound());
 				toSend5ore.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.ashstoneOre).writeToNBT(toSend5ore.getCompoundTag("input"));
@@ -375,7 +423,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend5ore);
 
 				NBTTagCompound toSend6ore = new NBTTagCompound();
-				toSend6ore.setInteger("energy", 3200);
+				toSend6ore.setInteger("energy", 4000);
 				toSend6ore.setCompoundTag("input", new NBTTagCompound());
 				toSend6ore.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.dragonstoneOre).writeToNBT(toSend6ore.getCompoundTag("input"));
@@ -407,7 +455,7 @@ public class SimpleDust {
 
 	        if (Loader.isModLoaded("ThermalExpansion")) {
 				NBTTagCompound toSend1Ingot = new NBTTagCompound();
-				toSend1Ingot.setInteger("energy", 3200);
+				toSend1Ingot.setInteger("energy", 2400);
 				toSend1Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend1Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(akkamaddi.arsenic.code.ArsenicAndLace.arsenicIngot).writeToNBT(toSend1Ingot.getCompoundTag("input"));
@@ -415,7 +463,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend1Ingot);
 
 				NBTTagCompound toSend2Ingot = new NBTTagCompound();
-				toSend2Ingot.setInteger("energy", 3200);
+				toSend2Ingot.setInteger("energy", 2400);
 				toSend2Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend2Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(akkamaddi.arsenic.code.ArsenicAndLace.arsenideBronzeIngot).writeToNBT(toSend2Ingot.getCompoundTag("input"));
@@ -423,7 +471,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend2Ingot);
 
 				NBTTagCompound toSend3Ingot = new NBTTagCompound();
-				toSend3Ingot.setInteger("energy", 3200);
+				toSend3Ingot.setInteger("energy", 2400);
 				toSend3Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend3Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(akkamaddi.arsenic.code.ArsenicAndLace.arsenideGoldIngot).writeToNBT(toSend3Ingot.getCompoundTag("input"));
@@ -431,7 +479,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend3Ingot);
 
 				NBTTagCompound toSend4Ingot = new NBTTagCompound();
-				toSend4Ingot.setInteger("energy", 3200);
+				toSend4Ingot.setInteger("energy", 2400);
 				toSend4Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend4Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(akkamaddi.arsenic.code.ArsenicAndLace.tenebriumIngot).writeToNBT(toSend4Ingot.getCompoundTag("input"));
@@ -440,7 +488,7 @@ public class SimpleDust {
 
 				if (Loader.isModLoaded("Tennantite")) {
 				NBTTagCompound toSend1ore = new NBTTagCompound();
-				toSend1ore.setInteger("energy", 3200);
+				toSend1ore.setInteger("energy", 4000);
 				toSend1ore.setCompoundTag("input", new NBTTagCompound());
 				toSend1ore.setCompoundTag("primaryOutput", new NBTTagCompound());
 				toSend1ore.setCompoundTag("secondaryOutput", new NBTTagCompound());
@@ -468,7 +516,7 @@ public class SimpleDust {
 
 	        if (Loader.isModLoaded("ThermalExpansion")) {
 				NBTTagCompound toSend1Ingot = new NBTTagCompound();
-				toSend1Ingot.setInteger("energy", 3200);
+				toSend1Ingot.setInteger("energy", 2400);
 				toSend1Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend1Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.sterlingSteelIngot).writeToNBT(toSend1Ingot.getCompoundTag("input"));
@@ -476,7 +524,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend1Ingot);
 
 				NBTTagCompound toSend2Ingot = new NBTTagCompound();
-				toSend2Ingot.setInteger("energy", 3200);
+				toSend2Ingot.setInteger("energy", 2400);
 				toSend2Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend2Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.blackSilverIngot).writeToNBT(toSend2Ingot.getCompoundTag("input"));
@@ -500,7 +548,7 @@ public class SimpleDust {
 
 	        if (Loader.isModLoaded("ThermalExpansion")) {
 				NBTTagCompound toSend1Ingot = new NBTTagCompound();
-				toSend1Ingot.setInteger("energy", 3200);
+				toSend1Ingot.setInteger("energy", 2400);
 				toSend1Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend1Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(akkamaddi.hadite.code.HaditeCoalCore.haditeSteelIngot).writeToNBT(toSend1Ingot.getCompoundTag("input"));
@@ -508,7 +556,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend1Ingot);
 
 				NBTTagCompound toSend2Ingot = new NBTTagCompound();
-				toSend2Ingot.setInteger("energy", 3200);
+				toSend2Ingot.setInteger("energy", 2400);
 				toSend2Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend2Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(akkamaddi.hadite.code.HaditeCoalCore.gestankenzinnIngot).writeToNBT(toSend2Ingot.getCompoundTag("input"));
@@ -539,7 +587,7 @@ public class SimpleDust {
 	        GameRegistry.addSmelting(hephaestanGoldDust.itemID, new ItemStack(akkamaddi.goldenglitter.code.GoldenGlitterCore.hephaestanGoldIngot), 9.0F);
 			if (Loader.isModLoaded("ThermalExpansion")) {
 				NBTTagCompound toSend1Ingot = new NBTTagCompound();
-				toSend1Ingot.setInteger("energy", 3200);
+				toSend1Ingot.setInteger("energy", 2400);
 				toSend1Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend1Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(akkamaddi.goldenglitter.code.GoldenGlitterCore.roseGoldIngot).writeToNBT(toSend1Ingot.getCompoundTag("input"));
@@ -547,7 +595,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend1Ingot);
 
 				NBTTagCompound toSend2Ingot = new NBTTagCompound();
-				toSend2Ingot.setInteger("energy", 3200);
+				toSend2Ingot.setInteger("energy", 2400);
 				toSend2Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend2Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(akkamaddi.goldenglitter.code.GoldenGlitterCore.erubescentGoldIngot).writeToNBT(toSend2Ingot.getCompoundTag("input"));
@@ -555,7 +603,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend2Ingot);
 
 				NBTTagCompound toSend3Ingot = new NBTTagCompound();
-				toSend3Ingot.setInteger("energy", 3200);
+				toSend3Ingot.setInteger("energy", 2400);
 				toSend3Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend3Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(akkamaddi.goldenglitter.code.GoldenGlitterCore.scarlatiteGoldIngot).writeToNBT(toSend3Ingot.getCompoundTag("input"));
@@ -563,7 +611,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend3Ingot);
 
 				NBTTagCompound toSend4Ingot = new NBTTagCompound();
-				toSend4Ingot.setInteger("energy", 3200);
+				toSend4Ingot.setInteger("energy", 2400);
 				toSend4Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend4Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(akkamaddi.goldenglitter.code.GoldenGlitterCore.hephaestanGoldIngot).writeToNBT(toSend4Ingot.getCompoundTag("input"));
@@ -595,7 +643,7 @@ public class SimpleDust {
 
 	        if (Loader.isModLoaded("ThermalExpansion")) {
 				NBTTagCompound toSend1ore = new NBTTagCompound();
-				toSend1ore.setInteger("energy", 3200);
+				toSend1ore.setInteger("energy", 4000);
 				toSend1ore.setCompoundTag("input", new NBTTagCompound());
 				toSend1ore.setCompoundTag("primaryOutput", new NBTTagCompound());
 //				toSend1ore.setCompoundTag("secondaryOutput", new NBTTagCompound());
@@ -606,7 +654,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend1ore);
 
 				NBTTagCompound toSend1Ingot = new NBTTagCompound();
-				toSend1Ingot.setInteger("energy", 3200);
+				toSend1Ingot.setInteger("energy", 2400);
 				toSend1Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend1Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(akkamaddi.simplecobalt.code.SimpleCobaltCore.cobaltIngot).writeToNBT(toSend1Ingot.getCompoundTag("input"));
@@ -614,7 +662,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend1Ingot);
 
 				NBTTagCompound toSend2Ingot = new NBTTagCompound();
-				toSend2Ingot.setInteger("energy", 3200);
+				toSend2Ingot.setInteger("energy", 2400);
 				toSend2Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend2Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(akkamaddi.simplecobalt.code.SimpleCobaltCore.blueDriftSteelIngot).writeToNBT(toSend2Ingot.getCompoundTag("input"));
@@ -622,7 +670,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend2Ingot);
 
 				NBTTagCompound toSend3Ingot = new NBTTagCompound();
-				toSend3Ingot.setInteger("energy", 3200);
+				toSend3Ingot.setInteger("energy", 2400);
 				toSend3Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend3Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(akkamaddi.simplecobalt.code.SimpleCobaltCore.blueCeladonIngot).writeToNBT(toSend3Ingot.getCompoundTag("input"));
@@ -630,7 +678,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend3Ingot);
 
 				NBTTagCompound toSend4Ingot = new NBTTagCompound();
-				toSend4Ingot.setInteger("energy", 3200);
+				toSend4Ingot.setInteger("energy", 2400);
 				toSend4Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend4Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(akkamaddi.simplecobalt.code.SimpleCobaltCore.greenCeladonIngot).writeToNBT(toSend4Ingot.getCompoundTag("input"));
@@ -639,7 +687,7 @@ public class SimpleDust {
 				
 				if (Loader.isModLoaded("Glaucodot")) {
 					NBTTagCompound toSend2ore = new NBTTagCompound();
-					toSend2ore.setInteger("energy", 3200);
+					toSend2ore.setInteger("energy", 4000);
 					toSend2ore.setCompoundTag("input", new NBTTagCompound());
 					toSend2ore.setCompoundTag("primaryOutput", new NBTTagCompound());
 					toSend2ore.setCompoundTag("secondaryOutput", new NBTTagCompound());
@@ -679,7 +727,7 @@ public class SimpleDust {
 
 	        if (Loader.isModLoaded("ThermalExpansion")) {
 				NBTTagCompound toSend1ore = new NBTTagCompound();
-				toSend1ore.setInteger("energy", 3200);
+				toSend1ore.setInteger("energy", 4000);
 				toSend1ore.setCompoundTag("input", new NBTTagCompound());
 				toSend1ore.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(akkamaddi.simpletungsten.code.SimpleTungstenCore.oreTungsten).writeToNBT(toSend1ore.getCompoundTag("input"));
@@ -687,7 +735,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend1ore);
 
 				NBTTagCompound toSend1Ingot = new NBTTagCompound();
-				toSend1Ingot.setInteger("energy", 3200);
+				toSend1Ingot.setInteger("energy", 2400);
 				toSend1Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend1Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(akkamaddi.simpletungsten.code.SimpleTungstenCore.tungstenIngot).writeToNBT(toSend1Ingot.getCompoundTag("input"));
@@ -695,7 +743,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend1Ingot);
 
 				NBTTagCompound toSend2Ingot = new NBTTagCompound();
-				toSend2Ingot.setInteger("energy", 3200);
+				toSend2Ingot.setInteger("energy", 2400);
 				toSend2Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend2Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(akkamaddi.simpletungsten.code.SimpleTungstenCore.tungstenCarbideIngot).writeToNBT(toSend2Ingot.getCompoundTag("input"));
@@ -703,7 +751,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend2Ingot);
 
 				NBTTagCompound toSend3Ingot = new NBTTagCompound();
-				toSend3Ingot.setInteger("energy", 3200);
+				toSend3Ingot.setInteger("energy", 2400);
 				toSend3Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend3Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(akkamaddi.simpletungsten.code.SimpleTungstenCore.valframIngot).writeToNBT(toSend3Ingot.getCompoundTag("input"));
@@ -711,7 +759,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend3Ingot);
 
 				NBTTagCompound toSend4Ingot = new NBTTagCompound();
-				toSend4Ingot.setInteger("energy", 3200);
+				toSend4Ingot.setInteger("energy", 2400);
 				toSend4Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend4Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(akkamaddi.simpletungsten.code.SimpleTungstenCore.tungstenSteelIngot).writeToNBT(toSend4Ingot.getCompoundTag("input"));
@@ -719,7 +767,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend4Ingot);
 
 				NBTTagCompound toSend5Ingot = new NBTTagCompound();
-				toSend5Ingot.setInteger("energy", 3200);
+				toSend5Ingot.setInteger("energy", 2400);
 				toSend5Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend5Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(akkamaddi.simpletungsten.code.SimpleTungstenCore.prasinosIngot).writeToNBT(toSend5Ingot.getCompoundTag("input"));
@@ -728,7 +776,7 @@ public class SimpleDust {
 
 				if (Loader.isModLoaded("TungstenOres")) {
 					NBTTagCompound toSend2ore = new NBTTagCompound();
-					toSend2ore.setInteger("energy", 3200);
+					toSend2ore.setInteger("energy", 4000);
 					toSend2ore.setCompoundTag("input", new NBTTagCompound());
 					toSend2ore.setCompoundTag("primaryOutput", new NBTTagCompound());
 					toSend2ore.setCompoundTag("secondaryOutput", new NBTTagCompound());
@@ -752,7 +800,7 @@ public class SimpleDust {
 
 	        if (Loader.isModLoaded("ThermalExpansion")) {
 	        	NBTTagCompound toSend1Ingot = new NBTTagCompound();
-	        	toSend1Ingot.setInteger("energy", 3200);
+	        	toSend1Ingot.setInteger("energy", 2400);
 	        	toSend1Ingot.setCompoundTag("input", new NBTTagCompound());
 	        	toSend1Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 	        	new ItemStack(akkamaddi.cthon.core.SimpleCthonCore.cthonIngot).writeToNBT(toSend1Ingot.getCompoundTag("input"));
@@ -788,7 +836,7 @@ public class SimpleDust {
 
 	        if (Loader.isModLoaded("ThermalExpansion")) {
 	        	NBTTagCompound toSend1Ingot = new NBTTagCompound();
-	        	toSend1Ingot.setInteger("energy", 3200);
+	        	toSend1Ingot.setInteger("energy", 2400);
 	        	toSend1Ingot.setCompoundTag("input", new NBTTagCompound());
 	        	toSend1Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 	        	new ItemStack(akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.stannumIngot).writeToNBT(toSend1Ingot.getCompoundTag("input"));
@@ -796,7 +844,7 @@ public class SimpleDust {
 	        	FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend1Ingot);
 
 	        	NBTTagCompound toSend2Ingot = new NBTTagCompound();
-	        	toSend2Ingot.setInteger("energy", 3200);
+	        	toSend2Ingot.setInteger("energy", 2400);
 	        	toSend2Ingot.setCompoundTag("input", new NBTTagCompound());
 	        	toSend2Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 	        	new ItemStack(akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.cuprumIngot).writeToNBT(toSend2Ingot.getCompoundTag("input"));
@@ -804,7 +852,7 @@ public class SimpleDust {
 	        	FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend2Ingot);
 
 	        	NBTTagCompound toSend3Ingot = new NBTTagCompound();
-	        	toSend3Ingot.setInteger("energy", 3200);
+	        	toSend3Ingot.setInteger("energy", 2400);
 	        	toSend3Ingot.setCompoundTag("input", new NBTTagCompound());
 	        	toSend3Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 	        	new ItemStack(akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.pyropusBronzeIngot).writeToNBT(toSend3Ingot.getCompoundTag("input"));
@@ -812,7 +860,7 @@ public class SimpleDust {
 	        	FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend3Ingot);
 
 	        	NBTTagCompound toSend4Ingot = new NBTTagCompound();
-	        	toSend4Ingot.setInteger("energy", 3200);
+	        	toSend4Ingot.setInteger("energy", 2400);
 	        	toSend4Ingot.setCompoundTag("input", new NBTTagCompound());
 	        	toSend4Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 	        	new ItemStack(akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.pulchrumBronzeIngot).writeToNBT(toSend4Ingot.getCompoundTag("input"));
@@ -820,7 +868,7 @@ public class SimpleDust {
 	        	FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend4Ingot);
 
 	        	NBTTagCompound toSend5Ingot = new NBTTagCompound();
-	        	toSend5Ingot.setInteger("energy", 3200);
+	        	toSend5Ingot.setInteger("energy", 2400);
 	        	toSend5Ingot.setCompoundTag("input", new NBTTagCompound());
 	        	toSend5Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 	        	new ItemStack(akkamaddi.ClassicalAlchemy.code.ClassicalAlchemyCore.tombBronzeIngot).writeToNBT(toSend5Ingot.getCompoundTag("input"));
@@ -829,7 +877,7 @@ public class SimpleDust {
 
 				if (Loader.isModLoaded("classicalalchemyores")) {
 					NBTTagCompound toSend1ore = new NBTTagCompound();
-					toSend1ore.setInteger("energy", 3200);
+					toSend1ore.setInteger("energy", 4000);
 					toSend1ore.setCompoundTag("input", new NBTTagCompound());
 					toSend1ore.setCompoundTag("primaryOutput", new NBTTagCompound());
 					toSend1ore.setCompoundTag("secondaryOutput", new NBTTagCompound());
@@ -840,7 +888,7 @@ public class SimpleDust {
 					FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend1ore);
 					
 					NBTTagCompound toSend2ore = new NBTTagCompound();
-					toSend2ore.setInteger("energy", 3200);
+					toSend2ore.setInteger("energy", 4000);
 					toSend2ore.setCompoundTag("input", new NBTTagCompound());
 					toSend2ore.setCompoundTag("primaryOutput", new NBTTagCompound());
 					toSend2ore.setCompoundTag("secondaryOutput", new NBTTagCompound());
@@ -876,7 +924,7 @@ public class SimpleDust {
 
 			if (Loader.isModLoaded("ThermalExpansion")) {
 				NBTTagCompound toSend1Ingot = new NBTTagCompound();
-				toSend1Ingot.setInteger("energy", 3200);
+				toSend1Ingot.setInteger("energy", 2400);
 				toSend1Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend1Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(theoldone822.NetherrocksFusion.Content.cinderstoneIngot).writeToNBT(toSend1Ingot.getCompoundTag("input"));
@@ -884,7 +932,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend1Ingot);
 
 				NBTTagCompound toSend2Ingot = new NBTTagCompound();
-				toSend2Ingot.setInteger("energy", 3200);
+				toSend2Ingot.setInteger("energy", 2400);
 				toSend2Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend2Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(theoldone822.NetherrocksFusion.Content.thrakaIngot).writeToNBT(toSend2Ingot.getCompoundTag("input"));
@@ -892,7 +940,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend2Ingot);
 
 				NBTTagCompound toSend3Ingot = new NBTTagCompound();
-				toSend3Ingot.setInteger("energy", 3200);
+				toSend3Ingot.setInteger("energy", 2400);
 				toSend3Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend3Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(theoldone822.NetherrocksFusion.Content.pyralisIngot).writeToNBT(toSend3Ingot.getCompoundTag("input"));
@@ -900,7 +948,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend3Ingot);
 
 				NBTTagCompound toSend4Ingot = new NBTTagCompound();
-				toSend4Ingot.setInteger("energy", 3200);
+				toSend4Ingot.setInteger("energy", 2400);
 				toSend4Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend4Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(theoldone822.NetherrocksFusion.Content.dragonbezoarIngot).writeToNBT(toSend4Ingot.getCompoundTag("input"));
@@ -922,7 +970,7 @@ public class SimpleDust {
 
 			if (Loader.isModLoaded("ThermalExpansion")) {
 				NBTTagCompound toSend1Ingot = new NBTTagCompound();
-				toSend1Ingot.setInteger("energy", 3200);
+				toSend1Ingot.setInteger("energy", 2400);
 				toSend1Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend1Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(theoldone822.WootzPignGray.Content.wootzIngot).writeToNBT(toSend1Ingot.getCompoundTag("input"));
@@ -930,7 +978,7 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend1Ingot);
 
 				NBTTagCompound toSend2Ingot = new NBTTagCompound();
-				toSend2Ingot.setInteger("energy", 3200);
+				toSend2Ingot.setInteger("energy", 2400);
 				toSend2Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend2Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(theoldone822.WootzPignGray.Content.grayIngot).writeToNBT(toSend2Ingot.getCompoundTag("input"));
@@ -940,4 +988,30 @@ public class SimpleDust {
 		}
 
 	}
+	@EventHandler
+	public void Init(FMLInitializationEvent event) {
+		if (Loader.isModLoaded("ThermalExpansion")) {
+			NBTTagCompound toSendCopperore = new NBTTagCompound();
+			toSendCopperore.setInteger("energy", 4000);
+			toSendCopperore.setCompoundTag("input", new NBTTagCompound());
+			toSendCopperore.setCompoundTag("primaryOutput", new NBTTagCompound());
+			toSendCopperore.setCompoundTag("secondaryOutput", new NBTTagCompound());
+			new ItemStack(CoreHelper.coreContent.copperOre).writeToNBT(toSendCopperore.getCompoundTag("input"));
+			new ItemStack(copperDust, 2).writeToNBT(toSendCopperore.getCompoundTag("primaryOutput"));
+			(OreDictionary.getOres("dustGold").get(0)).writeToNBT(toSendCopperore.getCompoundTag("secondaryOutput"));
+			toSendCopperore.setInteger("secondaryChance", 10);
+			FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSendCopperore);
+		
+			NBTTagCompound toSendTinore = new NBTTagCompound();
+			toSendTinore.setInteger("energy", 4000);
+			toSendTinore.setCompoundTag("input", new NBTTagCompound());
+			toSendTinore.setCompoundTag("primaryOutput", new NBTTagCompound());
+			toSendTinore.setCompoundTag("secondaryOutput", new NBTTagCompound());
+			new ItemStack(CoreHelper.coreContent.tinOre).writeToNBT(toSendTinore.getCompoundTag("input"));
+			new ItemStack(tinDust, 2).writeToNBT(toSendTinore.getCompoundTag("primaryOutput"));
+			(OreDictionary.getOres("dustIron").get(0)).writeToNBT(toSendTinore.getCompoundTag("secondaryOutput"));
+			toSendTinore.setInteger("secondaryChance", 10);
+			FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSendTinore);
+			}
+		}
 }

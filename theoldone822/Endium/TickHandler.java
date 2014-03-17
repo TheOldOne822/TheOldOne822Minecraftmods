@@ -13,55 +13,60 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeSubscribe;
 
-public class TickHandler  implements ITickHandler
-{
-    //effects
-	private void onPlayerTick(EntityPlayer player)
-    {
-        if (player.getCurrentItemOrArmor(4) != null && player.getCurrentItemOrArmor(3) != null && player.getCurrentItemOrArmor(2) != null && player.getCurrentItemOrArmor(1) != null)
-        {
-            ItemStack helmet = player.getCurrentItemOrArmor(4);
-            ItemStack chest = player.getCurrentItemOrArmor(3);
-            ItemStack legs = player.getCurrentItemOrArmor(2);
-            ItemStack boots = player.getCurrentItemOrArmor(1);
+public class TickHandler implements ITickHandler {
+	public static int speed = 0;
 
-            if (helmet.getItem() == Content.EndiumHelm & chest.getItem() == Content.EndiumChest & legs.getItem() == Content.EndiumLegs & boots.getItem() == Content.EndiumBoots)
-            {
-            	player.capabilities.setPlayerWalkSpeed(0.18F);
-            } else if  (helmet.getItem() == Content.TelosHelm & chest.getItem() == Content.TelosChest & legs.getItem() == Content.TelosLegs & boots.getItem() == Content.TelosBoots)
-                {
-            	player.capabilities.setPlayerWalkSpeed(0.25F);
-            } else {
-            	player.capabilities.setPlayerWalkSpeed(0.1F);
-            }
-        }
-    }
+	// effects
+	private void onPlayerTick(EntityPlayer player) {
+		if (player.getCurrentItemOrArmor(4) != null && player.getCurrentItemOrArmor(3) != null && player.getCurrentItemOrArmor(2) != null
+				&& player.getCurrentItemOrArmor(1) != null) {
+			ItemStack helmet = player.getCurrentItemOrArmor(4);
+			ItemStack chest = player.getCurrentItemOrArmor(3);
+			ItemStack legs = player.getCurrentItemOrArmor(2);
+			ItemStack boots = player.getCurrentItemOrArmor(1);
 
-    @Override
-    public void tickStart(EnumSet<TickType> type, Object... tickData)
-    {
-        if (type.equals(EnumSet.of(TickType.PLAYER)))
-        {
-            onPlayerTick((EntityPlayer)tickData[0]);
-        }
-    }
+			if (helmet.getItem() == Content.EndiumHelm & chest.getItem() == Content.EndiumChest & legs.getItem() == Content.EndiumLegs
+					& boots.getItem() == Content.EndiumBoots) {
+				if (speed != 1) {
+					speed = 1;
+					player.capabilities.setPlayerWalkSpeed(0.12F);
+				}
+			} else if (helmet.getItem() == Content.TelosHelm & chest.getItem() == Content.TelosChest & legs.getItem() == Content.TelosLegs
+					& boots.getItem() == Content.TelosBoots) {
+				if (speed != 2) {
+				speed = 2;
+				player.capabilities.setPlayerWalkSpeed(0.15F);
+				}
+				} else if (speed != 0){
+				speed = 0;
+				player.capabilities.setPlayerWalkSpeed(0.1F);
+			}
+		} else if (speed != 0){
+			speed = 0;
+			player.capabilities.setPlayerWalkSpeed(0.1F);
+		}
+	}
 
-    @Override
-    public EnumSet<TickType> ticks()
-    {
-        return EnumSet.of(TickType.PLAYER, TickType.SERVER);
-    }
+	@Override
+	public void tickStart(EnumSet<TickType> type, Object... tickData) {
+		if (type.equals(EnumSet.of(TickType.PLAYER))) {
+			onPlayerTick((EntityPlayer) tickData[0]);
+		}
+	}
 
-    @Override
-    public void tickEnd(EnumSet<TickType> type, Object... tickData)
-    {
-        // TODO Auto-generated method stub
-    }
+	@Override
+	public EnumSet<TickType> ticks() {
+		return EnumSet.of(TickType.PLAYER, TickType.SERVER);
+	}
 
-    @Override
-    public String getLabel()
-    {
-        // TODO Auto-generated method stub
-        return null;
-    }
+	@Override
+	public void tickEnd(EnumSet<TickType> type, Object... tickData) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public String getLabel() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

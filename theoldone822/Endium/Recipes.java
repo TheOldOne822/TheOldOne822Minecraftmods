@@ -22,8 +22,7 @@ public class Recipes {
 		OreDictionary.registerOre("ingotSunteleia", new ItemStack(Content.SunteleiaIngot));
 
 		// Storage Blocks
-		CraftingManager.getInstance().getRecipeList()
-				.add(new ShapedOreRecipe(Content.EndiumBlock, true, new Object[] { "XXX", "XXX", "XXX", Character.valueOf('X'), "ingotEndium" }));
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.EndiumBlock, true, new Object[] { "XXX", "XXX", "XXX", Character.valueOf('X'), "ingotEndium" }));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.TelosBlock, true, new Object[] { "XXX", "XXX", "XXX", Character.valueOf('X'), "ingotTelos" }));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.SunteleiaBlock, true, new Object[] { "XXX", "XXX", "XXX", Character.valueOf('X'), "ingotSunteleia" }));
 
@@ -32,17 +31,13 @@ public class Recipes {
 		GameRegistry.addShapelessRecipe(new ItemStack(Content.TelosIngot, 9), new Object[] { Content.TelosBlock });
 		GameRegistry.addShapelessRecipe(new ItemStack(Content.SunteleiaIngot, 9), new Object[] { Content.SunteleiaBlock });
 		
-		GameRegistry.addShapelessRecipe(new ItemStack(Content.largeTelosChunk, 1), new Object[] { Content.smallTelosChunk, Content.smallTelosChunk, Content.smallTelosChunk,
-				Content.smallTelosChunk, Content.smallTelosChunk });
+		GameRegistry.addShapelessRecipe(new ItemStack(Content.largeTelosChunk, 1), new Object[] { Content.smallTelosChunk, Content.smallTelosChunk, Content.smallTelosChunk, Content.smallTelosChunk, Content.smallTelosChunk });
 		GameRegistry.addShapelessRecipe(new ItemStack(Content.largeTelosChunk, 1), new Object[] { Content.mediumTelosChunk, Content.mediumTelosChunk, Content.mediumTelosChunk });
 
-		GameRegistry.addShapelessRecipe(new ItemStack(Content.largeSunteleiaChunk, 1), new Object[] { Content.smallSunteleiaChunk, Content.smallSunteleiaChunk, Content.smallSunteleiaChunk,
-				Content.smallSunteleiaChunk, Content.smallSunteleiaChunk });
+		GameRegistry.addShapelessRecipe(new ItemStack(Content.largeSunteleiaChunk, 1), new Object[] { Content.smallSunteleiaChunk, Content.smallSunteleiaChunk, Content.smallSunteleiaChunk, Content.smallSunteleiaChunk, Content.smallSunteleiaChunk });
 		GameRegistry.addShapelessRecipe(new ItemStack(Content.largeSunteleiaChunk, 1), new Object[] { Content.mediumSunteleiaChunk, Content.mediumSunteleiaChunk, Content.mediumSunteleiaChunk });
 
 		// Tools
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.EndiumSword, true, new Object[] { "X", "X", "Y", Character.valueOf('X'), "ingotEndium", Character.valueOf('Y'), "stickWood" }));
-
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.TelosPick, true, new Object[] { "XXX", " Y ", " Y ", Character.valueOf('X'), "ingotTelos", Character.valueOf('Y'), "stickWood" }));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.TelosAxe, true, new Object[] { "XX ", "XY ", " Y ", Character.valueOf('X'), "ingotTelos", Character.valueOf('Y'), "stickWood" }));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.TelosShovel, true, new Object[] { "X", "Y", "Y", Character.valueOf('X'), "ingotTelos", Character.valueOf('Y'), "stickWood" }));
@@ -55,11 +50,11 @@ public class Recipes {
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.SunteleiaSword, true, new Object[] { "X", "X", "Y", Character.valueOf('X'), "ingotSunteleia", Character.valueOf('Y'), "stickWood" }));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.SunteleiaHoe, true, new Object[] { "XX ", " Y ", " Y ", Character.valueOf('X'), "ingotSunteleia", Character.valueOf('Y'), "stickWood" }));
 
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.EndiumPick, true, new Object[] { "XXX", " Y ", " Y ", Character.valueOf('X'), "ingotDragonBezoar", Character.valueOf('Y'), "stickWood" }));
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.EndiumAxe, true, new Object[] { "XX ", "XY ", " Y ", Character.valueOf('X'), "ingotDragonBezoar", Character.valueOf('Y'), "stickWood" }));
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.EndiumShovel, true, new Object[] { "X", "Y", "Y", Character.valueOf('X'), "ingotDragonBezoar", Character.valueOf('Y'), "stickWood" }));
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.EndiumSword, true, new Object[] { "X", "X", "Y", Character.valueOf('X'), "ingotDragonBezoar", Character.valueOf('Y'), "stickWood" }));
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.EndiumHoe, true, new Object[] { "XX ", " Y ", " Y ", Character.valueOf('X'), "ingotDragonBezoar", Character.valueOf('Y'), "stickWood" }));
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.EndiumPick, true, new Object[] { "XXX", " Y ", " Y ", Character.valueOf('X'), "ingotEndium", Character.valueOf('Y'), "stickWood" }));
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.EndiumAxe, true, new Object[] { "XX ", "XY ", " Y ", Character.valueOf('X'), "ingotEndium", Character.valueOf('Y'), "stickWood" }));
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.EndiumShovel, true, new Object[] { "X", "Y", "Y", Character.valueOf('X'), "ingotEndium", Character.valueOf('Y'), "stickWood" }));
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.EndiumSword, true, new Object[] { "X", "X", "Y", Character.valueOf('X'), "ingotEndium", Character.valueOf('Y'), "stickWood" }));
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.EndiumHoe, true, new Object[] { "XX ", " Y ", " Y ", Character.valueOf('X'), "ingotEndium", Character.valueOf('Y'), "stickWood" }));
 		
 		// Armor
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.EndiumHelm, true, new Object[] { "XXX", "X X", Character.valueOf('X'), "ingotEndium" }));
@@ -78,20 +73,17 @@ public class Recipes {
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.SunteleiaBoots, true, new Object[] { "X X", "X X", Character.valueOf('X'), "ingotSunteleia" }));
 
 		// Smelting
-		FusionRecipes.smelting().addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(CoreHelper.coreContent.mythrilIngot), new ItemStack(Item.redstone),
+		FusionRecipes.smelting().addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(CoreHelper.coreContent.mythrilIngot), new ItemStack(Item.enderPearl),
 				new ItemStack(Content.smallTelosChunk), 6.0F);
-		FusionRecipes.smelting().addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(CoreHelper.coreContent.mythrilIngot), new ItemStack(Item.blazePowder),
+		FusionRecipes.smelting().addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(CoreHelper.coreContent.mythrilIngot), new ItemStack(Item.eyeOfEnder),
 				new ItemStack(Content.mediumTelosChunk), 10.0F);
-		FusionRecipes.smelting().addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(CoreHelper.coreContent.mythrilIngot), new ItemStack(Item.ghastTear),
-				new ItemStack(Content.largeTelosChunk), 30.0F);
+//		FusionRecipes.smelting().addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(CoreHelper.coreContent.mythrilIngot), new ItemStack(Item.skull, 1, 1),
+//				new ItemStack(Content.largeTelosChunk), 30.0F);
 
 		if (Loader.isModLoaded("netherrocksfusion")) {
-		FusionRecipes.smelting().addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(theoldone822.NetherrocksFusion.Content.largeDragonBezoarChunk), new ItemStack(Item.blazePowder),
-				new ItemStack(Content.smallSunteleiaChunk), 6.0F);
-		FusionRecipes.smelting().addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(theoldone822.NetherrocksFusion.Content.largeDragonBezoarChunk), new ItemStack(Item.ghastTear),
-				new ItemStack(Content.mediumSunteleiaChunk), 10.0F);
-		FusionRecipes.smelting().addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(theoldone822.NetherrocksFusion.Content.largeDragonBezoarChunk), new ItemStack(Item.skull, 1, 1),
-				new ItemStack(Content.largeSunteleiaChunk), 30.0F);
+		FusionRecipes.smelting().addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(theoldone822.NetherrocksFusion.Content.largeDragonBezoarChunk), new ItemStack(Item.ghastTear), new ItemStack(Content.smallSunteleiaChunk), 6.0F);
+		FusionRecipes.smelting().addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(theoldone822.NetherrocksFusion.Content.largeDragonBezoarChunk), new ItemStack(Item.skull, 1, 1), new ItemStack(Content.mediumSunteleiaChunk), 10.0F);
+//		FusionRecipes.smelting().addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(theoldone822.NetherrocksFusion.Content.largeDragonBezoarChunk), new ItemStack(Item.skull, 1, 1), new ItemStack(Content.largeSunteleiaChunk), 30.0F);
 		}
 
 		GameRegistry.addSmelting(Content.EndiumOre.blockID, new ItemStack(Content.EndiumIngot, 1, 0), 0.3F);

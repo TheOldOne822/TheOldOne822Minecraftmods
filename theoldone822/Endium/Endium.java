@@ -12,6 +12,8 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 @Mod(modid = "endium", name = "Endium", version = "1.0", dependencies = "required-after:simpleores; required-after:simpleoresfusion; after:netherrocksfusion")
@@ -39,6 +41,8 @@ public class Endium {
 
 		metadata.authorList = Arrays.asList("theoldone822");
 		metadata.description = "Simpleores End metal.";
+
+		TickRegistry.registerTickHandler(new TickHandler(), Side.SERVER);
 
 		IDs.doConfig(event);
 		Settings.doSettings(event);

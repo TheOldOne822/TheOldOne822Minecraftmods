@@ -29,7 +29,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
-@Mod(modid = "woolarmor", name = "Wool Armor", version = "1.1")
+@Mod(modid = "woolarmor", name = "Wool Armor", version = "1.3")
 public class Woolarmor {
 
 	public static Configuration config;

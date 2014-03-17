@@ -202,16 +202,5 @@ public class Content
 		LanguageRegistry.addName(EndiumSword, "Endium Sword");
 		LanguageRegistry.addName(EndiumHoe, "Endium Hoe");
 
-		//Tool Registering
-//        MinecraftForge.setToolClass(TelosPick, "pickaxe", Settings.TelosMiningLevel);
-//        MinecraftForge.setToolClass(TelosShovel, "shovel", Settings.TelosMiningLevel);
-//        MinecraftForge.setToolClass(TelosAxe, "axe", Settings.TelosMiningLevel);
-//        MinecraftForge.setToolClass(SunteleiaPick, "pickaxe", Settings.SunteleiaMiningLevel);
-//        MinecraftForge.setToolClass(SunteleiaShovel, "shovel", Settings.SunteleiaMiningLevel);
-//        MinecraftForge.setToolClass(SunteleiaAxe, "axe", Settings.SunteleiaMiningLevel);
-//        MinecraftForge.setToolClass(EndiumPick, "pickaxe", Settings.EndiumMiningLevel);
-//        MinecraftForge.setToolClass(EndiumShovel, "shovel", Settings.EndiumMiningLevel);
-//        MinecraftForge.setToolClass(EndiumAxe, "axe", Settings.EndiumMiningLevel);
-
 		}
 }

@@ -27,7 +27,6 @@ public class EventHelper
 	        	{
 	    	        	event.setCanceled(true);
 	    	        	player.extinguish();
-	                	player.capabilities.setPlayerWalkSpeed(0.1F);
 	        	}
 	        }
 		}
