@@ -130,10 +130,10 @@ public class Content
 
     	MinecraftForge.setBlockHarvestLevel(EndiumOre, "pickaxe", 5);
 
-    	LanguageRegistry.addName(EndiumBlock, "Block of Endium");
+    	LanguageRegistry.addName(EndiumOre, "Endium Ore");
 		LanguageRegistry.addName(TelosBlock, "Block of Telos");
 		LanguageRegistry.addName(SunteleiaBlock, "Block of Sunteleia");
-		LanguageRegistry.addName(EndiumBlock, "Block of Dragon Bezoar");
+		LanguageRegistry.addName(EndiumBlock, "Block of Endium");
 
 	}	
 	
@@ -170,20 +170,20 @@ public class Content
 	public static void doTools()
 	{
 		//Tool Details
-		EndiumPick = new SimplePickaxe(IDs.EndiumPickID, Endium.toolEndium).setUnlocalizedName("EndiumPick").setTextureName("Endium:EndiumPick");
-		EndiumAxe = new SimpleAxe(IDs.EndiumAxeID, Endium.toolEndium).setUnlocalizedName("EndiumAxe").setTextureName("Endium:EndiumAxe");
-		EndiumShovel = new SimpleShovel(IDs.EndiumShovelID, Endium.toolEndium).setUnlocalizedName("EndiumShovel").setTextureName("Endium:EndiumShovel");
-		EndiumSword = new SimpleSword(IDs.EndiumSwordID, Endium.toolEndium).setUnlocalizedName("EndiumSword").setTextureName("Endium:EndiumSword");
+		EndiumPick = new SimplePickaxe(IDs.EndiumPickID, Endium.toolEndium).modId("Endium").setUnlocalizedName("EndiumPick").setTextureName("Endium:EndiumPick");
+		EndiumAxe = new SimpleAxe(IDs.EndiumAxeID, Endium.toolEndium).modId("Endium").setUnlocalizedName("EndiumAxe").setTextureName("Endium:EndiumAxe");
+		EndiumShovel = new SimpleShovel(IDs.EndiumShovelID, Endium.toolEndium).modId("Endium").setUnlocalizedName("EndiumShovel").setTextureName("Endium:EndiumShovel");
+		EndiumSword = new SimpleSword(IDs.EndiumSwordID, Endium.toolEndium).modId("Endium").setUnlocalizedName("EndiumSword").setTextureName("Endium:EndiumSword");
 		EndiumHoe = new SimpleHoe(IDs.EndiumHoeID, Endium.toolEndium).modId("Endium").setUnlocalizedName("EndiumHoe").setTextureName("Endium:EndiumHoe");
 		TelosPick = new SimplePickaxe(IDs.TelosPickID, Endium.toolTelos).modId("Endium").setUnlocalizedName("TelosPick").setTextureName("Endium:TelosPick");
 		TelosAxe = new SimpleAxe(IDs.TelosAxeID, Endium.toolTelos).modId("Endium").setUnlocalizedName("TelosAxe").setTextureName("Endium:TelosAxe");
 		TelosShovel = new SimpleShovel(IDs.TelosShovelID, Endium.toolTelos).modId("Endium").setUnlocalizedName("TelosShovel").setTextureName("Endium:TelosShovel");
 		TelosSword = new SimpleSword(IDs.TelosSwordID, Endium.toolTelos).modId("Endium").setUnlocalizedName("TelosSword").setTextureName("Endium:TelosSword");
 		TelosHoe = new SimpleHoe(IDs.TelosHoeID, Endium.toolTelos).modId("Endium").setUnlocalizedName("TelosHoe").setTextureName("Endium:TelosHoe");
-		SunteleiaPick = new SimplePickaxe(IDs.SunteleiaPickID, Endium.toolSunteleia).setUnlocalizedName("SunteleiaPick").setTextureName("Endium:SunteleiaPick");
-		SunteleiaAxe = new SimpleAxe(IDs.SunteleiaAxeID, Endium.toolSunteleia).setUnlocalizedName("SunteleiaAxe").setTextureName("Endium:SunteleiaAxe");
-		SunteleiaShovel = new SimpleShovel(IDs.SunteleiaShovelID, Endium.toolSunteleia).setUnlocalizedName("SunteleiaShovel").setTextureName("Endium:SunteleiaShovel");
-		SunteleiaSword = new SimpleSword(IDs.SunteleiaSwordID, Endium.toolSunteleia).setUnlocalizedName("SunteleiaSword").setTextureName("Endium:SunteleiaSword");
+		SunteleiaPick = new SimplePickaxe(IDs.SunteleiaPickID, Endium.toolSunteleia).modId("Endium").setUnlocalizedName("SunteleiaPick").setTextureName("Endium:SunteleiaPick");
+		SunteleiaAxe = new SimpleAxe(IDs.SunteleiaAxeID, Endium.toolSunteleia).modId("Endium").setUnlocalizedName("SunteleiaAxe").setTextureName("Endium:SunteleiaAxe");
+		SunteleiaShovel = new SimpleShovel(IDs.SunteleiaShovelID, Endium.toolSunteleia).modId("Endium").setUnlocalizedName("SunteleiaShovel").setTextureName("Endium:SunteleiaShovel");
+		SunteleiaSword = new SimpleSword(IDs.SunteleiaSwordID, Endium.toolSunteleia).modId("Endium").setUnlocalizedName("SunteleiaSword").setTextureName("Endium:SunteleiaSword");
 		SunteleiaHoe = new SimpleHoe(IDs.SunteleiaHoeID, Endium.toolSunteleia).modId("Endium").setUnlocalizedName("SunteleiaHoe").setTextureName("Endium:SunteleiaHoe");
 
 		LanguageRegistry.addName(TelosPick, "Telos Pickaxe");
