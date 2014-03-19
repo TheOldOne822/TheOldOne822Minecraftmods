@@ -4,13 +4,16 @@ import java.util.Arrays;
 
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -69,5 +72,18 @@ public class Endium {
     public void load(FMLInitializationEvent event)
     {
     	GameRegistry.registerWorldGenerator(new EndiumGenerator());
+		if (Loader.isModLoaded("TreeCapitator")) {
+			NBTTagCompound c = new NBTTagCompound();
+			c.setString("modID", "endium");
+			c.setString("axeIDList", String.valueOf(Content.EndiumAxe.itemID) + "; " + String.valueOf(Content.TelosAxe.itemID) + "; " + String.valueOf(Content.SunteleiaAxe.itemID));
+			FMLInterModComms.sendMessage("TreeCapitator", "ThirdPartyModConfig", c);
+		}
+		
+		toolEndium.customCraftingMaterial = Content.EndiumIngot;
+		toolTelos.customCraftingMaterial = Content.TelosIngot;
+		toolSunteleia.customCraftingMaterial = Content.SunteleiaIngot;
+		armorEndium.customCraftingMaterial = Content.EndiumIngot;
+		armorTelos.customCraftingMaterial = Content.TelosIngot;
+		armorSunteleia.customCraftingMaterial = Content.SunteleiaIngot;
     }
 }

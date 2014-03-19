@@ -2,7 +2,6 @@ package theoldone822.SimpleDust;
 
 import java.io.File;
 
-import alexndr.SimpleOres.api.content.SimpleIngot;
 import alexndr.SimpleOres.api.helpers.FreeIdHelper;
 import alexndr.SimpleOres.api.helpers.CoreHelper;
 import net.minecraft.block.Block;
@@ -27,14 +26,17 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 @Mod(
 		modid = "simpleoresdust",
 		name = "Simple Ores Dust",
-		version = "1.0",
-		dependencies = "required-after:simpleores; after:ThermalExpansion; after:simpleoresfusion; after:SimpleArsenic; after:netherrocksfusion; after:netherrocks; after:classicalalchemy; after:simplecthon; after:goldenglitter; after:haditecoal; after:simplecobalt; after:simpletungsten; after:sterlingandblack; after:wootzpigngray; after:classicalalchemyores; after:TungstenOres; after:Tennantite; after:Glaucodot")
+		version = "1.1",
+		dependencies = "required-after:simpleores; after:onlysilver; after:ThermalExpansion; after:simpleoresfusion; after:SimpleArsenic; after:netherrocksfusion; after:netherrocks; after:classicalalchemy; after:simplecthon; after:goldenglitter; after:haditecoal; after:simplecobalt; after:simpletungsten; after:sterlingandblack; after:wootzpigngray; after:classicalalchemyores; after:TungstenOres; after:Tennantite; after:Glaucodot")
 public class SimpleDust {
 
+	public static int diamondDustID;
+	public static int emeraldDustID;
 	public static int copperDustID;
 	public static int tinDustID;
 	public static int mythrilDustID;
 	public static int adamantiumDustID;
+	public static int onyxDustID;
 	public static int bronzeDustID;
 	public static int thyriumDustID;
 	public static int sinisiteDustID;
@@ -42,6 +44,8 @@ public class SimpleDust {
 	public static int malachiteDustID;
 	public static int illumeniteDustID;
 	public static int argoniteDustID;
+	public static int ashstoneDustID;
+	public static int dragonstoneDustID;
 	public static int arsenicDustID;
 	public static int arsenideBronzeDustID;
 	public static int arsenideGoldDustID;
@@ -74,11 +78,18 @@ public class SimpleDust {
 	public static int pyralisDustID;
 	public static int dragonBezoarDustID;
 	public static int wootzDustID;
+	public static int silverDustID;
+	public static int endiumDustID;
+	public static int telosDustID;
+	public static int sunteleiaDustID;
 
+	public static Item diamondDust;
+	public static Item emeraldDust;
 	public static Item copperDust;
 	public static Item tinDust;
 	public static Item mythrilDust;
 	public static Item adamantiumDust;
+	public static Item onyxDust;
 	public static Item bronzeDust;
 	public static Item thyriumDust;
 	public static Item sinisiteDust;
@@ -86,6 +97,8 @@ public class SimpleDust {
 	public static Item malachiteDust;
 	public static Item illumeniteDust;
 	public static Item argoniteDust;
+	public static Item ashstoneDust;
+	public static Item dragonstoneDust;
 	public static Item arsenicDust;
 	public static Item arsenideBronzeDust;
 	public static Item arsenideGoldDust;
@@ -118,6 +131,10 @@ public class SimpleDust {
 	public static Item pyralisDust;
 	public static Item dragonBezoarDust;
 	public static Item wootzDust;
+	public static Item silverDust;
+	public static Item endiumDust;
+	public static Item telosDust;
+	public static Item sunteleiaDust;
 
 	@Instance("SimpleDust")
 	public static SimpleDust instance;
@@ -132,10 +149,13 @@ public class SimpleDust {
 
 		FreeIdHelper.compileIdList();
 
+		diamondDustID = config.getItem("Items", "Diamond Dust", FreeIdHelper.freeItem()).getInt();
+		emeraldDustID = config.getItem("Items", "emerald Dust", FreeIdHelper.freeItem()).getInt();
 		copperDustID = config.getItem("Items", "Copper Dust", FreeIdHelper.freeItem()).getInt();
 		tinDustID = config.getItem("Items", "Tin Dust", FreeIdHelper.freeItem()).getInt();
 		mythrilDustID = config.getItem("Items", "mythril Dust", FreeIdHelper.freeItem()).getInt();
 		adamantiumDustID = config.getItem("Items", "adamantium Dust", FreeIdHelper.freeItem()).getInt();
+		onyxDustID = config.getItem("Items", "Onyx Dust", FreeIdHelper.freeItem()).getInt();
 		bronzeDustID = config.getItem("Items", "bronze Dust", FreeIdHelper.freeItem()).getInt();
 		thyriumDustID = config.getItem("Items", "thyrium Dust", FreeIdHelper.freeItem()).getInt();
 		sinisiteDustID = config.getItem("Items", "sinisite Dust", FreeIdHelper.freeItem()).getInt();
@@ -143,6 +163,8 @@ public class SimpleDust {
 		malachiteDustID = config.getItem("Items", "malachite Dust", FreeIdHelper.freeItem()).getInt();
 		illumeniteDustID = config.getItem("Items", "illumenite Dust", FreeIdHelper.freeItem()).getInt();
 		argoniteDustID = config.getItem("Items", "argonite Dust", FreeIdHelper.freeItem()).getInt();
+		ashstoneDustID = config.getItem("Items", "ashstone Dust", FreeIdHelper.freeItem()).getInt();
+		dragonstoneDustID = config.getItem("Items", "dragonstone Dust", FreeIdHelper.freeItem()).getInt();
 		arsenicDustID = config.getItem("Items", "arsenic Dust", FreeIdHelper.freeItem()).getInt();
 		arsenideBronzeDustID = config.getItem("Items", "arsenide Bronze Dust", FreeIdHelper.freeItem()).getInt();
 		arsenideGoldDustID = config.getItem("Items", "arsenide Gold Dust", FreeIdHelper.freeItem()).getInt();
@@ -175,14 +197,23 @@ public class SimpleDust {
 		pyralisDustID = config.getItem("Items", "pyralis Dust", FreeIdHelper.freeItem()).getInt();
 		dragonBezoarDustID = config.getItem("Items", "dragon Bezoar Dust", FreeIdHelper.freeItem()).getInt();
 		wootzDustID = config.getItem("Items", "wootz Dust", FreeIdHelper.freeItem()).getInt();
+		silverDustID = config.getItem("Items", "silver Dust", FreeIdHelper.freeItem()).getInt();
+		endiumDustID = config.getItem("Items", "Endium Dust", FreeIdHelper.freeItem()).getInt();
+		telosDustID = config.getItem("Items", "Telos Dust", FreeIdHelper.freeItem()).getInt();
+		sunteleiaDustID = config.getItem("Items", "sunteleia Dust", FreeIdHelper.freeItem()).getInt();
 
 		config.save();
 
+		diamondDust = new SimpleIngot(diamondDustID).modId("simpleoresdust").setUnlocalizedName("diamondDust").setTextureName("SimpleDust:diamondDust");
+		emeraldDust = new SimpleIngot(emeraldDustID).modId("simpleoresdust").setUnlocalizedName("emeraldDust").setTextureName("SimpleDust:emeraldDust");
 		copperDust = new SimpleIngot(copperDustID).modId("simpleoresdust").setUnlocalizedName("copperDust").setTextureName("SimpleDust:copperDust");
 		tinDust = new SimpleIngot(tinDustID).modId("simpleoresdust").setUnlocalizedName("tinDust").setTextureName("SimpleDust:tinDust");
 		mythrilDust = new SimpleIngot(mythrilDustID).modId("simpleoresdust").setUnlocalizedName("mythrilDust").setTextureName("SimpleDust:mythrilDust");
 		adamantiumDust = new SimpleIngot(adamantiumDustID).modId("simpleoresdust").setUnlocalizedName("adamantiumDust").setTextureName("SimpleDust:adamantiumDust");
+		onyxDust = new SimpleIngot(onyxDustID).modId("simpleoresdust").setUnlocalizedName("onyxDust").setTextureName("SimpleDust:onyxDust");
 		
+		OreDictionary.registerOre("dustDiamond", new ItemStack(diamondDust));
+		OreDictionary.registerOre("dustEmerald", new ItemStack(emeraldDust));
 		OreDictionary.registerOre("dustCopper", new ItemStack(copperDust));
 		OreDictionary.registerOre("dustTin", new ItemStack(tinDust));
 		OreDictionary.registerOre("dustMythril", new ItemStack(mythrilDust));
@@ -190,29 +221,41 @@ public class SimpleDust {
 		OreDictionary.registerOre("dustAdamantium", new ItemStack(adamantiumDust));
 		OreDictionary.registerOre("dustAdamantite", new ItemStack(adamantiumDust));
 		OreDictionary.registerOre("dustAdamantine", new ItemStack(adamantiumDust));
+		OreDictionary.registerOre("dustOnyx", new ItemStack(onyxDust));
 
+		LanguageRegistry.addName(diamondDust, "Diamond Dust");
+		LanguageRegistry.addName(emeraldDust, "Emerald Dust");
 		LanguageRegistry.addName(copperDust, "Copper Dust");
 		LanguageRegistry.addName(tinDust, "Tin Dust");
 		LanguageRegistry.addName(mythrilDust, "Mythril Dust");
 		LanguageRegistry.addName(adamantiumDust, "Adamantium Dust");
+		LanguageRegistry.addName(onyxDust, "Onyx Dust");
 
+		GameRegistry.addSmelting(diamondDust.itemID, new ItemStack(Item.diamond, 1, 0), 0.7F);
+		GameRegistry.addSmelting(emeraldDust.itemID, new ItemStack(Item.emerald, 1, 0), 0.7F);
 		GameRegistry.addSmelting(copperDust.itemID, new ItemStack(CoreHelper.coreContent.copperIngot, 1, 0), 0.7F);
 		GameRegistry.addSmelting(tinDust.itemID, new ItemStack(CoreHelper.coreContent.tinIngot, 1, 0), 0.7F);
 		GameRegistry.addSmelting(mythrilDust.itemID, new ItemStack(CoreHelper.coreContent.mythrilIngot, 1, 0), 0.9F);
 		GameRegistry.addSmelting(adamantiumDust.itemID, new ItemStack(CoreHelper.coreContent.adamantiumIngot, 1, 0), 1.0F);
+		GameRegistry.addSmelting(onyxDust.itemID, new ItemStack(CoreHelper.coreContent.onyxGem, 1, 0), 1.0F);
 
 		if (Loader.isModLoaded("ThermalExpansion")) {
-/*			NBTTagCompound toSendCopperore = new NBTTagCompound();
-			toSendCopperore.setInteger("energy", 4000);
-			toSendCopperore.setCompoundTag("input", new NBTTagCompound());
-			toSendCopperore.setCompoundTag("primaryOutput", new NBTTagCompound());
-			toSendCopperore.setCompoundTag("secondaryOutput", new NBTTagCompound());
-			new ItemStack(CoreHelper.coreContent.copperOre).writeToNBT(toSendCopperore.getCompoundTag("input"));
-			new ItemStack(copperDust, 2).writeToNBT(toSendCopperore.getCompoundTag("primaryOutput"));
-			(OreDictionary.getOres("dustGold").get(0)).writeToNBT(toSendCopperore.getCompoundTag("secondaryOutput"));
-			toSendCopperore.setInteger("secondaryChance", 10);
-			FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSendCopperore);
-*/		
+			NBTTagCompound toSenddiamondIngot = new NBTTagCompound();
+			toSenddiamondIngot.setInteger("energy", 2400);
+			toSenddiamondIngot.setCompoundTag("input", new NBTTagCompound());
+			toSenddiamondIngot.setCompoundTag("primaryOutput", new NBTTagCompound());
+			new ItemStack(Item.diamond).writeToNBT(toSenddiamondIngot.getCompoundTag("input"));
+			new ItemStack(diamondDust).writeToNBT(toSenddiamondIngot.getCompoundTag("primaryOutput"));
+			FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSenddiamondIngot);
+
+			NBTTagCompound toSendemeraldIngot = new NBTTagCompound();
+			toSendemeraldIngot.setInteger("energy", 2400);
+			toSendemeraldIngot.setCompoundTag("input", new NBTTagCompound());
+			toSendemeraldIngot.setCompoundTag("primaryOutput", new NBTTagCompound());
+			new ItemStack(Item.emerald).writeToNBT(toSendemeraldIngot.getCompoundTag("input"));
+			new ItemStack(emeraldDust).writeToNBT(toSendemeraldIngot.getCompoundTag("primaryOutput"));
+			FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSendemeraldIngot);
+
 			NBTTagCompound toSendcopperIngot = new NBTTagCompound();
 			toSendcopperIngot.setInteger("energy", 2400);
 			toSendcopperIngot.setCompoundTag("input", new NBTTagCompound());
@@ -221,17 +264,6 @@ public class SimpleDust {
 			new ItemStack(copperDust).writeToNBT(toSendcopperIngot.getCompoundTag("primaryOutput"));
 			FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSendcopperIngot);
 
-/*			NBTTagCompound toSendTinore = new NBTTagCompound();
-			toSendTinore.setInteger("energy", 4000);
-			toSendTinore.setCompoundTag("input", new NBTTagCompound());
-			toSendTinore.setCompoundTag("primaryOutput", new NBTTagCompound());
-			toSendTinore.setCompoundTag("secondaryOutput", new NBTTagCompound());
-			new ItemStack(CoreHelper.coreContent.tinOre).writeToNBT(toSendTinore.getCompoundTag("input"));
-			new ItemStack(tinDust, 2).writeToNBT(toSendTinore.getCompoundTag("primaryOutput"));
-			(OreDictionary.getOres("dustIron").get(0)).writeToNBT(toSendTinore.getCompoundTag("secondaryOutput"));
-			toSendTinore.setInteger("secondaryChance", 10);
-			FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSendTinore);
-*/		
 			NBTTagCompound toSendTinIngot = new NBTTagCompound();
 			toSendTinIngot.setInteger("energy", 2400);
 			toSendTinIngot.setCompoundTag("input", new NBTTagCompound());
@@ -277,8 +309,16 @@ public class SimpleDust {
 			toSend3ore.setCompoundTag("input", new NBTTagCompound());
 			toSend3ore.setCompoundTag("primaryOutput", new NBTTagCompound());
 			new ItemStack(CoreHelper.coreContent.onyxOre).writeToNBT(toSend3ore.getCompoundTag("input"));
-			new ItemStack(CoreHelper.coreContent.onyxGem, 2).writeToNBT(toSend3ore.getCompoundTag("primaryOutput"));
+			new ItemStack(onyxDust, 2).writeToNBT(toSend3ore.getCompoundTag("primaryOutput"));
 			FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend3ore);
+
+			NBTTagCompound toSend3Ingot = new NBTTagCompound();
+			toSend3Ingot.setInteger("energy", 2400);
+			toSend3Ingot.setCompoundTag("input", new NBTTagCompound());
+			toSend3Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
+			new ItemStack(CoreHelper.coreContent.onyxGem).writeToNBT(toSend3Ingot.getCompoundTag("input"));
+			new ItemStack(onyxDust).writeToNBT(toSend3Ingot.getCompoundTag("primaryOutput"));
+			FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend3Ingot);
 		}
 
 		if (Loader.isModLoaded("simpleoresfusion")) {
@@ -319,7 +359,7 @@ public class SimpleDust {
 				toSend2Ingot.setInteger("energy", 2400);
 				toSend2Ingot.setCompoundTag("input", new NBTTagCompound());
 				toSend2Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
-				new ItemStack(CoreHelper.coreContent.adamantiumOre).writeToNBT(toSend2Ingot.getCompoundTag("input"));
+				new ItemStack(alexndr.SimpleOres.plugins.fusion.FusionHelper.fusionContent.sinisiteIngot).writeToNBT(toSend2Ingot.getCompoundTag("input"));
 				new ItemStack(sinisiteDust).writeToNBT(toSend2Ingot.getCompoundTag("primaryOutput"));
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend2Ingot);
 			}
@@ -330,21 +370,29 @@ public class SimpleDust {
 			malachiteDust = new SimpleIngot(malachiteDustID).modId("simpleoresdust").setUnlocalizedName("malachiteDust").setTextureName("SimpleDust:malachiteDust");
 			illumeniteDust = new SimpleIngot(illumeniteDustID).modId("simpleoresdust").setUnlocalizedName("illumeniteDust").setTextureName("SimpleDust:illumeniteDust");
 			argoniteDust = new SimpleIngot(argoniteDustID).modId("simpleoresdust").setUnlocalizedName("argoniteDust").setTextureName("SimpleDust:argoniteDust");
+			ashstoneDust = new SimpleIngot(ashstoneDustID).modId("simpleoresdust").setUnlocalizedName("ashstoneDust").setTextureName("SimpleDust:ashstoneDust");
+			dragonstoneDust = new SimpleIngot(dragonstoneDustID).modId("simpleoresdust").setUnlocalizedName("dragonstoneDust").setTextureName("SimpleDust:dragonstoneDust");
 			
 			OreDictionary.registerOre("dustFyrite", new ItemStack(fyriteDust));
 			OreDictionary.registerOre("dustMalachite", new ItemStack(malachiteDust));
 			OreDictionary.registerOre("dustIllumenite", new ItemStack(illumeniteDust));
 			OreDictionary.registerOre("dustArgonite", new ItemStack(argoniteDust));
+			OreDictionary.registerOre("dustAshstone", new ItemStack(ashstoneDust));
+			OreDictionary.registerOre("dustDragonstone", new ItemStack(dragonstoneDust));
 
 			LanguageRegistry.addName(fyriteDust, "Fyrite Dust");
 			LanguageRegistry.addName(malachiteDust, "Malachite Dust");
 			LanguageRegistry.addName(illumeniteDust, "Illumenite Dust");
 			LanguageRegistry.addName(argoniteDust, "Argonite Dust");
+			LanguageRegistry.addName(ashstoneDust, "Ashstone Dust");
+			LanguageRegistry.addName(dragonstoneDust, "Dragonstone Dust");
 
 			GameRegistry.addSmelting(fyriteDust.itemID, new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.fyriteIngot, 1, 0), 0.8F);
 			GameRegistry.addSmelting(malachiteDust.itemID, new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.malachiteIngot, 1, 0), 0.5F);
 			GameRegistry.addSmelting(illumeniteDust.itemID, new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.illumeniteIngot, 1, 0), 0.8F);
 			GameRegistry.addSmelting(argoniteDust.itemID, new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.argoniteIngot, 1, 0), 0.7F);
+			GameRegistry.addSmelting(ashstoneDust.itemID, new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.ashstoneGem, 1, 0), 0.7F);
+			GameRegistry.addSmelting(dragonstoneDust.itemID, new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.dragonstoneGem, 1, 0), 0.7F);
 
 			if (Loader.isModLoaded("ThermalExpansion")) {
 				NBTTagCompound toSend1ore = new NBTTagCompound();
@@ -419,17 +467,33 @@ public class SimpleDust {
 				toSend5ore.setCompoundTag("input", new NBTTagCompound());
 				toSend5ore.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.ashstoneOre).writeToNBT(toSend5ore.getCompoundTag("input"));
-				new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.ashstoneGem, 2).writeToNBT(toSend5ore.getCompoundTag("primaryOutput"));
+				new ItemStack(ashstoneDust, 2).writeToNBT(toSend5ore.getCompoundTag("primaryOutput"));
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend5ore);
+
+				NBTTagCompound toSend5Ingot = new NBTTagCompound();
+				toSend5Ingot.setInteger("energy", 2400);
+				toSend5Ingot.setCompoundTag("input", new NBTTagCompound());
+				toSend5Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
+				new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.ashstoneGem).writeToNBT(toSend5Ingot.getCompoundTag("input"));
+				new ItemStack(ashstoneDust).writeToNBT(toSend5Ingot.getCompoundTag("primaryOutput"));
+				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend5Ingot);
 
 				NBTTagCompound toSend6ore = new NBTTagCompound();
 				toSend6ore.setInteger("energy", 4000);
 				toSend6ore.setCompoundTag("input", new NBTTagCompound());
 				toSend6ore.setCompoundTag("primaryOutput", new NBTTagCompound());
 				new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.dragonstoneOre).writeToNBT(toSend6ore.getCompoundTag("input"));
-				new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.dragonstoneGem, 2).writeToNBT(toSend6ore.getCompoundTag("primaryOutput"));
+				new ItemStack(dragonstoneDust, 2).writeToNBT(toSend6ore.getCompoundTag("primaryOutput"));
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend6ore);
-			}
+
+				NBTTagCompound toSend6Ingot = new NBTTagCompound();
+				toSend6Ingot.setInteger("energy", 2400);
+				toSend6Ingot.setCompoundTag("input", new NBTTagCompound());
+				toSend6Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
+				new ItemStack(alexndr.SimpleOres.plugins.netherrocks.Content.dragonstoneGem).writeToNBT(toSend6Ingot.getCompoundTag("input"));
+				new ItemStack(dragonstoneDust).writeToNBT(toSend6Ingot.getCompoundTag("primaryOutput"));
+				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend6Ingot);
+}
 		}
 
 		if (Loader.isModLoaded("SimpleArsenic")) {
@@ -987,6 +1051,77 @@ public class SimpleDust {
 			}
 		}
 
+		if (Loader.isModLoaded("onlysilver")) {
+			silverDust = new SimpleIngot(silverDustID).modId("simpleoresdust").setUnlocalizedName("silverDust").setTextureName("SimpleDust:silverDust");
+
+			OreDictionary.registerOre("dustSilver", new ItemStack(silverDust));
+
+			LanguageRegistry.addName(silverDust, "Silver Dust");
+
+			GameRegistry.addSmelting(silverDust.itemID, new ItemStack(zotmc.onlysilver.api.OnlySilverAPI.silverIngot.get(), 1, 0), 0.8F);
+
+			if (Loader.isModLoaded("ThermalExpansion")) {
+				NBTTagCompound toSend1Ingot = new NBTTagCompound();
+				toSend1Ingot.setInteger("energy", 2400);
+				toSend1Ingot.setCompoundTag("input", new NBTTagCompound());
+				toSend1Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
+				new ItemStack(zotmc.onlysilver.api.OnlySilverAPI.silverIngot.get()).writeToNBT(toSend1Ingot.getCompoundTag("input"));
+				new ItemStack(silverDust).writeToNBT(toSend1Ingot.getCompoundTag("primaryOutput"));
+				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend1Ingot);
+			}
+		}
+
+		if (Loader.isModLoaded("endium")) {
+			endiumDust = new SimpleIngot(endiumDustID).modId("simpleoresdust").setUnlocalizedName("endiumDust").setTextureName("SimpleDust:endiumDust");
+			telosDust = new SimpleIngot(telosDustID).modId("simpleoresdust").setUnlocalizedName("telosDust").setTextureName("SimpleDust:telosDust");
+			sunteleiaDust = new SimpleIngot(sunteleiaDustID).modId("simpleoresdust").setUnlocalizedName("sunteleiaDust").setTextureName("SimpleDust:sunteleiaDust");
+
+			OreDictionary.registerOre("dustEndium", new ItemStack(endiumDust));
+			OreDictionary.registerOre("dustTelos", new ItemStack(telosDust));
+			OreDictionary.registerOre("dustSunteleia", new ItemStack(sunteleiaDust));
+
+			LanguageRegistry.addName(endiumDust, "Endium Dust");
+			LanguageRegistry.addName(telosDust, "Telos Dust");
+			LanguageRegistry.addName(sunteleiaDust, "Sunteleia Dust");
+
+			GameRegistry.addSmelting(endiumDust.itemID, new ItemStack(theoldone822.Endium.Content.EndiumIngot, 1, 0), 0.3F);
+			GameRegistry.addSmelting(telosDust.itemID, new ItemStack(theoldone822.Endium.Content.TelosIngot, 1, 0), 0.6F);
+			GameRegistry.addSmelting(sunteleiaDust.itemID, new ItemStack(theoldone822.Endium.Content.SunteleiaIngot, 1, 0), 1.0F);
+
+			if (Loader.isModLoaded("ThermalExpansion")) {
+				NBTTagCompound toSend1ore = new NBTTagCompound();
+				toSend1ore.setInteger("energy", 4000);
+				toSend1ore.setCompoundTag("input", new NBTTagCompound());
+				toSend1ore.setCompoundTag("primaryOutput", new NBTTagCompound());
+				new ItemStack(theoldone822.Endium.Content.EndiumOre).writeToNBT(toSend1ore.getCompoundTag("input"));
+				new ItemStack(endiumDust, 2).writeToNBT(toSend1ore.getCompoundTag("primaryOutput"));
+				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend1ore);
+			
+				NBTTagCompound toSend0Ingot = new NBTTagCompound();
+				toSend0Ingot.setInteger("energy", 2400);
+				toSend0Ingot.setCompoundTag("input", new NBTTagCompound());
+				toSend0Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
+				new ItemStack(theoldone822.Endium.Content.EndiumIngot).writeToNBT(toSend0Ingot.getCompoundTag("input"));
+				new ItemStack(endiumDust).writeToNBT(toSend0Ingot.getCompoundTag("primaryOutput"));
+				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend0Ingot);
+
+				NBTTagCompound toSend1Ingot = new NBTTagCompound();
+				toSend1Ingot.setInteger("energy", 2400);
+				toSend1Ingot.setCompoundTag("input", new NBTTagCompound());
+				toSend1Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
+				new ItemStack(theoldone822.Endium.Content.TelosIngot).writeToNBT(toSend1Ingot.getCompoundTag("input"));
+				new ItemStack(telosDust).writeToNBT(toSend1Ingot.getCompoundTag("primaryOutput"));
+				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend1Ingot);
+
+				NBTTagCompound toSend2Ingot = new NBTTagCompound();
+				toSend2Ingot.setInteger("energy", 2400);
+				toSend2Ingot.setCompoundTag("input", new NBTTagCompound());
+				toSend2Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
+				new ItemStack(theoldone822.Endium.Content.SunteleiaIngot).writeToNBT(toSend2Ingot.getCompoundTag("input"));
+				new ItemStack(sunteleiaDust).writeToNBT(toSend2Ingot.getCompoundTag("primaryOutput"));
+				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend2Ingot);
+			}
+		}
 	}
 	@EventHandler
 	public void Init(FMLInitializationEvent event) {
@@ -1012,6 +1147,19 @@ public class SimpleDust {
 			(OreDictionary.getOres("dustIron").get(0)).writeToNBT(toSendTinore.getCompoundTag("secondaryOutput"));
 			toSendTinore.setInteger("secondaryChance", 10);
 			FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSendTinore);
+
+			if (Loader.isModLoaded("onlysilver")) {
+				NBTTagCompound toSendSilverrore = new NBTTagCompound();
+				toSendSilverrore.setInteger("energy", 4000);
+				toSendSilverrore.setCompoundTag("input", new NBTTagCompound());
+				toSendSilverrore.setCompoundTag("primaryOutput", new NBTTagCompound());
+				toSendSilverrore.setCompoundTag("secondaryOutput", new NBTTagCompound());
+				new ItemStack(zotmc.onlysilver.api.OnlySilverAPI.silverIngot.get()).writeToNBT(toSendSilverrore.getCompoundTag("input"));
+				new ItemStack(silverDust, 2).writeToNBT(toSendSilverrore.getCompoundTag("primaryOutput"));
+				(OreDictionary.getOres("dustLead").get(0)).writeToNBT(toSendSilverrore.getCompoundTag("secondaryOutput"));
+				toSendSilverrore.setInteger("secondaryChance", 10);
+				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSendSilverrore);
 			}
 		}
+	}
 }

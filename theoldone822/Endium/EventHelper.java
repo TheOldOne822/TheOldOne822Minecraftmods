@@ -26,8 +26,10 @@ public class EventHelper
 	        {
 	        	if(helmet.getItem() == Content.SunteleiaHelm && chest.getItem() == Content.SunteleiaChest && legs.getItem() == Content.SunteleiaLegs && boots.getItem() == Content.SunteleiaBoots)
 	        	{
+					if (!event.source.equals(DamageSource.outOfWorld) && !event.source.equals(DamageSource.starve)) {
 	    	        	event.setCanceled(true);
 	    	        	player.extinguish();
+					}
 	        	}
 	        }
 		}

@@ -3,6 +3,7 @@ package theoldone822.Endium;
 import java.util.EnumSet;
 
 import cpw.mods.fml.common.ITickHandler;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.TickType;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -14,7 +15,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeSubscribe;
 
 public class TickHandler implements ITickHandler {
-	public static int speed = 0;
+	private static int speed = 0;
 
 	// effects
 	private void onPlayerTick(EntityPlayer player) {
@@ -25,23 +26,27 @@ public class TickHandler implements ITickHandler {
 			ItemStack legs = player.getCurrentItemOrArmor(2);
 			ItemStack boots = player.getCurrentItemOrArmor(1);
 
-			if (helmet.getItem() == Content.EndiumHelm & chest.getItem() == Content.EndiumChest & legs.getItem() == Content.EndiumLegs
-					& boots.getItem() == Content.EndiumBoots) {
+			if ((helmet.getItem() == Content.EndiumHelm || (Loader.isModLoaded("simpleoresew") && helmet.getItem() == theoldone822.SimpleOresEW.SimpleOresEW.armor[34][0]))
+					&& (chest.getItem() == Content.EndiumChest || (Loader.isModLoaded("simpleoresew") && chest.getItem() == theoldone822.SimpleOresEW.SimpleOresEW.armor[34][1]))
+					&& (legs.getItem() == Content.EndiumLegs || (Loader.isModLoaded("simpleoresew") && legs.getItem() == theoldone822.SimpleOresEW.SimpleOresEW.armor[34][2]))
+					&& (boots.getItem() == Content.EndiumBoots || (Loader.isModLoaded("simpleoresew") && boots.getItem() == theoldone822.SimpleOresEW.SimpleOresEW.armor[34][3]))) {
 				if (speed != 1) {
 					speed = 1;
 					player.capabilities.setPlayerWalkSpeed(0.12F);
 				}
-			} else if (helmet.getItem() == Content.TelosHelm & chest.getItem() == Content.TelosChest & legs.getItem() == Content.TelosLegs
-					& boots.getItem() == Content.TelosBoots) {
+			} else if ((helmet.getItem() == Content.TelosHelm || (Loader.isModLoaded("simpleoresew") && helmet.getItem() == theoldone822.SimpleOresEW.SimpleOresEW.armor[35][0]))
+					&& (chest.getItem() == Content.TelosChest || (Loader.isModLoaded("simpleoresew") && chest.getItem() == theoldone822.SimpleOresEW.SimpleOresEW.armor[35][1]))
+					&& (legs.getItem() == Content.TelosLegs || (Loader.isModLoaded("simpleoresew") && legs.getItem() == theoldone822.SimpleOresEW.SimpleOresEW.armor[35][2]))
+					&& (boots.getItem() == Content.TelosBoots || (Loader.isModLoaded("simpleoresew") && boots.getItem() == theoldone822.SimpleOresEW.SimpleOresEW.armor[35][3]))) {
 				if (speed != 2) {
-				speed = 2;
-				player.capabilities.setPlayerWalkSpeed(0.15F);
+					speed = 2;
+					player.capabilities.setPlayerWalkSpeed(0.15F);
 				}
-				} else if (speed != 0){
+			} else if (speed != 0) {
 				speed = 0;
 				player.capabilities.setPlayerWalkSpeed(0.1F);
 			}
-		} else if (speed != 0){
+		} else if (speed != 0) {
 			speed = 0;
 			player.capabilities.setPlayerWalkSpeed(0.1F);
 		}

@@ -8,6 +8,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingFallEvent;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 
 public class HandlerEvent {
 
@@ -26,7 +28,7 @@ public class HandlerEvent {
 				EntityPlayer eventPlayer = (EntityPlayer) event.entity;
 				if (helmet != null && chest != null && legs != null && boots != null) {
 
-					// Pyralis Reduction
+		        	// Pyralis Reduction
 					if (PluginChecks.getNetherFusionInstalled()
 							&& ((helmet.getItem() == theoldone822.NetherrocksFusion.Content.pyralisHelm
 									|| helmet.getItem() == theoldone822.NetherrocksFusion.Content.pyralisChainHelm || helmet
@@ -210,6 +212,91 @@ public class HandlerEvent {
 						}
 					}
 
+				}
+			}
+		}
+	}
+
+	@ForgeSubscribe
+	public void onFallDamage(LivingFallEvent event)
+	{  	
+		if(event.entity instanceof EntityPlayer && PluginChecks.getEndiumInstalled())
+		{
+			EntityPlayer player = (EntityPlayer)event.entity;
+			
+			ItemStack helmet = player.getCurrentItemOrArmor(4);
+			ItemStack chest = player.getCurrentItemOrArmor(3);
+			ItemStack legs = player.getCurrentItemOrArmor(2);
+			ItemStack boots = player.getCurrentItemOrArmor(1);
+			
+	        
+			if(helmet != null && chest != null && legs != null && boots != null)
+			{
+				if((helmet.getItem() == theoldone822.Endium.Content.TelosHelm || helmet.getItem() == SimpleOresEW.armor[35][0])
+						&& (chest.getItem() == theoldone822.Endium.Content.TelosChest || chest.getItem() == SimpleOresEW.armor[35][1])
+						&& (legs.getItem() == theoldone822.Endium.Content.TelosLegs || legs.getItem() == SimpleOresEW.armor[35][2])
+						&& (boots.getItem() == theoldone822.Endium.Content.TelosBoots || boots.getItem() == SimpleOresEW.armor[35][3]))
+				{	
+							event.distance = event.distance - theoldone822.Endium.Settings.TelosArmorMinFallHeight;
+				}
+			}
+		}
+	}
+
+	@ForgeSubscribe
+	public void onPlayerJump(LivingJumpEvent event)
+	{
+
+		if(event.entity instanceof EntityPlayer && PluginChecks.getNetherInstalled())
+		{
+			EntityPlayer player = (EntityPlayer)event.entity;
+			
+			ItemStack helmet = player.getCurrentItemOrArmor(4);
+			ItemStack chest = player.getCurrentItemOrArmor(3);
+			ItemStack legs = player.getCurrentItemOrArmor(2);
+			ItemStack boots = player.getCurrentItemOrArmor(1);
+			
+			if(helmet != null && chest != null && legs != null && boots != null)
+			{
+				if((helmet.getItem() == alexndr.SimpleOres.plugins.netherrocks.Content.malachiteHelm || helmet.getItem() == SimpleOresEW.armor[8][0])
+						&& (chest.getItem() == alexndr.SimpleOres.plugins.netherrocks.Content.malachiteChest || chest.getItem() == SimpleOresEW.armor[8][1])
+						&& (legs.getItem() == alexndr.SimpleOres.plugins.netherrocks.Content.malachiteLegs || legs.getItem() == SimpleOresEW.armor[8][2])
+						&& (boots.getItem() == alexndr.SimpleOres.plugins.netherrocks.Content.malachiteBoots || boots.getItem() == SimpleOresEW.armor[8][3]))
+				{	
+					if(!player.isSneaking() && alexndr.SimpleOres.plugins.netherrocks.Settings.enableArmorEffects && !(helmet.getItem() == alexndr.SimpleOres.plugins.netherrocks.Content.malachiteHelm &&
+							chest.getItem() == alexndr.SimpleOres.plugins.netherrocks.Content.malachiteChest &&
+							legs.getItem() == alexndr.SimpleOres.plugins.netherrocks.Content.malachiteLegs &&
+							boots.getItem() == alexndr.SimpleOres.plugins.netherrocks.Content.malachiteBoots))
+					{
+						player.motionY += alexndr.SimpleOres.plugins.netherrocks.Settings.malachiteArmorJumpBoostAmount;
+					}
+				}
+			}
+		}
+	
+		if(event.entity instanceof EntityPlayer && PluginChecks.getEndiumInstalled())
+		{
+			EntityPlayer player = (EntityPlayer)event.entity;
+			
+			ItemStack helmet = player.getCurrentItemOrArmor(4);
+			ItemStack chest = player.getCurrentItemOrArmor(3);
+			ItemStack legs = player.getCurrentItemOrArmor(2);
+			ItemStack boots = player.getCurrentItemOrArmor(1);
+			
+			if(helmet != null && chest != null && legs != null && boots != null)
+			{
+				if((helmet.getItem() == theoldone822.Endium.Content.TelosHelm || helmet.getItem() == SimpleOresEW.armor[35][0])
+						&& (chest.getItem() == theoldone822.Endium.Content.TelosChest || chest.getItem() == SimpleOresEW.armor[35][1])
+						&& (legs.getItem() == theoldone822.Endium.Content.TelosLegs || legs.getItem() == SimpleOresEW.armor[35][2])
+						&& (boots.getItem() == theoldone822.Endium.Content.TelosBoots || boots.getItem() == SimpleOresEW.armor[35][3]))
+				{	
+					if(!player.isSneaking() && !(helmet.getItem() == theoldone822.Endium.Content.TelosHelm &&
+							chest.getItem() == theoldone822.Endium.Content.TelosChest &&
+							legs.getItem() == theoldone822.Endium.Content.TelosLegs &&
+							boots.getItem() == theoldone822.Endium.Content.TelosBoots))
+					{
+						player.motionY += theoldone822.Endium.Settings.TelosArmorJumpBoostAmount;
+					}
 				}
 			}
 		}

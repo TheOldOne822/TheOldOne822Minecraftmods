@@ -15,6 +15,7 @@ public class PluginChecks {
 	private static final Class tungsten = getTUNGSTEN();
 	private static final Class sterling = getSTERLING();
 	private static final Class wootz = getWOOTZ();
+	private static final Class endium = getENDIUM();
 
 	private static Class getFUSION() {
 		try {
@@ -128,6 +129,14 @@ public class PluginChecks {
 		}
 	}
 
+	private static Class getENDIUM() {
+		try {
+			return Class.forName("theoldone822.Endium.Endium");
+		} catch (ClassNotFoundException e) {
+			return null;
+		}
+	}
+
 	public static boolean getFusionInstalled() {
 		return fusion != null;
 	}
@@ -182,5 +191,9 @@ public class PluginChecks {
 
 	public static boolean getWootzInstalled() {
 		return wootz != null;
+	}
+
+	public static boolean getEndiumInstalled() {
+		return endium != null;
 	}
 }

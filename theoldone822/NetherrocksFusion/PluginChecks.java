@@ -4,9 +4,10 @@ public class PluginChecks {
 	private static final Class cthon = getCTHON();
 	private static final Class cobalt = getCOBALT();
 	private static final Class tungsten = getTUNGSTEN();
+
 	private static Class getCTHON() {
 		try {
-			return Class.forName("akkamaddi.simplecobalt.code.SimpleCobaltCore");
+			return Class.forName("akkamaddi.cthon.core.SimpleCthonCore");
 		} catch (ClassNotFoundException e) {
 			return null;
 		}
@@ -14,7 +15,7 @@ public class PluginChecks {
 
 	private static Class getCOBALT() {
 		try {
-			return Class.forName("SimpleOres.plugins.akkamaddi.simplecobalt.SimpleCobaltCore");
+			return Class.forName("akkamaddi.simplecobalt.code.SimpleCobaltCore");
 		} catch (ClassNotFoundException e) {
 			return null;
 		}

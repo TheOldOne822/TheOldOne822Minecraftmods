@@ -183,6 +183,12 @@ public class ClientProxy extends CommonProxy {
 						MinecraftForgeClient.registerItemRenderer(SimpleOresEW.item[i][j].itemID, render);
 				
 			}
+			if (PluginChecks.getEndiumInstalled()) {
+				for (int i = 0; i < (biggerTools == 1 ? 1 : 5); i++)
+					for (int j = 41; j < 44; j++)
+						MinecraftForgeClient.registerItemRenderer(SimpleOresEW.item[i][j].itemID, render);
+				
+			}
 		}
 	}
 }

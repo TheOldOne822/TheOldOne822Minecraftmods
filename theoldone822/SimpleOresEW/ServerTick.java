@@ -12,6 +12,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeSubscribe;
 
 public class ServerTick implements ITickHandler {
+
 	// effects
 	private void onPlayerTick(EntityPlayer player) {
 		if (player.getCurrentItemOrArmor(3) != null && player.getCurrentItemOrArmor(2) != null
@@ -53,6 +54,7 @@ public class ServerTick implements ITickHandler {
 			ItemStack legs = player.getCurrentItemOrArmor(2);
 			ItemStack boots = player.getCurrentItemOrArmor(1);
 
+
 			if (PluginChecks.getSterlingInstalled()
 					&& ((helmet.getItem() == akkamaddi.SterlingAndBlack.code.SterlingAndBlackCore.blackSilverHelm || helmet
 							.getItem() == SimpleOresEW.armor[32][0])
@@ -64,6 +66,7 @@ public class ServerTick implements ITickHandler {
 				player.addPotionEffect(new PotionEffect(Potion.digSpeed.getId(), 40, 0));
 			}
 		}
+		
 	}
 
 	@Override
