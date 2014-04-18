@@ -60,6 +60,7 @@ public class TungstenOres {
         oreWolframite = new SimpleOre(oreWolframiteID, Material.iron).modId("TungstenOres").setHardness(4.0F).setResistance(10.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("oreWolframite");
         
         OreDictionary.registerOre("oreWolframite", new ItemStack(oreWolframite));
+        OreDictionary.registerOre("oreTungstenSteel", new ItemStack(oreWolframite));
         GameRegistry.addSmelting(oreWolframite.blockID, new ItemStack(SimpleTungstenCore.tungstenSteelIngot), 0.8F);
 
         if (!SimpleTungstenCore.enableRecycling) {

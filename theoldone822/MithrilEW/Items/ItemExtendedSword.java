@@ -26,7 +26,7 @@ public class ItemExtendedSword extends ItemSword
         super(par1, par2EnumToolMaterial);
         this.ewToolMaterial = par2EnumToolMaterial;
         setMaxDamage((int)(getMaxDamage() * increaseSwordDurability));
-        exWeaponDamage = 5 + par2EnumToolMaterial.getDamageVsEntity() * 2;
+        exWeaponDamage = 5 + par2EnumToolMaterial.getDamageVsEntity() * increaseSwordDamage;
     }
     
     @Override

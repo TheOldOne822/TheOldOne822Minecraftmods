@@ -32,11 +32,11 @@ public class ModCraft {
 		metadata.authorList = Arrays.asList("theoldone822");
 		metadata.description = "Allows conversion from mod items to basic ones.";
 		
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Block.workbench, 1), true, new Object[]{"X", Character.valueOf('X'), "crafterWood",}));
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Block.workbench, 1), true, new Object[]{"X", Character.valueOf('X'), "craftingTableWood",}));
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Block.planks, 2), true, new Object[]{" X", "X ", Character.valueOf('X'), "plankWood",}));
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Block.planks, 2), true, new Object[]{"X ", " X", Character.valueOf('X'), "plankWood",}));
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Item.stick, 1), true, new Object[]{"X", Character.valueOf('X'), "stickWood",}));
+//		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Block.workbench, 1), true, new Object[]{"X", Character.valueOf('X'), "crafterWood",}));
+//		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Block.workbench, 1), true, new Object[]{"X", Character.valueOf('X'), "craftingTableWood",}));
+//		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Block.planks, 2), true, new Object[]{" X", "X ", Character.valueOf('X'), "plankWood",}));
+//		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Block.planks, 2), true, new Object[]{"X ", " X", Character.valueOf('X'), "plankWood",}));
+//		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Item.stick, 1), true, new Object[]{"X", Character.valueOf('X'), "stickWood",}));
 		
 	}
 	}

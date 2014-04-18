@@ -27,8 +27,8 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 @Mod(
 		modid = "simpleoresdust",
 		name = "Simple Ores Dust",
-		version = "2.0",
-		dependencies = "required-after:simpleores; after:onlysilver; after:ThermalExpansion; after:simpleoresfusion; after:SimpleArsenic; after:netherrocksfusion; after:netherrocks; after:classicalalchemy; after:simplecthon; after:goldenglitter; after:haditecoal; after:simplecobalt; after:simpletungsten; after:sterlingandblack; after:wootzpigngray; after:classicalalchemyores; after:TungstenOres; after:Tennantite; after:Glaucodot")
+		version = "2.3",
+		dependencies = "required-after:simpleores; after:onlysilver; after:ThermalExpansion; after:simpleoresfusion; after:SimpleArsenic; after:netherrocksfusion; after:netherrocks; after:classicalalchemy; after:simplecthon; after:goldenglitter; after:haditecoal; after:simplecobalt; after:simpletungsten; after:sterlingandblack; after:wootzpigngray; after:classicalalchemyores; after:TungstenOres; after:Tennantite; after:Glaucodot; after:steelyglint")
 public class SimpleDust {
 
 	public static int ID;
@@ -113,6 +113,10 @@ public class SimpleDust {
 		OreDictionary.registerOre("dustEndium", new ItemStack(dust, 1, 51));
 		OreDictionary.registerOre("dustTelos", new ItemStack(dust, 1, 52));
 		OreDictionary.registerOre("dustSunteleia", new ItemStack(dust, 1, 53));
+		OreDictionary.registerOre("dustRefinedIron", new ItemStack(dust, 1, 54));
+		OreDictionary.registerOre("dustCarbonizedIron", new ItemStack(dust, 1, 55));
+		OreDictionary.registerOre("dustHighSteel", new ItemStack(dust, 1, 56));
+		OreDictionary.registerOre("dustLowSteel", new ItemStack(dust, 1, 57));
 
 		LanguageRegistry.addName(new ItemStack(dust, 1, 0), "Iron Dust");
 		LanguageRegistry.addName(new ItemStack(dust, 1, 1), "Gold Dust");
@@ -168,6 +172,10 @@ public class SimpleDust {
 		LanguageRegistry.addName(new ItemStack(dust, 1, 51), "Endium Dust");
 		LanguageRegistry.addName(new ItemStack(dust, 1, 52), "Telos Dust");
 		LanguageRegistry.addName(new ItemStack(dust, 1, 53), "Sunteleia Dust");
+		LanguageRegistry.addName(new ItemStack(dust, 1, 54), "Refined Iron Dust");
+		LanguageRegistry.addName(new ItemStack(dust, 1, 55), "Carbonized Iron Dust");
+		LanguageRegistry.addName(new ItemStack(dust, 1, 56), "High Steel Dust");
+		LanguageRegistry.addName(new ItemStack(dust, 1, 57), "Low Steel Dust");
 
 		FurnaceRecipes.smelting().addSmelting(dust.itemID, 0, new ItemStack(Item.ingotIron, 1, 0), 0.7F);
 		FurnaceRecipes.smelting().addSmelting(dust.itemID, 1, new ItemStack(Item.ingotGold, 1, 0), 0.7F);
@@ -960,6 +968,48 @@ public class SimpleDust {
 				new ItemStack(theoldone822.Endium.Content.SunteleiaIngot).writeToNBT(toSend2Ingot.getCompoundTag("input"));
 				new ItemStack(dust, 1, 53).writeToNBT(toSend2Ingot.getCompoundTag("primaryOutput"));
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend2Ingot);
+			}
+		}
+
+		if (Loader.isModLoaded("steelyglint")) {
+
+			FurnaceRecipes.smelting().addSmelting(dust.itemID, 54, new ItemStack(akkamaddi.SteelyGlint.code.SteelyGlintCore.refinedIronIngot, 1, 0), 0.8F);
+			FurnaceRecipes.smelting().addSmelting(dust.itemID, 55, new ItemStack(akkamaddi.SteelyGlint.code.SteelyGlintCore.carbonizedIronIngot, 1, 0), 0.8F);
+			FurnaceRecipes.smelting().addSmelting(dust.itemID, 56, new ItemStack(akkamaddi.SteelyGlint.code.SteelyGlintCore.highSteelIngot, 1, 0), 0.8F);
+			FurnaceRecipes.smelting().addSmelting(dust.itemID, 57, new ItemStack(akkamaddi.SteelyGlint.code.SteelyGlintCore.lowSteelIngot, 1, 0), 0.8F);
+
+			if (Loader.isModLoaded("ThermalExpansion")) {
+				NBTTagCompound toSend1Ingot = new NBTTagCompound();
+				toSend1Ingot.setInteger("energy", 2400);
+				toSend1Ingot.setCompoundTag("input", new NBTTagCompound());
+				toSend1Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
+				new ItemStack(akkamaddi.SteelyGlint.code.SteelyGlintCore.refinedIronIngot).writeToNBT(toSend1Ingot.getCompoundTag("input"));
+				new ItemStack(dust, 1, 54).writeToNBT(toSend1Ingot.getCompoundTag("primaryOutput"));
+				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend1Ingot);
+
+				NBTTagCompound toSend2Ingot = new NBTTagCompound();
+				toSend2Ingot.setInteger("energy", 2400);
+				toSend2Ingot.setCompoundTag("input", new NBTTagCompound());
+				toSend2Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
+				new ItemStack(akkamaddi.SteelyGlint.code.SteelyGlintCore.carbonizedIronIngot).writeToNBT(toSend2Ingot.getCompoundTag("input"));
+				new ItemStack(dust, 1, 55).writeToNBT(toSend2Ingot.getCompoundTag("primaryOutput"));
+				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend2Ingot);
+
+				NBTTagCompound toSend3Ingot = new NBTTagCompound();
+				toSend3Ingot.setInteger("energy", 2400);
+				toSend3Ingot.setCompoundTag("input", new NBTTagCompound());
+				toSend3Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
+				new ItemStack(akkamaddi.SteelyGlint.code.SteelyGlintCore.highSteelIngot).writeToNBT(toSend3Ingot.getCompoundTag("input"));
+				new ItemStack(dust, 1, 56).writeToNBT(toSend3Ingot.getCompoundTag("primaryOutput"));
+				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend3Ingot);
+
+				NBTTagCompound toSend4Ingot = new NBTTagCompound();
+				toSend4Ingot.setInteger("energy", 2400);
+				toSend4Ingot.setCompoundTag("input", new NBTTagCompound());
+				toSend4Ingot.setCompoundTag("primaryOutput", new NBTTagCompound());
+				new ItemStack(akkamaddi.SteelyGlint.code.SteelyGlintCore.lowSteelIngot).writeToNBT(toSend4Ingot.getCompoundTag("input"));
+				new ItemStack(dust, 1, 57).writeToNBT(toSend4Ingot.getCompoundTag("primaryOutput"));
+				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend4Ingot);
 			}
 		}
 	}

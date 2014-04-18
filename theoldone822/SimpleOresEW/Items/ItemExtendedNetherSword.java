@@ -1,8 +1,8 @@
 package theoldone822.SimpleOresEW.Items;
 
-import static theoldone822.SimpleOresEW.SimpleOresEW.extendedValues.increaseSwordDamage;
-import static theoldone822.SimpleOresEW.SimpleOresEW.extendedValues.increaseSwordDurability;
-import static theoldone822.SimpleOresEW.SimpleOresEW.extendedValues.increaseSwordMiningSpeed;
+import static naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseSwordDamage;
+import static naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseSwordDurability;
+import static naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseSwordMiningSpeed;
 
 import java.lang.reflect.Field;
 
@@ -32,7 +32,7 @@ public class ItemExtendedNetherSword extends ItemSword {
 		super(par1, par2EnumToolMaterial);
 		this.ewToolMaterial = par2EnumToolMaterial;
 		setMaxDamage((int) (getMaxDamage() * increaseSwordDurability));
-		exWeaponDamage = 5 + par2EnumToolMaterial.getDamageVsEntity() * 2;
+		exWeaponDamage = 5 + par2EnumToolMaterial.getDamageVsEntity() * increaseSwordDamage;
 	}
 
 	@Override

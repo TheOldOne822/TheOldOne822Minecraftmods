@@ -1,6 +1,6 @@
 package theoldone822.SimpleOresEW.Items;
 
-import static theoldone822.SimpleOresEW.SimpleOresEW.extendedValues.increaseArmorDurability;
+import static naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseArmorDurability;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;

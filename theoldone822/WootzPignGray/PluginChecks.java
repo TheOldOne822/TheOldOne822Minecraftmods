@@ -5,6 +5,7 @@ public class PluginChecks {
 	private static final Class cobalt = getCOBALT();
 	private static final Class tungsten = getTUNGSTEN();
 	private static final Class sterling = getSTERLING();
+	private static final Class steel = getSTEEL();
 
 	private static Class getHADITE() {
 		try {
@@ -38,6 +39,14 @@ public class PluginChecks {
 		}
 	}
 
+	private static Class getSTEEL() {
+		try {
+			return Class.forName("akkamaddi.SteelyGlint.code.SteelyGlintCore");
+		} catch (ClassNotFoundException e) {
+			return null;
+		}
+	}
+
 	public static boolean getHaditeInstalled() {
 		return hadite != null;
 	}
@@ -52,5 +61,9 @@ public class PluginChecks {
 
 	public static boolean getSterlingInstalled() {
 		return sterling != null;
+	}
+
+	public static boolean getSteelInstalled() {
+		return steel != null;
 	}
 }

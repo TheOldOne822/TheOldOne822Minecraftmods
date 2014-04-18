@@ -13,7 +13,9 @@ public class ClassicalAlchemyOresRecipes {
 	public static void doClassicalAlchemyOres() {
 		// Ore Dictionary
 		OreDictionary.registerOre("oreBornite", new ItemStack(ClassicalAlchemyOresCore.borniteOre));
+		OreDictionary.registerOre("oreCuprum", new ItemStack(ClassicalAlchemyOresCore.borniteOre));
 		OreDictionary.registerOre("oreCassiterite", new ItemStack(ClassicalAlchemyOresCore.cassiteriteOre));
+		OreDictionary.registerOre("oreStannum", new ItemStack(ClassicalAlchemyOresCore.cassiteriteOre));
 
 		// recipes: Smelting
 		GameRegistry.addSmelting(ClassicalAlchemyOresCore.borniteOre.blockID, new ItemStack(ClassicalAlchemyCore.cuprumIngot), 2.0F);

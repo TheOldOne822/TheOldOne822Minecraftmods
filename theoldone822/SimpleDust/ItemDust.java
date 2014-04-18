@@ -40,12 +40,12 @@ public class ItemDust extends Item {
 			"tenebrium", "sterlingSteel", "blackSilver", "haditeSteel", "gestankenzinn", "roseGold", "erubescentGold", "scarlatiteGold", "hephaestanGold",
 			"cobalt", "blueDriftSteel", "blueCeladon", "greenCeladon", "tungsten", "tungstenCarbide", "valfram", "tungstenSteel", "prasinos", "cthon",
 			"stannum", "cuprum", "pyropusBronze", "pulchrumBronze", "tombBronze", "cinderstone", "thraka", "pyralis", "dragonBezoar", "wootz", "silver",
-			"endium", "telos", "sunteleia" };
+			"endium", "telos", "sunteleia", "refinedIron", "carbonizedIron", "highSteel", "lowSteel" };
 
 	// @Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister) {
-		icons = new Icon[54];
+		icons = new Icon[58];
 
 		for (int i = 0; i < icons.length; i++) {
 			icons[i] = iconRegister.registerIcon("simpleoresdust:" + names[i] + "Dust");
@@ -53,7 +53,7 @@ public class ItemDust extends Item {
 	}
 
 	public String getUnlocalizedName(ItemStack par1) {
-		int i = MathHelper.clamp_int(par1.getItemDamage(), 0, 54);
+		int i = MathHelper.clamp_int(par1.getItemDamage(), 0, 58);
 		return super.getUnlocalizedName() + "." + names[i];
 	}
 
@@ -63,7 +63,7 @@ public class ItemDust extends Item {
 
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(int par1, CreativeTabs par2, List par3) {
-		for (int i = 0; i < 54; i++) {
+		for (int i = 0; i < 58; i++) {
 			par3.add(new ItemStack(par1, 1, i));
 		}
 	}

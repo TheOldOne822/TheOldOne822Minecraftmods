@@ -7,10 +7,10 @@ import org.lwjgl.opengl.GL11;
 
 import theoldone822.SimpleOresEW.PluginChecks;
 import theoldone822.SimpleOresEW.SimpleOresEW;
-import static theoldone822.SimpleOresEW.SimpleOresEW.extendedValues.increaseBowDamage;
-import static theoldone822.SimpleOresEW.SimpleOresEW.extendedValues.increaseBowStrength;
-import static theoldone822.SimpleOresEW.SimpleOresEW.extendedValues.increaseBowTime;
-import static theoldone822.SimpleOresEW.SimpleOresEW.extendedValues.increaseBowDurability;
+import static naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseBowDamage;
+import static naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseBowStrength;
+import static naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseBowTime;
+import static naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseBowDurability;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.enchantment.Enchantment;

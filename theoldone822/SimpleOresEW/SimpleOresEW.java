@@ -45,8 +45,8 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 @Mod(
 		modid = "simpleoresew",
 		name = "Simple Ore Extended Work Bench Plugin",
-		version = "2.2",
-		dependencies = "required-after:extendedWorkbench; after:simpleores; after:simpleoresfusion; after:onlysilver; after:MoCreatures; after:SimpleArsenic; after:netherrocksfusion; after:netherrocks; after:classicalalchemy; after:simplecthon; after:goldenglitter; after:haditecoal; after:simplecobalt; after:simpletungsten; after:sterlingandblack; after:wootzpigngray")
+		version = "2.4",
+		dependencies = "required-after:extendedWorkbench; after:simpleores; after:simpleoresfusion; after:onlysilver; after:MoCreatures; after:SimpleArsenic; after:netherrocksfusion; after:netherrocks; after:classicalalchemy; after:simplecthon; after:goldenglitter; after:haditecoal; after:simplecobalt; after:simpletungsten; after:sterlingandblack; after:wootzpigngray; after:steelyglint")
 public class SimpleOresEW {
 
 	public static String treesetting;
@@ -67,6 +67,7 @@ public class SimpleOresEW {
 	public static int sterlingID;
 	public static int wootzID;
 	public static int endiumID;
+	public static int steelID;
 
 	public static Item extendedmythrilBow;
 	public static Item extendedonyxBow;
@@ -173,7 +174,7 @@ public class SimpleOresEW {
 	public static int extendeddragonbezoarLegsID;
 	public static int extendeddragonbezoarBootsID;
 
-	public static class extendedValues {
+/*	public static class extendedValues {
 
 		// sword
 		public static float increaseSwordDurability = 1.5f;
@@ -202,7 +203,7 @@ public class SimpleOresEW {
 		// efficiency is doubled
 
 	}
-
+*/
 	public static int rendererextendedCinderstone;
 	public static int rendererextendedThraka;
 	public static int rendererextendedPyralis;
@@ -210,8 +211,8 @@ public class SimpleOresEW {
 
 	public static Configuration config;
 
-	public static Item[][] item = new Item[5][45];
-	public static ItemArmor[][] armor = new ItemArmor[38][4];
+	public static Item[][] item = new Item[5][49];
+	public static ItemArmor[][] armor = new ItemArmor[40][4];
 
 	@SidedProxy(clientSide = "theoldone822.SimpleOresEW.client.ClientProxy", serverSide = "theoldone822.SimpleOresEW.CommonProxy")
 	public static CommonProxy proxy;
@@ -248,6 +249,7 @@ public class SimpleOresEW {
 		sterlingID = (config.getItem("Base", "Sterling Base ID", 24402)).getInt();
 		wootzID = (config.getItem("Base", "Wootz Steel Base ID", 24420)).getInt();
 		endiumID = (config.getItem("Base", "Endium Base ID", 24435)).getInt();
+		steelID = (config.getItem("Base", "Steel Base ID", 24458)).getInt();
 
 		extendedcinderstoneSwordID = config.getItem("Weapons", "Extended Cinderstone Sword", 6563).getInt();
 		extendedthrakaPickID = config.getItem("Tools", "Extended Thraka Pickaxe", 6564).getInt();
@@ -285,6 +287,55 @@ public class SimpleOresEW {
 		extendeddragonbezoarLegsID = config.getItem("Armor", "Extended Dragon Bezoar Leggings", 6595).getInt();
 		extendeddragonbezoarBootsID = config.getItem("Armor", "Extended Dragon Bezoar Boots", 6596).getInt();
 
+		/*	public static class extendedValues {
+
+		// sword
+		public static float increaseSwordDurability = 1.5f;
+		public static float increaseSwordDamage = 2f;
+		public static float increaseSwordMiningSpeed = 1.5f;
+
+		// tool + hoe
+		public static float increaseToolDurability = 2f;
+		public static float increaseToolPower = 2f;
+		public static float increaseToolAttackDamage = 1.5f;
+		public static float increaseHoeDurability = 2f;
+
+		// bow
+		public static float increaseBowDurability = 1.5f;
+		public static float increaseBowStrength = 1.5f;
+		public static float increaseBowTime = 1.2f;
+		public static float increaseBowDamage = 1.5f;
+
+		// armor
+		public static float increaseArmorDurability = 1.5f;
+		// damage reduction increased
+
+		// shears
+		public static float increaseShearDurability = 1.5f;
+		public static float increaseShearMiningSpeed = 1.5f;
+		// efficiency is doubled
+
+	}
+
+		naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseSwordDurability = (float) config.get("extendedValues", "Sword Durability", 1.5).getDouble(1.5);
+		naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseSwordDamage = (float) config.get("extendedValues", "Sword Damage (Base EW locked to 2.0)", 2.0).getDouble(2.0);
+		naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseSwordMiningSpeed = (float) config.get("extendedValues", "Sword Mining Speed", 1.5).getDouble(1.5);
+
+		naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseToolDurability = (float) config.get("extendedValues", "Tool Durability", 2.0).getDouble(2.0);
+		naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseToolPower = (float) config.get("extendedValues", "Tool Mining Speed", 2.0).getDouble(2.0);
+		naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseToolAttackDamage = (float) config.get("extendedValues", "Tool Damage", 1.5).getDouble(1.5);
+		naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseHoeDurability = (float) config.get("extendedValues", "Hoe Durability", 2.0).getDouble(2.0);
+
+		naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseBowDurability = (float) config.get("extendedValues", "Bow Durability", 1.5).getDouble(1.5);
+		naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseBowStrength = (float) config.get("extendedValues", "Bow Strength", 1.5).getDouble(1.5);
+		naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseBowTime = (float) config.get("extendedValues", "Bow Time", 1.2).getDouble(1.2);
+		naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseBowDamage = (float) config.get("extendedValues", "Bow Damage", 1.5).getDouble(1.5);
+
+		naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseArmorDurability = (float) config.get("extendedValues", "Armor Durability", 1.5).getDouble(1.5);
+
+		naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseShearDurability = (float) config.get("extendedValues", "Shears Durability", 1.5).getDouble(1.5);
+		naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseShearMiningSpeed = (float) config.get("extendedValues", "Shear Mining Speed", 1.5).getDouble(1.5);
+*/
 		config.save();
 	}
 
@@ -343,20 +394,20 @@ public class SimpleOresEW {
 							RenderingRegistry.addNewArmourRendererPrefix("extendedPrasinos"),
 							RenderingRegistry.addNewArmourRendererPrefix("extendedsterlingSteel"),
 							RenderingRegistry.addNewArmourRendererPrefix("extendedblackSilver"), RenderingRegistry.addNewArmourRendererPrefix("extendedWootz"),
-							RenderingRegistry.addNewArmourRendererPrefix("extendedEndium"), RenderingRegistry.addNewArmourRendererPrefix("extendedTelos"), };
+							RenderingRegistry.addNewArmourRendererPrefix("extendedEndium"), RenderingRegistry.addNewArmourRendererPrefix("extendedTelos"), RenderingRegistry.addNewArmourRendererPrefix("extendedHighSteel"), RenderingRegistry.addNewArmourRendererPrefix("extendedLowSteel"),};
 
 		String[] toolmatNames =
 				new String[] { "Copper", "Tin", "Mythril", "Adamantium", "Onyx", "Bronze", "Thyrium", "Sinisite", "Malachite", "Ashstone", "Dragonstone",
 						"Argonite", "Silver", "Arsenic", "Arsenide Bronze", "Arsenide Gold", "Tenebrium", "Stannum", "Cuprum", "Pyropus Bronze", "Tomb Bronze",
 						"Pulchrum", "Cthon", "Rose Gold", "Erubescent Gold", "Scarlatite Gold", "Hephaestan Gold", "Hadite Steel", "Gestankenzinn", "Cobalt",
 						"Blue Drift Steel", "Blue Celadon", "Green Celadon", "Tungsten", "Tungsten Carbide", "Valfram", "Tungsten Steel", "Prasinos",
-						"Sterling Steel", "Black Silver", "Wootz Steel", "Endium", "Telos", "Sunteleia" };
+						"Sterling Steel", "Black Silver", "Wootz Steel", "Endium", "Telos", "Sunteleia", "Refined Iron", "Carbonized Iron", "High Steel", "Low Steel" };
 		String[] toolNames = new String[] { "Sword", "Shovel", "Pickaxe", "Axe", "Hoe" };
 		String[] armormatNames =
 				new String[] { "Copper", "Tin", "Mythril", "Adamantium", "Onyx", "Bronze", "Thyrium", "Sinisite", "Malachite", "Dragonstone", "Fyrite",
 						"Illumenite", "Silver", "Arsenide Bronze", "Arsenide Gold", "Tenebrium", "Stannum", "Cuprum", "Pyropus Bronze", "Tomb Bronze", "Cthon",
 						"Rose Gold", "Cobalt", "Blue Drift Steel", "Blue Celadon", "Green Celadon", "Tungsten", "Tungsten Carbide", "Valfram",
-						"Tungsten Steel", "Prasinos", "Sterling Steel", "Black Silver", "Wootz Steel", "Endium", "Telos", "Sunteleia" };
+						"Tungsten Steel", "Prasinos", "Sterling Steel", "Black Silver", "Wootz Steel", "Endium", "Telos", "High Steel", "Low Steel" };
 		String[] armorNames = new String[] { "Helmet", "Chestplate", "Leggings", "Boots" };
 
 		if (PluginChecks.getSimpleInstalled()) {
@@ -2095,6 +2146,114 @@ public class SimpleOresEW {
 			}
 		}
 
+// Steel
+		if (PluginChecks.getSteelInstalled()) {
+			{
+				Object[] material =
+						new Object[] { Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+								Item.ingotIron, akkamaddi.SteelyGlint.code.SteelyGlintCore.refinedIronIngot, akkamaddi.SteelyGlint.code.SteelyGlintCore.carbonizedIronIngot, akkamaddi.SteelyGlint.code.SteelyGlintCore.highSteelIngot, akkamaddi.SteelyGlint.code.SteelyGlintCore.lowSteelIngot };
+				EnumToolMaterial[] sotool =
+						new EnumToolMaterial[] { EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD,
+								EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD,
+								EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD,
+								EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD,
+								EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD,
+								EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD,
+								EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD,
+								EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD,
+								EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD, EnumToolMaterial.WOOD,
+								EnumToolMaterial.WOOD, akkamaddi.SteelyGlint.code.SteelyGlintCore.toolRefinedIron, akkamaddi.SteelyGlint.code.SteelyGlintCore.toolCarbonizedIron, akkamaddi.SteelyGlint.code.SteelyGlintCore.toolHighSteel, akkamaddi.SteelyGlint.code.SteelyGlintCore.toolLowSteel };
+				Object[] handle =
+						new Object[] { Block.planks, Block.planks, Item.ingotIron, Item.ingotIron, Item.diamond, Block.cobblestone, Item.ingotIron,
+								Item.diamond, Item.ingotIron, Item.ingotIron, Item.diamond, Item.ingotIron, Item.ingotIron, Block.cobblestone,
+								Block.cobblestone, Block.cobblestone, Item.ingotIron, alexndr.SimpleOres.api.helpers.CoreHelper.coreContent.tinIngot,
+								alexndr.SimpleOres.api.helpers.CoreHelper.coreContent.copperIngot, alexndr.SimpleOres.plugins.fusion.Content.bronzeIngot,
+								alexndr.SimpleOres.plugins.fusion.Content.bronzeIngot, alexndr.SimpleOres.plugins.fusion.Content.bronzeIngot,
+								alexndr.SimpleOres.plugins.fusion.Content.bronzeIngot, alexndr.SimpleOres.api.helpers.CoreHelper.coreContent.copperIngot,
+								Item.ingotGold, Item.ingotGold, Item.ingotGold, Block.cobblestone, Block.cobblestone, Item.ingotIron, Item.ingotIron,
+								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron };
+
+				for (int i = 44; i < 48; i++) {
+
+					item[0][i] =
+							new ItemExtendedSword(steelID + (i - 44) * 5 + 0, sotool[i]).setUnlocalizedName("extendedWorkbenchso:tool0" + i).setTextureName(
+									"SimpleOresEW:tool" + toolmatNames[i] + "Sword");
+					item[1][i] =
+							new ItemExtendedShovel(steelID + (i - 44) * 5 + 1, sotool[i]).setUnlocalizedName("extendedWorkbenchso:tool1" + i).setTextureName(
+									"SimpleOresEW:tool" + toolmatNames[i] + "Shovel");
+					item[2][i] =
+							new ItemExtendedPickaxe(steelID + (i - 44) * 5 + 2, sotool[i]).setUnlocalizedName("extendedWorkbenchso:tool2" + i).setTextureName(
+									"SimpleOresEW:tool" + toolmatNames[i] + "Pickaxe");
+					item[3][i] =
+							new ItemExtendedAxe(steelID + (i - 44) * 5 + 3, sotool[i]).setUnlocalizedName("extendedWorkbenchso:tool3" + i).setTextureName(
+									"SimpleOresEW:tool" + toolmatNames[i] + "Axe");
+					item[4][i] =
+							new ItemExtendedHoe(steelID + (i - 44) * 5 + 4, sotool[i]).setUnlocalizedName("extendedWorkbenchso:tool4" + i).setTextureName(
+									"SimpleOresEW:tool" + toolmatNames[i] + "Hoe");
+
+					MinecraftForge.setToolClass(item[2][i], "pickaxe", sotool[i].getHarvestLevel());
+					MinecraftForge.setToolClass(item[1][i], "shovel", sotool[i].getHarvestLevel());
+					MinecraftForge.setToolClass(item[3][i], "axe", sotool[i].getHarvestLevel());
+
+					treesetting = treesetting + "; " + String.valueOf(item[3][i].itemID);
+
+					EWAPI.addRecipe(new ItemStack(item[0][i], 1),
+							new Object[] { " X ", " X ", " X ", " X ", "YXY", " Y ", ('X'), material[i], ('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[1][i], 1),
+							new Object[] { " X ", " X ", " Y ", " Y ", " Y ", " Y ", ('X'), material[i], ('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[2][i], 1),
+							new Object[] { "XX ", " XX", " YX", " Y ", " Y ", " Y ", ('X'), material[i], ('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[3][i], 1),
+							new Object[] { "X  ", "XXX", "XY ", " Y ", " Y ", " Y ", ('X'), material[i], ('Y'), handle[i] });
+					EWAPI.addRecipe(new ItemStack(item[4][i], 1),
+							new Object[] { " X ", " XX", " Y ", " Y ", " Y ", " Y ", ('X'), material[i], ('Y'), handle[i] });
+
+					for (int j = 0; j < 5; j++)
+						LanguageRegistry.addName(item[j][i], "Extended " + (toolmatNames[i]) + " " + (toolNames[j]));
+				}
+			}
+
+			{
+				Object[] material =
+						new Object[] { Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+								Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, akkamaddi.SteelyGlint.code.SteelyGlintCore.highSteelIngot, akkamaddi.SteelyGlint.code.SteelyGlintCore.lowSteelIngot };
+				EnumArmorMaterial[] soarmor =
+						new EnumArmorMaterial[] { EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
+								EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
+								EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
+								EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
+								EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
+								EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
+								EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, EnumArmorMaterial.IRON,
+								EnumArmorMaterial.IRON, EnumArmorMaterial.IRON, akkamaddi.SteelyGlint.code.SteelyGlintCore.armorHighSteel, akkamaddi.SteelyGlint.code.SteelyGlintCore.armorLowSteel };
+
+				for (int i = 36; i < 38; i++) {
+					for (int j = 0; j < 4; j++) {
+						armor[i][j] =
+								(ItemArmor) new ItemExtendedArmor(steelID + 20 + (i - 36) * 4 + j, soarmor[i], armorRenderer[i], j, armormatNames[i])
+										.setUnlocalizedName("extendedWorkbenchso:armor" + i + j).setTextureName(
+												"SimpleOresEW:armorextended" + armormatNames[i] + armorNames[j]);
+						LanguageRegistry.addName(armor[i][j], "Extended " + armormatNames[i] + " " + armorNames[j]);
+					}
+
+					EWAPI.addRecipe(new ItemStack(armor[i][3], 1), new Object[] { "X X", "X X", "X X", ('X'), material[i] });
+					EWAPI.addRecipe(new ItemStack(armor[i][2], 1), new Object[] { "XXX", "XXX", "X X", "X X", ('X'), material[i] });
+					EWAPI.addRecipe(new ItemStack(armor[i][1], 1), new Object[] { "X X", "XXX", "XXX", "XXX", ('X'), material[i] });
+					EWAPI.addRecipe(new ItemStack(armor[i][0], 1), new Object[] { "XXX", "XXX", "X X", ('X'), material[i] });
+				}
+			}
+		}
+		
 		proxy.registerRenderInformation();
 
 		if (Loader.isModLoaded("TreeCapitator")) {

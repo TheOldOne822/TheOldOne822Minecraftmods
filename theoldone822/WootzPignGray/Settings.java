@@ -72,7 +72,9 @@ public class Settings {
 
     public static boolean graphiteToRedstone;
 
-	/**
+    public static boolean wootzissteel;
+
+    /**
 	 * The method that loads/creates the settings file. Values can be changed from true to false depending on user preference, and certain other values can be set. This is called by the main SimpleOres class.
 	 */
 	public static void doSettings(FMLPreInitializationEvent event)
@@ -127,6 +129,8 @@ public class Settings {
     enableOtherPigiron = settings.get("Extend Pigiron", "Enable Pigiron for Akkamaddis Steel: false or true?", false).getBoolean(false);
 
     graphiteToRedstone = settings.get("Extra", "Allow graphite to be used to make Redstone: false or true?", false).getBoolean(false);
+
+    wootzissteel = settings.get("Extra", "regester Woots as 'ingotSteel' in Ore Dictionary : false or true?", true).getBoolean(true);
 
     settings.save();
 }}

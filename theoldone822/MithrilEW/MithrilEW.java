@@ -15,10 +15,13 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Init;
@@ -27,6 +30,7 @@ import cpw.mods.fml.common.Mod.PreInit;
 import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -118,4 +122,20 @@ public class MithrilEW {
 			EWAPI.addRecipe(new ItemStack(armor[i][0], 1), new Object[] {"XXX", "XXX", "X X",			('X'), material[i]});
 		}
 	}		proxy.registerRenderInformation();
-}}
+	
+	OreDictionary.registerOre("ingotArsenicalBronze", new ItemStack(mod_Mithril.ingotAsBronze));
+	OreDictionary.registerOre("ingotAntimonalBronze", new ItemStack(mod_Mithril.ingotSbBronze));
+
+	OreDictionary.registerOre("oreTennantite", new ItemStack(mod_Mithril.tennantite));
+	OreDictionary.registerOre("oreAsBronze", new ItemStack(mod_Mithril.tennantite));
+	OreDictionary.registerOre("oreTetrahedrite", new ItemStack(mod_Mithril.tetrahedrite));
+	OreDictionary.registerOre("oreSbBronze", new ItemStack(mod_Mithril.tetrahedrite));
+	
+	if (Loader.isModLoaded("TreeCapitator")) {
+		NBTTagCompound c = new NBTTagCompound();
+		c.setString("modID", "wootzpigngray");
+		c.setString("axeIDList", String.valueOf(item[2][0].itemID) + "; " + String.valueOf(item[2][1].itemID) + "; " + String.valueOf(mod_Mithril.axeBronze.itemID) + "; " + String.valueOf(mod_Mithril.axeMithril.itemID));
+		FMLInterModComms.sendMessage("TreeCapitator", "ThirdPartyModConfig", c);
+	}
+	}
+}

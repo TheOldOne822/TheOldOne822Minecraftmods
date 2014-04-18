@@ -1,7 +1,7 @@
 package theoldone822.SimpleOresEW.Items;
 
-import static theoldone822.SimpleOresEW.SimpleOresEW.extendedValues.increaseShearMiningSpeed;
-import static theoldone822.SimpleOresEW.SimpleOresEW.extendedValues.increaseShearDurability;
+import static naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseShearMiningSpeed;
+import static naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseShearDurability;
 
 import java.util.ArrayList;
 import java.util.Random;

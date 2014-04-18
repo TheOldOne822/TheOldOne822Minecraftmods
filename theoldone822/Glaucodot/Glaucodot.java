@@ -59,6 +59,7 @@ public class Glaucodot {
         oreGlaucodot = new SimpleOre(oreGlaucodotID, Material.iron).modId("Glaucodot").setHardness(4.0F).setResistance(10.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("oreGlaucodot");
         
         OreDictionary.registerOre("oreGlaucodot", new ItemStack(oreGlaucodot));
+        OreDictionary.registerOre("oreBlueDriftSteel", new ItemStack(oreGlaucodot));
         GameRegistry.addSmelting(oreGlaucodot.blockID, new ItemStack(SimpleCobaltCore.blueDriftSteelIngot), 0.8F);
 
         if (!SimpleCobaltCore.enableRecycling) {

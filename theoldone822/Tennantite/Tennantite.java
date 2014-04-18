@@ -60,6 +60,7 @@ public class Tennantite {
         oreTennantite = new SimpleOre(oreTennantiteID, Material.iron).modId("Tennantite").setHardness(4.0F).setResistance(10.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("oreTennantite");
         
         OreDictionary.registerOre("oreTennantite", new ItemStack(oreTennantite));
+        OreDictionary.registerOre("oreArsenideBronze", new ItemStack(oreTennantite));
         GameRegistry.addSmelting(oreTennantite.blockID, new ItemStack(ArsenicAndLace.arsenideBronzeIngot), 0.8F);
 
         if (!ArsenicAndLace.enableRecycling) {

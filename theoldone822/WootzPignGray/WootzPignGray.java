@@ -22,7 +22,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
-@Mod(modid = "wootzpigngray", name = "Wootz Pig and Gray", version = "2.3", dependencies = "required-after:simpleores; required-after:simpleoresfusion; after:haditecoal; after:sterlingandblack")
+@Mod(modid = "wootzpigngray", name = "Wootz Pig and Gray", version = "2.4", dependencies = "required-after:simpleores; required-after:simpleoresfusion")
 public class WootzPignGray {
 	@SidedProxy(clientSide = "theoldone822.WootzPignGray.ProxyClient", serverSide = "theoldone822.WootzPignGray.ProxyCommon")	
 	public static ProxyCommon proxy;
@@ -77,5 +77,7 @@ public class WootzPignGray {
 		}
 		toolWootz.customCraftingMaterial = Content.wootzIngot;
 		armorWootz.customCraftingMaterial = Content.wootzIngot;
-}
+		Recipes.doPigiron();
+
+	}
 }
