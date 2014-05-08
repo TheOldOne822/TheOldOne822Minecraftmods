@@ -1,6 +1,5 @@
-package theoldone822.woolarmor.client;
+package theoldone822.woolarmor;
 
-import theoldone822.woolarmor.CommonProxy;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
