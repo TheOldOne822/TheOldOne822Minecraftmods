@@ -18,17 +18,28 @@ public class Recipes {
 		// Forge OreDictionary
 		OreDictionary.registerOre("ingotPigiron", new ItemStack(Content.pigironIngot));
 		OreDictionary.registerOre("ingotPigIron", new ItemStack(Content.pigironIngot));
+		OreDictionary.registerOre("blockPigiron", new ItemStack(Content.pigironBlock));
+		OreDictionary.registerOre("blockPigIron", new ItemStack(Content.pigironBlock));
 		OreDictionary.registerOre("ingotRefinedPigiron", new ItemStack(Content.rePigironIngot));
 		OreDictionary.registerOre("ingotRefinedPigIron", new ItemStack(Content.rePigironIngot));
+		OreDictionary.registerOre("blockRefinedPigiron", new ItemStack(Content.rePigironBlock));
+		OreDictionary.registerOre("blockRefinedPigIron", new ItemStack(Content.rePigironBlock));
 		OreDictionary.registerOre("ingotWootz", new ItemStack(Content.wootzIngot));
 		OreDictionary.registerOre("ingotWootzsteel", new ItemStack(Content.wootzIngot));
 		OreDictionary.registerOre("ingotWootzSteel", new ItemStack(Content.wootzIngot));
+		OreDictionary.registerOre("blockWootz", new ItemStack(Content.wootzBlock));
+		OreDictionary.registerOre("blockWootzsteel", new ItemStack(Content.wootzBlock));
+		OreDictionary.registerOre("blockWootzSteel", new ItemStack(Content.wootzBlock));
 
-		if (Settings.wootzissteel)
+		if (Settings.wootzissteel){
 			OreDictionary.registerOre("ingotSteel", new ItemStack(Content.wootzIngot));
+			OreDictionary.registerOre("blockSteel", new ItemStack(Content.wootzBlock));
+		}
 
 		OreDictionary.registerOre("ingotGrayIron", new ItemStack(Content.grayIngot));
 		OreDictionary.registerOre("ingotGrayiron", new ItemStack(Content.grayIngot));
+		OreDictionary.registerOre("blockGrayIron", new ItemStack(Content.grayBlock));
+		OreDictionary.registerOre("blockGrayiron", new ItemStack(Content.grayBlock));
 
 		// Furnace
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.grayFusionFurnace, true, new Object[] { "XXX", "XYX", "XXX", Character.valueOf('X'), "ingotGrayIron", Character.valueOf('Y'),

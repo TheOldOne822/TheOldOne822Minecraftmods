@@ -20,6 +20,9 @@ public class Recipes {
 		OreDictionary.registerOre("ingotEndium", new ItemStack(Content.EndiumIngot));
 		OreDictionary.registerOre("ingotTelos", new ItemStack(Content.TelosIngot));
 		OreDictionary.registerOre("ingotSunteleia", new ItemStack(Content.SunteleiaIngot));
+		OreDictionary.registerOre("blockEndium", new ItemStack(Content.EndiumBlock));
+		OreDictionary.registerOre("blockTelos", new ItemStack(Content.TelosBlock));
+		OreDictionary.registerOre("blockSunteleia", new ItemStack(Content.SunteleiaBlock));
 
 		// Storage Blocks
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.EndiumBlock, true, new Object[] { "XXX", "XXX", "XXX", Character.valueOf('X'), "ingotEndium" }));

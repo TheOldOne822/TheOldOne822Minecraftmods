@@ -17,6 +17,10 @@ public class Recipes {
 		OreDictionary.registerOre("ingotThraka", new ItemStack(Content.thrakaIngot));
 		OreDictionary.registerOre("ingotPyralis", new ItemStack(Content.pyralisIngot));
 		OreDictionary.registerOre("ingotDragonBezoar", new ItemStack(Content.dragonbezoarIngot));
+		OreDictionary.registerOre("blockCinderstone", new ItemStack(Content.cinderstoneBlock));
+		OreDictionary.registerOre("blockThraka", new ItemStack(Content.thrakaBlock));
+		OreDictionary.registerOre("blockPyralis", new ItemStack(Content.pyralisBlock));
+		OreDictionary.registerOre("blockDragonBezoar", new ItemStack(Content.dragonbezoarBlock));
 
 		// Furnace
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.dragonbezoarFusionFurnace, true, new Object[] { "XXX", "XYX", "XXX", Character.valueOf('X'), "ingotDragonBezoar", Character.valueOf('Y'),

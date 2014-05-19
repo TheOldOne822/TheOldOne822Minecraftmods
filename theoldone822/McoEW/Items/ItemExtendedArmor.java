@@ -1,4 +1,4 @@
-package theoldone822.SimpleOresEW.Items;
+package theoldone822.McoEW.Items;
 
 import static naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseArmorDurability;
 import net.minecraft.entity.Entity;
@@ -42,25 +42,25 @@ public class ItemExtendedArmor extends ItemArmor implements ISpecialArmor
     	{  	
     		case 0:
     		{
-    			this.texturePath = "simpleoresew:textures/models/armor/extended" + type +"_layer_1.png";
+    			this.texturePath = "mithrilew:textures/models/armor/extended" + type +"_layer_1.png";
     		}
     		break;
     		
     		case 1:
     		{
-    			this.texturePath = "simpleoresew:textures/models/armor/extended" + type +"_layer_1.png";
+    			this.texturePath = "mithrilew:textures/models/armor/extended" + type +"_layer_1.png";
     		}
     		break;
     		
     		case 2:
     		{
-    			this.texturePath = "simpleoresew:textures/models/armor/extended" + type +"_layer_2.png";
+    			this.texturePath = "mithrilew:textures/models/armor/extended" + type +"_layer_2.png";
     		}
     		break;
     		
     		case 3:
     		{
-    			this.texturePath = "simpleoresew:textures/models/armor/extended" + type +"_layer_1.png";
+    			this.texturePath = "mithrilew:textures/models/armor/extended" + type +"_layer_1.png";
     		}
     		break;
     	}
@@ -91,9 +91,6 @@ public class ItemExtendedArmor extends ItemArmor implements ISpecialArmor
     @Override
     public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot)
     {
-        if (source.isUnblockable()) {
-            return new ArmorProperties(0, 0, 0);
-          }
         return new ArmorProperties(0, (this.EWdamageReduceAmount + 0.5D) / 25D , armor.getMaxDamage() + 1 - armor.getItemDamage());
     }
 

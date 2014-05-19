@@ -2,17 +2,25 @@ package theoldone822.SimpleDust;
 
 import java.io.File;
 
+import theoldone822.SimpleDust.grinder.BlockGrinderItem;
+import theoldone822.SimpleDust.grinder.BlockGrinder;
+import theoldone822.SimpleDust.grinder.GrinderRecipes;
+import theoldone822.SimpleDust.grinder.TileEntityGrinder;
 import alexndr.SimpleOres.api.helpers.FreeIdHelper;
 import alexndr.SimpleOres.api.helpers.CoreHelper;
+import appeng.api.Materials;
 import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -20,6 +28,7 @@ import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
@@ -27,15 +36,27 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 @Mod(
 		modid = "simpleoresdust",
 		name = "Simple Ores Dust",
-		version = "2.3",
-		dependencies = "required-after:simpleores; after:onlysilver; after:ThermalExpansion; after:simpleoresfusion; after:SimpleArsenic; after:netherrocksfusion; after:netherrocks; after:classicalalchemy; after:simplecthon; after:goldenglitter; after:haditecoal; after:simplecobalt; after:simpletungsten; after:sterlingandblack; after:wootzpigngray; after:classicalalchemyores; after:TungstenOres; after:Tennantite; after:Glaucodot; after:steelyglint")
+		version = "2.5",
+		dependencies = "after:simpleores; after:onlysilver; after:ThermalExpansion; after:simpleoresfusion; after:SimpleArsenic; after:netherrocksfusion; after:netherrocks; after:classicalalchemy; after:simplecthon; after:goldenglitter; after:haditecoal; after:simplecobalt; after:simpletungsten; after:sterlingandblack; after:wootzpigngray; after:classicalalchemyores; after:TungstenOres; after:Tennantite; after:Glaucodot; after:steelyglint")
 public class SimpleDust {
 
-	public static int ID;
+    @SidedProxy(clientSide = "theoldone822.SimpleDust.ClientProxy", serverSide = "theoldone822.SimpleDust.CommonProxy")
+    public static CommonProxy proxy;
+
+    public static int grinderID = 910;
+    public static float stoneGrinderSpeed = 60;
+    public static float copperGrinderSpeed = 30;
+    public static float ironGrinderSpeed = 20;
+    public static float mythrilGrinderSpeed = 15;
+    public static float adamantiumGrinderSpeed = 10;
+
+    public static int ID;
 
 	public static Item dust;
 
-	@Instance("SimpleDust")
+    public static Block grinder;
+
+    @Instance("simpleoresdust")
 	public static SimpleDust instance;
 
 	@EventHandler
@@ -49,6 +70,14 @@ public class SimpleDust {
 		FreeIdHelper.compileIdList();
 
 		ID = config.getItem("Items", "ID", FreeIdHelper.freeItem()).getInt();
+
+		grinderID = config.getBlock("Block IDs", "Grinder", grinderID).getInt();
+
+        stoneGrinderSpeed = config.get("Grinder Speeds", "Stone", (int) (stoneGrinderSpeed * 1000)).getInt() / 1000F;
+        copperGrinderSpeed = config.get("Grinder Speeds", "Copper", (int) (copperGrinderSpeed * 1000)).getInt() / 1000F;
+        ironGrinderSpeed = config.get("Grinder Speeds", "Iron", (int) (ironGrinderSpeed * 1000)).getInt() / 1000F;
+        mythrilGrinderSpeed = config.get("Grinder Speeds", "Mythril", (int) (mythrilGrinderSpeed * 1000)).getInt() / 1000F;
+        adamantiumGrinderSpeed = config.get("Grinder Speeds", "Adamantium", (int) (adamantiumGrinderSpeed * 1000)).getInt() / 1000F;
 
 		config.save();
 
@@ -182,7 +211,27 @@ public class SimpleDust {
 		FurnaceRecipes.smelting().addSmelting(dust.itemID, 2, new ItemStack(Item.diamond, 1, 0), 0.7F);
 		FurnaceRecipes.smelting().addSmelting(dust.itemID, 3, new ItemStack(Item.emerald, 1, 0), 0.7F);
 
-		if (Loader.isModLoaded("ThermalExpansion")) {
+		grinder = new BlockGrinder(grinderID, false).setHardness(3.5F).setUnlocalizedName("Grinder").setHardness(2.0F).setCreativeTab(CreativeTabs.tabMisc);
+        GameRegistry.registerBlock(grinder, BlockGrinderItem.class, "BlockGrinder");
+        GameRegistry.registerTileEntity(TileEntityGrinder.class, "TileEntityGrinder");
+        LanguageRegistry.addName(new ItemStack(grinder, 1, 0), "Stone Grinder");
+        LanguageRegistry.addName(new ItemStack(grinder, 1, 1), "Copper Grinder");
+        LanguageRegistry.addName(new ItemStack(grinder, 1, 2), "Iron Grinder");
+        LanguageRegistry.addName(new ItemStack(grinder, 1, 3), "Mythril Grinder");
+        LanguageRegistry.addName(new ItemStack(grinder, 1, 4), "Adamantium Grinder");
+
+        GrinderRecipes.addGrinding(Block.cobblestone.blockID, 0, new ItemStack(Block.gravel));
+        GrinderRecipes.addGrinding(Block.stone.blockID, 0, new ItemStack(Block.gravel));
+        GrinderRecipes.addGrinding(Block.netherrack.blockID, 0, new ItemStack(Block.slowSand));
+        GrinderRecipes.addGrinding(Block.glowStone.blockID, 0, new ItemStack(Item.glowstone, 4));
+        GrinderRecipes.addGrinding(Block.gravel.blockID, 0, new ItemStack(Block.sand));
+        GrinderRecipes.addGrinding(Block.sandStone.blockID, 0, new ItemStack(Block.sand, 4));
+		
+		proxy.registerGUIs();
+        proxy.registerTileEntitySpecialRenderer();
+        NetworkRegistry.instance().registerGuiHandler(this, GuiRegistry.instance());
+
+        if (Loader.isModLoaded("ThermalExpansion")) {
 			NBTTagCompound toSendGoldore = new NBTTagCompound();
 			toSendGoldore.setInteger("energy", 4000);
 			toSendGoldore.setCompoundTag("input", new NBTTagCompound());
@@ -1069,5 +1118,25 @@ public class SimpleDust {
 				FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSendSilverrore);
 			}
 		}
+	
+        // Crusher Recipes
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(grinder, 1, 0), "CSC", "SFS", "CSC", 'C', Block.cobblestone, 'S', Item.stick, 'F', Block.furnaceIdle));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(grinder, 1, 1), "XXX", "XOX", "XXX", 'X', "ingotCopper", 'O', new ItemStack(grinder, 1, 0)));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(grinder, 1, 2), "XXX", "XOX", "XXX", 'X', Item.ingotIron, 'O', new ItemStack(grinder, 1, 1)));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(grinder, 1, 2), "XXX", "XOX", "XXX", 'X', Item.ingotIron, 'O', new ItemStack(grinder, 1, 0)));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(grinder, 1, 3), "XXX", "XOX", "XXX", 'X', "ingotMythril", 'O', new ItemStack(grinder, 1, 2)));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(grinder, 1, 3), "XXX", "XOX", "XXX", 'X', "ingotMythril", 'O', new ItemStack(grinder, 1, 1)));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(grinder, 1, 3), "XXX", "XOX", "XXX", 'X', "ingotMythril", 'O', new ItemStack(grinder, 1, 0)));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(grinder, 1, 4), "XXX", "XOX", "XXX", 'X', "ingotAdamantium", 'O', new ItemStack(grinder, 1, 3)));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(grinder, 1, 4), "XXX", "XOX", "XXX", 'X', "ingotAdamantium", 'O', new ItemStack(grinder, 1, 2)));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(grinder, 1, 4), "XXX", "XOX", "XXX", 'X', "ingotAdamantium", 'O', new ItemStack(grinder, 1, 1)));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(grinder, 1, 4), "XXX", "XOX", "XXX", 'X', "ingotAdamantium", 'O', new ItemStack(grinder, 1, 0)));
+
+   		if (Loader.isModLoaded("AppliedEnergistics"))
+   		{
+   			int amount = 1;
+   			GrinderRecipes.addGrinding(Materials.matQuartz.copy().itemID, Materials.matQuartz.copy().getItemDamage(), new ItemStack(Materials.matQuartzDust.copy().getItem(), amount, Materials.matQuartzDust.copy().getItemDamage()));
+   		}
+
 	}
 }

@@ -22,7 +22,7 @@ import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
-@Mod(modid = "endium", name = "Endium", version = "1.0", dependencies = "required-after:simpleores; required-after:simpleoresfusion; after:netherrocksfusion")
+@Mod(modid = "endium", name = "Endium", version = "1.1", dependencies = "required-after:simpleores; required-after:simpleoresfusion; after:netherrocksfusion")
 public class Endium {
 	public static EnumToolMaterial toolEndium;
 	public static EnumToolMaterial toolTelos;
