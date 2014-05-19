@@ -87,18 +87,18 @@ public class Content
 	public static void doArmor()
 	{
 		//Armour Details
-		EndiumHelm = new SimpleArmor(IDs.EndiumHelmID, mod.armorEndium, mod.rendererEndium, 0).modId("Endium").setType("Endium").setUnlocalizedName("EndiumHelm").setTextureName("Endium:EndiumHelm");
-		EndiumChest = new SimpleArmor(IDs.EndiumChestID, mod.armorEndium, mod.rendererEndium, 1).modId("Endium").setType("Endium").setUnlocalizedName("EndiumChest").setTextureName("Endium:EndiumChest");
-		EndiumLegs = new SimpleArmor(IDs.EndiumLegsID, mod.armorEndium, mod.rendererEndium, 2).modId("Endium").setType("Endium").setUnlocalizedName("EndiumLegs").setTextureName("Endium:EndiumLegs");
-		EndiumBoots = new SimpleArmor(IDs.EndiumBootsID, mod.armorEndium, mod.rendererEndium, 3).modId("Endium").setType("Endium").setUnlocalizedName("EndiumBoots").setTextureName("Endium:EndiumBoots");
-		TelosHelm = new SimpleArmor(IDs.TelosHelmID, mod.armorTelos, mod.rendererTelos, 0).modId("Endium").setType("Telos").setUnlocalizedName("TelosHelm").setTextureName("Endium:TelosHelm");
-		TelosChest = new SimpleArmor(IDs.TelosChestID, mod.armorTelos, mod.rendererTelos, 1).modId("Endium").setType("Telos").setUnlocalizedName("TelosChest").setTextureName("Endium:TelosChest");
-		TelosLegs = new SimpleArmor(IDs.TelosLegsID, mod.armorTelos, mod.rendererTelos, 2).modId("Endium").setType("Telos").setUnlocalizedName("TelosLegs").setTextureName("Endium:TelosLegs");
-		TelosBoots = new SimpleArmor(IDs.TelosBootsID, mod.armorTelos, mod.rendererTelos, 3).modId("Endium").setType("Telos").setUnlocalizedName("TelosBoots").setTextureName("Endium:TelosBoots");
-		SunteleiaHelm = new SimpleArmor(IDs.SunteleiaHelmID, mod.armorSunteleia, mod.rendererSunteleia, 0).modId("Endium").setType("Sunteleia").setUnlocalizedName("SunteleiaHelm").setTextureName("Endium:SunteleiaHelm");
-		SunteleiaChest = new SimpleArmor(IDs.SunteleiaChestID, mod.armorSunteleia, mod.rendererSunteleia, 1).modId("Endium").setType("Sunteleia").setUnlocalizedName("SunteleiaChest").setTextureName("Endium:SunteleiaChest");
-		SunteleiaLegs = new SimpleArmor(IDs.SunteleiaLegsID, mod.armorSunteleia, mod.rendererSunteleia, 2).modId("Endium").setType("Sunteleia").setUnlocalizedName("SunteleiaLegs").setTextureName("Endium:SunteleiaLegs");
-		SunteleiaBoots = new SimpleArmor(IDs.SunteleiaBootsID, mod.armorSunteleia, mod.rendererSunteleia, 3).modId("Endium").setType("Sunteleia").setUnlocalizedName("SunteleiaBoots").setTextureName("Endium:SunteleiaBoots");
+		EndiumHelm = new SimpleArmor(mod.armorEndium, mod.rendererEndium, 0).modId("Endium").setType("Endium").setUnlocalizedName("EndiumHelm").setTextureName("Endium:EndiumHelm");
+		EndiumChest = new SimpleArmor(mod.armorEndium, mod.rendererEndium, 1).modId("Endium").setType("Endium").setUnlocalizedName("EndiumChest").setTextureName("Endium:EndiumChest");
+		EndiumLegs = new SimpleArmor(mod.armorEndium, mod.rendererEndium, 2).modId("Endium").setType("Endium").setUnlocalizedName("EndiumLegs").setTextureName("Endium:EndiumLegs");
+		EndiumBoots = new SimpleArmor(mod.armorEndium, mod.rendererEndium, 3).modId("Endium").setType("Endium").setUnlocalizedName("EndiumBoots").setTextureName("Endium:EndiumBoots");
+		TelosHelm = new SimpleArmor(mod.armorTelos, mod.rendererTelos, 0).modId("Endium").setType("Telos").setUnlocalizedName("TelosHelm").setTextureName("Endium:TelosHelm");
+		TelosChest = new SimpleArmor(mod.armorTelos, mod.rendererTelos, 1).modId("Endium").setType("Telos").setUnlocalizedName("TelosChest").setTextureName("Endium:TelosChest");
+		TelosLegs = new SimpleArmor(mod.armorTelos, mod.rendererTelos, 2).modId("Endium").setType("Telos").setUnlocalizedName("TelosLegs").setTextureName("Endium:TelosLegs");
+		TelosBoots = new SimpleArmor(mod.armorTelos, mod.rendererTelos, 3).modId("Endium").setType("Telos").setUnlocalizedName("TelosBoots").setTextureName("Endium:TelosBoots");
+		SunteleiaHelm = new SimpleArmor(mod.armorSunteleia, mod.rendererSunteleia, 0).modId("Endium").setType("Sunteleia").setUnlocalizedName("SunteleiaHelm").setTextureName("Endium:SunteleiaHelm");
+		SunteleiaChest = new SimpleArmor(mod.armorSunteleia, mod.rendererSunteleia, 1).modId("Endium").setType("Sunteleia").setUnlocalizedName("SunteleiaChest").setTextureName("Endium:SunteleiaChest");
+		SunteleiaLegs = new SimpleArmor(mod.armorSunteleia, mod.rendererSunteleia, 2).modId("Endium").setType("Sunteleia").setUnlocalizedName("SunteleiaLegs").setTextureName("Endium:SunteleiaLegs");
+		SunteleiaBoots = new SimpleArmor(mod.armorSunteleia, mod.rendererSunteleia, 3).modId("Endium").setType("Sunteleia").setUnlocalizedName("SunteleiaBoots").setTextureName("Endium:SunteleiaBoots");
 
 		LanguageRegistry.addName(EndiumHelm, "Endium Helmet");
 		LanguageRegistry.addName(EndiumChest, "Endium Chestplate");
@@ -123,13 +123,13 @@ public class Content
 	public static void doBlocks()
 	{
 		//Block Properties
-		EndiumOre = new SimpleOre(IDs.EndiumOreID, Material.iron).modId("Endium").setHardness(Settings.EndiumOreHardness).setResistance(Settings.EndiumOreResistance).setLightValue(Settings.EndiumOreLightValue).setUnlocalizedName("EndiumOre").setTextureName("Endium:EndiumOre");
-		EndiumBlock = new SimpleOre(IDs.EndiumBlockID, Material.iron).modId("Endium").setHardness(Settings.EndiumBlockHardness).setResistance(Settings.EndiumBlockResistance).setLightValue(Settings.EndiumBlockLightValue).setUnlocalizedName("EndiumBlock").setTextureName("Endium:EndiumBlock");
-		TelosBlock = new SimpleOre(IDs.TelosBlockID, Material.iron).modId("Endium").setHardness(Settings.TelosBlockHardness).setResistance(Settings.TelosBlockResistance).setUnlocalizedName("TelosBlock").setTextureName("Endium:TelosBlock");
-		SunteleiaBlock = new SimpleOre(IDs.SunteleiaBlockID, Material.iron).modId("Endium").setHardness(Settings.SunteleiaBlockHardness).setResistance(Settings.SunteleiaBlockResistance).setLightValue(Settings.SunteleiaBlockLightValue).setUnlocalizedName("SunteleiaBlock").setTextureName("Endium:SunteleiaBlock");
+		EndiumOre = new SimpleOre(Material.iron).modId("Endium").setHardness(Settings.EndiumOreHardness).setResistance(Settings.EndiumOreResistance).setLightLevel(Settings.EndiumOreLightValue).setBlockName("EndiumOre").setBlockTextureName("Endium:EndiumOre");
+		EndiumBlock = new SimpleOre(Material.iron).modId("Endium").setHardness(Settings.EndiumBlockHardness).setResistance(Settings.EndiumBlockResistance).setLightLevel(Settings.EndiumBlockLightValue).setBlockName("EndiumBlock").setBlockTextureName("Endium:EndiumBlock");
+		TelosBlock = new SimpleOre(Material.iron).modId("Endium").setHardness(Settings.TelosBlockHardness).setResistance(Settings.TelosBlockResistance).setBlockName("TelosBlock").setBlockTextureName("Endium:TelosBlock");
+		SunteleiaBlock = new SimpleOre(Material.iron).modId("Endium").setHardness(Settings.SunteleiaBlockHardness).setResistance(Settings.SunteleiaBlockResistance).setLightLevel(Settings.SunteleiaBlockLightValue).setBlockName("SunteleiaBlock").setBlockTextureName("Endium:SunteleiaBlock");
 
-    	MinecraftForge.setBlockHarvestLevel(EndiumOre, "pickaxe", 5);
-
+		EndiumOre.setHarvestLevel("pickaxe", 5);
+    	
     	LanguageRegistry.addName(EndiumOre, "Endium Ore");
 		LanguageRegistry.addName(TelosBlock, "Block of Telos");
 		LanguageRegistry.addName(SunteleiaBlock, "Block of Sunteleia");
@@ -143,17 +143,18 @@ public class Content
 	public static void doItems()
 	{
 		//Item Details
-		EndiumIngot = new SimpleIngot(IDs.EndiumIngotID).modId("Endium").setUnlocalizedName("EndiumIngot").setTextureName("Endium:EndiumIngot");
-		TelosIngot = new SimpleIngot(IDs.TelosIngotID).modId("Endium").setUnlocalizedName("TelosIngot").setTextureName("Endium:TelosIngot");
-		SunteleiaIngot = new SimpleIngot(IDs.SunteleiaIngotID).modId("Endium").setUnlocalizedName("SunteleiaIngot").setTextureName("Endium:SunteleiaIngot");
-		smallTelosChunk = new SimpleIngot(IDs.smallTelosChunkID).modId("Endium").setUnlocalizedName("smallTelosChunk").setTextureName("Endium:smallTelosChunk");
-		mediumTelosChunk = new SimpleIngot(IDs.mediumTelosChunkID).modId("Endium").setUnlocalizedName("mediumTelosChunk").setTextureName("Endium:mediumTelosChunk");
-		largeTelosChunk = new SimpleIngot(IDs.largeTelosChunkID).modId("Endium").setUnlocalizedName("largeTelosChunk").setTextureName("Endium:largeTelosChunk");
-		smallSunteleiaChunk = new SimpleIngot(IDs.smallSunteleiaChunkID).modId("Endium").setUnlocalizedName("smallSunteleiaChunk").setTextureName("Endium:smallSunteleiaChunk");
-		mediumSunteleiaChunk = new SimpleIngot(IDs.mediumSunteleiaChunkID).modId("Endium").setUnlocalizedName("mediumSunteleiaChunk").setTextureName("Endium:mediumSunteleiaChunk");
-		largeSunteleiaChunk = new SimpleIngot(IDs.largeSunteleiaChunkID).modId("Endium").setUnlocalizedName("largeSunteleiaChunk").setTextureName("Endium:largeSunteleiaChunk");
+		EndiumIngot = new SimpleIngot().modId("Endium").setUnlocalizedName("EndiumIngot").setTextureName("Endium:EndiumIngot");
+		TelosIngot = new SimpleIngot().modId("Endium").setUnlocalizedName("TelosIngot").setTextureName("Endium:TelosIngot");
+		SunteleiaIngot = new SimpleIngot().modId("Endium").setUnlocalizedName("SunteleiaIngot").setTextureName("Endium:SunteleiaIngot");
+		smallTelosChunk = new SimpleIngot().modId("Endium").setUnlocalizedName("smallTelosChunk").setTextureName("Endium:smallTelosChunk");
+		mediumTelosChunk = new SimpleIngot().modId("Endium").setUnlocalizedName("mediumTelosChunk").setTextureName("Endium:mediumTelosChunk");
+		largeTelosChunk = new SimpleIngot().modId("Endium").setUnlocalizedName("largeTelosChunk").setTextureName("Endium:largeTelosChunk");
+		smallSunteleiaChunk = new SimpleIngot().modId("Endium").setUnlocalizedName("smallSunteleiaChunk").setTextureName("Endium:smallSunteleiaChunk");
+		mediumSunteleiaChunk = new SimpleIngot().modId("Endium").setUnlocalizedName("mediumSunteleiaChunk").setTextureName("Endium:mediumSunteleiaChunk");
+		largeSunteleiaChunk = new SimpleIngot().modId("Endium").setUnlocalizedName("largeSunteleiaChunk").setTextureName("Endium:largeSunteleiaChunk");
 
 		LanguageRegistry.addName(EndiumIngot, "Endium Ingot");
+		LanguageRegistry.addName(TelosIngot, "Telos Ingot");
 		LanguageRegistry.addName(TelosIngot, "Telos Ingot");
 		LanguageRegistry.addName(SunteleiaIngot, "Sunteleia Ingot");
 		LanguageRegistry.addName(smallTelosChunk, "Small Telos Chunk");
@@ -170,21 +171,21 @@ public class Content
 	public static void doTools()
 	{
 		//Tool Details
-		EndiumPick = new SimplePickaxe(IDs.EndiumPickID, Endium.toolEndium).modId("Endium").setUnlocalizedName("EndiumPick").setTextureName("Endium:EndiumPick");
-		EndiumAxe = new SimpleAxe(IDs.EndiumAxeID, Endium.toolEndium).modId("Endium").setUnlocalizedName("EndiumAxe").setTextureName("Endium:EndiumAxe");
-		EndiumShovel = new SimpleShovel(IDs.EndiumShovelID, Endium.toolEndium).modId("Endium").setUnlocalizedName("EndiumShovel").setTextureName("Endium:EndiumShovel");
-		EndiumSword = new SimpleSword(IDs.EndiumSwordID, Endium.toolEndium).modId("Endium").setUnlocalizedName("EndiumSword").setTextureName("Endium:EndiumSword");
-		EndiumHoe = new SimpleHoe(IDs.EndiumHoeID, Endium.toolEndium).modId("Endium").setUnlocalizedName("EndiumHoe").setTextureName("Endium:EndiumHoe");
-		TelosPick = new SimplePickaxe(IDs.TelosPickID, Endium.toolTelos).modId("Endium").setUnlocalizedName("TelosPick").setTextureName("Endium:TelosPick");
-		TelosAxe = new SimpleAxe(IDs.TelosAxeID, Endium.toolTelos).modId("Endium").setUnlocalizedName("TelosAxe").setTextureName("Endium:TelosAxe");
-		TelosShovel = new SimpleShovel(IDs.TelosShovelID, Endium.toolTelos).modId("Endium").setUnlocalizedName("TelosShovel").setTextureName("Endium:TelosShovel");
-		TelosSword = new SimpleSword(IDs.TelosSwordID, Endium.toolTelos).modId("Endium").setUnlocalizedName("TelosSword").setTextureName("Endium:TelosSword");
-		TelosHoe = new SimpleHoe(IDs.TelosHoeID, Endium.toolTelos).modId("Endium").setUnlocalizedName("TelosHoe").setTextureName("Endium:TelosHoe");
-		SunteleiaPick = new SimplePickaxe(IDs.SunteleiaPickID, Endium.toolSunteleia).modId("Endium").setUnlocalizedName("SunteleiaPick").setTextureName("Endium:SunteleiaPick");
-		SunteleiaAxe = new SimpleAxe(IDs.SunteleiaAxeID, Endium.toolSunteleia).modId("Endium").setUnlocalizedName("SunteleiaAxe").setTextureName("Endium:SunteleiaAxe");
-		SunteleiaShovel = new SimpleShovel(IDs.SunteleiaShovelID, Endium.toolSunteleia).modId("Endium").setUnlocalizedName("SunteleiaShovel").setTextureName("Endium:SunteleiaShovel");
-		SunteleiaSword = new SimpleSword(IDs.SunteleiaSwordID, Endium.toolSunteleia).modId("Endium").setUnlocalizedName("SunteleiaSword").setTextureName("Endium:SunteleiaSword");
-		SunteleiaHoe = new SimpleHoe(IDs.SunteleiaHoeID, Endium.toolSunteleia).modId("Endium").setUnlocalizedName("SunteleiaHoe").setTextureName("Endium:SunteleiaHoe");
+		EndiumPick = new SimplePickaxe(Endium.toolEndium).modId("Endium").setUnlocalizedName("EndiumPick").setTextureName("Endium:EndiumPick");
+		EndiumAxe = new SimpleAxe(Endium.toolEndium).modId("Endium").setUnlocalizedName("EndiumAxe").setTextureName("Endium:EndiumAxe");
+		EndiumShovel = new SimpleShovel(Endium.toolEndium).modId("Endium").setUnlocalizedName("EndiumShovel").setTextureName("Endium:EndiumShovel");
+		EndiumSword = new SimpleSword(Endium.toolEndium).modId("Endium").setUnlocalizedName("EndiumSword").setTextureName("Endium:EndiumSword");
+		EndiumHoe = new SimpleHoe(Endium.toolEndium).modId("Endium").setUnlocalizedName("EndiumHoe").setTextureName("Endium:EndiumHoe");
+		TelosPick = new SimplePickaxe(Endium.toolTelos).modId("Endium").setUnlocalizedName("TelosPick").setTextureName("Endium:TelosPick");
+		TelosAxe = new SimpleAxe(Endium.toolTelos).modId("Endium").setUnlocalizedName("TelosAxe").setTextureName("Endium:TelosAxe");
+		TelosShovel = new SimpleShovel(Endium.toolTelos).modId("Endium").setUnlocalizedName("TelosShovel").setTextureName("Endium:TelosShovel");
+		TelosSword = new SimpleSword(Endium.toolTelos).modId("Endium").setUnlocalizedName("TelosSword").setTextureName("Endium:TelosSword");
+		TelosHoe = new SimpleHoe(Endium.toolTelos).modId("Endium").setUnlocalizedName("TelosHoe").setTextureName("Endium:TelosHoe");
+		SunteleiaPick = new SimplePickaxe(Endium.toolSunteleia).modId("Endium").setUnlocalizedName("SunteleiaPick").setTextureName("Endium:SunteleiaPick");
+		SunteleiaAxe = new SimpleAxe(Endium.toolSunteleia).modId("Endium").setUnlocalizedName("SunteleiaAxe").setTextureName("Endium:SunteleiaAxe");
+		SunteleiaShovel = new SimpleShovel(Endium.toolSunteleia).modId("Endium").setUnlocalizedName("SunteleiaShovel").setTextureName("Endium:SunteleiaShovel");
+		SunteleiaSword = new SimpleSword(Endium.toolSunteleia).modId("Endium").setUnlocalizedName("SunteleiaSword").setTextureName("Endium:SunteleiaSword");
+		SunteleiaHoe = new SimpleHoe(Endium.toolSunteleia).modId("Endium").setUnlocalizedName("SunteleiaHoe").setTextureName("Endium:SunteleiaHoe");
 
 		LanguageRegistry.addName(TelosPick, "Telos Pickaxe");
 		LanguageRegistry.addName(TelosAxe, "Telos Axe");

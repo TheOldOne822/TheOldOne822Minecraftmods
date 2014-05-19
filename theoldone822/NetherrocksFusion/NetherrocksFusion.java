@@ -10,12 +10,11 @@ import theoldone822.NetherrocksFusion.Furnaces.SuperFusionFurnace;
 import theoldone822.NetherrocksFusion.Furnaces.SuperFusionFurnaceTileEntity;
 import theoldone822.NetherrocksFusion.HandlerEvent;
 import net.minecraft.block.Block;
-import net.minecraft.item.EnumArmorMaterial;
-import net.minecraft.item.EnumToolMaterial;
+import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.crafting.CraftingManager;
-import net.minecraftforge.common.Configuration;
-import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.ModMetadata;
@@ -24,29 +23,27 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@NetworkMod(clientSideRequired = true, serverSideRequired = false)
-@Mod(modid = "netherrocksfusion", name = "Netherrocks Fusion", version = "2.4", dependencies = "required-after:simpleores; required-after:simpleoresfusion; required-after:netherrocks")
+@Mod(modid = "netherrocksfusion", name = "Netherrocks Fusion", version = "1.0", dependencies = "required-after:simpleores; required-after:fusionplugin; required-after:netherrocks")
 public class NetherrocksFusion {
 
 	@SidedProxy(clientSide = "theoldone822.NetherrocksFusion.ProxyClient", serverSide = "theoldone822.NetherrocksFusion.ProxyCommon")	
 	public static ProxyCommon proxy;
 
-	public static EnumToolMaterial toolCinderstone;
-	public static EnumToolMaterial toolThraka;
-	public static EnumToolMaterial toolPyralis;
-	public static EnumToolMaterial toolDragonBezoar;
+	public static ToolMaterial toolCinderstone;
+	public static ToolMaterial toolThraka;
+	public static ToolMaterial toolPyralis;
+	public static ToolMaterial toolDragonBezoar;
 
-	public static EnumArmorMaterial armorCinderstone;
-	public static EnumArmorMaterial armorThraka;
-	public static EnumArmorMaterial armorPyralis;
-	public static EnumArmorMaterial armorPyralisChain;
-	public static EnumArmorMaterial armorDragonBezoar;
-	public static EnumArmorMaterial armorDragonBezoarChain;
+	public static ArmorMaterial armorCinderstone;
+	public static ArmorMaterial armorThraka;
+	public static ArmorMaterial armorPyralis;
+	public static ArmorMaterial armorPyralisChain;
+	public static ArmorMaterial armorDragonBezoar;
+	public static ArmorMaterial armorDragonBezoarChain;
 
 	public static int rendererCinderstone;
 	public static int rendererThraka;
@@ -68,7 +65,6 @@ public class NetherrocksFusion {
 		metadata.description = "Adds Nerherrocks Fusions.";
 		proxy.registerClientTickHandler();
 
-		IDs.doConfig(event);
 		Settings.doSettings(event);
 
 		toolCinderstone = EnumHelper.addToolMaterial("FYRITEIL", Settings.cinderstoneMiningLevel, Settings.cinderstoneUsesNum, Settings.cinderstoneMiningSpeed, Settings.cinderstoneDamageVsEntity, Settings.cinderstoneEnchantability);
@@ -93,7 +89,7 @@ public class NetherrocksFusion {
 	@EventHandler
 	public void InitiateNetherrocksFusion(FMLInitializationEvent initEvent) {
 		instance = this;
-		NetworkRegistry.instance().registerGuiHandler(instance, proxy);
+		NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
 		GameRegistry.registerTileEntity(SuperFusionFurnaceTileEntity.class, "dragonbezoarFusionFurnace");
 		GameRegistry.registerTileEntity(SuperFurnaceTileEntity.class, "dragonbezoarFurnace");
 

@@ -11,7 +11,7 @@ import theoldone822.MoreFusionFurnaces.Furnaces.OnyxFusionFurnace;
 import theoldone822.MoreFusionFurnaces.Furnaces.OnyxFusionFurnaceTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.item.crafting.CraftingManager;
-import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.ModMetadata;
@@ -20,13 +20,11 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@NetworkMod(clientSideRequired = true, serverSideRequired = false)
-@Mod(modid = "morefusionfurnaces", name = "More Fusion Furnaces", version = "2.0", dependencies = "required-after:simpleores; required-after:simpleoresfusion")
+@Mod(modid = "morefusionfurnaces", name = "More Fusion Furnaces", version = "1.0", dependencies = "required-after:simpleores; required-after:fusionplugin")
 public class MoreFusionFurnaces {
 	@SidedProxy(clientSide = "theoldone822.MoreFusionFurnaces.ProxyClient", serverSide = "theoldone822.MoreFusionFurnaces.ProxyCommon")	
 	public static ProxyCommon proxy;
@@ -35,10 +33,6 @@ public class MoreFusionFurnaces {
 	public static Block mythrilFusionFurnaceOn;
 	public static Block onyxFusionFurnace;
 	public static Block onyxFusionFurnaceOn;
-	public static int mythrilFusionFurnaceID;
-	public static int mythrilFusionFurnaceOnID;	
-	public static int onyxFusionFurnaceID;
-	public static int onyxFusionFurnaceOnID;	
 
 	public static Configuration config;
 	public static int mythrilFurnaceMultiplier, onyxFurnaceMultiplier, onyxFurnaceMultiChance;
@@ -55,25 +49,21 @@ public class MoreFusionFurnaces {
 		metadata.description = "Adds Mithril and Onyx Fusion Furnaces.";
 		config = new Configuration(event.getSuggestedConfigurationFile());
 		config.load();
-		mythrilFusionFurnaceID = config.getBlock("Blocks", "Mythril Fusion Furnace", 485).getInt();
-		mythrilFusionFurnaceOnID = config.getBlock("Blocks", "Mythril Fusion Furnace On", 486).getInt();
-		onyxFusionFurnaceID = config.getBlock("Blocks", "Onyx Fusion Furnace", 487).getInt();
-		onyxFusionFurnaceOnID = config.getBlock("Blocks", "Onyx Fusion Furnace On", 488).getInt();
-		
-    	//Custom Furnace Multipliers
+
+		//Custom Furnace Multipliers
     	mythrilFurnaceMultiplier = config.get("Multiplier", "Mythril Furnace Fuel Length Multiplier", 2).getInt();
     	onyxFurnaceMultiplier = config.get("Multiplier", "Onyx Furnace Extra Yield Amount", 1).getInt();
     	onyxFurnaceMultiChance = config.get("Multiplier", "Onyx Furnace Multi Yield Chance (From 1 to 100)", 33).getInt();
 		
-		mythrilFusionFurnace = new MythrilFusionFurnace(mythrilFusionFurnaceID, false).setHardness(CoreHelper.coreSettings.mythrilFurnaceHardness).setResistance(CoreHelper.coreSettings.mythrilFurnaceResistance).setUnlocalizedName("morefusionfurnaces:mythrilFusionFurnace");
-		mythrilFusionFurnaceOn = new MythrilFusionFurnace(mythrilFusionFurnaceOnID, true).setHardness(CoreHelper.coreSettings.mythrilFurnaceHardness).setResistance(CoreHelper.coreSettings.mythrilFurnaceResistance).setLightValue(CoreHelper.coreSettings.mythrilFurnaceLightValue).setUnlocalizedName("morefusionfurnaces:mythrilFusionFurnaceOn");
-		onyxFusionFurnace = new OnyxFusionFurnace(onyxFusionFurnaceID, false).setHardness(CoreHelper.coreSettings.onyxFurnaceHardness).setResistance(CoreHelper.coreSettings.onyxFurnaceResistance).setUnlocalizedName("morefusionfurnaces:onyxFusionFurnace");
-		onyxFusionFurnaceOn = new OnyxFusionFurnace(onyxFusionFurnaceOnID, true).setHardness(CoreHelper.coreSettings.onyxFurnaceHardness).setResistance(CoreHelper.coreSettings.onyxFurnaceResistance).setLightValue(CoreHelper.coreSettings.onyxFurnaceLightValue).setUnlocalizedName("morefusionfurnaces:onyxFusionFurnaceOn");
+		mythrilFusionFurnace = new MythrilFusionFurnace(false).setHardness(CoreHelper.coreSettings.mythrilFurnaceHardness).setResistance(CoreHelper.coreSettings.mythrilFurnaceResistance).setBlockName("morefusionfurnaces:mythrilFusionFurnace");
+		mythrilFusionFurnaceOn = new MythrilFusionFurnace(true).setHardness(CoreHelper.coreSettings.mythrilFurnaceHardness).setResistance(CoreHelper.coreSettings.mythrilFurnaceResistance).setLightLevel(CoreHelper.coreSettings.mythrilFurnaceLightValue).setBlockName("morefusionfurnaces:mythrilFusionFurnaceOn");
+		onyxFusionFurnace = new OnyxFusionFurnace(false).setHardness(CoreHelper.coreSettings.onyxFurnaceHardness).setResistance(CoreHelper.coreSettings.onyxFurnaceResistance).setBlockName("morefusionfurnaces:onyxFusionFurnace");
+		onyxFusionFurnaceOn = new OnyxFusionFurnace(true).setHardness(CoreHelper.coreSettings.onyxFurnaceHardness).setResistance(CoreHelper.coreSettings.onyxFurnaceResistance).setLightLevel(CoreHelper.coreSettings.onyxFurnaceLightValue).setBlockName("morefusionfurnaces:onyxFusionFurnaceOn");
 
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(mythrilFusionFurnace, true, new Object[]{
-				"XXX", "XYX", "XXX", Character.valueOf('X'), "ingotMythril", Character.valueOf('Y'), FusionHelper.fusionContent.fusionFurnace}));
+				"XXX", "XYX", "XXX", Character.valueOf('X'), "ingotMythril", Character.valueOf('Y'), FusionHelper.fusionContent.fusion_furnace}));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(onyxFusionFurnace, true, new Object[]{
-				"XXX", "XYX", "XXX", Character.valueOf('X'), "gemOnyx", Character.valueOf('Y'), FusionHelper.fusionContent.fusionFurnace}));
+				"XXX", "XYX", "XXX", Character.valueOf('X'), "gemOnyx", Character.valueOf('Y'), FusionHelper.fusionContent.fusion_furnace}));
 		
 		GameRegistry.registerBlock(mythrilFusionFurnace, "mythrilFusionFurnace");
 		GameRegistry.registerBlock(mythrilFusionFurnaceOn, "mythrilFusionFurnaceOn");
@@ -90,7 +80,7 @@ public class MoreFusionFurnaces {
 	@EventHandler
 	public void InitiateMoreFusionFurnaces(FMLInitializationEvent initEvent) {
 		instance = this;
-		NetworkRegistry.instance().registerGuiHandler(instance, proxy);
+		NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
 		GameRegistry.registerTileEntity(MythrilFusionFurnaceTileEntity.class, "mythrilFusionFurnace");
 		GameRegistry.registerTileEntity(OnyxFusionFurnaceTileEntity.class, "onyxFusionFurnace");
 

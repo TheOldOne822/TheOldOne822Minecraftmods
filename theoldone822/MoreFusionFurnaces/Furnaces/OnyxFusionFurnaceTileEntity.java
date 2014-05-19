@@ -10,6 +10,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -20,7 +22,7 @@ import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 
 public class OnyxFusionFurnaceTileEntity extends TileEntity implements ISidedInventory
 {
@@ -131,21 +133,21 @@ public class OnyxFusionFurnaceTileEntity extends TileEntity implements ISidedInv
     /**
      * Returns the name of the inventory.
      */
-    public String getInvName()
+    public String getInventoryName()
     {
-        return this.isInvNameLocalized() ? this.field_94130_e : "container.furnace";
+        return this.hasCustomInventoryName() ? this.field_94130_e : "container.furnace";
     }
 
     /**
      * If this returns false, the inventory name will be used as an unlocalized name, and translated into the player's
      * language. Otherwise it will be used directly.
      */
-    public boolean isInvNameLocalized()
+    public boolean hasCustomInventoryName()
     {
         return this.field_94130_e != null && this.field_94130_e.length() > 0;
     }
 
-    public void func_94129_a(String par1Str)
+    public void func_145951_a(String par1Str)
     {
         this.field_94130_e = par1Str;
     }
@@ -156,12 +158,12 @@ public class OnyxFusionFurnaceTileEntity extends TileEntity implements ISidedInv
     public void readFromNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.readFromNBT(par1NBTTagCompound);
-        NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items");
+        NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items", 10);
         this.furnaceItemStacks = new ItemStack[this.getSizeInventory()];
 
         for (int i = 0; i < nbttaglist.tagCount(); ++i)
         {
-            NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.tagAt(i);
+            NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.getCompoundTagAt(i);
             byte b0 = nbttagcompound1.getByte("Slot");
 
             if (b0 >= 0 && b0 < this.furnaceItemStacks.length)
@@ -203,7 +205,7 @@ public class OnyxFusionFurnaceTileEntity extends TileEntity implements ISidedInv
 
         par1NBTTagCompound.setTag("Items", nbttaglist);
 
-        if (this.isInvNameLocalized())
+        if (this.hasCustomInventoryName())
         {
             par1NBTTagCompound.setString("CustomName", this.field_94130_e);
         }
@@ -283,7 +285,7 @@ public class OnyxFusionFurnaceTileEntity extends TileEntity implements ISidedInv
 
                         if (this.furnaceItemStacks[1].stackSize == 0)
                         {
-                            this.furnaceItemStacks[1] = this.furnaceItemStacks[1].getItem().getContainerItemStack(furnaceItemStacks[1]);
+                            this.furnaceItemStacks[1] = this.furnaceItemStacks[1].getItem().getContainerItem(furnaceItemStacks[1]);
                         }
                     }
                 }
@@ -314,7 +316,7 @@ public class OnyxFusionFurnaceTileEntity extends TileEntity implements ISidedInv
 
         if (flag1)
         {
-            this.onInventoryChanged();
+            this.markDirty();
         }
     }
 
@@ -325,9 +327,8 @@ public class OnyxFusionFurnaceTileEntity extends TileEntity implements ISidedInv
     {
         if(this.furnaceItemStacks[0] != null && this.furnaceItemStacks[3] != null && this.furnaceItemStacks[4] != null)
         {
-        	ItemStack itemstack = FusionHelper.fusionFurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0], this.furnaceItemStacks[3], this.furnaceItemStacks[4]);
+        	ItemStack itemstack = FusionHelper.fusionFurnaceRecipes.getSmeltingResult(this.furnaceItemStacks[0], this.furnaceItemStacks[3], this.furnaceItemStacks[4]);
        		if (itemstack == null) return false;
-       		if(FusionHelper.fusionFurnaceRecipes.smelting().isStackBigEnough() == false) return false;
     		if (this.furnaceItemStacks[2] == null) return true;
     		if (!this.furnaceItemStacks[2].isItemEqual(itemstack)) return false;
     		int result = furnaceItemStacks[2].stackSize + itemstack.stackSize;
@@ -357,7 +358,7 @@ public class OnyxFusionFurnaceTileEntity extends TileEntity implements ISidedInv
     	
         if (this.canSmelt())
         {
-        	ItemStack itemstack = FusionHelper.fusionFurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0], this.furnaceItemStacks[3], this.furnaceItemStacks[4]);
+        	ItemStack itemstack = FusionHelper.fusionFurnaceRecipes.applyFusion(this.furnaceItemStacks[0], this.furnaceItemStacks[3], this.furnaceItemStacks[4]);
 
             if (this.furnaceItemStacks[2] == null)
             {
@@ -370,23 +371,19 @@ public class OnyxFusionFurnaceTileEntity extends TileEntity implements ISidedInv
                 furnaceItemStacks[2].stackSize += itemstack.stackSize + k;
             }
             
-            this.furnaceItemStacks[0].stackSize = this.furnaceItemStacks[0].stackSize - FusionHelper.fusionFurnaceRecipes.smelting().decreaseStackBy(0);            
-            this.furnaceItemStacks[3].stackSize = this.furnaceItemStacks[3].stackSize - FusionHelper.fusionFurnaceRecipes.smelting().decreaseStackBy(1);           
-            this.furnaceItemStacks[4].stackSize = this.furnaceItemStacks[4].stackSize - FusionHelper.fusionFurnaceRecipes.smelting().decreaseStackBy(2);  
-
             if (furnaceItemStacks[0] != null && this.furnaceItemStacks[0].stackSize <= 0)
             {
-                furnaceItemStacks[0] = furnaceItemStacks[0].getItem().getContainerItemStack(furnaceItemStacks[0]);
+                furnaceItemStacks[0] = furnaceItemStacks[0].getItem().getContainerItem(furnaceItemStacks[0]);
             }
             
             if (furnaceItemStacks[3] != null && this.furnaceItemStacks[3].stackSize <= 0)
             {
-            	furnaceItemStacks[3] = furnaceItemStacks[3].getItem().getContainerItemStack(furnaceItemStacks[3]);
+            	furnaceItemStacks[3] = furnaceItemStacks[3].getItem().getContainerItem(furnaceItemStacks[3]);
             }
             
             if (furnaceItemStacks[4] != null && this.furnaceItemStacks[4].stackSize <= 0)
             {
-            	furnaceItemStacks[4] = furnaceItemStacks[4].getItem().getContainerItemStack(furnaceItemStacks[4]);
+            	furnaceItemStacks[4] = furnaceItemStacks[4].getItem().getContainerItem(furnaceItemStacks[4]);
             }
         }
     }
@@ -403,24 +400,23 @@ public class OnyxFusionFurnaceTileEntity extends TileEntity implements ISidedInv
         }
         else
         {
-            int i = par0ItemStack.getItem().itemID;
             Item item = par0ItemStack.getItem();
 
-            if (par0ItemStack.getItem() instanceof ItemBlock && Block.blocksList[i] != null)
+            if (par0ItemStack.getItem() instanceof ItemBlock && Block.getBlockFromItem(item) != null)
             {
-                Block block = Block.blocksList[i];
+                Block block = Block.getBlockFromItem(item);
 
-                if (block == Block.woodSingleSlab)
+                if (block == Blocks.wooden_slab)
                 {
                     return 1125 / 4;
                 }
 
-                if (block.blockMaterial == Material.wood)
+                if (block.getMaterial() == Material.wood)
                 {
                     return 1125 / 2;
                 }
                 
-                if (block == Block.coalBlock)
+                if (block == Blocks.coal_block)
                 {
                     return 30000;
                 }
@@ -428,12 +424,12 @@ public class OnyxFusionFurnaceTileEntity extends TileEntity implements ISidedInv
 
             if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 375;
             if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 375;
-            if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().equals("WOOD")) return 375;
-            if (i == Item.stick.itemID) return 375 / 2;
-            if (i == Item.coal.itemID) return 3000;
-            if (i == Item.bucketLava.itemID) return 37500;
-            if (i == Block.sapling.blockID) return 375 / 2;
-            if (i == Item.blazeRod.itemID) return 4500;
+            if (item instanceof ItemHoe && ((ItemHoe) item).getToolMaterialName().equals("WOOD")) return 375;
+            if (item == Items.stick) return 375 / 2;
+            if (item == Items.coal) return 3000;
+            if (item == Items.lava_bucket) return 37500;
+            if (item == Item.getItemFromBlock(Blocks.sapling)) return 375 / 2;
+            if (item == Items.blaze_rod) return 4500;
             return GameRegistry.getFuelValue(par0ItemStack) * 1875 / 1000;
         }
     }
@@ -451,12 +447,13 @@ public class OnyxFusionFurnaceTileEntity extends TileEntity implements ISidedInv
      */
     public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer)
     {
-        return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
+        return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
     }
 
-    public void openChest() {}
+    public void openInventory() {}
 
-    public void closeChest() {}
+    public void closeInventory() {}
+
 
     /**
      * Returns true if automation is allowed to insert the given stack (ignoring stack size) into the given slot.
@@ -510,7 +507,7 @@ public class OnyxFusionFurnaceTileEntity extends TileEntity implements ISidedInv
      */
     public boolean canExtractItem(int par1, ItemStack par2ItemStack, int par3)
     {
-        return par3 != 0 || par1 != 1 || par2ItemStack.itemID == Item.bucketEmpty.itemID;
+        return par3 != 0 || par1 != 1 || par2ItemStack.getItem() == Items.bucket;
     }
 
     /**

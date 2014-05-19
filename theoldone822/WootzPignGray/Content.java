@@ -1,5 +1,7 @@
 package theoldone822.WootzPignGray;
 
+import java.util.Random;
+
 import theoldone822.WootzPignGray.Furnaces.GrayFurnace;
 import theoldone822.WootzPignGray.Furnaces.GrayFusionFurnace;
 import theoldone822.WootzPignGray.Items.HardenedAxe;
@@ -88,10 +90,10 @@ public class Content
 	public static void doArmor()
 	{
 		//Armour Details
-		wootzHelm = new SimpleArmor(IDs.wootzHelmID, mod.armorWootz, mod.rendererWootz, 0).modId("wootzpigngray").setUnlocalizedName("wootzHelm").setTextureName("wootzpigngray:wootzHelm");
-		wootzChest = new SimpleArmor(IDs.wootzChestID, mod.armorWootz, mod.rendererWootz, 1).modId("wootzpigngray").setUnlocalizedName("wootzChest").setTextureName("wootzpigngray:wootzChest");
-		wootzLegs = new SimpleArmor(IDs.wootzLegsID, mod.armorWootz, mod.rendererWootz, 2).modId("wootzpigngray").setUnlocalizedName("wootzLegs").setTextureName("wootzpigngray:wootzLegs");
-		wootzBoots = new SimpleArmor(IDs.wootzBootsID, mod.armorWootz, mod.rendererWootz, 3).modId("wootzpigngray").setUnlocalizedName("wootzBoots").setTextureName("wootzpigngray:wootzBoots");
+		wootzHelm = new SimpleArmor(mod.armorWootz, mod.rendererWootz, 0).modId("wootzpigngray").setUnlocalizedName("wootzHelm").setTextureName("wootzpigngray:wootzHelm");
+		wootzChest = new SimpleArmor(mod.armorWootz, mod.rendererWootz, 1).modId("wootzpigngray").setUnlocalizedName("wootzChest").setTextureName("wootzpigngray:wootzChest");
+		wootzLegs = new SimpleArmor(mod.armorWootz, mod.rendererWootz, 2).modId("wootzpigngray").setUnlocalizedName("wootzLegs").setTextureName("wootzpigngray:wootzLegs");
+		wootzBoots = new SimpleArmor(mod.armorWootz, mod.rendererWootz, 3).modId("wootzpigngray").setUnlocalizedName("wootzBoots").setTextureName("wootzpigngray:wootzBoots");
 
 		LanguageRegistry.addName(wootzHelm, "Wootz steel Helmet");
 		LanguageRegistry.addName(wootzChest, "Wootz steel Chestplate");
@@ -106,17 +108,18 @@ public class Content
 	public static void doBlocks()
 	{
 		//Block Properties
-		pigironBlock = new SimpleOre(IDs.pigironBlockID, Material.iron).modId("wootzpigngray").setHardness(Settings.pigironBlockHardness).setResistance(Settings.pigironBlockResistance).setUnlocalizedName("pigironBlock").setTextureName("wootzpigngray:pigironBlock");
-		wootzBlock = new SimpleOre(IDs.wootzBlockID, Material.iron).modId("wootzpigngray").setHardness(Settings.wootzBlockHardness).setResistance(Settings.wootzBlockResistance).setUnlocalizedName("wootzBlock").setTextureName("wootzpigngray:wootzBlock");
-		rePigironBlock = new SimpleOre(IDs.rePigironBlockID, Material.iron).modId("wootzpigngray").setHardness(Settings.rePigironBlockHardness).setResistance(Settings.rePigironBlockResistance).setUnlocalizedName("rePigironBlock").setTextureName("wootzpigngray:rePigironBlock");
-		grayBlock = new SimpleGemOre(IDs.grayBlockID, Material.iron, "wootzpigngray", IDs.graphiteID, 3, 6).setHardness(Settings.grayBlockHardness).setResistance(Settings.grayBlockResistance).setUnlocalizedName("grayBlock").setTextureName("wootzpigngray:grayBlock");
-		grayFurnace = new GrayFurnace(IDs.grayFurnaceID, false).setHardness(Settings.grayFurnaceHardness).setResistance(Settings.grayFurnaceResistance).setUnlocalizedName("grayFurnace");
-		grayFurnaceOn = new GrayFurnace(IDs.grayFurnaceOnID, true).setHardness(Settings.grayFurnaceHardness).setResistance(Settings.grayFurnaceResistance).setLightValue(Settings.grayFurnaceLightValue).setUnlocalizedName("grayFurnaceOn");
-		grayFusionFurnace = new GrayFusionFurnace(IDs.grayFusionFurnaceID, false).setHardness(Settings.grayFurnaceHardness).setResistance(Settings.grayFurnaceResistance).setUnlocalizedName("grayFusionFurnace");
-		grayFusionFurnaceOn = new GrayFusionFurnace(IDs.grayFusionFurnaceOnID, true).setHardness(Settings.grayFurnaceHardness).setResistance(Settings.grayFurnaceResistance).setLightValue(Settings.grayFurnaceLightValue).setUnlocalizedName("grayFusionFurnaceOn");
+		pigironBlock = new SimpleOre(Material.iron).modId("wootzpigngray").setHardness(Settings.pigironBlockHardness).setResistance(Settings.pigironBlockResistance).setBlockName("pigironBlock").setBlockTextureName("wootzpigngray:pigironBlock");
+		wootzBlock = new SimpleOre(Material.iron).modId("wootzpigngray").setHardness(Settings.wootzBlockHardness).setResistance(Settings.wootzBlockResistance).setBlockName("wootzBlock").setBlockTextureName("wootzpigngray:wootzBlock");
+		rePigironBlock = new SimpleOre(Material.iron).modId("wootzpigngray").setHardness(Settings.rePigironBlockHardness).setResistance(Settings.rePigironBlockResistance).setBlockName("rePigironBlock").setBlockTextureName("wootzpigngray:rePigironBlock");
+	    Random generator = new Random();
+    	int r = generator.nextInt(3);
+		grayBlock = new SimpleOre(Material.iron).modId("wootzpigngray").setStackToDrop(new ItemStack(graphite, (3 + r))).setHardness(Settings.grayBlockHardness).setResistance(Settings.grayBlockResistance).setBlockName("grayBlock").setBlockTextureName("wootzpigngray:grayBlock");
+		grayFurnace = new GrayFurnace(false).setHardness(Settings.grayFurnaceHardness).setResistance(Settings.grayFurnaceResistance).setBlockName("grayFurnace");
+		grayFurnaceOn = new GrayFurnace(true).setHardness(Settings.grayFurnaceHardness).setResistance(Settings.grayFurnaceResistance).setLightLevel(Settings.grayFurnaceLightValue).setBlockName("grayFurnaceOn");
+		grayFusionFurnace = new GrayFusionFurnace(false).setHardness(Settings.grayFurnaceHardness).setResistance(Settings.grayFurnaceResistance).setBlockName("grayFusionFurnace");
+		grayFusionFurnaceOn = new GrayFusionFurnace(true).setHardness(Settings.grayFurnaceHardness).setResistance(Settings.grayFurnaceResistance).setLightLevel(Settings.grayFurnaceLightValue).setBlockName("grayFusionFurnaceOn");
 
 		//Block Registering
-		GameRegistry.registerBlock(grayBlock, "grayBlock");
 		GameRegistry.registerBlock(grayFurnace, "grayFurnace");
 		GameRegistry.registerBlock(grayFurnaceOn, "grayFurnaceOn");
 		GameRegistry.registerBlock(grayFusionFurnace, "grayFusionFurnace");
@@ -139,17 +142,17 @@ public class Content
 	public static void doItems()
 	{
 		//Item Details
-		rawPigiron = new SimpleIngot(IDs.rawPigironID).modId("wootzpigngray").setUnlocalizedName("rawPigiron").setTextureName("wootzpigngray:rawPigiron");
-		pigironIngot = new SimpleIngot(IDs.pigironIngotID).modId("wootzpigngray").setUnlocalizedName("pigironIngot").setTextureName("wootzpigngray:pigironIngot");
-		rePigironIngot = new SimpleIngot(IDs.rePigironIngotID).modId("wootzpigngray").setUnlocalizedName("rePigironIngot").setTextureName("wootzpigngray:rePigironIngot");
-		wootzIngot = new SimpleIngot(IDs.wootzIngotID).modId("wootzpigngray").setUnlocalizedName("wootzIngot").setTextureName("wootzpigngray:wootzIngot");
-		grayIngot = new SimpleIngot(IDs.grayIngotID).modId("wootzpigngray").setUnlocalizedName("grayIngot").setTextureName("wootzpigngray:grayIngot");
-		smallWootzsteelChunk = new SimpleIngot(IDs.smallWootzsteelChunkID).modId("wootzpigngray").setUnlocalizedName("smallWootzsteelChunk").setTextureName("wootzpigngray:largeWootz steelChunk");
-		mediumWootzsteelChunk = new SimpleIngot(IDs.mediumWootzsteelChunkID).modId("wootzpigngray").setUnlocalizedName("mediumWootzsteelChunk").setTextureName("wootzpigngray:largeWootz steelChunk");
-		largeWootzsteelChunk = new SimpleIngot(IDs.largeWootzsteelChunkID).modId("wootzpigngray").setUnlocalizedName("largeWootzsteelChunk").setTextureName("wootzpigngray:largeWootz steelChunk");
-		packedIron = new SimpleIngot(IDs.packedIronID).modId("wootzpigngray").setUnlocalizedName("packedIron").setTextureName("wootzpigngray:packedIron");
-		graphite = new SimpleIngot(IDs.graphiteID).modId("wootzpigngray").setUnlocalizedName("graphite").setTextureName("wootzpigngray:graphite");
-		largeGrayChunk = new SimpleIngot(IDs.largeGrayChunkID).modId("wootzpigngray").setUnlocalizedName("largeGrayChunk").setTextureName("wootzpigngray:largeGrayChunk");
+		rawPigiron = new SimpleIngot().modId("wootzpigngray").setUnlocalizedName("rawPigiron").setTextureName("wootzpigngray:rawPigiron");
+		pigironIngot = new SimpleIngot().modId("wootzpigngray").setUnlocalizedName("pigironIngot").setTextureName("wootzpigngray:pigironIngot");
+		rePigironIngot = new SimpleIngot().modId("wootzpigngray").setUnlocalizedName("rePigironIngot").setTextureName("wootzpigngray:rePigironIngot");
+		wootzIngot = new SimpleIngot().modId("wootzpigngray").setUnlocalizedName("wootzIngot").setTextureName("wootzpigngray:wootzIngot");
+		grayIngot = new SimpleIngot().modId("wootzpigngray").setUnlocalizedName("grayIngot").setTextureName("wootzpigngray:grayIngot");
+		smallWootzsteelChunk = new SimpleIngot().modId("wootzpigngray").setUnlocalizedName("smallWootzsteelChunk").setTextureName("wootzpigngray:largeWootz steelChunk");
+		mediumWootzsteelChunk = new SimpleIngot().modId("wootzpigngray").setUnlocalizedName("mediumWootzsteelChunk").setTextureName("wootzpigngray:largeWootz steelChunk");
+		largeWootzsteelChunk = new SimpleIngot().modId("wootzpigngray").setUnlocalizedName("largeWootzsteelChunk").setTextureName("wootzpigngray:largeWootz steelChunk");
+		packedIron = new SimpleIngot().modId("wootzpigngray").setUnlocalizedName("packedIron").setTextureName("wootzpigngray:packedIron");
+		graphite = new SimpleIngot().modId("wootzpigngray").setUnlocalizedName("graphite").setTextureName("wootzpigngray:graphite");
+		largeGrayChunk = new SimpleIngot().modId("wootzpigngray").setUnlocalizedName("largeGrayChunk").setTextureName("wootzpigngray:largeGrayChunk");
 
 		LanguageRegistry.addName(rawPigiron, "Raw Pigiron");
 		LanguageRegistry.addName(pigironIngot, "Pigiron Ingot");
@@ -170,16 +173,16 @@ public class Content
 	public static void doTools()
 	{
 		//Tool Details
-		wootzPick = new SimplePickaxe(IDs.wootzPickID, WootzPignGray.toolWootz).modId("wootzpigngray").setUnlocalizedName("wootzPick").setTextureName("wootzpigngray:wootzPick");
-		wootzAxe = new SimpleAxe(IDs.wootzAxeID, WootzPignGray.toolWootz).modId("wootzpigngray").setUnlocalizedName("wootzAxe").setTextureName("wootzpigngray:wootzAxe");
-		wootzShovel = new SimpleShovel(IDs.wootzShovelID, WootzPignGray.toolWootz).modId("wootzpigngray").setUnlocalizedName("wootzShovel").setTextureName("wootzpigngray:wootzShovel");
-		wootzSword = new SimpleSword(IDs.wootzSwordID, WootzPignGray.toolWootz).modId("wootzpigngray").setUnlocalizedName("wootzSword").setTextureName("wootzpigngray:wootzSword");
-		wootzHoe = new SimpleHoe(IDs.wootzHoeID, WootzPignGray.toolWootz).modId("wootzpigngray").setUnlocalizedName("wootzHoe").setTextureName("wootzpigngray:wootzHoe");
-		hardenedsteelPick = new HardenedPickaxe(IDs.hardenedPickID, WootzPignGray.toolHardenedsteel, "wootzpigngray").setUnlocalizedName("hardenedsteelPick").setTextureName("wootzpigngray:hardenedsteelPick");
-		hardenedsteelAxe = new HardenedAxe(IDs.hardenedAxeID, WootzPignGray.toolHardenedsteel, "wootzpigngray").setUnlocalizedName("hardenedsteelAxe").setTextureName("wootzpigngray:hardenedsteelAxe");
-		hardenedsteelShovel = new HardenedShovel(IDs.hardenedShovelID, WootzPignGray.toolHardenedsteel, "wootzpigngray").setUnlocalizedName("hardenedsteelShovel").setTextureName("wootzpigngray:hardenedsteelShovel");
-		hardenedsteelSword = new HardenedSword(IDs.hardenedSwordID, WootzPignGray.toolHardenedsteel, "wootzpigngray").setUnlocalizedName("hardenedsteelSword").setTextureName("wootzpigngray:hardenedsteelSword");
-		hardenedsteelHoe = new HardenedHoe(IDs.hardenedHoeID, WootzPignGray.toolHardenedsteel, "wootzpigngray").setUnlocalizedName("hardenedsteelHoe").setTextureName("wootzpigngray:hardenedsteelHoe");
+		wootzPick = new SimplePickaxe(WootzPignGray.toolWootz).modId("wootzpigngray").setUnlocalizedName("wootzPick").setTextureName("wootzpigngray:wootzPick");
+		wootzAxe = new SimpleAxe(WootzPignGray.toolWootz).modId("wootzpigngray").setUnlocalizedName("wootzAxe").setTextureName("wootzpigngray:wootzAxe");
+		wootzShovel = new SimpleShovel(WootzPignGray.toolWootz).modId("wootzpigngray").setUnlocalizedName("wootzShovel").setTextureName("wootzpigngray:wootzShovel");
+		wootzSword = new SimpleSword(WootzPignGray.toolWootz).modId("wootzpigngray").setUnlocalizedName("wootzSword").setTextureName("wootzpigngray:wootzSword");
+		wootzHoe = new SimpleHoe(WootzPignGray.toolWootz).modId("wootzpigngray").setUnlocalizedName("wootzHoe").setTextureName("wootzpigngray:wootzHoe");
+		hardenedsteelPick = new HardenedPickaxe(WootzPignGray.toolHardenedsteel, "wootzpigngray").setUnlocalizedName("hardenedsteelPick").setTextureName("wootzpigngray:hardenedsteelPick");
+		hardenedsteelAxe = new HardenedAxe(WootzPignGray.toolHardenedsteel, "wootzpigngray").setUnlocalizedName("hardenedsteelAxe").setTextureName("wootzpigngray:hardenedsteelAxe");
+		hardenedsteelShovel = new HardenedShovel(WootzPignGray.toolHardenedsteel, "wootzpigngray").setUnlocalizedName("hardenedsteelShovel").setTextureName("wootzpigngray:hardenedsteelShovel");
+		hardenedsteelSword = new HardenedSword(WootzPignGray.toolHardenedsteel, "wootzpigngray").setUnlocalizedName("hardenedsteelSword").setTextureName("wootzpigngray:hardenedsteelSword");
+		hardenedsteelHoe = new HardenedHoe(WootzPignGray.toolHardenedsteel, "wootzpigngray").setUnlocalizedName("hardenedsteelHoe").setTextureName("wootzpigngray:hardenedsteelHoe");
 
 		LanguageRegistry.addName(wootzPick, "Wootz steel Pickaxe");
 		LanguageRegistry.addName(wootzAxe, "Wootz steel Axe");
@@ -191,12 +194,6 @@ public class Content
 		LanguageRegistry.addName(hardenedsteelShovel, "Hardened steel Shovel");
 		LanguageRegistry.addName(hardenedsteelSword, "Hardened steel Sword");
 		LanguageRegistry.addName(hardenedsteelHoe, "Hardened steel Hoe");
-
-		//Tool Registering
-        MinecraftForge.setToolClass(hardenedsteelPick, "pickaxe", Settings.hardenedsteelMiningLevel);
-        MinecraftForge.setToolClass(hardenedsteelShovel, "shovel", Settings.hardenedsteelMiningLevel);
-        MinecraftForge.setToolClass(hardenedsteelAxe, "axe", Settings.hardenedsteelMiningLevel);
-
 		}
 	public static void doLoot()
 	{

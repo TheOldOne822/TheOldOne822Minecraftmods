@@ -72,7 +72,7 @@ public class GrayFusionFurnaceSlot extends Slot
         if (!this.thePlayer.worldObj.isRemote)
         {
             int i = this.field_75228_b;
-            float f = FusionRecipes.smelting().getExperience(par1ItemStack);
+            float f = FusionRecipes.getExperience(par1ItemStack);
             int j;
 
             if (f == 0.0F)
@@ -101,6 +101,6 @@ public class GrayFusionFurnaceSlot extends Slot
 
         this.field_75228_b = 0;
 
-        GameRegistry.onItemSmelted(thePlayer, par1ItemStack);
+//        GameRegistry.onItemSmelted(thePlayer, par1ItemStack);
     }
 }

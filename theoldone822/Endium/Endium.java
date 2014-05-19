@@ -2,11 +2,12 @@ package theoldone822.Endium;
 
 import java.util.Arrays;
 
-import net.minecraft.item.EnumArmorMaterial;
-import net.minecraft.item.EnumToolMaterial;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.common.EnumHelper;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.ModMetadata;
@@ -15,22 +16,19 @@ import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
-import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-@NetworkMod(clientSideRequired = true, serverSideRequired = false)
-@Mod(modid = "endium", name = "Endium", version = "1.0", dependencies = "required-after:simpleores; required-after:simpleoresfusion; after:netherrocksfusion")
+@Mod(modid = "endium", name = "Endium", version = "1.0", dependencies = "required-after:simpleores; required-after:fusionplugin; after:netherrocksfusion")
 public class Endium {
-	public static EnumToolMaterial toolEndium;
-	public static EnumToolMaterial toolTelos;
-	public static EnumToolMaterial toolSunteleia;
+	public static ToolMaterial toolEndium;
+	public static ToolMaterial toolTelos;
+	public static ToolMaterial toolSunteleia;
 
-	public static EnumArmorMaterial armorEndium;
-	public static EnumArmorMaterial armorTelos;
-	public static EnumArmorMaterial armorSunteleia;
+	public static ArmorMaterial armorEndium;
+	public static ArmorMaterial armorTelos;
+	public static ArmorMaterial armorSunteleia;
 
 	public static int rendererEndium;
 	public static int rendererTelos;
@@ -48,9 +46,6 @@ public class Endium {
 		metadata.authorList = Arrays.asList("theoldone822");
 		metadata.description = "Simpleores End metal.";
 
-		TickRegistry.registerTickHandler(new TickHandler(), Side.SERVER);
-
-		IDs.doConfig(event);
 		Settings.doSettings(event);
 		
 		toolEndium = EnumHelper.addToolMaterial("ENDIUM", Settings.EndiumMiningLevel, Settings.EndiumUsesNum, Settings.EndiumMiningSpeed, Settings.EndiumDamageVsEntity, Settings.EndiumEnchantability);
@@ -71,11 +66,11 @@ public class Endium {
 	@EventHandler
     public void load(FMLInitializationEvent event)
     {
-    	GameRegistry.registerWorldGenerator(new EndiumGenerator());
+    	GameRegistry.registerWorldGenerator(new EndiumGenerator(), 3);
 		if (Loader.isModLoaded("TreeCapitator")) {
 			NBTTagCompound c = new NBTTagCompound();
 			c.setString("modID", "endium");
-			c.setString("axeIDList", String.valueOf(Content.EndiumAxe.itemID) + "; " + String.valueOf(Content.TelosAxe.itemID) + "; " + String.valueOf(Content.SunteleiaAxe.itemID));
+			c.setString("axeIDList", String.valueOf(Content.EndiumAxe) + "; " + String.valueOf(Content.TelosAxe) + "; " + String.valueOf(Content.SunteleiaAxe));
 			FMLInterModComms.sendMessage("TreeCapitator", "ThirdPartyModConfig", c);
 		}
 		
@@ -85,5 +80,7 @@ public class Endium {
 		armorEndium.customCraftingMaterial = Content.EndiumIngot;
 		armorTelos.customCraftingMaterial = Content.TelosIngot;
 		armorSunteleia.customCraftingMaterial = Content.SunteleiaIngot;
+
+		MinecraftForge.EVENT_BUS.register(new TickHandler());
     }
 }

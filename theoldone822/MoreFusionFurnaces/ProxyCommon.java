@@ -18,7 +18,7 @@ public class ProxyCommon implements IGuiHandler
 @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
     {
-				TileEntity machine = world.getBlockTileEntity(x, y, z);
+				TileEntity machine = world.getTileEntity(x, y, z);
 		
         if(machine == null)
         {
@@ -45,7 +45,7 @@ public class ProxyCommon implements IGuiHandler
 	@Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
     {
-				TileEntity machine = world.getBlockTileEntity(x, y, z);
+				TileEntity machine = world.getTileEntity(x, y, z);
 		
         if(machine == null)
         {

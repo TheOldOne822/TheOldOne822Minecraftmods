@@ -25,7 +25,7 @@ public class RecipeRemover {
 
 	public static void removeFurnaceRecipe (int itemID, int metadata)
 	{
-		Map<List<Integer>, ItemStack> recipes = FurnaceRecipes.smelting().getMetaSmeltingList();
+		Map<List<Integer>, ItemStack> recipes = FurnaceRecipes.smelting().getSmeltingList();
 		recipes.remove(Arrays.asList(itemID, metadata));
 	}
 

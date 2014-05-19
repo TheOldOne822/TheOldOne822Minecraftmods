@@ -5,11 +5,9 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.VillagerRegistry;
 
-@NetworkMod(clientSideRequired = true, serverSideRequired = false)
-@Mod(modid = "fusionblacksmith", name = "Fusion Blacksmith", version = "1.0", dependencies = "required-after:simpleores; required-after:simpleoresfusion")
+@Mod(modid = "fusionblacksmith", name = "Fusion Blacksmith", version = "1.0", dependencies = "required-after:simpleores; required-after:fusionplugin")
 public class FusionBlacksmith {
 
 	@Instance("FusionBlacksmith")

@@ -26,7 +26,7 @@ public class MythrilFusionFurnaceGUI extends GuiContainer
      */
     protected void drawGuiContainerForegroundLayer(int par1, int par2)
     {
-    	this.fontRenderer.drawString("   Fusion             Furnace", this.xSize / 2 - this.fontRenderer.getStringWidth("   Fusion             Furnace") / 2, 6, 4210752);
+    	this.fontRendererObj.drawString("   Fusion             Furnace", this.xSize / 2 - this.fontRendererObj.getStringWidth("   Fusion             Furnace") / 2, 6, 4210752);
     }
 
     /**

@@ -4,11 +4,13 @@ import java.io.File;
 import java.util.Arrays;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
-import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import theoldone822.EWtweaks.CommonProxy;
@@ -21,21 +23,18 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@NetworkMod(clientSideRequired = true, serverSideRequired = false)
 @Mod(
 		modid = "EWtweaks",
 		name = "Extended Workbench Tweaks",
 		version = "1.0",
-		dependencies = "required-after:extendedWorkbench")
+		dependencies = "required-before:extendedWorkbench")
 
 public class EWtweaks {
 	public static int hardExtended = 0;
-	public static int newworkbenchid;
 	public static Configuration config;
 
 	public static Block newworkbench;
@@ -79,40 +78,39 @@ public class EWtweaks {
 		naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseShearMiningSpeed = (float) config.get("extendedValues", "Shear Mining Speed", 1.5).getDouble(1.5);
 
 		hardExtended = config.get("Harder Extended Workbench", "Recipe", 0).getInt();
-		newworkbenchid = config.getBlock("Harder Extended Workbench", "ID", 3768).getInt();
 
-		config.addCustomCategoryComment("Harder Extended Workbench", "Changes the Extended Workbench so you need to upgrade a normal crafting table before putting 2 next to each other will work. If set to 1 to upgrade you put a crafting table in the middle with 3 cobble stone on top and the rest planks. At 2 its Iron ingots on top and cobble stone around and 3 obsidian and Iron Ingots");
+		config.addCustomCategoryComment("Harder Extended Workbench", "Changes the Extended Workbench so you need to upgrade a normal crafting table before putting 2 next to each other will work. ATM this requires Natura be installed to work. if set to 1 to upgrade you put a crafting table in the middle with 3 cobble stone on top and the rest planks. At 2 its Iron ingots on top and cobble stone around and 3 obsidian and Iron Ingots");
 
 		config.save();
 
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Block.planks, 2), true, new Object[]{" X", "X ", Character.valueOf('X'), "plankWood",}));
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Block.planks, 2), true, new Object[]{"X ", " X", Character.valueOf('X'), "plankWood",}));
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Item.stick, 1), true, new Object[]{"X", Character.valueOf('X'), "stickWood",}));
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Blocks.planks, 2), true, new Object[]{" X", "X ", Character.valueOf('X'), "plankWood",}));
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Blocks.planks, 2), true, new Object[]{"X ", " X", Character.valueOf('X'), "plankWood",}));
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Items.stick, 1), true, new Object[]{"X", Character.valueOf('X'), "stickWood",}));
 
-		newworkbench = new NewBlockWorkbench(newworkbenchid).setHardness(2.5F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("newworkbench").setTextureName("crafting_table");
+		newworkbench = new NewBlockWorkbench().setHardness(2.5F).setStepSound(Block.soundTypeWood).setBlockName("newworkbench").setBlockTextureName("crafting_table");
 		GameRegistry.registerBlock(newworkbench, "newworkbench");
         OreDictionary.registerOre("crafterWood", new ItemStack(newworkbench, 1));
         OreDictionary.registerOre("craftingTableWood", new ItemStack(newworkbench, 1));
         LanguageRegistry.addName(newworkbench, "Basic Crafting Table");
 
 		if (hardExtended != 0 && hardExtended < 4){
-			RecipeRemover.removeAnyRecipe(new ItemStack(Block.workbench));
+			RecipeRemover.removeAnyRecipe(new ItemStack(Blocks.crafting_table));
 			CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(newworkbench, 1), true, new Object[]{"XX", "XX", Character.valueOf('X'), "plankWood",}));
 
 			if (hardExtended == 1)
-				CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Block.workbench, 1), true, new Object[]{"XXX", "YZY", "YYY", Character.valueOf('X'), Block.cobblestone, Character.valueOf('Y'), "plankWood", Character.valueOf('Z'), "crafterWood",}));
+				CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Blocks.crafting_table, 1), true, new Object[]{"XXX", "YZY", "YYY", Character.valueOf('X'), Blocks.cobblestone, Character.valueOf('Y'), "plankWood", Character.valueOf('Z'), "crafterWood",}));
 
 			if (hardExtended == 2)
-				CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Block.workbench, 1), true, new Object[]{"XXX", "YZY", "YYY", Character.valueOf('X'), Item.ingotIron, Character.valueOf('Y'), Block.cobblestone, Character.valueOf('Z'), "crafterWood",}));
+				CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Blocks.crafting_table, 1), true, new Object[]{"XXX", "YZY", "YYY", Character.valueOf('X'), Items.iron_ingot, Character.valueOf('Y'), Blocks.cobblestone, Character.valueOf('Z'), "crafterWood",}));
 
 			if (hardExtended == 3)
-				CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Block.workbench, 1), true, new Object[]{"XXX", "YZY", "YYY", Character.valueOf('X'), Block.obsidian, Character.valueOf('Y'), Item.ingotIron, Character.valueOf('Z'), "crafterWood",}));
+				CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Blocks.crafting_table, 1), true, new Object[]{"XXX", "YZY", "YYY", Character.valueOf('X'), Blocks.obsidian, Character.valueOf('Y'), Items.iron_ingot, Character.valueOf('Z'), "crafterWood",}));
 		}
 	}
     @EventHandler
     public void init (FMLInitializationEvent event)
     {
         proxy.registerRenderInformation();
-        NetworkRegistry.instance().registerGuiHandler(instance, new TweakGuiHandler());
+        NetworkRegistry.INSTANCE.registerGuiHandler(instance, new TweakGuiHandler());
     }
 }

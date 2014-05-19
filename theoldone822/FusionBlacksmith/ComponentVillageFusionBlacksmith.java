@@ -4,18 +4,24 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.structure.ComponentVillage;
-import net.minecraft.world.gen.structure.ComponentVillageStartPiece;
+import net.minecraft.init.Blocks;
+import net.minecraft.util.WeightedRandomChestContent;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.structure.StructureBoundingBox;
+import net.minecraft.world.gen.structure.StructureComponent;
+import net.minecraft.world.gen.structure.StructureVillagePieces;
+import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraftforge.common.ChestGenHooks;
 import static net.minecraftforge.common.ChestGenHooks.*;
 
-public class ComponentVillageFusionBlacksmith extends ComponentVillage
+public class ComponentVillageFusionBlacksmith extends StructureVillagePieces.House1
 {
     /** List of items that Village's Blacksmith chest can contain. */
 //    public static final WeightedRandomChestContent[] villageBlacksmithChestContents = new WeightedRandomChestContent[] {new WeightedRandomChestContent(Item.diamond.itemID, 0, 1, 3, 3), new WeightedRandomChestContent(Item.ingotIron.itemID, 0, 1, 5, 10), new WeightedRandomChestContent(Item.ingotGold.itemID, 0, 1, 3, 5), new WeightedRandomChestContent(Item.bread.itemID, 0, 1, 3, 15), new WeightedRandomChestContent(Item.appleRed.itemID, 0, 1, 3, 15), new WeightedRandomChestContent(Item.pickaxeIron.itemID, 0, 1, 1, 5), new WeightedRandomChestContent(Item.swordIron.itemID, 0, 1, 1, 5), new WeightedRandomChestContent(Item.plateIron.itemID, 0, 1, 1, 5), new WeightedRandomChestContent(Item.helmetIron.itemID, 0, 1, 1, 5), new WeightedRandomChestContent(Item.legsIron.itemID, 0, 1, 1, 5), new WeightedRandomChestContent(Item.bootsIron.itemID, 0, 1, 1, 5), new WeightedRandomChestContent(Block.obsidian.blockID, 0, 3, 7, 5), new WeightedRandomChestContent(Block.sapling.blockID, 0, 3, 7, 5), new WeightedRandomChestContent(Item.saddle.itemID, 0, 1, 1, 3), new WeightedRandomChestContent(Item.horseArmorIron.itemID, 0, 1, 1, 1), new WeightedRandomChestContent(Item.horseArmorGold.itemID, 0, 1, 1, 1), new WeightedRandomChestContent(Item.horseArmorDiamond.itemID, 0, 1, 1, 1)};
@@ -23,17 +29,17 @@ public class ComponentVillageFusionBlacksmith extends ComponentVillage
 
     public ComponentVillageFusionBlacksmith() {}
 
-    public ComponentVillageFusionBlacksmith(ComponentVillageStartPiece par1ComponentVillageStartPiece, int par2, Random par3Random, StructureBoundingBox par4StructureBoundingBox, int par5)
+    public ComponentVillageFusionBlacksmith(Start par1Start, int par2, Random par3Random, StructureBoundingBox par4StructureBoundingBox, int par5)
     {
-        super(par1ComponentVillageStartPiece, par2);
+        super();
         this.coordBaseMode = par5;
         this.boundingBox = par4StructureBoundingBox;
     }
 
-    public static ComponentVillageFusionBlacksmith buildComponent(ComponentVillageStartPiece par0ComponentVillageStartPiece, List par1List, Random par2Random, int par3, int par4, int par5, int par6, int par7)
+    public static ComponentVillageFusionBlacksmith buildComponent(Start par0Start, List par1List, Random par2Random, int par3, int par4, int par5, int par6, int par7)
     {
         StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(par3, par4, par5, 0, 0, 0, 10, 6, 7, par6);
-        return canVillageGoDeeper(structureboundingbox) && StructureComponent.findIntersecting(par1List, structureboundingbox) == null ? new ComponentVillageFusionBlacksmith(par0ComponentVillageStartPiece, par7, par2Random, structureboundingbox, par6) : null;
+        return canVillageGoDeeper(structureboundingbox) && StructureComponent.findIntersecting(par1List, structureboundingbox) == null ? new ComponentVillageFusionBlacksmith(par0Start, par7, par2Random, structureboundingbox, par6) : null;
     }
 
     protected void func_143012_a(NBTTagCompound par1NBTTagCompound)
@@ -66,41 +72,41 @@ public class ComponentVillageFusionBlacksmith extends ComponentVillage
             this.boundingBox.offset(0, this.field_143015_k - this.boundingBox.maxY + 6 - 1, 0);
         }
 
-        this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 1, 0, 9, 4, 6, 0, 0, false);
-        this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 0, 0, 9, 0, 6, Block.cobblestone.blockID, Block.cobblestone.blockID, false);
-        this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 4, 0, 9, 4, 6, Block.cobblestone.blockID, Block.cobblestone.blockID, false);
-        this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 5, 0, 9, 5, 6, Block.stoneSingleSlab.blockID, Block.stoneSingleSlab.blockID, false);
-        this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 5, 1, 8, 5, 5, 0, 0, false);
-        this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 1, 0, 2, 3, 0, Block.planks.blockID, Block.planks.blockID, false);
-        this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 1, 0, 0, 4, 0, Block.wood.blockID, Block.wood.blockID, false);
-        this.fillWithBlocks(par1World, par3StructureBoundingBox, 3, 1, 0, 3, 4, 0, Block.wood.blockID, Block.wood.blockID, false);
-        this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 1, 6, 0, 4, 6, Block.wood.blockID, Block.wood.blockID, false);
-        this.placeBlockAtCurrentPosition(par1World, Block.planks.blockID, 0, 3, 3, 1, par3StructureBoundingBox);
-        this.fillWithBlocks(par1World, par3StructureBoundingBox, 3, 1, 2, 3, 3, 2, Block.planks.blockID, Block.planks.blockID, false);
-        this.fillWithBlocks(par1World, par3StructureBoundingBox, 4, 1, 3, 5, 3, 3, Block.planks.blockID, Block.planks.blockID, false);
-        this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 1, 1, 0, 3, 5, Block.planks.blockID, Block.planks.blockID, false);
-        this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 1, 6, 5, 3, 6, Block.planks.blockID, Block.planks.blockID, false);
-        this.fillWithBlocks(par1World, par3StructureBoundingBox, 5, 1, 0, 5, 3, 0, Block.fence.blockID, Block.fence.blockID, false);
-        this.fillWithBlocks(par1World, par3StructureBoundingBox, 9, 1, 0, 9, 3, 0, Block.fence.blockID, Block.fence.blockID, false);
-        this.fillWithBlocks(par1World, par3StructureBoundingBox, 6, 1, 4, 9, 4, 6, Block.cobblestone.blockID, Block.cobblestone.blockID, false);
-        this.placeBlockAtCurrentPosition(par1World, Block.lavaMoving.blockID, 0, 7, 1, 5, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.lavaMoving.blockID, 0, 8, 1, 5, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.fenceIron.blockID, 0, 9, 2, 5, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.fenceIron.blockID, 0, 9, 2, 4, par3StructureBoundingBox);
-        this.fillWithBlocks(par1World, par3StructureBoundingBox, 7, 2, 4, 8, 2, 5, 0, 0, false);
-        this.placeBlockAtCurrentPosition(par1World, Block.cobblestone.blockID, 0, 6, 1, 3, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.furnaceIdle.blockID, 0, 6, 2, 3, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, alexndr.SimpleOres.plugins.fusion.FusionHelper.fusionContent.fusionFurnace.blockID, 0, 6, 3, 3, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.stoneDoubleSlab.blockID, 0, 8, 1, 1, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.thinGlass.blockID, 0, 0, 2, 2, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.thinGlass.blockID, 0, 0, 2, 4, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.thinGlass.blockID, 0, 2, 2, 6, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.thinGlass.blockID, 0, 4, 2, 6, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.fence.blockID, 0, 2, 1, 4, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.pressurePlatePlanks.blockID, 0, 2, 2, 4, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.planks.blockID, 0, 1, 1, 5, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.stairsWoodOak.blockID, this.getMetadataWithOffset(Block.stairsWoodOak.blockID, 3), 2, 1, 5, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.stairsWoodOak.blockID, this.getMetadataWithOffset(Block.stairsWoodOak.blockID, 1), 1, 1, 4, par3StructureBoundingBox);
+        this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 1, 0, 9, 4, 6, Blocks.air, Blocks.air, false);
+        this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 0, 0, 9, 0, 6, Blocks.cobblestone, Blocks.cobblestone, false);
+        this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 4, 0, 9, 4, 6, Blocks.cobblestone, Blocks.cobblestone, false);
+        this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 5, 0, 9, 5, 6, Blocks.stone_slab, Blocks.stone_slab, false);
+        this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 5, 1, 8, 5, 5, Blocks.air, Blocks.air, false);
+        this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 1, 0, 2, 3, 0, Blocks.planks, Blocks.planks, false);
+        this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 1, 0, 0, 4, 0, Blocks.log, Blocks.log, false);
+        this.fillWithBlocks(par1World, par3StructureBoundingBox, 3, 1, 0, 3, 4, 0, Blocks.log, Blocks.log, false);
+        this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 1, 6, 0, 4, 6, Blocks.log, Blocks.log, false);
+        this.placeBlockAtCurrentPosition(par1World, Blocks.planks, 0, 3, 3, 1, par3StructureBoundingBox);
+        this.fillWithBlocks(par1World, par3StructureBoundingBox, 3, 1, 2, 3, 3, 2, Blocks.planks, Blocks.planks, false);
+        this.fillWithBlocks(par1World, par3StructureBoundingBox, 4, 1, 3, 5, 3, 3, Blocks.planks, Blocks.planks, false);
+        this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 1, 1, 0, 3, 5, Blocks.planks, Blocks.planks, false);
+        this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 1, 6, 5, 3, 6, Blocks.planks, Blocks.planks, false);
+        this.fillWithBlocks(par1World, par3StructureBoundingBox, 5, 1, 0, 5, 3, 0, Blocks.fence, Blocks.fence, false);
+        this.fillWithBlocks(par1World, par3StructureBoundingBox, 9, 1, 0, 9, 3, 0, Blocks.fence, Blocks.fence, false);
+        this.fillWithBlocks(par1World, par3StructureBoundingBox, 6, 1, 4, 9, 4, 6, Blocks.cobblestone, Blocks.cobblestone, false);
+        this.placeBlockAtCurrentPosition(par1World, Blocks.flowing_lava, 0, 7, 1, 5, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, Blocks.flowing_lava, 0, 8, 1, 5, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, Blocks.iron_bars, 0, 9, 2, 5, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, Blocks.iron_bars, 0, 9, 2, 4, par3StructureBoundingBox);
+        this.fillWithBlocks(par1World, par3StructureBoundingBox, 7, 2, 4, 8, 2, 5, Blocks.air, Blocks.air, false);
+        this.placeBlockAtCurrentPosition(par1World, Blocks.cobblestone, 0, 6, 1, 3, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, Blocks.furnace, 0, 6, 2, 3, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, alexndr.SimpleOres.plugins.fusion.FusionHelper.fusionContent.fusion_furnace, 0, 6, 3, 3, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, Blocks.double_stone_slab, 0, 8, 1, 1, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 0, 2, 2, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 0, 2, 4, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 2, 2, 6, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 4, 2, 6, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, Blocks.fence, 0, 2, 1, 4, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, Blocks.wooden_pressure_plate, 0, 2, 2, 4, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, Blocks.planks, 0, 1, 1, 5, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, this.getMetadataWithOffset(Blocks.oak_stairs, 3), 2, 1, 5, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, this.getMetadataWithOffset(Blocks.oak_stairs, 1), 1, 1, 4, par3StructureBoundingBox);
         int i;
         int j;
 
@@ -119,9 +125,9 @@ public class ComponentVillageFusionBlacksmith extends ComponentVillage
 
         for (i = 6; i <= 8; ++i)
         {
-            if (this.getBlockIdAtCurrentPosition(par1World, i, 0, -1, par3StructureBoundingBox) == 0 && this.getBlockIdAtCurrentPosition(par1World, i, -1, -1, par3StructureBoundingBox) != 0)
+            if (this.getBlockAtCurrentPosition(par1World, i, 0, -1, par3StructureBoundingBox).getMaterial() == Material.air && this.getBlockAtCurrentPosition(par1World, i, -1, -1, par3StructureBoundingBox).getMaterial() != Material.air)
             {
-                this.placeBlockAtCurrentPosition(par1World, Block.stairsCobblestone.blockID, this.getMetadataWithOffset(Block.stairsCobblestone.blockID, 3), i, 0, -1, par3StructureBoundingBox);
+                this.placeBlockAtCurrentPosition(par1World, Blocks.stone_stairs, this.getMetadataWithOffset(Blocks.stone_stairs, 3), i, 0, -1, par3StructureBoundingBox);
             }
         }
 
@@ -130,7 +136,7 @@ public class ComponentVillageFusionBlacksmith extends ComponentVillage
             for (j = 0; j < 10; ++j)
             {
                 this.clearCurrentPositionBlocksUpwards(par1World, j, 6, i, par3StructureBoundingBox);
-                this.fillCurrentPositionBlocksDownwards(par1World, Block.cobblestone.blockID, 0, j, -1, i, par3StructureBoundingBox);
+                this.func_151554_b(par1World, Blocks.cobblestone, 0, j, -1, i, par3StructureBoundingBox);
             }
         }
 

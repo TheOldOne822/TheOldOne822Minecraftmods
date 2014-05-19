@@ -3,24 +3,24 @@ package theoldone822.Endium;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
-import net.minecraftforge.event.ForgeSubscribe;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 
 public class EventHelper 
 {
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onDamage(LivingAttackEvent event)
 	{   	
 		if(event.entity instanceof EntityPlayer)
 		{
 			EntityPlayer player = (EntityPlayer)event.entity;
 			
-			ItemStack helmet = player.getCurrentItemOrArmor(4);
-			ItemStack chest = player.getCurrentItemOrArmor(3);
-			ItemStack legs = player.getCurrentItemOrArmor(2);
-			ItemStack boots = player.getCurrentItemOrArmor(1);
+			ItemStack helmet = player.getCurrentArmor(3);
+			ItemStack chest = player.getCurrentArmor(2);
+			ItemStack legs = player.getCurrentArmor(1);
+			ItemStack boots = player.getCurrentArmor(0);
 			
 	        if(helmet != null && chest != null && legs != null && boots != null)
 	        {
@@ -35,17 +35,17 @@ public class EventHelper
 		}
 	}
 	
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onFallDamage(LivingFallEvent event)
 	{  	
 		if(event.entity instanceof EntityPlayer)
 		{
 			EntityPlayer player = (EntityPlayer)event.entity;
 			
-			ItemStack helmet = player.getCurrentItemOrArmor(4);
-			ItemStack chest = player.getCurrentItemOrArmor(3);
-			ItemStack legs = player.getCurrentItemOrArmor(2);
-			ItemStack boots = player.getCurrentItemOrArmor(1);
+			ItemStack helmet = player.getCurrentArmor(3);
+			ItemStack chest = player.getCurrentArmor(2);
+			ItemStack legs = player.getCurrentArmor(1);
+			ItemStack boots = player.getCurrentArmor(0);
 			
 	        
 			if(helmet != null && chest != null && legs != null && boots != null)
@@ -58,17 +58,17 @@ public class EventHelper
 		}
 	}
 	
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onPlayerJump(LivingJumpEvent event)
 	{
 		if(event.entity instanceof EntityPlayer)
 		{
 			EntityPlayer player = (EntityPlayer)event.entity;
 			
-			ItemStack helmet = player.getCurrentItemOrArmor(4);
-			ItemStack chest = player.getCurrentItemOrArmor(3);
-			ItemStack legs = player.getCurrentItemOrArmor(2);
-			ItemStack boots = player.getCurrentItemOrArmor(1);
+			ItemStack helmet = player.getCurrentArmor(3);
+			ItemStack chest = player.getCurrentArmor(2);
+			ItemStack legs = player.getCurrentArmor(1);
+			ItemStack boots = player.getCurrentArmor(0);
 			
 			if(helmet != null && chest != null && legs != null && boots != null)
 			{

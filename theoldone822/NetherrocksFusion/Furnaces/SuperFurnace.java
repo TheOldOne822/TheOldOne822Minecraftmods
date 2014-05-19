@@ -12,18 +12,19 @@ import theoldone822.NetherrocksFusion.NetherrocksFusion;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -42,12 +43,12 @@ public class SuperFurnace extends BlockContainer {
 	 */
 	private static boolean keepFurnaceInventory = false;
 	@SideOnly(Side.CLIENT)
-	private Icon furnaceIconTop;
+	private IIcon furnaceIconTop;
 	@SideOnly(Side.CLIENT)
-	private Icon furnaceIconFront;
+	private IIcon furnaceIconFront;
 
-	public SuperFurnace(int par1, boolean par2) {
-		super(par1, Material.rock);
+	public SuperFurnace(boolean par2) {
+		super(Material.rock);
 		this.isActive = par2;
 
 	}
@@ -55,8 +56,8 @@ public class SuperFurnace extends BlockContainer {
 	/**
 	 * Returns the ID of the items to drop on destruction.
 	 */
-	public int idDropped(int par1, Random par2Random, int par3) {
-		return Content.dragonbezoarFurnace.blockID;
+	public Item getItemDropped(int par1, Random par2Random, int par3) {
+		return Item.getItemFromBlock(Content.dragonbezoarFurnace);
 	}
 
 	/**
@@ -71,38 +72,43 @@ public class SuperFurnace extends BlockContainer {
 	 * set a blocks direction
 	 */
 	private void setDefaultDirection(World par1World, int par2, int par3, int par4) {
-		if (!par1World.isRemote) {
-			int l = par1World.getBlockId(par2, par3, par4 - 1);
-			int i1 = par1World.getBlockId(par2, par3, par4 + 1);
-			int j1 = par1World.getBlockId(par2 - 1, par3, par4);
-			int k1 = par1World.getBlockId(par2 + 1, par3, par4);
-			byte b0 = 3;
+        if (!par1World.isRemote)
+        {
+            Block l = par1World.getBlock(par2, par3, par4 - 1);
+            Block i1 = par1World.getBlock(par2, par3, par4 + 1);
+            Block j1 = par1World.getBlock(par2 - 1, par3, par4);
+            Block k1 = par1World.getBlock(par2 + 1, par3, par4);
+            byte b0 = 3;
 
-			if (Block.opaqueCubeLookup[l] && !Block.opaqueCubeLookup[i1]) {
-				b0 = 3;
-			}
+            if (l.func_149730_j() && !i1.func_149730_j())
+            {
+                b0 = 3;
+            }
 
-			if (Block.opaqueCubeLookup[i1] && !Block.opaqueCubeLookup[l]) {
-				b0 = 2;
-			}
+            if (i1.func_149730_j() && !l.func_149730_j())
+            {
+                b0 = 2;
+            }
 
-			if (Block.opaqueCubeLookup[j1] && !Block.opaqueCubeLookup[k1]) {
-				b0 = 5;
-			}
+            if (j1.func_149730_j() && !k1.func_149730_j())
+            {
+                b0 = 5;
+            }
 
-			if (Block.opaqueCubeLookup[k1] && !Block.opaqueCubeLookup[j1]) {
-				b0 = 4;
-			}
+            if (k1.func_149730_j() && !j1.func_149730_j())
+            {
+                b0 = 4;
+            }
 
-			par1World.setBlockMetadataWithNotify(par2, par3, par4, b0, 2);
-		}
-	}
+            par1World.setBlockMetadataWithNotify(par2, par3, par4, b0, 2);
+        }
+    }
 
 	@SideOnly(Side.CLIENT)
 	/**
 	 * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
 	 */
-	public Icon getIcon(int par1, int par2) {
+	public IIcon getIcon(int par1, int par2) {
 		if (par2 == 0 || par2 == 1) {
 			return par1 == 1 ? this.furnaceIconTop : (par1 == 0 ? this.furnaceIconTop : (par1 == 3 ? this.furnaceIconFront : this.blockIcon));
 		} else {
@@ -111,7 +117,7 @@ public class SuperFurnace extends BlockContainer {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerBlockIcons(IIconRegister par1IconRegister) {
 		this.blockIcon = par1IconRegister.registerIcon("netherrocksfusion:" + "dragonbezoarFurnaceSide");
 		this.furnaceIconFront = par1IconRegister.registerIcon(this.isActive ? "netherrocksfusion:" + "dragonbezoarFurnaceFrontLit" : "netherrocksfusion:" + "dragonbezoarFurnaceFront");
 		this.furnaceIconTop = par1IconRegister.registerIcon("netherrocksfusion:" + "dragonbezoarFurnaceTop");
@@ -124,7 +130,7 @@ public class SuperFurnace extends BlockContainer {
 		if (par1World.isRemote) {
 			return true;
 		} else {
-			SuperFurnaceTileEntity tileentityfurnace = (SuperFurnaceTileEntity) par1World.getBlockTileEntity(par2, par3, par4);
+			SuperFurnaceTileEntity tileentityfurnace = (SuperFurnaceTileEntity) par1World.getTileEntity(par2, par3, par4);
 			par5EntityPlayer.openGui(NetherrocksFusion.instance, 0, par1World, par2, par3, par4);
 
 			return true;
@@ -136,13 +142,13 @@ public class SuperFurnace extends BlockContainer {
 	 */
 	public static void updateFurnaceBlockState(boolean par0, World par1World, int par2, int par3, int par4) {
 		int l = par1World.getBlockMetadata(par2, par3, par4);
-		TileEntity tileentity = par1World.getBlockTileEntity(par2, par3, par4);
+		TileEntity tileentity = par1World.getTileEntity(par2, par3, par4);
 		keepFurnaceInventory = true;
 
 		if (par0) {
-			par1World.setBlock(par2, par3, par4, Content.dragonbezoarFurnaceOn.blockID);
+			par1World.setBlock(par2, par3, par4, Content.dragonbezoarFurnaceOn);
 		} else {
-			par1World.setBlock(par2, par3, par4, Content.dragonbezoarFurnace.blockID);
+			par1World.setBlock(par2, par3, par4, Content.dragonbezoarFurnace);
 		}
 
 		keepFurnaceInventory = false;
@@ -150,7 +156,7 @@ public class SuperFurnace extends BlockContainer {
 
 		if (tileentity != null) {
 			tileentity.validate();
-			par1World.setBlockTileEntity(par2, par3, par4, tileentity);
+			par1World.setTileEntity(par2, par3, par4, tileentity);
 		}
 	}
 
@@ -186,7 +192,7 @@ public class SuperFurnace extends BlockContainer {
 	/**
 	 * Returns a new instance of a block's tile entity class. Called on placing the block.
 	 */
-	public TileEntity createNewTileEntity(World par1World) {
+	public TileEntity createNewTileEntity(World par1World, int var2) {
 		return new SuperFurnaceTileEntity();
 	}
 
@@ -213,16 +219,16 @@ public class SuperFurnace extends BlockContainer {
 		}
 
 		if (par6ItemStack.hasDisplayName()) {
-			((TileEntityFurnace) par1World.getBlockTileEntity(par2, par3, par4)).setGuiDisplayName(par6ItemStack.getDisplayName());
+			((TileEntityFurnace) par1World.getTileEntity(par2, par3, par4)).func_145951_a(par6ItemStack.getDisplayName());
 		}
 	}
 
 	/**
 	 * ejects contained items into the world, and notifies neighbours of an update, as appropriate
 	 */
-	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
+	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
 		if (!keepFurnaceInventory) {
-			SuperFurnaceTileEntity tileentityfurnace = (SuperFurnaceTileEntity) par1World.getBlockTileEntity(par2, par3, par4);
+			SuperFurnaceTileEntity tileentityfurnace = (SuperFurnaceTileEntity) par1World.getTileEntity(par2, par3, par4);
 
 			if (tileentityfurnace != null) {
 				for (int j1 = 0; j1 < tileentityfurnace.getSizeInventory(); ++j1) {
@@ -242,7 +248,7 @@ public class SuperFurnace extends BlockContainer {
 
 							itemstack.stackSize -= k1;
 							EntityItem entityitem = new EntityItem(par1World, (double) ((float) par2 + f), (double) ((float) par3 + f1), (double) ((float) par4 + f2), new ItemStack(
-									itemstack.itemID, k1, itemstack.getItemDamage()));
+									itemstack.getItem(), k1, itemstack.getItemDamage()));
 
 							if (itemstack.hasTagCompound()) {
 								entityitem.getEntityItem().setTagCompound((NBTTagCompound) itemstack.getTagCompound().copy());
@@ -275,6 +281,6 @@ public class SuperFurnace extends BlockContainer {
 	 * comparator.
 	 */
 	public int getComparatorInputOverride(World par1World, int par2, int par3, int par4, int par5) {
-		return Container.calcRedstoneFromInventory((IInventory) par1World.getBlockTileEntity(par2, par3, par4));
+		return Container.calcRedstoneFromInventory((IInventory) par1World.getTileEntity(par2, par3, par4));
 	}
 }

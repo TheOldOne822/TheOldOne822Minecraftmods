@@ -14,20 +14,6 @@ import cpw.mods.fml.common.network.IGuiHandler;
 
 public class ProxyCommon implements IGuiHandler
 {
-	/**
-	 * The methods used to add a zoom feature to the custom bows. The code is messy as it is mostly copy/paste. Obviously overriden by ProxyClient, so look there
-	 * if you are curious to see the code.
-	 */
-	 public void onBowUse(ItemStack stack, EntityPlayer player) 
-	 {
-
-	 }
-	 
-	 public void resetSavedFOV() 
-	 {
-		 
-	 }
-	 
 	 public void registerClientTickHandler()
 	 {
 
@@ -35,7 +21,7 @@ public class ProxyCommon implements IGuiHandler
 @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
     {
-				TileEntity machine = world.getBlockTileEntity(x, y, z);
+				TileEntity machine = world.getTileEntity(x, y, z);
 		
         if(machine == null)
         {
@@ -62,7 +48,7 @@ if(machine instanceof SuperFurnaceTileEntity)
 	@Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
     {
-				TileEntity machine = world.getBlockTileEntity(x, y, z);
+				TileEntity machine = world.getTileEntity(x, y, z);
 		
         if(machine == null)
         {

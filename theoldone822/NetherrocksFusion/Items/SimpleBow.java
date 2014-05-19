@@ -11,18 +11,18 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
-import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -34,15 +34,15 @@ public class SimpleBow extends ItemBow
 	/**
 	 * The EnumToolMaterial for the tool. This is used to set what item can be used to repair it.
 	 */
-    private final EnumToolMaterial material;
+    private final ToolMaterial material;
 	
     /**
      * Creating the icons for the bows. As you draw the bows back, the icon changes, which is why there are 4 icons for each bow here.
      */ 
-	public static Icon dragonbezoarBow;
-	public static Icon dragonbezoarBow1;
-	public static Icon dragonbezoarBow2;
-	public static Icon dragonbezoarBow3;
+	public static IIcon dragonbezoarBow;
+	public static IIcon dragonbezoarBow1;
+	public static IIcon dragonbezoarBow2;
+	public static IIcon dragonbezoarBow3;
 		
 	/**
 	 * Constructor for the bows. Worth noting are the following:
@@ -50,9 +50,9 @@ public class SimpleBow extends ItemBow
 	 * "this.maxStackSize = 1;" This basically just sets it so that you can only have one per stack.
 	 * "this.bFull3D = true;" This allows it to be rendered in proper 3D when held in your hand. Tools are rendered like this, while items such as sugar are not. 
 	 */
-	public SimpleBow(int par1, int dam, EnumToolMaterial enumtoolmaterial)
+	public SimpleBow(int dam, ToolMaterial enumtoolmaterial)
 	{
-		super(par1);
+		super();
 		this.maxStackSize = 1;	
 		material = enumtoolmaterial;
 		this.canRepair = true;
@@ -75,9 +75,9 @@ public class SimpleBow extends ItemBow
 	 * The default image for the sinisite bow is set as sinisiteBow.
 	 */
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister iconRegister)
+	public void registerIcons(IIconRegister iconRegister)
 	{			
-		if(itemID == Content.dragonbezoarBow.itemID)
+		if(this == Content.dragonbezoarBow)
 		{
 			this.itemIcon = iconRegister.registerIcon("netherrocksfusion:" + "dragonbezoarBow");
 		}
@@ -94,7 +94,7 @@ public class SimpleBow extends ItemBow
 	 * The GL11.glTranslate/Rotate sets how the item is held in third person, so it is held like a bow rather than a tool
 	 * (ie. hand on the grip in the middle, not at the bottom.
 	 */
-	public Icon getIcon(ItemStack itemStack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining) 
+	public IIcon getIcon(ItemStack itemStack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining) 
 	{	
 		if(Minecraft.getMinecraft().gameSettings.thirdPersonView != 0)
 		{
@@ -108,7 +108,7 @@ public class SimpleBow extends ItemBow
 		int var8 = itemStack.getMaxItemUseDuration() - useRemaining;
 		if (var8 >= 18)
 		{						
-			if(itemID == Content.dragonbezoarBow.itemID)
+			if(this == Content.dragonbezoarBow)
 			{
 				return dragonbezoarBow3;
 			}
@@ -116,7 +116,7 @@ public class SimpleBow extends ItemBow
 		}
 		if (var8 > 13)
 		{			
-			if(itemID == Content.dragonbezoarBow.itemID)
+			if(this == Content.dragonbezoarBow)
 			{
 				return dragonbezoarBow2;
 			}
@@ -124,7 +124,7 @@ public class SimpleBow extends ItemBow
 		}		
 		if (var8 > 0)
 		{			
-			if(itemID == Content.dragonbezoarBow.itemID)
+			if(this == Content.dragonbezoarBow)
 			{
 				return dragonbezoarBow1;
 			}
@@ -164,7 +164,7 @@ public class SimpleBow extends ItemBow
 	 */
 	public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
 	{	
-		if(itemID == Content.dragonbezoarBow.itemID)
+		if(this == Content.dragonbezoarBow)
 		{
 			par3List.add(StatCollector.translateToLocal("tips.damageTooltip"));
 			par3List.add(StatCollector.translateToLocal("tips.zoomTooltip"));
@@ -194,7 +194,7 @@ public class SimpleBow extends ItemBow
 		var6 = event.charge;
 		boolean flag = (par3EntityPlayer.capabilities.isCreativeMode) || (EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, par1ItemStack) > 0);
 		
-		if ((flag) || (par3EntityPlayer.inventory.hasItem(Item.arrow.itemID))) 
+		if ((flag) || (par3EntityPlayer.inventory.hasItem(Items.arrow))) 
 		{
 			int i = getMaxItemUseDuration(par1ItemStack) - par4;
 			float f = i / 20.0F;
@@ -217,7 +217,7 @@ public class SimpleBow extends ItemBow
 				var8.setIsCritical(true);
 			}
 			
-			if (f == 1.0F && itemID == Content.dragonbezoarBow.itemID) 
+			if (f == 1.0F && this == Content.dragonbezoarBow) 
 			{
 				var8.setIsCritical(true);
 				var8.setFire(100);
@@ -262,14 +262,14 @@ public class SimpleBow extends ItemBow
 			
 			if (!flag) 
 			{
-				if(z == 1 && itemID == Content.dragonbezoarBow.itemID)
+				if(z == 1 && this == Content.dragonbezoarBow)
 				{
 				var8.canBePickedUp = 0;
 				}
 
 				else 
 				{
-				par3EntityPlayer.inventory.consumeInventoryItem(Item.arrow.itemID);
+				par3EntityPlayer.inventory.consumeInventoryItem(Items.arrow);
 				}
 			}
 						
@@ -282,7 +282,7 @@ public class SimpleBow extends ItemBow
 			{
 				par2World.spawnEntityInWorld(var8);			
 				
-				if(itemID == Content.dragonbezoarBow.itemID)
+				if(this == Content.dragonbezoarBow)
 				{
 					var8.setDamage(var8.getDamage() + Settings.dragonbezoarBowDamageModifier * 0.5D + 0.5D);
 					var8.setKnockbackStrength(k + Settings.dragonbezoarBowKnockbackModifier);
@@ -317,7 +317,7 @@ public class SimpleBow extends ItemBow
 	 */
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) 
 	{
-		if ((par3EntityPlayer.capabilities.isCreativeMode) || (par3EntityPlayer.inventory.hasItem(Item.arrow.itemID))) 
+		if ((par3EntityPlayer.capabilities.isCreativeMode) || (par3EntityPlayer.inventory.hasItem(Items.arrow))) 
 		{
 			par3EntityPlayer.setItemInUse(par1ItemStack, getMaxItemUseDuration(par1ItemStack));
 		}
@@ -340,6 +340,6 @@ public class SimpleBow extends ItemBow
 	 */
     public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
     {
-        return this.material.getToolCraftingMaterial() == par2ItemStack.itemID ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
+        return this.material.customCraftingMaterial == par2ItemStack.getItem() ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
     }
 }

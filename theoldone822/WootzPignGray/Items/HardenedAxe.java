@@ -4,9 +4,9 @@ import alexndr.SimpleOres.api.content.SimpleArmor;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.EnumToolMaterial;
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
@@ -16,7 +16,7 @@ public class HardenedAxe extends ItemAxe
 	/**
 	 * The EnumToolMaterial for the tool. This is used to set what item can be used to repair it.
 	 */
-    private final EnumToolMaterial material;
+    private final ToolMaterial material;
     private String modName;
     
     /**
@@ -25,12 +25,12 @@ public class HardenedAxe extends ItemAxe
      * @param i = the items ID
      * @param enumtoolmaterial = the material of the tool. Determines speed, number of uses, etc.
      */
-	public HardenedAxe(int i, EnumToolMaterial enumtoolmaterial, String mod) 
+	public HardenedAxe(ToolMaterial enumtoolmaterial, String mod) 
 	{
-		super(i, enumtoolmaterial);
+		super(enumtoolmaterial);
 		material = enumtoolmaterial;
 		modName = mod;
-		
+		this.setHarvestLevel("axe", material.getHarvestLevel());
 	}
 	
 	public HardenedAxe setUnlocalizedName(String unlocalizedName)
@@ -45,7 +45,7 @@ public class HardenedAxe extends ItemAxe
      */
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister iconRegister) 
+    public void registerIcons(IIconRegister iconRegister) 
     {
     	 this.itemIcon = iconRegister.registerIcon(modName + ":" + (this.getUnlocalizedName().substring(5)));
     }

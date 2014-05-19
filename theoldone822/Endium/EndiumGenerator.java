@@ -3,11 +3,11 @@ package theoldone822.Endium;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import cpw.mods.fml.common.IWorldGenerator;
-
 import alexndr.SimpleOres.api.helpers.WorldGenHelper;
 
 public class EndiumGenerator implements IWorldGenerator {
@@ -46,7 +46,7 @@ public class EndiumGenerator implements IWorldGenerator {
             int Xcoord = blockX + random.nextInt(16);
             int Ycoord = random.nextInt(255 - 0);
             int Zcoord = blockZ + random.nextInt(16);
-            new WorldGenHelper(Content.EndiumOre.blockID, Settings.EndiumVeinSize, Block.whiteStone).generate(world, random, Xcoord, Ycoord + 0, Zcoord);
+            new WorldGenHelper(Content.EndiumOre, Settings.EndiumVeinSize, Blocks.end_stone).generate(world, random, Xcoord, Ycoord + 0, Zcoord);
         }
     }
 }

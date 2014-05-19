@@ -2,7 +2,7 @@ package theoldone822.NetherrocksFusion;
 
 import java.io.File;
 
-import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 public class Settings {

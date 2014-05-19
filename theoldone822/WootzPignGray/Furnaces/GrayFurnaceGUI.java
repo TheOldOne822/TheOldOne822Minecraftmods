@@ -23,8 +23,8 @@ public class GrayFurnaceGUI extends GuiContainer {
 	 * Draw the foreground layer for the GuiContainer (everything in front of the items)
 	 */
 	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
-		this.fontRenderer.drawString(StatCollector.translateToLocal("Gray Furnace"),
-				this.xSize / 2 - this.fontRenderer.getStringWidth(StatCollector.translateToLocal("Gray Furnace")) / 2, 6, 4210752);
+		this.fontRendererObj.drawString(StatCollector.translateToLocal("Gray Furnace"),
+				this.xSize / 2 - this.fontRendererObj.getStringWidth(StatCollector.translateToLocal("Gray Furnace")) / 2, 6, 4210752);
 	}
 
 	/**
