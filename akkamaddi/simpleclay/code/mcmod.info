@@ -1,0 +1,20 @@
+[
+{
+"modid": "ClayFusion",
+"name": "Clay and Cobblestone Fusion Recipes",
+"description": "Small addition to create and recycle clay.",
+"version": "1.1.0",
+"credits": "Created by akkamaddi, reliant on AleXndrTheGr8st",
+"logoFile": "",
+"mcversion": "",
+"url": "",
+"updateUrl": "",
+"authors": [ "akkamaddi" ],
+"parent":"",
+"screenshots": [],
+"dependencies": [
+"mod_MinecraftForge"
+"mod_simpleores"
+]
+}
+]
