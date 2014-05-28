@@ -1,5 +1,6 @@
 package theoldone822.crudeaxe;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
@@ -42,8 +43,10 @@ public class crudeaxe {
 		GameRegistry.addShapelessRecipe(new ItemStack(crudeAxe, 1), new Object[] { Item.bone, Item.flint });
 		GameRegistry.addShapelessRecipe(new ItemStack(crudeAxe, 1), new Object[] { Item.stick, Item.bone });
 		GameRegistry.addShapelessRecipe(new ItemStack(crudeAxe, 1), new Object[] { Item.bone, Item.bone });
+		GameRegistry.addShapelessRecipe(new ItemStack(Item.stick, 1), new Object[] { Block.sapling });
 
 		MinecraftForge.setToolClass(crudeAxe, "axe", 0);
+    	MinecraftForge.setBlockHarvestLevel(Block.wood, "axe", 0);
 }
 
 

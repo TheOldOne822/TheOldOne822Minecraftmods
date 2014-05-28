@@ -1,9 +1,13 @@
 package theoldone822.HardBHC;
 
+import java.io.File;
+
 import mods.immibis.tubestuff.TubeStuff;
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
+import net.minecraftforge.common.Configuration;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -24,15 +28,31 @@ public class HardBHC {
 	ItemStack cellResonant;
 	ItemStack ObsidianChest;
 
+	public static Configuration config;
+
+    public static boolean harder;
+
+	@EventHandler
+	public void preInit(FMLPreInitializationEvent event) {
+		config = new Configuration(new File("config", "hardbhc.cfg"));
+		config.load();
+
+		harder = config.get("Harder", "require Netherstar", true).getBoolean(true);
+
+		config.save();
+	}
+
 	@EventHandler
 	public void Init(FMLInitializationEvent event) {
 //		tesseract = new ItemStack(GameRegistry.findBlock("ThermalExpansion", "Tesseract"));
 		tesseract = GameRegistry.findItemStack("ThermalExpansion", "tesseractFrameFull", 1);
-//		tesseract = new ItemStack(Block.blockDiamond);
 		cellResonant = GameRegistry.findItemStack("ThermalExpansion", "cellResonant", 1);
-//		cellResonant = new ItemStack(Block.blockDiamond);
 		ObsidianChest = new ItemStack(IronChest.ironChestBlock, 1, 6);
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(TubeStuff.block, 1, 2), true, new Object[]{"XYX", "ZWZ", "XYX", Character.valueOf('X'), tesseract, Character.valueOf('Y'), Block.blockDiamond, Character.valueOf('Z'), cellResonant, Character.valueOf('W'), ObsidianChest}));
 
+		if(harder)
+			CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(TubeStuff.block, 1, 2), true, new Object[]{"XAX", "ZWZ", "XYX", Character.valueOf('A'), Item.netherStar, Character.valueOf('X'), tesseract, Character.valueOf('Y'), Block.blockDiamond, Character.valueOf('Z'), cellResonant, Character.valueOf('W'), ObsidianChest}));
+
+		if(!harder)
+			CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(TubeStuff.block, 1, 2), true, new Object[]{"XYX", "ZWZ", "XYX", Character.valueOf('X'), tesseract, Character.valueOf('Y'), Block.blockDiamond, Character.valueOf('Z'), cellResonant, Character.valueOf('W'), ObsidianChest}));
 	}
 }

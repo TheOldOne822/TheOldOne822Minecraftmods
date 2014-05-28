@@ -26,12 +26,12 @@ public class Settings {
 	public static int wootzMiningLevel;
 	public static int wootzUsesNum;
 	public static float wootzMiningSpeed;
-	public static int wootzDamageVsEntity;
+	public static float wootzDamageVsEntity;
 	public static int wootzEnchantability;
 	public static int hardenedsteelMiningLevel;
 	public static int hardenedsteelUsesNum;
 	public static float hardenedsteelMiningSpeed;
-	public static int hardenedsteelDamageVsEntity;
+	public static float hardenedsteelDamageVsEntity;
 	public static int hardenedsteelEnchantability;
 	public static int rePigironMiningLevel;
 	public static int rePigironUsesNum;
@@ -96,12 +96,12 @@ public class Settings {
 	wootzMiningLevel = settings.get("Tool Stats", "Wootz steel Mining Level", 2).getInt();
 	wootzUsesNum = settings.get("Tool Stats", "Wootz steel Uses Number", 650).getInt();
 	wootzMiningSpeed = (float) settings.get("Tool Stats", "Wootz steel Mining Speed", 8.0).getDouble(wootzMiningSpeed);
-	wootzDamageVsEntity = settings.get("Tool Stats", "Wootz steel Damage Vs Entity", 2).getInt();
+	wootzDamageVsEntity = (float) settings.get("Tool Stats", "Wootz steel Damage Vs Entity", 2.0).getDouble(wootzEnchantability);
 	wootzEnchantability = settings.get("Tool Stats", "Wootz steel Enchantability", 10).getInt();
 	hardenedsteelMiningLevel = settings.get("Tool Stats", "Hardened steel Mining Level", 3).getInt();
 	hardenedsteelUsesNum = settings.get("Tool Stats", "Hardened steel Uses Number", 72).getInt();
 	hardenedsteelMiningSpeed = (float) settings.get("Tool Stats", "Hardened steel Mining Speed", 10.0).getDouble(hardenedsteelMiningSpeed);
-	hardenedsteelDamageVsEntity = settings.get("Tool Stats", "Hardened steel Damage Vs Entity", 3).getInt();
+	hardenedsteelDamageVsEntity = (float) settings.get("Tool Stats", "Hardened steel Damage Vs Entity", 3.0).getDouble(hardenedsteelDamageVsEntity);
 	hardenedsteelEnchantability = settings.get("Tool Stats", "Hardened steel Enchantability", 3).getInt();
 
 	//Armor Stat Modifiers

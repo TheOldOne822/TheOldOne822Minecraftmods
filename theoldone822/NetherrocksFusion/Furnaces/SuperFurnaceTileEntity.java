@@ -23,6 +23,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.ForgeDummyContainer;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class SuperFurnaceTileEntity extends TileEntity implements ISidedInventory {
 	private static final int[] slots_top = new int[] { 0 };
@@ -268,7 +269,27 @@ public class SuperFurnaceTileEntity extends TileEntity implements ISidedInventor
 		}
 	}
 
-	/**
+
+    public boolean getdust(ItemStack item)
+    {
+    	for (String name : OreDictionary.getOreNames())
+    	{
+    		for (final ItemStack oreItem : OreDictionary.getOres(name))
+    		{
+    			if (oreItem.itemID == item.itemID && oreItem.getItemDamage() == item.getItemDamage())
+    			{
+    				if (name.contains("dust"))
+    				{
+    					return true;
+    				}
+    				return false;
+    			}
+    		}
+    	}
+		return false;
+    }
+
+    /**
 	 * Returns true if the furnace can smelt an item, i.e. has a source item, destination stack isn't full, etc.
 	 */
 	private boolean canSmelt() {
@@ -297,7 +318,7 @@ public class SuperFurnaceTileEntity extends TileEntity implements ISidedInventor
 		int j;
 		int r = generator.nextInt(100);
 
-		if (r <= Settings.dragonbezoarFurnaceMultiChance) {
+		if (r <= Settings.dragonbezoarFurnaceMultiChance  && !getdust(this.furnaceItemStacks[0])) {
 			k = Settings.dragonbezoarFurnaceMultiplier;
 		}
 
@@ -305,7 +326,7 @@ public class SuperFurnaceTileEntity extends TileEntity implements ISidedInventor
 			k = 1;
 		}
 		r = generator.nextInt(100);
-		if (r <= Settings.dragonbezoarFurnaceExtraChance) {
+		if (r <= Settings.dragonbezoarFurnaceExtraChance && !getdust(this.furnaceItemStacks[0])) {
 			j = Settings.dragonbezoarFurnaceExtra;
 		}
 

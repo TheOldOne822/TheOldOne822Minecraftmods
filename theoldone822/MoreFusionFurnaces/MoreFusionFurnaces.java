@@ -26,7 +26,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
-@Mod(modid = "morefusionfurnaces", name = "More Fusion Furnaces", version = "2.0", dependencies = "required-after:simpleores; required-after:simpleoresfusion")
+@Mod(modid = "morefusionfurnaces", name = "More Fusion Furnaces", version = "2.1", dependencies = "required-after:simpleores; required-after:simpleoresfusion")
 public class MoreFusionFurnaces {
 	@SidedProxy(clientSide = "theoldone822.MoreFusionFurnaces.ProxyClient", serverSide = "theoldone822.MoreFusionFurnaces.ProxyCommon")	
 	public static ProxyCommon proxy;
@@ -39,6 +39,8 @@ public class MoreFusionFurnaces {
 	public static int mythrilFusionFurnaceOnID;	
 	public static int onyxFusionFurnaceID;
 	public static int onyxFusionFurnaceOnID;	
+
+	public static boolean sinisiteFusionFurnace;	
 
 	public static Configuration config;
 	public static int mythrilFurnaceMultiplier, onyxFurnaceMultiplier, onyxFurnaceMultiChance;
@@ -59,6 +61,8 @@ public class MoreFusionFurnaces {
 		mythrilFusionFurnaceOnID = config.getBlock("Blocks", "Mythril Fusion Furnace On", 486).getInt();
 		onyxFusionFurnaceID = config.getBlock("Blocks", "Onyx Fusion Furnace", 487).getInt();
 		onyxFusionFurnaceOnID = config.getBlock("Blocks", "Onyx Fusion Furnace On", 488).getInt();
+
+		sinisiteFusionFurnace = config.get("Blocks", "Replace Onyx Fusion Furnace with Sinisite", false).getBoolean(sinisiteFusionFurnace);
 		
     	//Custom Furnace Multipliers
     	mythrilFurnaceMultiplier = config.get("Multiplier", "Mythril Furnace Fuel Length Multiplier", 2).getInt();
@@ -70,21 +74,34 @@ public class MoreFusionFurnaces {
 		onyxFusionFurnace = new OnyxFusionFurnace(onyxFusionFurnaceID, false).setHardness(CoreHelper.coreSettings.onyxFurnaceHardness).setResistance(CoreHelper.coreSettings.onyxFurnaceResistance).setUnlocalizedName("morefusionfurnaces:onyxFusionFurnace");
 		onyxFusionFurnaceOn = new OnyxFusionFurnace(onyxFusionFurnaceOnID, true).setHardness(CoreHelper.coreSettings.onyxFurnaceHardness).setResistance(CoreHelper.coreSettings.onyxFurnaceResistance).setLightValue(CoreHelper.coreSettings.onyxFurnaceLightValue).setUnlocalizedName("morefusionfurnaces:onyxFusionFurnaceOn");
 
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(mythrilFusionFurnace, true, new Object[]{
-				"XXX", "XYX", "XXX", Character.valueOf('X'), "ingotMythril", Character.valueOf('Y'), FusionHelper.fusionContent.fusionFurnace}));
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(onyxFusionFurnace, true, new Object[]{
-				"XXX", "XYX", "XXX", Character.valueOf('X'), "gemOnyx", Character.valueOf('Y'), FusionHelper.fusionContent.fusionFurnace}));
-		
 		GameRegistry.registerBlock(mythrilFusionFurnace, "mythrilFusionFurnace");
 		GameRegistry.registerBlock(mythrilFusionFurnaceOn, "mythrilFusionFurnaceOn");
 		GameRegistry.registerBlock(onyxFusionFurnace, "onyxFusionFurnace");
 		GameRegistry.registerBlock(onyxFusionFurnaceOn, "onyxFusionFurnaceOn");
 
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(mythrilFusionFurnace, true, new Object[]{
+				"XXX", "XYX", "XXX", Character.valueOf('X'), "ingotMythril", Character.valueOf('Y'), FusionHelper.fusionContent.fusionFurnace}));
+		if (!sinisiteFusionFurnace){
+			CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(onyxFusionFurnace, true, new Object[]{
+				"XXX", "XYX", "XXX", Character.valueOf('X'), "gemOnyx", Character.valueOf('Y'), FusionHelper.fusionContent.fusionFurnace}));
+		}
+		if (sinisiteFusionFurnace){
+			CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(onyxFusionFurnace, true, new Object[]{
+				"XXX", "XYX", "XXX", Character.valueOf('X'), "ingotSinisite", Character.valueOf('Y'), FusionHelper.fusionContent.fusionFurnace}));
+		}
+
 		LanguageRegistry.addName(mythrilFusionFurnace, "Mythril Fusion Furnace");
 		LanguageRegistry.addName(mythrilFusionFurnaceOn, "Mythril Fusion Furnace");
-		LanguageRegistry.addName(onyxFusionFurnace, "Onyx Fusion Furnace");
-		LanguageRegistry.addName(onyxFusionFurnaceOn, "Onyx Fusion Furnace");
 
+		if (sinisiteFusionFurnace){
+			LanguageRegistry.addName(onyxFusionFurnace, "Sinisite Fusion Furnace");
+			LanguageRegistry.addName(onyxFusionFurnaceOn, "Sinisite Fusion Furnace");
+		}
+
+		if (!sinisiteFusionFurnace){
+			LanguageRegistry.addName(onyxFusionFurnace, "Onyx Fusion Furnace");
+			LanguageRegistry.addName(onyxFusionFurnaceOn, "Onyx Fusion Furnace");
+		}
 	}
 
 	@EventHandler

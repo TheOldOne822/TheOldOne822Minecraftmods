@@ -10,17 +10,17 @@ public class Settings {
 	public static int EndiumMiningLevel;
 	public static int EndiumUsesNum;
 	public static float EndiumMiningSpeed;
-	public static int EndiumDamageVsEntity;
+	public static float EndiumDamageVsEntity;
 	public static int EndiumEnchantability;
 	public static int TelosMiningLevel;
 	public static int TelosUsesNum;
 	public static float TelosMiningSpeed;
-	public static int TelosDamageVsEntity;
+	public static float TelosDamageVsEntity;
 	public static int TelosEnchantability;
 	public static int SunteleiaMiningLevel;
 	public static int SunteleiaUsesNum;
 	public static float SunteleiaMiningSpeed;
-	public static int SunteleiaDamageVsEntity;
+	public static float SunteleiaDamageVsEntity;
 	public static int SunteleiaEnchantability;
 
 	//Armor Stats
@@ -76,17 +76,17 @@ public class Settings {
 	EndiumMiningLevel = settings.get("Tool Stats", "Endium Mining Level", 6).getInt();
 	EndiumUsesNum = settings.get("Tool Stats", "Endium Uses Number", 4250).getInt();
 	EndiumMiningSpeed = (float) settings.get("Tool Stats", "Endium Mining Speed", 26.0).getDouble(EndiumMiningSpeed);
-	EndiumDamageVsEntity = settings.get("Tool Stats", "Endium Damage Vs Entity", 9).getInt();
+	EndiumDamageVsEntity = (float) settings.get("Tool Stats", "Endium Damage Vs Entity", 9.0).getDouble(EndiumDamageVsEntity);
 	EndiumEnchantability = settings.get("Tool Stats", "Endium Enchantability", 31).getInt();
 	TelosMiningLevel = settings.get("Tool Stats", "Telos Mining Level", 7).getInt();
 	TelosUsesNum = settings.get("Tool Stats", "Telos Uses Number", 4450).getInt();
 	TelosMiningSpeed = (float) settings.get("Tool Stats", "Telos Mining Speed", 32).getDouble(TelosMiningSpeed);
-	TelosDamageVsEntity = settings.get("Tool Stats", "Telos Damage Vs Entity", 10).getInt();
+	TelosDamageVsEntity = (float) settings.get("Tool Stats", "Telos Damage Vs Entity", 10.0).getDouble(TelosDamageVsEntity);
 	TelosEnchantability = settings.get("Tool Stats", "Telos Enchantability", 34).getInt();
 	SunteleiaMiningLevel = settings.get("Tool Stats", "Sunteleia Mining Level", 8).getInt();
 	SunteleiaUsesNum = settings.get("Tool Stats", "Sunteleia Uses Number", 8000).getInt();
 	SunteleiaMiningSpeed = (float) settings.get("Tool Stats", "Sunteleia Mining Speed", 24.0).getDouble(SunteleiaMiningSpeed);
-	SunteleiaDamageVsEntity = settings.get("Tool Stats", "Sunteleia Damage Vs Entity", 11).getInt();
+	SunteleiaDamageVsEntity = (float) settings.get("Tool Stats", "Sunteleia Damage Vs Entity", 11.0).getDouble(SunteleiaDamageVsEntity);
 	SunteleiaEnchantability = settings.get("Tool Stats", "Sunteleia Enchantability", 38).getInt();
 
 	//Armor Stat Modifiers

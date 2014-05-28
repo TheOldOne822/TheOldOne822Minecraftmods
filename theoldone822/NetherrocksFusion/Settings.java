@@ -26,22 +26,22 @@ public class Settings {
 	public static int cinderstoneMiningLevel;
 	public static int cinderstoneUsesNum;
 	public static float cinderstoneMiningSpeed;
-	public static int cinderstoneDamageVsEntity;
+	public static float cinderstoneDamageVsEntity;
 	public static int cinderstoneEnchantability;
 	public static int thrakaMiningLevel;
 	public static int thrakaUsesNum;
 	public static float thrakaMiningSpeed;
-	public static int thrakaDamageVsEntity;
+	public static float thrakaDamageVsEntity;
 	public static int thrakaEnchantability;
 	public static int pyralisMiningLevel;
 	public static int pyralisUsesNum;
 	public static float pyralisMiningSpeed;
-	public static int pyralisDamageVsEntity;
+	public static float pyralisDamageVsEntity;
 	public static int pyralisEnchantability;
 	public static int dragonbezoarMiningLevel;
 	public static int dragonbezoarUsesNum;
 	public static float dragonbezoarMiningSpeed;
-	public static int dragonbezoarDamageVsEntity;
+	public static float dragonbezoarDamageVsEntity;
 	public static int dragonbezoarEnchantability;
 
 	//Armor Stats
@@ -120,22 +120,22 @@ public class Settings {
 	cinderstoneMiningLevel = settings.get("Tool Stats", "Cinderstone Mining Level", 0).getInt();
 	cinderstoneUsesNum = settings.get("Tool Stats", "Cinderstone Uses Number", 40).getInt();
 	cinderstoneMiningSpeed = (float) settings.get("Tool Stats", "Cinderstone Mining Speed", 10.0).getDouble(cinderstoneMiningSpeed);
-	cinderstoneDamageVsEntity = settings.get("Tool Stats", "Cinderstone Damage Vs Entity", 7).getInt();
+	cinderstoneDamageVsEntity = (float) settings.get("Tool Stats", "Cinderstone Damage Vs Entity", 7.0).getDouble(cinderstoneDamageVsEntity);
 	cinderstoneEnchantability = settings.get("Tool Stats", "Cinderstone Enchantability", 4).getInt();
 	thrakaMiningLevel = settings.get("Tool Stats", "Thraka Mining Level", 3).getInt();
 	thrakaUsesNum = settings.get("Tool Stats", "Thraka Uses Number", 825).getInt();
 	thrakaMiningSpeed = (float) settings.get("Tool Stats", "Thraka Mining Speed", 14).getDouble(thrakaMiningSpeed);
-	thrakaDamageVsEntity = settings.get("Tool Stats", "Thraka Damage Vs Entity", 3).getInt();
+	thrakaDamageVsEntity = (float) settings.get("Tool Stats", "Thraka Damage Vs Entity", 3.0).getDouble(thrakaDamageVsEntity);
 	thrakaEnchantability = settings.get("Tool Stats", "Thraka Enchantability", 34).getInt();
 	pyralisMiningLevel = settings.get("Tool Stats", "Pyralis Mining Level", 4).getInt();
 	pyralisUsesNum = settings.get("Tool Stats", "Pyralis Uses Number", 3200).getInt();
 	pyralisMiningSpeed = (float) settings.get("Tool Stats", "Pyralis Mining Speed", 12.0).getDouble(pyralisMiningSpeed);
-	pyralisDamageVsEntity = settings.get("Tool Stats", "Pyralis Damage Vs Entity", 8).getInt();
+	pyralisDamageVsEntity = (float) settings.get("Tool Stats", "Pyralis Damage Vs Entity", 8.0).getDouble(pyralisDamageVsEntity);
 	pyralisEnchantability = settings.get("Tool Stats", "Pyralis Enchantability", 29).getInt();
 	dragonbezoarMiningLevel = settings.get("Tool Stats", "Dragon Bezoar Mining Level", 6).getInt();
 	dragonbezoarUsesNum = settings.get("Tool Stats", "Dragon Bezoar Uses Number", 4500).getInt();
 	dragonbezoarMiningSpeed = (float) settings.get("Tool Stats", "Dragon Bezoar Mining Speed", 16.0).getDouble(dragonbezoarMiningSpeed);
-	dragonbezoarDamageVsEntity = settings.get("Tool Stats", "Dragon Bezoar Damage Vs Entity", 9).getInt();
+	dragonbezoarDamageVsEntity = (float) settings.get("Tool Stats", "Dragon Bezoar Damage Vs Entity", 9.0).getDouble(dragonbezoarDamageVsEntity);
 	dragonbezoarEnchantability = settings.get("Tool Stats", "Dragon Bezoar Enchantability", 40).getInt();
 
 	//Armor Stat Modifiers
