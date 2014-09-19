@@ -11,6 +11,7 @@ import theoldone822.MoreFusionFurnaces.Furnaces.OnyxFusionFurnace;
 import theoldone822.MoreFusionFurnaces.Furnaces.OnyxFusionFurnaceTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.item.crafting.CraftingManager;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.Mod;
@@ -60,11 +61,6 @@ public class MoreFusionFurnaces {
 		onyxFusionFurnace = new OnyxFusionFurnace(false).setHardness(CoreHelper.coreSettings.onyxFurnaceHardness).setResistance(CoreHelper.coreSettings.onyxFurnaceResistance).setBlockName("morefusionfurnaces:onyxFusionFurnace");
 		onyxFusionFurnaceOn = new OnyxFusionFurnace(true).setHardness(CoreHelper.coreSettings.onyxFurnaceHardness).setResistance(CoreHelper.coreSettings.onyxFurnaceResistance).setLightLevel(CoreHelper.coreSettings.onyxFurnaceLightValue).setBlockName("morefusionfurnaces:onyxFusionFurnaceOn");
 
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(mythrilFusionFurnace, true, new Object[]{
-				"XXX", "XYX", "XXX", Character.valueOf('X'), "ingotMythril", Character.valueOf('Y'), FusionHelper.fusionContent.fusion_furnace}));
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(onyxFusionFurnace, true, new Object[]{
-				"XXX", "XYX", "XXX", Character.valueOf('X'), "gemOnyx", Character.valueOf('Y'), FusionHelper.fusionContent.fusion_furnace}));
-		
 		GameRegistry.registerBlock(mythrilFusionFurnace, "mythrilFusionFurnace");
 		GameRegistry.registerBlock(mythrilFusionFurnaceOn, "mythrilFusionFurnaceOn");
 		GameRegistry.registerBlock(onyxFusionFurnace, "onyxFusionFurnace");
@@ -75,6 +71,9 @@ public class MoreFusionFurnaces {
 		LanguageRegistry.addName(onyxFusionFurnace, "Onyx Fusion Furnace");
 		LanguageRegistry.addName(onyxFusionFurnaceOn, "Onyx Fusion Furnace");
 
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(mythrilFusionFurnace, true, new Object[]{	"XXX", "XYX", "XXX", Character.valueOf('X'), "ingotMythril", Character.valueOf('Y'), FusionHelper.fusionContent.fusion_furnace}));
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(onyxFusionFurnace, true, new Object[]{ "XXX", "XYX", "XXX", Character.valueOf('X'), "gemOnyx", Character.valueOf('Y'), FusionHelper.fusionContent.fusion_furnace}));
+		
 	}
 
 	@EventHandler

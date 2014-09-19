@@ -52,8 +52,8 @@ public class WootzPignGray {
 		armorWootz = EnumHelper.addArmorMaterial("WOOTZ", Settings.wootzArmorDurability, Settings.wootzArmorDamageReduction, Settings.wootzArmorEnchantability);
 
 		Content.doArmor();
-		Content.doBlocks();
 		Content.doItems();
+		Content.doBlocks();
 		Content.doTools();
 		Content.doLoot();
 		Recipes.doRecipes();

@@ -18,7 +18,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "woolarmor", name = "Wool Armor", version = "1.3")
+@Mod(modid = "woolarmor", name = "Wool Armor", version = "1.0")
 public class Woolarmor {
 
 	public static ArmorMaterial armorWool;
@@ -48,10 +48,10 @@ public class Woolarmor {
 
 
 		armorWool = EnumHelper.addArmorMaterial("WOOL", 3, new int[] { 1, 2, 1, 1 }, 8);
-		woolHelm = new ItemArmor(armorWool, 0, 0).setUnlocalizedName("woolarmors:woolHelmet").setTextureName("WoolArmors:WoolHelmet");
-		woolChest = new ItemArmor(armorWool, 0, 1).setUnlocalizedName("woolarmors:woolChestplate").setTextureName("WoolArmors:WoolChestplate");
-		woolLegs = new ItemArmor(armorWool, 0, 2).setUnlocalizedName("woolarmors:woolLeggings").setTextureName("WoolArmors:WoolLeggings");
-		woolBoots = new ItemArmor(armorWool, 0, 3).setUnlocalizedName("woolarmors:woolBoots").setTextureName("WoolArmors:WoolBoots");
+		woolHelm = new ItemArmor(armorWool, 0, 0).setUnlocalizedName("woolarmor:woolHelmet").setTextureName("WoolArmor:WoolHelmet");
+		woolChest = new ItemArmor(armorWool, 0, 1).setUnlocalizedName("woolarmor:woolChestplate").setTextureName("WoolArmor:WoolChestplate");
+		woolLegs = new ItemArmor(armorWool, 0, 2).setUnlocalizedName("woolarmor:woolLeggings").setTextureName("WoolArmor:WoolLeggings");
+		woolBoots = new ItemArmor(armorWool, 0, 3).setUnlocalizedName("woolarmor:woolBoots").setTextureName("WoolArmor:WoolBoots");
 
 		LanguageRegistry.addName(woolHelm, "Wool Helmet");
 		LanguageRegistry.addName(woolChest, "Wool Chestplate");

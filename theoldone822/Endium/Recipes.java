@@ -82,13 +82,13 @@ public class Recipes {
 				new ItemStack(Content.smallTelosChunk), 6.0F);
 		FusionRecipes.addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(CoreHelper.coreContent.mythril_ingot), new ItemStack(Items.ender_eye),
 				new ItemStack(Content.mediumTelosChunk), 10.0F);
-//		FusionRecipes.addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(CoreHelper.coreContent.mythrilIngot), new ItemStack(Items.skull, 1, 1),
-//				new ItemStack(Content.largeTelosChunk), 30.0F);
+		FusionRecipes.addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(CoreHelper.coreContent.mythril_ingot), new ItemStack(Items.skull, 1, 1),
+				new ItemStack(Content.largeTelosChunk), 30.0F);
 
 		if (Loader.isModLoaded("netherrocksfusion")) {
-//		FusionRecipes.addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(theoldone822.NetherrocksFusion.Content.largeDragonBezoarChunk), new ItemStack(Items.ghast_tear), new ItemStack(Content.smallSunteleiaChunk), 6.0F);
-//		FusionRecipes.addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(theoldone822.NetherrocksFusion.Content.largeDragonBezoarChunk), new ItemStack(Items.skull, 1, 1), new ItemStack(Content.mediumSunteleiaChunk), 10.0F);
-//		FusionRecipes.addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(theoldone822.NetherrocksFusion.Content.largeDragonBezoarChunk), new ItemStack(Items.skull, 1, 1), new ItemStack(Content.largeSunteleiaChunk), 30.0F);
+		FusionRecipes.addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(theoldone822.NetherrocksFusion.Content.largeDragonBezoarChunk), new ItemStack(Items.ghast_tear), new ItemStack(Content.smallSunteleiaChunk), 6.0F);
+		FusionRecipes.addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(theoldone822.NetherrocksFusion.Content.largeDragonBezoarChunk), new ItemStack(Items.skull, 1, 1), new ItemStack(Content.mediumSunteleiaChunk), 10.0F);
+		FusionRecipes.addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(theoldone822.NetherrocksFusion.Content.largeDragonBezoarChunk), new ItemStack(Items.skull, 1, 1), new ItemStack(Content.largeSunteleiaChunk), 30.0F);
 		}
 
 		GameRegistry.addSmelting(Content.EndiumOre, new ItemStack(Content.EndiumIngot, 1, 0), 0.3F);

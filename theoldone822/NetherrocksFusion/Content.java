@@ -9,7 +9,7 @@ import theoldone822.NetherrocksFusion.Items.NetherSword;
 import theoldone822.NetherrocksFusion.Items.SimpleBow;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
-import alexndr.SimpleOres.api.content.SimpleOre;
+import alexndr.SimpleOres.api.content.SimpleBlock;
 import alexndr.SimpleOres.api.helpers.CoreHelper;
 import alexndr.SimpleOres.api.content.SimpleArmor;
 import alexndr.SimpleOres.api.content.SimpleAxe;
@@ -186,10 +186,10 @@ public class Content
 	public static void doBlocks()
 	{
 		//Block Properties
-		cinderstoneBlock = new SimpleOre(Material.iron).modId("netherrocksfusion").setHardness(Settings.cinderstoneBlockHardness).setResistance(Settings.cinderstoneBlockResistance).setLightLevel(Settings.cinderstoneBlockLightValue).setBlockName("cinderstoneBlock").setBlockTextureName("netherrocksfusion:cinderstoneBlock");
-		thrakaBlock = new SimpleOre(Material.iron).modId("netherrocksfusion").setHardness(Settings.thrakaBlockHardness).setResistance(Settings.thrakaBlockResistance).setBlockName("thrakaBlock").setBlockTextureName("netherrocksfusion:thrakaBlock");
-		pyralisBlock = new SimpleOre(Material.iron).modId("netherrocksfusion").setHardness(Settings.pyralisBlockHardness).setResistance(Settings.pyralisBlockResistance).setLightLevel(Settings.pyralisBlockLightValue).setBlockName("pyralisBlock").setBlockTextureName("netherrocksfusion:pyralisBlock");
-		dragonbezoarBlock = new SimpleOre(Material.iron).modId("netherrocksfusion").setHardness(Settings.dragonbezoarBlockHardness).setResistance(Settings.dragonbezoarBlockResistance).setLightLevel(Settings.dragonbezoarBlockLightValue).setBlockName("dragonbezoarBlock").setBlockTextureName("netherrocksfusion:dragonbezoarBlock");
+		cinderstoneBlock = new SimpleBlock(Material.iron).modId("netherrocksfusion").setHardness(Settings.cinderstoneBlockHardness).setResistance(Settings.cinderstoneBlockResistance).setLightLevel(Settings.cinderstoneBlockLightValue).setBlockName("cinderstoneBlock").setBlockTextureName("netherrocksfusion:cinderstoneBlock");
+		thrakaBlock = new SimpleBlock(Material.iron).modId("netherrocksfusion").setHardness(Settings.thrakaBlockHardness).setResistance(Settings.thrakaBlockResistance).setBlockName("thrakaBlock").setBlockTextureName("netherrocksfusion:thrakaBlock");
+		pyralisBlock = new SimpleBlock(Material.iron).modId("netherrocksfusion").setHardness(Settings.pyralisBlockHardness).setResistance(Settings.pyralisBlockResistance).setLightLevel(Settings.pyralisBlockLightValue).setBlockName("pyralisBlock").setBlockTextureName("netherrocksfusion:pyralisBlock");
+		dragonbezoarBlock = new SimpleBlock(Material.iron).modId("netherrocksfusion").setHardness(Settings.dragonbezoarBlockHardness).setResistance(Settings.dragonbezoarBlockResistance).setLightLevel(Settings.dragonbezoarBlockLightValue).setBlockName("dragonbezoarBlock").setBlockTextureName("netherrocksfusion:dragonbezoarBlock");
 		dragonbezoarFurnace = new SuperFurnace(false).setHardness(Settings.dragonbezoarFurnaceHardness).setResistance(Settings.dragonbezoarFurnaceResistance).setLightLevel(Settings.dragonbezoarBlockLightValue).setBlockName("dragonbezoarFurnace");
 		dragonbezoarFurnaceOn = new SuperFurnace(true).setHardness(Settings.dragonbezoarFurnaceHardness).setResistance(Settings.dragonbezoarFurnaceResistance).setLightLevel(Settings.dragonbezoarFurnaceLightValue).setBlockName("dragonbezoarFurnaceOn");
 		dragonbezoarFusionFurnace = new SuperFusionFurnace(false).setHardness(Settings.dragonbezoarFurnaceHardness).setResistance(Settings.dragonbezoarFurnaceResistance).setLightLevel(Settings.dragonbezoarBlockLightValue).setBlockName("dragonbezoarFusionFurnace");
@@ -282,7 +282,9 @@ public class Content
 		dragonbezoarSword = new NetherSword(NetherrocksFusion.toolDragonBezoar).setUnlocalizedName("dragonbezoarSword").setTextureName("netherrocksfusion:dragonbezoarSword");
 		dragonbezoarHoe = new SimpleHoe(NetherrocksFusion.toolDragonBezoar).modId("netherrocksfusion").setUnlocalizedName("dragonbezoarHoe").setTextureName("netherrocksfusion:dragonbezoarHoe");
 		dragonbezoarBow = (ItemBow) new SimpleBow(1200, mod.toolPyralis).setFull3D().setUnlocalizedName("dragonbezoarBow").setTextureName("netherrocksfusion:dragonbezoarBow");
-		dragonbezoarShears = new SimpleShears(9300).setUnlocalizedName("dragonbezoarShears").setTextureName("netherrocksfusion:dragonbezoarShears");
+		dragonbezoarShears = new SimpleShears(9300).setUnlocalizedName("dragonbezoarShears")/*.setTextureName("netherrocksfusion:dragonbezoarShears")*/;
+
+		GameRegistry.registerItem(dragonbezoarShears, "dragonbezoarShears");
 
 		LanguageRegistry.addName(cinderstoneSword, "Cinderstone Sword");
 		LanguageRegistry.addName(thrakaPick, "Thraka Pickaxe");

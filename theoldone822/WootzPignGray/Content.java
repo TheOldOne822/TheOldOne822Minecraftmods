@@ -19,7 +19,6 @@ import alexndr.SimpleOres.api.content.SimplePickaxe;
 import alexndr.SimpleOres.api.content.SimpleHoe;
 import alexndr.SimpleOres.api.content.SimpleArmor;
 import alexndr.SimpleOres.api.helpers.LootHelper;
-import alexndr.SimpleOres.api.content.SimpleOre;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
@@ -111,9 +110,7 @@ public class Content
 		pigironBlock = new SimpleOre(Material.iron).modId("wootzpigngray").setHardness(Settings.pigironBlockHardness).setResistance(Settings.pigironBlockResistance).setBlockName("pigironBlock").setBlockTextureName("wootzpigngray:pigironBlock");
 		wootzBlock = new SimpleOre(Material.iron).modId("wootzpigngray").setHardness(Settings.wootzBlockHardness).setResistance(Settings.wootzBlockResistance).setBlockName("wootzBlock").setBlockTextureName("wootzpigngray:wootzBlock");
 		rePigironBlock = new SimpleOre(Material.iron).modId("wootzpigngray").setHardness(Settings.rePigironBlockHardness).setResistance(Settings.rePigironBlockResistance).setBlockName("rePigironBlock").setBlockTextureName("wootzpigngray:rePigironBlock");
-	    Random generator = new Random();
-    	int r = generator.nextInt(3);
-		grayBlock = new SimpleOre(Material.iron).modId("wootzpigngray").setStackToDrop(new ItemStack(graphite, (3 + r))).setHardness(Settings.grayBlockHardness).setResistance(Settings.grayBlockResistance).setBlockName("grayBlock").setBlockTextureName("wootzpigngray:grayBlock");
+		grayBlock = new SimpleOre(Material.iron).modId("wootzpigngray").setStackToDrop(new ItemStack(graphite)).setHardness(Settings.grayBlockHardness).setResistance(Settings.grayBlockResistance).setBlockName("grayBlock").setBlockTextureName("wootzpigngray:grayBlock");
 		grayFurnace = new GrayFurnace(false).setHardness(Settings.grayFurnaceHardness).setResistance(Settings.grayFurnaceResistance).setBlockName("grayFurnace");
 		grayFurnaceOn = new GrayFurnace(true).setHardness(Settings.grayFurnaceHardness).setResistance(Settings.grayFurnaceResistance).setLightLevel(Settings.grayFurnaceLightValue).setBlockName("grayFurnaceOn");
 		grayFusionFurnace = new GrayFusionFurnace(false).setHardness(Settings.grayFurnaceHardness).setResistance(Settings.grayFurnaceResistance).setBlockName("grayFusionFurnace");
