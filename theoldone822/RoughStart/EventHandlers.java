@@ -4,6 +4,7 @@ import java.util.Random;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityPig;
+import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -12,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
@@ -25,6 +27,7 @@ public class EventHandlers {
 		Random rand = new Random();
 		World w = event.world;
 		
+		if (RoughStart.noTreePunching){
 		if (event.block == Blocks.log || event.block == Blocks.log2){
 			if(event.getPlayer() != null){
 				if(event.getPlayer().getCurrentEquippedItem() != null){
@@ -38,6 +41,8 @@ public class EventHandlers {
 				} else {event.setCanceled(true);}
 			}
 		}
+		}
+		if (RoughStart.naturalSticks){
 		if (event.block == Blocks.leaves || event.block == Blocks.leaves2){
 			if(rand.nextInt(100) <= 10){
 				ItemStack stick = new ItemStack(Items.stick);
@@ -54,7 +59,15 @@ public class EventHandlers {
 				EntityItem entityitem = new EntityItem(w, event.x, event.y, event.z, stick);
 				w.spawnEntityInWorld(entityitem);
 			}
-		}
+		}}
+	}
+	
+	@SubscribeEvent
+	public void DropEvent(LivingDropsEvent event){
+		if (RoughStart.noWoolDrop){
+		if (event.entity instanceof EntitySheep){
+			event.setCanceled(true);
+		}}
 	}
 	
 	@SubscribeEvent
