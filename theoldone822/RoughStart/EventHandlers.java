@@ -1,5 +1,6 @@
 package theoldone822.RoughStart;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.entity.EntityLivingBase;
@@ -15,20 +16,28 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
+import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class EventHandlers {
 
+	ArrayList<ItemStack> leaves;
+	ArrayList<ItemStack> logs;
 
 	@SubscribeEvent
 	 public void onBlockBreak(BreakEvent event){
 		Random rand = new Random();
 		World w = event.world;
-		
+
+		leaves = OreDictionary.getOres("treeLeaves");
+		logs = OreDictionary.getOres("logWood");
+
 		if (RoughStart.noTreePunching){
-		if (event.block == Blocks.log || event.block == Blocks.log2){
+//		if (event.block == Blocks.log || event.block == Blocks.log2){
+		for(int i = 0; i<logs.size(); i++){
+		if (event.block.getBlockFromItem(logs.get(i).getItem()) == event.block){
 			if(event.getPlayer() != null){
 				if(event.getPlayer().getCurrentEquippedItem() != null){
 					ItemStack tool = new ItemStack(event.getPlayer().getCurrentEquippedItem().getItem());
@@ -40,16 +49,19 @@ public class EventHandlers {
 					
 				} else {event.setCanceled(true);}
 			}
-		}
+		}}
 		}
 		if (RoughStart.naturalSticks){
-		if (event.block == Blocks.leaves || event.block == Blocks.leaves2){
-			if(rand.nextInt(100) <= 10){
+//		if (event.block == Blocks.leaves || event.block == Blocks.leaves2){
+		for(int i = 0; i<leaves.size(); i++){
+			if (event.block.getBlockFromItem(leaves.get(i).getItem()) == event.block){
+			if(rand.nextInt(100) <= 15){
 				ItemStack stick = new ItemStack(Items.stick);
 				EntityItem entityitem = new EntityItem(w, event.x, event.y, event.z, stick);
 				w.spawnEntityInWorld(entityitem);
 			}
-		} else if (event.block == Blocks.deadbush){
+		}}
+			if (event.block == Blocks.deadbush){
 			if(rand.nextInt(5) < 3){
 				ItemStack stick = new ItemStack(Items.stick);
 				EntityItem entityitem = new EntityItem(w, event.x, event.y, event.z, stick);
@@ -75,7 +87,7 @@ public class EventHandlers {
 		Random rand = new Random();
 		World w = event.entity.worldObj;
 		
-		if (event.entity instanceof EntityPig){
+		if (!w.isRemote && event.entity instanceof EntityPig){
 			if(rand.nextInt(5) < 2){
 				ItemStack leather = new ItemStack(Items.leather);
 				EntityItem entityitem = new EntityItem(w, event.entity.posX, event.entity.posY, event.entity.posZ, leather);

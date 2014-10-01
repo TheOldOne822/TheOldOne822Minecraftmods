@@ -37,7 +37,7 @@ public class RoughStart {
 	public static Item crudeAxe;
 	public static Item flintAxe;
 	public static Item leatherStrips;
-	public static Item stone;
+	public static Item rock;
 	public static Block stoneblock;
 	
 	public static boolean nerfPlank;
@@ -115,11 +115,11 @@ public class RoughStart {
 		flintAxe = new BasicAxe(toolFlint).setUnlocalizedName("flintAxe").setTextureName("roughstart:flintAxe");
 		
 		leatherStrips = new BasicItem().setUnlocalizedName("leatherStrips").setTextureName("roughstart:leatherStrips");
-		stone = new BasicItem().setUnlocalizedName("stone").setTextureName("roughstart:stone");
+		rock = new BasicItem().setUnlocalizedName("rock").setTextureName("roughstart:rock");
 		stoneblock = new BasicBlock(Material.ground).setBlockName("stoneblock").setBlockTextureName("roughstart:stoneblock");
 
 		if (enableCrudeAxe)
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(crudeAxe), true, new Object[] { "XY", " Y", Character.valueOf('X'), new ItemStack(Items.coal, 2, OreDictionary.WILDCARD_VALUE), Character.valueOf('Y'), "stickWood"}));
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(crudeAxe), true, new Object[] { "XY", " Y", Character.valueOf('X'), new ItemStack(rock), Character.valueOf('Y'), "stickWood"}));
 		if (enableFlintAxe)
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(flintAxe), true, new Object[] { "XY", " Y", Character.valueOf('X'), new ItemStack(Items.flint), Character.valueOf('Y'), "stickWood"}));
 	
@@ -190,7 +190,7 @@ public class RoughStart {
 		CraftingManager.getInstance().getRecipeList().add(new ShapelessOreRecipe(new ItemStack(Items.leather_leggings), new Object[] {new ItemStack(Items.leather_leggings, 1, OreDictionary.WILDCARD_VALUE), Items.leather}));
 		}
 		if (naturalRocks){
-			CraftingManager.getInstance().getRecipeList().add(new ShapelessOreRecipe(new ItemStack(stone), new Object[] {Blocks.cobblestone}));
+			CraftingManager.getInstance().getRecipeList().add(new ShapelessOreRecipe(new ItemStack(rock), new Object[] {Blocks.cobblestone}));
 		}
 		
 		if (naturalSticks){

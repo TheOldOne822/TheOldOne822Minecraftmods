@@ -1,6 +1,7 @@
 package theoldone822.WootzPignGray;
 
 import alexndr.SimpleOres.api.helpers.CoreHelper;
+import alexndr.SimpleOres.plugins.fusion.FusionRecipes.Material;
 import alexndr.SimpleOres.plugins.fusion.FusionHelper;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -99,12 +100,11 @@ public class Recipes {
 		FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Items.iron_ingot), new ItemStack(Blocks.sand, 0), new ItemStack(Items.coal, 2, OreDictionary.WILDCARD_VALUE),
 				new ItemStack(Content.rawPigiron, 4), 1.0F);
 
-		FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Content.packedIron), new ItemStack(Blocks.leaves, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Items.clay_ball),
+		FusionHelper.fusionFurnaceRecipes.addSmelting(Material.of(new ItemStack(Content.packedIron)), Material.of("treeLeaves", 1), Material.of(new ItemStack(Items.clay_ball)),
 				new ItemStack(Content.smallWootzsteelChunk), 1.0F);
-		FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Content.packedIron), new ItemStack(Blocks.sapling, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.clay),
+		FusionHelper.fusionFurnaceRecipes.addSmelting(Material.of(new ItemStack(Content.packedIron)), Material.of("treeSapling", 1), Material.of(new ItemStack(Blocks.clay)),
 				new ItemStack(Content.mediumWootzsteelChunk), 1.0F);
-		FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Content.packedIron), new ItemStack(Blocks.leaves, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.clay),
-				new ItemStack(Content.largeWootzsteelChunk), 1.0F);
+		FusionHelper.fusionFurnaceRecipes.addSmelting(Material.of(new ItemStack(Content.packedIron)), Material.of("treeLeaves", 1), Material.of(new ItemStack(Blocks.clay)), new ItemStack(Content.largeWootzsteelChunk), 1.F);
 
 		FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Content.rePigironIngot), new ItemStack(Items.iron_ingot), new ItemStack(Blocks.sand), new ItemStack(Content.largeGrayChunk), 1.0F);
 
