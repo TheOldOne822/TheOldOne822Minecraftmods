@@ -55,7 +55,7 @@ public class EventHandlers {
 				}
 			}
 		}
-		if (RoughStart.naturalSticks) {
+		if (RoughStart.sticksLeaves) {
 			// if (event.block == Blocks.leaves || event.block ==
 			// Blocks.leaves2){
 			for (int i = 0; i < leaves.size(); i++) {
@@ -68,7 +68,8 @@ public class EventHandlers {
 					}
 				}
 			}
-			if (event.block == Blocks.deadbush) {
+		}
+			if (RoughStart.bushSticks && event.block == Blocks.deadbush) {
 				if (rand.nextInt(5) < 3) {
 					ItemStack stick = new ItemStack(Items.stick);
 					EntityItem entityitem = new EntityItem(w, event.x, event.y,
@@ -82,8 +83,8 @@ public class EventHandlers {
 				}
 
 			}
-		}
-		if (RoughStart.naturalSticks) {
+
+		if (RoughStart.shatteringStone) {
 			if (event.block == Blocks.stone) {
 				event.block.removedByPlayer(w, event.getPlayer(), event.x,
 						event.y, event.z, false);
@@ -109,8 +110,8 @@ public class EventHandlers {
 		Random rand = new Random();
 		World w = event.entity.worldObj;
 
-		if (!w.isRemote && event.entity instanceof EntityCow) {
-			if (rand.nextInt(100) < 2) {
+		if (RoughStart.moreLeather > 0 && !w.isRemote && event.entity instanceof EntityCow) {
+			if (rand.nextInt(100) < RoughStart.moreLeather) {
 				ItemStack leather = new ItemStack(Items.leather);
 				EntityItem entityitem = new EntityItem(w, event.entity.posX,
 						event.entity.posY, event.entity.posZ, leather);
@@ -118,7 +119,7 @@ public class EventHandlers {
 			}
 		}
 
-		if (!w.isRemote && event.entity instanceof EntityPig) {
+		if (RoughStart.pigLeather && !w.isRemote && event.entity instanceof EntityPig) {
 			if (rand.nextInt(5) < 2) {
 				ItemStack leather = new ItemStack(Items.leather);
 				EntityItem entityitem = new EntityItem(w, event.entity.posX,
