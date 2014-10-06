@@ -77,7 +77,7 @@ public class BasicItem extends Item
 	@Override
     public ItemStack onItemRightClick(ItemStack item, World world, EntityPlayer player)
     {
-		if (item.getItem() == RoughStart.rock){
+		if (item.getItem() == RoughStart.rock && RoughStart.throwingRock){
         if (!player.capabilities.isCreativeMode)
         {
             --item.stackSize;
