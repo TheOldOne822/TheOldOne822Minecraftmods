@@ -8,6 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
+import net.minecraft.world.World;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -72,4 +73,25 @@ public class BasicItem extends Item
 			par3List.add(StatCollector.translateToLocal(infoString));
 		}
 	}
+	
+	@Override
+    public ItemStack onItemRightClick(ItemStack item, World world, EntityPlayer player)
+    {
+		if (item.getItem() == RoughStart.rock){
+        if (!player.capabilities.isCreativeMode)
+        {
+            --item.stackSize;
+        }
+
+        world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+
+        if (!world.isRemote)
+        {
+            world.spawnEntityInWorld(new EntityStone(world, player));
+        }
+		}
+
+        return item;
+    }
+	
 }
