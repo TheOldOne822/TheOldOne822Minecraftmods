@@ -60,7 +60,7 @@ public class EventHandlers {
 			// Blocks.leaves2){
 			for (int i = 0; i < leaves.size(); i++) {
 				if (event.block.getBlockFromItem(leaves.get(i).getItem()) == event.block) {
-					if (rand.nextInt(100) <= 15) {
+					if (rand.nextInt(100) <= 10) {
 						ItemStack stick = new ItemStack(Items.stick);
 						EntityItem entityitem = new EntityItem(w, event.x,
 								event.y, event.z, stick);
@@ -70,6 +70,7 @@ public class EventHandlers {
 			}
 		}
 			if (RoughStart.bushSticks && event.block == Blocks.deadbush) {
+				if (event.getPlayer() != null && event.getPlayer().getCurrentEquippedItem() == null) {
 				if (rand.nextInt(5) < 3) {
 					ItemStack stick = new ItemStack(Items.stick);
 					EntityItem entityitem = new EntityItem(w, event.x, event.y,
@@ -81,14 +82,25 @@ public class EventHandlers {
 							event.z, stick);
 					w.spawnEntityInWorld(entityitem);
 				}
+			}
 
 			}
 
-		if (RoughStart.shatteringStone) {
+		if (RoughStart.shatteringStone > 0) {
 			if (event.block == Blocks.stone) {
 				event.block.removedByPlayer(w, event.getPlayer(), event.x,
 						event.y, event.z, false);
-				ItemStack rock = new ItemStack(RoughStart.rock, rand.nextInt(4));
+				ItemStack rock = new ItemStack(RoughStart.rock, (rand.nextInt(RoughStart.shatteringStone - RoughStart.shatteringStoneB) + RoughStart.shatteringStoneB));
+				EntityItem entityitem = new EntityItem(w, event.x, event.y,
+						event.z, rock);
+				w.spawnEntityInWorld(entityitem);
+			}
+		}
+		if (RoughStart.shatteringCobble > 0) {
+			if (event.block == Blocks.cobblestone) {
+				event.block.removedByPlayer(w, event.getPlayer(), event.x,
+						event.y, event.z, false);
+				ItemStack rock = new ItemStack(RoughStart.rock, (rand.nextInt(RoughStart.shatteringCobble - RoughStart.shatteringCobbleB) + RoughStart.shatteringCobbleB));
 				EntityItem entityitem = new EntityItem(w, event.x, event.y,
 						event.z, rock);
 				w.spawnEntityInWorld(entityitem);
@@ -119,8 +131,8 @@ public class EventHandlers {
 			}
 		}
 
-		if (RoughStart.pigLeather && !w.isRemote && event.entity instanceof EntityPig) {
-			if (rand.nextInt(5) < 2) {
+		if (RoughStart.pigLeather > 0 && !w.isRemote && event.entity instanceof EntityPig) {
+			if (rand.nextInt(100) < RoughStart.pigLeather) {
 				ItemStack leather = new ItemStack(Items.leather);
 				EntityItem entityitem = new EntityItem(w, event.entity.posX,
 						event.entity.posY, event.entity.posZ, leather);

@@ -25,6 +25,7 @@ public class BasicItem extends Item
 	public BasicItem() 
 	{
 		super();
+        this.setCreativeTab(CreativeTabs.tabMisc);
 	}
 	
 	/**

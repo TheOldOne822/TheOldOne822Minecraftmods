@@ -46,11 +46,6 @@ public class RoughStart {
 	public static Item kindling;
 	public static Block stoneblock;
 
-	public static boolean nerfPlank;
-	public static boolean plankCut;
-	public static boolean nerfStick;
-	public static boolean stickCut;
-	public static boolean nerfTorch;
 	public static boolean nerfBlazePowder;
 	public static boolean flintFurnace;
 	public static boolean hardFurnace;
@@ -64,11 +59,11 @@ public class RoughStart {
 	public static boolean enableFlintAxe;
 	public static boolean noWoolDrop;
 	public static boolean enableleatherStrips;
-	public static boolean pigLeather;
 	public static boolean barkArmor;
 	public static boolean simpleRepairsWood;
 	public static boolean simpleRepairsStone;
 	public static boolean simpleRepairsRock;
+	public static boolean simpleRepairsCrude;
 	public static boolean simpleRepairsCobble;
 	public static boolean simpleRepairsLeather;
 	public static boolean simpleRepairsLeatherStrip;
@@ -80,17 +75,27 @@ public class RoughStart {
 	public static boolean rockTools;
 	public static boolean kindlingEn;
 	public static boolean flintRepair;
-	public static boolean saplingSticks;
 	public static boolean sticksLeaves;
 	public static boolean bushSticks;
-	public static boolean shatteringStone;
 	public static boolean cobbleCrafting;
-	public static boolean cobbleBreaking;
 
 	public static int coalTorch;
 	public static int charTorch;
 	public static int blazeTorch;
 	public static int moreLeather;
+	public static int kindleTorch;
+	public static int cobbleBreaking;
+	public static int stoneBreaking;
+	public static int saplingSticks;
+	public static int nerfPlank;
+	public static int plankCut;
+	public static int nerfStick;
+	public static int stickCut;
+	public static int pigLeather;
+	public static int shatteringStone;
+	public static int shatteringStoneB;
+	public static int shatteringCobble;
+	public static int shatteringCobbleB;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -105,50 +110,54 @@ public class RoughStart {
 		Configuration settings = new Configuration(new File(installDir, "RoughStart.cfg"));
 
 		settings.load();
-		throwingRock = settings.get("Nerfs", "throwingRock", true).getBoolean();
-		nerfPlank = settings.get("Nerfs", "Nerf Plank", true).getBoolean();
-		plankCut = settings.get("Nerfs", "Plank Cutting", true, "add axe to recipe to get 4 planks").getBoolean();
-		nerfStick = settings.get("Nerfs", "Nerf Stick", true).getBoolean();
-		stickCut = settings.get("Nerfs", "Stick Cutting", true, "add axe to recipe to get 4 sticks").getBoolean();
-		nerfTorch = settings.get("Tweaks", "Torch Tweak", true).getBoolean();
-		nerfBlazePowder = settings.get("Nerfs", "Nerf Blaze Power", true).getBoolean();
-		flintFurnace = settings.get("Nerfs", "Flint Furnace", false, "Needs Flint in the middle.").getBoolean();
-		kindleFurnace = settings.get("Nerfs", "Kindling Furnace", false, "Needs Kindling in the middle.").getBoolean();
-		hardFurnace = settings.get("Nerfs", "Hardcore Furnace", false,
+		nerfPlank = settings.get("Recipes", "Nerf Plank", 2, "only get number planks").getInt();
+		plankCut = settings.get("Recipes", "Plank Cutting", 4, "add axe to recipe to get number planks").getInt();
+		nerfStick = settings.get("Recipes", "Nerf Stick", 2, "only get number sticks").getInt();
+		stickCut = settings.get("Recipes", "Stick Cutting", 4, "add axe to recipe to get number sticks").getInt();
+		nerfBlazePowder = settings.get("Recipes", "Nerf Blaze Power", true, "only 1 blaze powder per rod").getBoolean();
+		cobbleBreaking = settings.get("Recipes", "cobbleBreaking", 0, "craft cobblestone into number rocks with pickaxe").getInt();
+		stoneBreaking = settings.get("Recipes", "stoneBreaking", 0, "craft stone into number rocks with pickaxe").getInt();
+		cobbleCrafting = settings.get("Recipes", "cobbleCrafting", false, "craft 4 rocks into 1 cobblestone").getBoolean();
+		blazeTorch = settings.get("Recipes", "blazeTorch", 2, "lets you make torches with blaze powder. 0 Disables").getInt();
+		coalTorch = settings.get("Recipes", "Coal Torch", 2, "number of torches when using coal. 0 Disables").getInt();
+		charTorch = settings.get("Recipes", "Char Torch", 2, "number of torches when using charcoal. 0 Disables").getInt();
+		saplingSticks = settings.get("Recipes", "saplingSticks", 1, "craft saplings into number sticks").getInt();
+		nerfBrewing = settings.get("Recipes", "Harder Brewing Stand", true, "3 Stone, 2 Blaze Rods, and 2 Iron").getBoolean();
+		throwingRock = settings.get("Rebalance", "throwingRock", true, "you can throw rocks").getBoolean();
+		kindleTorch = settings.get("Rebalance", "kindleTorch", 0, "lets you make torches with kindling. 0 Disables").getInt();
+		flintFurnace = settings.get("Rebalance", "Flint Furnace", false, "Needs Flint in the middle.").getBoolean();
+		kindleFurnace = settings.get("Rebalance", "Kindling Furnace", true, "Needs Kindling in the middle.").getBoolean();
+		hardFurnace = settings.get("Rebalance", "Hardcore Furnace", false,
 				"Needs Flint and Steel in the middle. Get iron from zombie drop or chest.").getBoolean();
-		smoothStoneTools = settings.get("Nerfs", "smoothStoneTools", true).getBoolean();
-		blazeTorch = settings.get("Extras", "blazeTorch", 0).getInt();
-		coalTorch = settings.get("Tweaks", "Coal Torch", 4).getInt();
-		charTorch = settings.get("Tweaks", "Char Torch", 4).getInt();
-		rockRecipe = settings.get("Extras", "rockRecipe", true).getBoolean();
-		naturalSticks = settings.get("Extras", "naturalSticks", true, "find sticks in grass").getBoolean();
-		sticksLeaves = settings.get("Extras", "TreeBranches", true, "find sticks in leaves").getBoolean();
-		bushSticks = settings.get("Extras", "bushSticks", true, "get sticks from dead bushes").getBoolean();
-		saplingSticks = settings.get("Extras", "saplingSticks", true, "craft saplings into sticks").getBoolean();
-		naturalRocks = settings.get("Extras", "naturalRocks", true, "find rocks in grass").getBoolean();
-		shatteringStone = settings.get("Extras", "shatteringStone", true, "Stone breaks into rocks not cobblestone").getBoolean();
-		cobbleBreaking = settings.get("Extras", "cobbleBreaking", true, "craft cobblestone into 2 rocks with pickaxe").getBoolean();
-		cobbleCrafting = settings.get("Extras", "cobbleCrafting", true, "craft r rocks into 1 cobblestone").getBoolean();
-		noTreePunching = settings.get("Nerfs", "noTreePunching", true).getBoolean();
-		enableCrudeAxe = settings.get("Extras", "enableCrudeAxe", true).getBoolean();
-		enableFlintAxe = settings.get("Extras", "enableFlintAxe", true).getBoolean();
-		noWoolDrop = settings.get("Nerfs", "noWoolDrop", true).getBoolean();
-		nerfBrewing = settings.get("Nerfs", "Harder Brewing Stand", true).getBoolean();
-		pigLeather = settings.get("Extras", "pigLeather", true).getBoolean();
-		stripArmor = settings.get("Extras", "stripArmor", true).getBoolean();
+		smoothStoneTools = settings.get("Rebalance", "smoothStoneTools", true, "Stone tools made with smooth stone").getBoolean();
+		enableCrudeAxe = settings.get("Rebalance", "enableCrudeAxe", true, "axe made from sticks and a rock in 2x2 crafting").getBoolean();
+		enableFlintAxe = settings.get("Rebalance", "enableFlintAxe", true, "axe made from sticks and flint in 2x2 crafting").getBoolean();
+		rockTools = settings.get("Rebalance", "rockTools", false, "Stone tools made with rocks").getBoolean();
+		kindlingEn = settings.get("Rebalance", "kindling", true, "kindling can be made").getBoolean();
+		simpleRepairsWood = settings.get("Repairs", "simpleRepairsWood", true, "wood tools can be repaired by crafting with planks").getBoolean();
+		simpleRepairsStone = settings.get("Repairs", "simpleRepairsStone", true, "stone tools can be repaired by crafting with smooth stone").getBoolean();
+		simpleRepairsCobble = settings.get("Repairs", "simpleRepairsCobble", false, "stone tools can be repaired by crafting with cobblestone").getBoolean();
+		simpleRepairsRock = settings.get("Repairs", "simpleRepairsRock", false, "stone tools can be repaired by crafting with rocks").getBoolean();
+		simpleRepairsCrude = settings.get("Repairs", "simpleRepairsCrude", true, "Crude tools can be repaired by crafting with rocks").getBoolean();
+		simpleRepairsLeather = settings.get("Repairs", "simpleRepairsLeather", false, "Leather armor can be repaired by crafting with leather").getBoolean();
+		simpleRepairsLeatherStrip = settings.get("Repairs", "simpleRepairsLeatherStrip", true, "Leather armor can be repaired by crafting with leather strips").getBoolean();
+		flintRepair = settings.get("Repairs", "flintRepair", true, "Flint Axe can be repaired by crafting with flint").getBoolean();
+		noWoolDrop = settings.get("Other", "noWoolDrop", true, "sheep don't drop wool if killed").getBoolean();
+		pigLeather = settings.get("Other", "pigLeather", 0, "chance for pigs drop 1 leather").getInt();
+		stripArmor = settings.get("Other", "stripArmor", true, "leather armor is made from leather strips").getBoolean();
+		leatherStrip = settings.get("Other", "leatherStrip", true, "Leather can be crafted into 3 leather strips").getBoolean();
+		stripRepair = settings.get("Other", "stripRepair", true, "3 leather strips can be crafted into Leather").getBoolean();
+		moreLeather = settings.get("Other", "moreLeather", 100, "Chance out of 100 for 1 extra leather from cows.").getInt();
+		naturalSticks = settings.get("World Gen", "naturalSticks", true, "find sticks in grass").getBoolean();
+		sticksLeaves = settings.get("World Gen", "TreeBranches", true, "find sticks in leaves").getBoolean();
+		bushSticks = settings.get("World Gen", "bushSticks", true, "get sticks from dead bushes with hand").getBoolean();
+		naturalRocks = settings.get("World Gen", "naturalRocks", true, "find rocks in grass").getBoolean();
+		shatteringStone = settings.get("World Gen", "shatteringStonemin", 0, "Stone breaks into rocks not cobblestone Min amount 0 disable").getInt();
+		shatteringStoneB = settings.get("World Gen", "shatteringStonemax", 4, "Max rocks from Stone").getInt();
+		shatteringCobble = settings.get("World Gen", "shatteringCobblemin", 0, "Cobblestone breaks into rocks when Mined Min amount 0 disable").getInt();
+		shatteringCobbleB = settings.get("World Gen", "shatteringCobblemax", 4, "Max rocks from Cobblestone").getInt();
+		noTreePunching = settings.get("World Gen", "noTreePunching", true, "must use axe to get logs and will be slower").getBoolean();
 		// barkArmor = settings.get("Nerfs", "barkArmor", true).getBoolean();
-		simpleRepairsWood = settings.get("Extras", "simpleRepairsWood", true).getBoolean();
-		simpleRepairsStone = settings.get("Extras", "simpleRepairsStone", true).getBoolean();
-		simpleRepairsCobble = settings.get("Extras", "simpleRepairsCobble", true).getBoolean();
-		simpleRepairsRock = settings.get("Extras", "simpleRepairsRock", true).getBoolean();
-		simpleRepairsLeather = settings.get("Extras", "simpleRepairsLeather", true).getBoolean();
-		simpleRepairsLeatherStrip = settings.get("Extras", "simpleRepairsLeatherStrip", false).getBoolean();
-		leatherStrip = settings.get("Extras", "leatherStrip", false).getBoolean();
-		stripRepair = settings.get("Extras", "stripRepair", false).getBoolean();
-		rockTools = settings.get("Extras", "rockTools", false).getBoolean();
-		kindlingEn = settings.get("Extras", "kindlingEn", true).getBoolean();
-		flintRepair = settings.get("Extras", "flintRepair", true).getBoolean();
-		moreLeather = settings.get("Tweaks", "moreLeather", 20, "Chance out of 100 for 1 extra leather from cows.").getInt();
 
 		settings.save();
 
@@ -165,6 +174,9 @@ public class RoughStart {
 
 		Blocks.log.setHarvestLevel("axe", 0);
 		Blocks.log2.setHarvestLevel("axe", 0);
+
+		Blocks.log.setHardness(3);
+		Blocks.log2.setHardness(3);
 
 		crudeAxe = new BasicAxe(toolCrude).setUnlocalizedName("crudeAxe").setTextureName("roughstart:crudeAxe");
 		flintAxe = new BasicAxe(toolFlint).setUnlocalizedName("flintAxe").setTextureName("roughstart:flintAxe");
@@ -207,34 +219,33 @@ public class RoughStart {
 					new ShapedOreRecipe(Blocks.furnace, true, new Object[] { "XXX", "XYX", "XXX", Character.valueOf('X'), Blocks.cobblestone,
 							Character.valueOf('Y'), kindling }));
 
-		if (nerfPlank) {
 			RecipeRemover.removeAnyRecipe(new ItemStack(Blocks.planks, 4, 0));
 			RecipeRemover.removeAnyRecipe(new ItemStack(Blocks.planks, 4, 1));
 			RecipeRemover.removeAnyRecipe(new ItemStack(Blocks.planks, 4, 2));
 			RecipeRemover.removeAnyRecipe(new ItemStack(Blocks.planks, 4, 3));
 			RecipeRemover.removeAnyRecipe(new ItemStack(Blocks.planks, 4, 4));
 			RecipeRemover.removeAnyRecipe(new ItemStack(Blocks.planks, 4, 5));
+			if (nerfPlank > 0) {
 			CraftingManager.getInstance().getRecipeList().add(
-					new ShapedOreRecipe(new ItemStack(Blocks.planks, 2), true, new Object[] { "X", Character.valueOf('X'),
+					new ShapedOreRecipe(new ItemStack(Blocks.planks, nerfPlank), true, new Object[] { "X", Character.valueOf('X'),
 							new ItemStack(Blocks.log, 1, 0) }));
 			CraftingManager.getInstance().getRecipeList().add(
-					new ShapedOreRecipe(new ItemStack(Blocks.planks, 2, 1), true, new Object[] { "X", Character.valueOf('X'),
+					new ShapedOreRecipe(new ItemStack(Blocks.planks, nerfPlank, 1), true, new Object[] { "X", Character.valueOf('X'),
 							new ItemStack(Blocks.log, 1, 1) }));
 			CraftingManager.getInstance().getRecipeList().add(
-					new ShapedOreRecipe(new ItemStack(Blocks.planks, 2, 2), true, new Object[] { "X", Character.valueOf('X'),
+					new ShapedOreRecipe(new ItemStack(Blocks.planks, nerfPlank, 2), true, new Object[] { "X", Character.valueOf('X'),
 							new ItemStack(Blocks.log, 1, 2) }));
 			CraftingManager.getInstance().getRecipeList().add(
-					new ShapedOreRecipe(new ItemStack(Blocks.planks, 2, 3), true, new Object[] { "X", Character.valueOf('X'),
+					new ShapedOreRecipe(new ItemStack(Blocks.planks, nerfPlank, 3), true, new Object[] { "X", Character.valueOf('X'),
 							new ItemStack(Blocks.log, 1, 3) }));
 			CraftingManager.getInstance().getRecipeList().add(
-					new ShapedOreRecipe(new ItemStack(Blocks.planks, 2, 4), true, new Object[] { "X", Character.valueOf('X'),
+					new ShapedOreRecipe(new ItemStack(Blocks.planks, nerfPlank, 4), true, new Object[] { "X", Character.valueOf('X'),
 							new ItemStack(Blocks.log2, 1) }));
 			CraftingManager.getInstance().getRecipeList().add(
-					new ShapedOreRecipe(new ItemStack(Blocks.planks, 2, 5), true, new Object[] { "X", Character.valueOf('X'),
+					new ShapedOreRecipe(new ItemStack(Blocks.planks, nerfPlank, 5), true, new Object[] { "X", Character.valueOf('X'),
 							new ItemStack(Blocks.log2, 1, 1) }));
 		}
 
-		if (nerfTorch) {
 			RecipeRemover.removeAnyRecipe(new ItemStack(Blocks.torch, 4));
 			if (coalTorch > 0)
 				CraftingManager.getInstance().getRecipeList().add(
@@ -245,12 +256,17 @@ public class RoughStart {
 				CraftingManager.getInstance().getRecipeList().add(
 						new ShapedOreRecipe(new ItemStack(Blocks.torch, charTorch), true, new Object[] { "X", "Y", Character.valueOf('X'),
 								new ItemStack(Items.coal, 1, 1), Character.valueOf('Y'), "stickWood" }));
-		}
 
 		if (blazeTorch > 0) {
 			CraftingManager.getInstance().getRecipeList().add(
 					new ShapedOreRecipe(new ItemStack(Blocks.torch, blazeTorch), true, new Object[] { "X", "Y", Character.valueOf('X'),
 							Items.blaze_powder, Character.valueOf('Y'), "stickWood" }));
+		}
+
+		if (kindleTorch > 0) {
+			CraftingManager.getInstance().getRecipeList().add(
+					new ShapedOreRecipe(new ItemStack(Blocks.torch, kindleTorch), true, new Object[] { "X", "Y", Character.valueOf('X'),
+							kindling, Character.valueOf('Y'), "stickWood" }));
 		}
 
 		if (nerfBlazePowder) {
@@ -259,16 +275,16 @@ public class RoughStart {
 					new ShapedOreRecipe(Items.blaze_powder, true, new Object[] { "X", Character.valueOf('X'), Items.blaze_rod }));
 		}
 
-		if (nerfStick) {
 			RecipeRemover.removeAnyRecipe(new ItemStack(Items.stick, 4));
+			if (nerfStick > 0) {
 			CraftingManager.getInstance().getRecipeList().add(
-					new ShapedOreRecipe(new ItemStack(Items.stick, 2), true, new Object[] { "X", "X", Character.valueOf('X'), "plankWood" }));
+					new ShapedOreRecipe(new ItemStack(Items.stick, nerfStick), true, new Object[] { "X", "X", Character.valueOf('X'), "plankWood" }));
 		}
 
 		if (nerfBrewing) {
 			RecipeRemover.removeAnyRecipe(new ItemStack(Items.brewing_stand));
 			CraftingManager.getInstance().getRecipeList().add(
-					new ShapedOreRecipe(new ItemStack(Items.brewing_stand), true, new Object[] { "IXI", " X ", "ZZZ", Character.valueOf('X'),
+					new ShapedOreRecipe(new ItemStack(Items.brewing_stand), true, new Object[] { "YXY", " X ", "ZZZ", Character.valueOf('X'),
 							Items.blaze_rod, Character.valueOf('Y'), Items.iron_ingot, Character.valueOf('Z'), Blocks.stone }));
 		}
 
@@ -322,6 +338,10 @@ public class RoughStart {
 			GameRegistry.addRecipe(new EasyRepairStoneToolsRock());
 		}
 
+		if (simpleRepairsCrude) {
+			GameRegistry.addRecipe(new EasyRepairCrudeTools());
+		}
+
 		if (simpleRepairsCobble) {
 			GameRegistry.addRecipe(new EasyRepairCobbleTools());
 		}
@@ -346,9 +366,9 @@ public class RoughStart {
 			MinecraftForge.addGrassSeed(new ItemStack(Items.stick, 1, 0), 2);
 		}
 
-		if (saplingSticks) {
+		if (saplingSticks > 0) {
 			CraftingManager.getInstance().getRecipeList().add(
-					new ShapelessOreRecipe(new ItemStack(Items.stick), new Object[] { "treeSapling" }));
+					new ShapelessOreRecipe(new ItemStack(Items.stick, saplingSticks), new Object[] { "treeSapling" }));
 		}
 
 		if (cobbleCrafting)
@@ -360,11 +380,6 @@ public class RoughStart {
 				if (Item.getItemById(i) instanceof ItemAxe) {
 					OreDictionary.registerOre("toolAxe", new ItemStack(Item.getItemById(i), 1, OreDictionary.WILDCARD_VALUE));
 				}
-			}
-		}
-
-		for (int i = 0; i < 32000; i++) {
-			if (Item.getItemById(i) != null) {
 				if (Item.getItemById(i) instanceof ItemPickaxe) {
 					OreDictionary.registerOre("toolPickaxe", new ItemStack(Item.getItemById(i), 1, OreDictionary.WILDCARD_VALUE));
 				}
@@ -409,7 +424,7 @@ public class RoughStart {
 		}
 
 		if (kindlingEn) {
-			if (!naturalRocks || !cobbleBreaking || !shatteringStone) {
+			if (!naturalRocks && cobbleBreaking < 1 && stoneBreaking < 1 && shatteringStone < 1 && shatteringCobble < 1) {
 				CraftingManager.getInstance().getRecipeList().add(
 						new ShapelessOreRecipe(new ItemStack(kindling, 1, 0), new Object[] { Blocks.cobblestone, "stickWood", "stickWood",
 								"stickWood", "stickWood", "stickWood", Items.flint }));
@@ -420,28 +435,36 @@ public class RoughStart {
 			}
 		}
 
-		if (cobbleBreaking)
+		if (stoneBreaking > 0)
 			CraftingManager.getInstance().getRecipeList().add(
-					new ShapelessOreRecipe(new ItemStack(rock, 2, 0), new Object[] { Blocks.cobblestone, "toolPickaxe" }));
+					new ShapedOreRecipe(new ItemStack(rock, stoneBreaking), new Object[] {"X", "Y", Character.valueOf('Y'), Blocks.stone, Character.valueOf('X'), "toolPickaxe" }));
 
-		if (nerfStick && stickCut)
+		if (cobbleBreaking > 0)
 			CraftingManager.getInstance().getRecipeList().add(
-					new ShapedOreRecipe(new ItemStack(Items.stick, 4), true, new Object[] { "YX", " X", Character.valueOf('X'), "plankWood",
+					new ShapedOreRecipe(new ItemStack(rock, cobbleBreaking), new Object[] {"X", "Y", Character.valueOf('Y'), Blocks.cobblestone, Character.valueOf('X'), "toolPickaxe" }));
+
+		if (stickCut > 0){
+			CraftingManager.getInstance().getRecipeList().add(
+					new ShapedOreRecipe(new ItemStack(Items.stick, stickCut), true, new Object[] { "YX", " X", Character.valueOf('X'), "plankWood",
 							Character.valueOf('Y'), "toolAxe" }));
+			CraftingManager.getInstance().getRecipeList().add(
+					new ShapedOreRecipe(new ItemStack(Items.stick, stickCut), true, new Object[] { " X", "YX", Character.valueOf('X'), "plankWood",
+							Character.valueOf('Y'), "toolAxe" }));
+		}
 
-		if (nerfPlank && plankCut) {
+		if (plankCut > 0) {
 			CraftingManager.getInstance().getRecipeList().add(
-					new ShapelessOreRecipe(new ItemStack(Blocks.planks, 4, 0), new Object[] { new ItemStack(Blocks.log, 1, 0), "toolAxe" }));
+					new ShapelessOreRecipe(new ItemStack(Blocks.planks, plankCut, 0), new Object[] { new ItemStack(Blocks.log, 1, 0), "toolAxe" }));
 			CraftingManager.getInstance().getRecipeList().add(
-					new ShapelessOreRecipe(new ItemStack(Blocks.planks, 4, 1), new Object[] { new ItemStack(Blocks.log, 1, 1), "toolAxe" }));
+					new ShapelessOreRecipe(new ItemStack(Blocks.planks, plankCut, 1), new Object[] { new ItemStack(Blocks.log, 1, 1), "toolAxe" }));
 			CraftingManager.getInstance().getRecipeList().add(
-					new ShapelessOreRecipe(new ItemStack(Blocks.planks, 4, 2), new Object[] { new ItemStack(Blocks.log, 1, 2), "toolAxe" }));
+					new ShapelessOreRecipe(new ItemStack(Blocks.planks, plankCut, 2), new Object[] { new ItemStack(Blocks.log, 1, 2), "toolAxe" }));
 			CraftingManager.getInstance().getRecipeList().add(
-					new ShapelessOreRecipe(new ItemStack(Blocks.planks, 4, 3), new Object[] { new ItemStack(Blocks.log, 1, 3), "toolAxe" }));
+					new ShapelessOreRecipe(new ItemStack(Blocks.planks, plankCut, 3), new Object[] { new ItemStack(Blocks.log, 1, 3), "toolAxe" }));
 			CraftingManager.getInstance().getRecipeList().add(
-					new ShapelessOreRecipe(new ItemStack(Blocks.planks, 4, 4), new Object[] { new ItemStack(Blocks.log2, 1, 0), "toolAxe" }));
+					new ShapelessOreRecipe(new ItemStack(Blocks.planks, plankCut, 4), new Object[] { new ItemStack(Blocks.log2, 1, 0), "toolAxe" }));
 			CraftingManager.getInstance().getRecipeList().add(
-					new ShapelessOreRecipe(new ItemStack(Blocks.planks, 4, 5), new Object[] { new ItemStack(Blocks.log2, 1, 1), "toolAxe" }));
+					new ShapelessOreRecipe(new ItemStack(Blocks.planks, plankCut, 5), new Object[] { new ItemStack(Blocks.log2, 1, 1), "toolAxe" }));
 		}
 	}
 }

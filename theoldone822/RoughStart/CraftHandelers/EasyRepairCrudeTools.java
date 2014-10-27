@@ -1,5 +1,6 @@
 package theoldone822.RoughStart.CraftHandelers;
 
+import theoldone822.RoughStart.RoughStart;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
@@ -7,7 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 
-public class RepairStoneToolsRock implements IRecipe {
+public class EasyRepairCrudeTools implements IRecipe {
     private ItemStack result;
 
     @Override
@@ -21,12 +22,12 @@ public class RepairStoneToolsRock implements IRecipe {
             slotStack = craftingGridInventory.getStackInSlot(i);
 
             if(slotStack != null) {
-                if(slotStack.getItem() == Items.stone_axe || slotStack.getItem() == Items.stone_shovel || slotStack.getItem() == Items.stone_hoe || slotStack.getItem() == Items.stone_pickaxe || slotStack.getItem() == Items.stone_sword) {
+                if(slotStack.getItem() == RoughStart.crudeAxe) {
                     if(tool != null) {
                         return false;
                     }
                     tool = slotStack;
-                } else if(slotStack.getItem() == slotStack.getItem().getItemFromBlock(Blocks.stone)) {
+                } else if(slotStack.getItem() == RoughStart.rock) {
                     if(stone) {
                         return false;
                     }
