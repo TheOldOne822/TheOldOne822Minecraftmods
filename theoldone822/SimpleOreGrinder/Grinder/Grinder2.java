@@ -25,7 +25,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class Grinder extends BlockContainer {
+public class Grinder2 extends BlockContainer {
 	/**
 	 * Is the random generator used by furnace to drop the inventory contents in random directions.
 	 */
@@ -44,7 +44,7 @@ public class Grinder extends BlockContainer {
 	@SideOnly(Side.CLIENT)
 	private IIcon furnaceIconFront;
 
-	public Grinder(boolean par2) {
+	public Grinder2(boolean par2) {
 		super(Material.rock);
 		this.isActive = par2;
 
@@ -54,7 +54,7 @@ public class Grinder extends BlockContainer {
 	 * Returns the ID of the items to drop on destruction.
 	 */
 	public Item getItemDropped(int par1, Random par2Random, int par3) {
-		return Item.getItemFromBlock(SimpleOreGrinder.grinder);
+		return Item.getItemFromBlock(SimpleOreGrinder.grinder2);
 	}
 
 	/**
@@ -114,9 +114,9 @@ public class Grinder extends BlockContainer {
 
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister par1IconRegister) {
-		this.blockIcon = par1IconRegister.registerIcon("simpleoregrinder:" + "grinderSide");
-		this.furnaceIconFront = par1IconRegister.registerIcon(this.isActive ? "simpleoregrinder:" + "grinderFrontLit" : "simpleoregrinder:" + "grinderFront");
-		this.furnaceIconTop = par1IconRegister.registerIcon("simpleoregrinder:" + "grinderTop");
+		this.blockIcon = par1IconRegister.registerIcon("simpleoregrinder:" + "grinderSideCopper");
+		this.furnaceIconFront = par1IconRegister.registerIcon(this.isActive ? "simpleoregrinder:" + "grinderFrontLitCopper" : "simpleoregrinder:" + "GrinderFrontCopper");
+		this.furnaceIconTop = par1IconRegister.registerIcon("simpleoregrinder:" + "grinderTopCopper");
 	}
 
 	/**
@@ -142,9 +142,9 @@ public class Grinder extends BlockContainer {
 		keepFurnaceInventory = true;
 
 		if (par0) {
-			par1World.setBlock(par2, par3, par4, SimpleOreGrinder.grinderOn);
+			par1World.setBlock(par2, par3, par4, SimpleOreGrinder.grinderOn2);
 		} else {
-			par1World.setBlock(par2, par3, par4, SimpleOreGrinder.grinder);
+			par1World.setBlock(par2, par3, par4, SimpleOreGrinder.grinder2);
 		}
 
 		keepFurnaceInventory = false;

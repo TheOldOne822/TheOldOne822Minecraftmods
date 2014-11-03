@@ -64,6 +64,7 @@ public class OnyxFusionFurnace extends BlockContainer
     /**
      * Returns the ID of the items to drop on destruction.
      */
+    @Override
     public Item getItemDropped(int par1, Random par2Random, int par3)
     {
         return Item.getItemFromBlock(MoreFusionFurnaces.onyxFusionFurnace);
@@ -110,7 +111,7 @@ public class OnyxFusionFurnace extends BlockContainer
             {
                 b0 = 4;
             }
-
+			
             par1World.setBlockMetadataWithNotify(par2, par3, par4, b0, 2);
         }
     }

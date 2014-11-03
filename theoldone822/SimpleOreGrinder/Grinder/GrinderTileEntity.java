@@ -2,6 +2,7 @@ package theoldone822.SimpleOreGrinder.Grinder;
 
 import java.util.Random;
 
+import theoldone822.SimpleOreGrinder.SimpleOreGrinder;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -123,10 +124,6 @@ public class GrinderTileEntity extends TileEntity implements ISidedInventory {
 		return this.field_94130_e != null && this.field_94130_e.length() > 0;
 	}
 
-	public void func_94129_a(String par1Str) {
-		this.field_94130_e = par1Str;
-	}
-
 	/**
 	 * Reads a tile entity from NBT.
 	 */
@@ -191,6 +188,16 @@ public class GrinderTileEntity extends TileEntity implements ISidedInventory {
 	 * cooked
 	 */
 	public int getCookProgressScaled(int par1) {
+		if (this.getBlockType() == SimpleOreGrinder.grinder || this.getBlockType() == SimpleOreGrinder.grinderOn)
+			cooktime = 800;
+		if (this.getBlockType() == SimpleOreGrinder.grinder2 || this.getBlockType() == SimpleOreGrinder.grinderOn2)
+			cooktime = 600;
+		if (this.getBlockType() == SimpleOreGrinder.grinder3 || this.getBlockType() == SimpleOreGrinder.grinderOn3)
+			cooktime = 400;
+		if (this.getBlockType() == SimpleOreGrinder.grinder4 || this.getBlockType() == SimpleOreGrinder.grinderOn4)
+			cooktime = 200;
+		if (this.getBlockType() == SimpleOreGrinder.grinder5 || this.getBlockType() == SimpleOreGrinder.grinderOn5)
+			cooktime = 100;
 		return this.furnaceCookTime * par1 / cooktime;
 	}
 
@@ -201,6 +208,16 @@ public class GrinderTileEntity extends TileEntity implements ISidedInventory {
 	 */
 	public int getBurnTimeRemainingScaled(int par1) {
 		if (this.currentItemBurnTime == 0) {
+			if (this.getBlockType() == SimpleOreGrinder.grinder || this.getBlockType() == SimpleOreGrinder.grinderOn)
+				cooktime = 800;
+			if (this.getBlockType() == SimpleOreGrinder.grinder2 || this.getBlockType() == SimpleOreGrinder.grinderOn2)
+				cooktime = 600;
+			if (this.getBlockType() == SimpleOreGrinder.grinder3 || this.getBlockType() == SimpleOreGrinder.grinderOn3)
+				cooktime = 400;
+			if (this.getBlockType() == SimpleOreGrinder.grinder4 || this.getBlockType() == SimpleOreGrinder.grinderOn4)
+				cooktime = 200;
+			if (this.getBlockType() == SimpleOreGrinder.grinder5 || this.getBlockType() == SimpleOreGrinder.grinderOn5)
+				cooktime = 100;
 			this.currentItemBurnTime = cooktime;
 		}
 
@@ -245,6 +262,17 @@ public class GrinderTileEntity extends TileEntity implements ISidedInventory {
 
 			if (this.isBurning() && this.canSmelt()) {
 				++this.furnaceCookTime;
+				
+				if (this.getBlockType() == SimpleOreGrinder.grinder || this.getBlockType() == SimpleOreGrinder.grinderOn)
+					cooktime = 800;
+				if (this.getBlockType() == SimpleOreGrinder.grinder2 || this.getBlockType() == SimpleOreGrinder.grinderOn2)
+					cooktime = 600;
+				if (this.getBlockType() == SimpleOreGrinder.grinder3 || this.getBlockType() == SimpleOreGrinder.grinderOn3)
+					cooktime = 400;
+				if (this.getBlockType() == SimpleOreGrinder.grinder4 || this.getBlockType() == SimpleOreGrinder.grinderOn4)
+					cooktime = 200;
+				if (this.getBlockType() == SimpleOreGrinder.grinder5 || this.getBlockType() == SimpleOreGrinder.grinderOn5)
+					cooktime = 100;
 
 				if (this.furnaceCookTime == cooktime) {
 					this.furnaceCookTime = 0;
@@ -257,7 +285,16 @@ public class GrinderTileEntity extends TileEntity implements ISidedInventory {
 
 			if (flag != this.furnaceBurnTime > 0) {
 				flag1 = true;
+				if (this.getBlockType() == SimpleOreGrinder.grinder || this.getBlockType() == SimpleOreGrinder.grinderOn)
 				Grinder.updateFurnaceBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+				if (this.getBlockType() == SimpleOreGrinder.grinder2 || this.getBlockType() == SimpleOreGrinder.grinderOn2)
+				Grinder2.updateFurnaceBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+				if (this.getBlockType() == SimpleOreGrinder.grinder3 || this.getBlockType() == SimpleOreGrinder.grinderOn3)
+				Grinder3.updateFurnaceBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+				if (this.getBlockType() == SimpleOreGrinder.grinder4 || this.getBlockType() == SimpleOreGrinder.grinderOn4)
+				Grinder4.updateFurnaceBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+				if (this.getBlockType() == SimpleOreGrinder.grinder5 || this.getBlockType() == SimpleOreGrinder.grinderOn5)
+				Grinder5.updateFurnaceBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
 			}
 		}
 
@@ -273,7 +310,7 @@ public class GrinderTileEntity extends TileEntity implements ISidedInventory {
 		if (this.furnaceItemStacks[0] == null) {
 			return false;
 		} else {
-			ItemStack itemstack = GrinderRecipes.smelting().getGrindingResult(this.furnaceItemStacks[0]);
+			ItemStack itemstack = OreGrinderRecipes.smelting().getGrindingResult(this.furnaceItemStacks[0]);
 			if (itemstack == null)
 				return false;
 			if (this.furnaceItemStacks[2] == null)
@@ -292,7 +329,7 @@ public class GrinderTileEntity extends TileEntity implements ISidedInventory {
 	 */
 	public void smeltItem() {
 		if (this.canSmelt()) {
-            ItemStack itemstack = GrinderRecipes.smelting().getGrindingResult(this.furnaceItemStacks[0]);
+            ItemStack itemstack = OreGrinderRecipes.smelting().getGrindingResult(this.furnaceItemStacks[0]);
 
             if (this.furnaceItemStacks[2] == null)
             {

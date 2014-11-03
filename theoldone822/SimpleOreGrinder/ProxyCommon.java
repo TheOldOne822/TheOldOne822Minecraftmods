@@ -3,6 +3,7 @@ package theoldone822.SimpleOreGrinder;
 import theoldone822.SimpleOreGrinder.Grinder.GrinderContainer;
 import theoldone822.SimpleOreGrinder.Grinder.GrinderGUI;
 import theoldone822.SimpleOreGrinder.Grinder.GrinderTileEntity;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -22,7 +23,7 @@ public class ProxyCommon implements IGuiHandler
         }
             
             
-if(machine instanceof GrinderTileEntity)
+        if(machine instanceof GrinderTileEntity)
         {
         	return new GrinderContainer(player.inventory, (GrinderTileEntity)machine);
         }
@@ -38,7 +39,7 @@ if(machine instanceof GrinderTileEntity)
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
     {
 				TileEntity machine = world.getTileEntity(x, y, z);
-		
+						
         if(machine == null)
         {
         	return null;
