@@ -2,6 +2,7 @@ package theoldone822.RoughStart;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.Random;
 
 import theoldone822.RoughStart.CraftHandelers.*;
 import net.minecraft.block.Block;
@@ -84,7 +85,6 @@ public class RoughStart {
 	public static boolean flintRepair;
 	public static boolean sticksLeaves;
 	public static boolean bushSticks;
-	public static boolean cobbleCrafting;
 
 	public static int coalTorch;
 	public static int charTorch;
@@ -96,6 +96,7 @@ public class RoughStart {
 	public static int saplingSticks;
 	public static int nerfPlank;
 	public static int plankCut;
+	public static int plankCraft;
 	public static int nerfStick;
 	public static int stickCut;
 	public static int pigLeather;
@@ -103,6 +104,7 @@ public class RoughStart {
 	public static int shatteringStoneB;
 	public static int shatteringCobble;
 	public static int shatteringCobbleB;
+	public static int cobbleCrafting;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -124,7 +126,8 @@ public class RoughStart {
 		nerfBlazePowder = settings.get("Recipes", "Nerf Blaze Power", true, "only 1 blaze powder per rod").getBoolean();
 		cobbleBreaking = settings.get("Recipes", "cobbleBreaking", 0, "craft cobblestone into number rocks with pickaxe").getInt();
 		stoneBreaking = settings.get("Recipes", "stoneBreaking", 0, "craft stone into number rocks with pickaxe").getInt();
-		cobbleCrafting = settings.get("Recipes", "cobbleCrafting", false, "craft 4 rocks into 1 cobblestone").getBoolean();
+		cobbleCrafting = settings.get("Recipes", "cobbleCrafting", 0, "craft rocks into 1 cobblestone. 0 = off, 1 = 4 rocks, 2 = 9 rocks").getInt();
+		plankCraft = settings.get("Recipes", "plankCraft", 0, "craft sticks into 1 oak plank. 0 = off, 1 = 4 sticks, 2 = 9 sticks").getInt();
 		blazeTorch = settings.get("Recipes", "blazeTorch", 2, "lets you make torches with blaze powder. 0 Disables").getInt();
 		coalTorch = settings.get("Recipes", "Coal Torch", 2, "number of torches when using coal. 0 Disables").getInt();
 		charTorch = settings.get("Recipes", "Char Torch", 2, "number of torches when using charcoal. 0 Disables").getInt();
@@ -381,11 +384,11 @@ public class RoughStart {
 		}
 
 		if (naturalRocks) {
-			MinecraftForge.addGrassSeed(new ItemStack(rock, 1, 0), 1);
+//			MinecraftForge.addGrassSeed(new ItemStack(rock, 1, 0), 1);
 		}
 
 		if (naturalSticks) {
-			MinecraftForge.addGrassSeed(new ItemStack(Items.stick, 1, 0), 2);
+//			MinecraftForge.addGrassSeed(new ItemStack(Items.stick, 1, 0), 2);
 		}
 
 		if (saplingSticks > 0) {
@@ -393,9 +396,13 @@ public class RoughStart {
 					new ShapelessOreRecipe(new ItemStack(Items.stick, saplingSticks), new Object[] { "treeSapling" }));
 		}
 
-		if (cobbleCrafting)
+		if (cobbleCrafting == 1)
 			CraftingManager.getInstance().getRecipeList().add(
 					new ShapedOreRecipe(new ItemStack(Blocks.cobblestone), true, new Object[] { "XX", "XX", Character.valueOf('X'), rock }));
+
+		if (cobbleCrafting == 2)
+			CraftingManager.getInstance().getRecipeList().add(
+					new ShapedOreRecipe(new ItemStack(Blocks.cobblestone), true, new Object[] { "XXX", "XXX", "XXX", Character.valueOf('X'), rock }));
 
 		for (int i = 0; i < 32000; i++) {
 			if (Item.getItemById(i) != null) {
@@ -473,6 +480,19 @@ public class RoughStart {
 					new ShapedOreRecipe(new ItemStack(Items.stick, stickCut), true, new Object[] { " X", "YX", Character.valueOf('X'), "plankWood",
 							Character.valueOf('Y'), "toolAxe" }));
 		}
+
+		if (plankCraft == 2)
+			// Random Plank output code
+//			Random rand = new Random();
+//			CraftingManager.getInstance().getRecipeList().add(
+//					new ShapedOreRecipe(new ItemStack(OreDictionary.getOres("plankWood").get(rand.nextInt((OreDictionary.getOres("plankWood").size() - 1) + 1)).getItem(), 1, rand.nextInt(16)), new Object[] { "XXX", "XXX", "XXX", Character.valueOf('X'), "stickWood" }));
+			CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Blocks.log), new Object[] { "XXX", "XXX", "XXX", Character.valueOf('X'), "stickWood" }));
+		if (plankCraft == 1)
+			// Random Plank output code
+//			Random rand = new Random();
+//			CraftingManager.getInstance().getRecipeList().add(
+//					new ShapedOreRecipe(new ItemStack(OreDictionary.getOres("plankWood").get(rand.nextInt((OreDictionary.getOres("plankWood").size() - 1) + 1)).getItem(), 1, rand.nextInt(16)), new Object[] { "XX", "XX", Character.valueOf('X'), "stickWood" }));
+			CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Blocks.log), new Object[] { "XX", "XX", Character.valueOf('X'), "stickWood" }));
 
 		if (plankCut > 0) {
 			CraftingManager.getInstance().getRecipeList().add(

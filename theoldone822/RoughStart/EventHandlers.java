@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockBush;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityPig;
@@ -83,6 +84,23 @@ public class EventHandlers {
 				}
 			}
 		}
+		
+		if (RoughStart.naturalRocks && event.block instanceof BlockBush){
+			if (rand.nextInt(100) < 6) {
+				ItemStack stick = new ItemStack(RoughStart.rock);
+				EntityItem entityitem = new EntityItem(w, event.x, event.y, event.z, stick);
+				w.spawnEntityInWorld(entityitem);
+			}
+		}
+		
+		if (RoughStart.naturalSticks && event.block instanceof BlockBush){
+			if (rand.nextInt(100) < 10) {
+				ItemStack stick = new ItemStack(Items.stick);
+				EntityItem entityitem = new EntityItem(w, event.x, event.y, event.z, stick);
+				w.spawnEntityInWorld(entityitem);
+			}
+		}
+
 		if (RoughStart.sticksLeaves) {
 			// if (event.block == Blocks.leaves || event.block ==
 			// Blocks.leaves2){
@@ -120,6 +138,7 @@ public class EventHandlers {
 				w.spawnEntityInWorld(entityitem);
 			}
 		}
+		
 		if (RoughStart.shatteringCobble > 0) {
 			if (event.block == Blocks.cobblestone) {
 				event.block.removedByPlayer(w, event.getPlayer(), event.x, event.y, event.z, false);
@@ -135,7 +154,30 @@ public class EventHandlers {
 	public void DropEvent(LivingDropsEvent event) {
 		if (RoughStart.noWoolDrop) {
 			if (event.entity instanceof EntitySheep) {
-				event.setCanceled(true);
+				for(int i = 0; i < event.drops.size(); i++){
+					if(Item.getIdFromItem(event.drops.get(i).getEntityItem().getItem()) == Block.getIdFromBlock(Blocks.wool)){
+						event.drops.remove(i);
+						i--;
+					}
+				}
+			}
+		}
+		
+		Random rand = new Random();
+
+		if (RoughStart.moreLeather > 0 && event.entity instanceof EntityCow) {
+			if (rand.nextInt(100) < RoughStart.moreLeather) {
+				ItemStack leather = new ItemStack(Items.leather);
+				EntityItem entityitem = new EntityItem(event.entity.worldObj, event.entity.posX, event.entity.posY, event.entity.posZ, leather);
+				event.drops.add(entityitem);
+			}
+		}
+		
+		if (RoughStart.pigLeather > 0 && event.entity instanceof EntityPig) {
+			if (rand.nextInt(100) < RoughStart.pigLeather) {
+				ItemStack leather = new ItemStack(Items.leather);
+				EntityItem entityitem = new EntityItem(event.entity.worldObj, event.entity.posX, event.entity.posY, event.entity.posZ, leather);
+				event.drops.add(entityitem);
 			}
 		}
 	}
@@ -145,20 +187,5 @@ public class EventHandlers {
 		Random rand = new Random();
 		World w = event.entity.worldObj;
 
-		if (RoughStart.moreLeather > 0 && !w.isRemote && event.entity instanceof EntityCow) {
-			if (rand.nextInt(100) < RoughStart.moreLeather) {
-				ItemStack leather = new ItemStack(Items.leather);
-				EntityItem entityitem = new EntityItem(w, event.entity.posX, event.entity.posY, event.entity.posZ, leather);
-				w.spawnEntityInWorld(entityitem);
-			}
-		}
-
-		if (RoughStart.pigLeather > 0 && !w.isRemote && event.entity instanceof EntityPig) {
-			if (rand.nextInt(100) < RoughStart.pigLeather) {
-				ItemStack leather = new ItemStack(Items.leather);
-				EntityItem entityitem = new EntityItem(w, event.entity.posX, event.entity.posY, event.entity.posZ, leather);
-				w.spawnEntityInWorld(entityitem);
-			}
-		}
 	}
 }
