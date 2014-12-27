@@ -11,18 +11,19 @@ import theoldone822.WootzPignGray.Items.HardenedShovel;
 import theoldone822.WootzPignGray.Items.HardenedSword;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
-import alexndr.SimpleOres.api.content.SimpleIngot;
-import alexndr.SimpleOres.api.content.SimpleSword;
-import alexndr.SimpleOres.api.content.SimpleShovel;
-import alexndr.SimpleOres.api.content.SimpleAxe;
-import alexndr.SimpleOres.api.content.SimplePickaxe;
-import alexndr.SimpleOres.api.content.SimpleHoe;
-import alexndr.SimpleOres.api.content.SimpleArmor;
-import alexndr.SimpleOres.api.helpers.LootHelper;
+import alexndr.api.content.items.SimpleItem;
+import alexndr.api.content.items.SimpleSword;
+import alexndr.api.content.items.SimpleShovel;
+import alexndr.api.content.items.SimpleAxe;
+import alexndr.api.content.items.SimplePickaxe;
+import alexndr.api.content.items.SimpleHoe;
+import alexndr.api.content.items.SimpleArmor;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.WeightedRandomChestContent;
+import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.MinecraftForge;
 
 public class Content 
@@ -139,17 +140,17 @@ public class Content
 	public static void doItems()
 	{
 		//Item Details
-		rawPigiron = new SimpleIngot().modId("wootzpigngray").setUnlocalizedName("rawPigiron").setTextureName("wootzpigngray:rawPigiron");
-		pigironIngot = new SimpleIngot().modId("wootzpigngray").setUnlocalizedName("pigironIngot").setTextureName("wootzpigngray:pigironIngot");
-		rePigironIngot = new SimpleIngot().modId("wootzpigngray").setUnlocalizedName("rePigironIngot").setTextureName("wootzpigngray:rePigironIngot");
-		wootzIngot = new SimpleIngot().modId("wootzpigngray").setUnlocalizedName("wootzIngot").setTextureName("wootzpigngray:wootzIngot");
-		grayIngot = new SimpleIngot().modId("wootzpigngray").setUnlocalizedName("grayIngot").setTextureName("wootzpigngray:grayIngot");
-		smallWootzsteelChunk = new SimpleIngot().modId("wootzpigngray").setUnlocalizedName("smallWootzsteelChunk").setTextureName("wootzpigngray:largeWootz steelChunk");
-		mediumWootzsteelChunk = new SimpleIngot().modId("wootzpigngray").setUnlocalizedName("mediumWootzsteelChunk").setTextureName("wootzpigngray:largeWootz steelChunk");
-		largeWootzsteelChunk = new SimpleIngot().modId("wootzpigngray").setUnlocalizedName("largeWootzsteelChunk").setTextureName("wootzpigngray:largeWootz steelChunk");
-		packedIron = new SimpleIngot().modId("wootzpigngray").setUnlocalizedName("packedIron").setTextureName("wootzpigngray:packedIron");
-		graphite = new SimpleIngot().modId("wootzpigngray").setUnlocalizedName("graphite").setTextureName("wootzpigngray:graphite");
-		largeGrayChunk = new SimpleIngot().modId("wootzpigngray").setUnlocalizedName("largeGrayChunk").setTextureName("wootzpigngray:largeGrayChunk");
+		rawPigiron = new SimpleItem().modId("wootzpigngray").setUnlocalizedName("rawPigiron").setTextureName("wootzpigngray:rawPigiron");
+		pigironIngot = new SimpleItem().modId("wootzpigngray").setUnlocalizedName("pigironIngot").setTextureName("wootzpigngray:pigironIngot");
+		rePigironIngot = new SimpleItem().modId("wootzpigngray").setUnlocalizedName("rePigironIngot").setTextureName("wootzpigngray:rePigironIngot");
+		wootzIngot = new SimpleItem().modId("wootzpigngray").setUnlocalizedName("wootzIngot").setTextureName("wootzpigngray:wootzIngot");
+		grayIngot = new SimpleItem().modId("wootzpigngray").setUnlocalizedName("grayIngot").setTextureName("wootzpigngray:grayIngot");
+		smallWootzsteelChunk = new SimpleItem().modId("wootzpigngray").setUnlocalizedName("smallWootzsteelChunk").setTextureName("wootzpigngray:largeWootz steelChunk");
+		mediumWootzsteelChunk = new SimpleItem().modId("wootzpigngray").setUnlocalizedName("mediumWootzsteelChunk").setTextureName("wootzpigngray:largeWootz steelChunk");
+		largeWootzsteelChunk = new SimpleItem().modId("wootzpigngray").setUnlocalizedName("largeWootzsteelChunk").setTextureName("wootzpigngray:largeWootz steelChunk");
+		packedIron = new SimpleItem().modId("wootzpigngray").setUnlocalizedName("packedIron").setTextureName("wootzpigngray:packedIron");
+		graphite = new SimpleItem().modId("wootzpigngray").setUnlocalizedName("graphite").setTextureName("wootzpigngray:graphite");
+		largeGrayChunk = new SimpleItem().modId("wootzpigngray").setUnlocalizedName("largeGrayChunk").setTextureName("wootzpigngray:largeGrayChunk");
 
 		LanguageRegistry.addName(rawPigiron, "Raw Pigiron");
 		LanguageRegistry.addName(pigironIngot, "Pigiron Ingot");
@@ -194,48 +195,48 @@ public class Content
 		}
 	public static void doLoot()
 	{
-		LootHelper.addLoot("villageBlacksmith", new ItemStack(wootzIngot), 1, 2, 2);
-		LootHelper.addLoot("villageBlacksmith", new ItemStack(grayIngot), 1, 2, 5);
-		LootHelper.addLoot("villageBlacksmith", new ItemStack(rePigironIngot), 1, 2, 4);
-		LootHelper.addLoot("villageBlacksmith", new ItemStack(pigironIngot), 1, 2, 1);
-		LootHelper.addLoot("villageBlacksmith", new ItemStack(rawPigiron), 2, 6, 1);
-		LootHelper.addLoot("villageBlacksmith", new ItemStack(graphite), 2, 4, 1);
-		LootHelper.addLoot("villageBlacksmith", new ItemStack(wootzHelm), 1, 2, 1);
-		LootHelper.addLoot("villageBlacksmith", new ItemStack(wootzChest), 2, 6, 1);
-		LootHelper.addLoot("villageBlacksmith", new ItemStack(wootzLegs), 2, 4, 1);
-		LootHelper.addLoot("villageBlacksmith", new ItemStack(wootzBoots), 1, 1, 1);
-		LootHelper.addLoot("villageBlacksmith", new ItemStack(wootzPick), 1, 5, 1);
-		LootHelper.addLoot("villageBlacksmith", new ItemStack(wootzAxe), 1, 2, 1);
-		LootHelper.addLoot("villageBlacksmith", new ItemStack(wootzShovel), 1, 1, 1);
-		LootHelper.addLoot("villageBlacksmith", new ItemStack(wootzSword), 1, 2, 1);
-		LootHelper.addLoot("villageBlacksmith", new ItemStack(wootzHoe), 1, 1, 1);
-		LootHelper.addLoot("dungeonChest", new ItemStack(wootzIngot), 1, 2, 4);
-		LootHelper.addLoot("dungeonChest", new ItemStack(wootzHelm), 1, 2, 5);
-		LootHelper.addLoot("dungeonChest", new ItemStack(wootzChest), 1, 2, 4);
-		LootHelper.addLoot("dungeonChest", new ItemStack(wootzLegs), 3, 5, 1);
-		LootHelper.addLoot("dungeonChest", new ItemStack(wootzBoots), 2, 6, 1);
-		LootHelper.addLoot("dungeonChest", new ItemStack(wootzPick), 2, 4, 1);
-		LootHelper.addLoot("dungeonChest", new ItemStack(wootzAxe), 1, 1, 1);
-		LootHelper.addLoot("dungeonChest", new ItemStack(wootzShovel), 1, 3, 1);
-		LootHelper.addLoot("dungeonChest", new ItemStack(wootzSword), 1, 2, 1);
-		LootHelper.addLoot("strongholdCorridor", new ItemStack(wootzIngot), 1, 1, 1);
-		LootHelper.addLoot("strongholdCorridor", new ItemStack(wootzSword), 1, 1, 2);
-		LootHelper.addLoot("strongholdCrossing", new ItemStack(wootzIngot), 1, 1, 4);
-		LootHelper.addLoot("strongholdCrossing", new ItemStack(wootzSword), 1, 1, 6);
-		LootHelper.addLoot("strongholdLibrary", new ItemStack(wootzHelm), 1, 1, 2);
-		LootHelper.addLoot("strongholdLibrary", new ItemStack(wootzChest), 1, 1, 1);
-		LootHelper.addLoot("strongholdLibrary", new ItemStack(wootzLegs), 1, 1, 1);
-		LootHelper.addLoot("strongholdLibrary", new ItemStack(wootzBoots), 1, 1, 1);
-		LootHelper.addLoot("mineshaftCorridor", new ItemStack(wootzIngot), 1, 2, 2);
-		LootHelper.addLoot("mineshaftCorridor", new ItemStack(wootzSword), 1, 1, 1);
-		LootHelper.addLoot("mineshaftCorridor", new ItemStack(wootzShovel), 1, 3, 1);
-		LootHelper.addLoot("mineshaftCorridor", new ItemStack(wootzAxe), 1, 1, 1);
-		LootHelper.addLoot("mineshaftCorridor", new ItemStack(wootzPick), 1, 3, 1);
-		LootHelper.addLoot("pyramidDesertyChest", new ItemStack(wootzSword), 3, 9, 3);
-		LootHelper.addLoot("pyramidDesertyChest", new ItemStack(wootzAxe), 1, 2, 2);
-		LootHelper.addLoot("pyramidDesertyChest", new ItemStack(wootzShovel), 1, 2, 1);
-		LootHelper.addLoot("pyramidJungleChest", new ItemStack(wootzSword), 2, 4, 6);
-		LootHelper.addLoot("pyramidJungleChest", new ItemStack(wootzChest), 1, 1, 2);
+		ChestGenHooks.getInfo("villageBlacksmith").addItem(new WeightedRandomChestContent(new ItemStack(wootzIngot), 1, 2, 2));
+		ChestGenHooks.getInfo("villageBlacksmith").addItem(new WeightedRandomChestContent(new ItemStack(grayIngot), 1, 2, 5));
+		ChestGenHooks.getInfo("villageBlacksmith").addItem(new WeightedRandomChestContent(new ItemStack(rePigironIngot), 1, 2, 4));
+		ChestGenHooks.getInfo("villageBlacksmith").addItem(new WeightedRandomChestContent(new ItemStack(pigironIngot), 1, 2, 1));
+		ChestGenHooks.getInfo("villageBlacksmith").addItem(new WeightedRandomChestContent(new ItemStack(rawPigiron), 2, 6, 1));
+		ChestGenHooks.getInfo("villageBlacksmith").addItem(new WeightedRandomChestContent(new ItemStack(graphite), 2, 4, 1));
+		ChestGenHooks.getInfo("villageBlacksmith").addItem(new WeightedRandomChestContent(new ItemStack(wootzHelm), 1, 2, 1));
+		ChestGenHooks.getInfo("villageBlacksmith").addItem(new WeightedRandomChestContent(new ItemStack(wootzChest), 2, 6, 1));
+		ChestGenHooks.getInfo("villageBlacksmith").addItem(new WeightedRandomChestContent(new ItemStack(wootzLegs), 2, 4, 1));
+		ChestGenHooks.getInfo("villageBlacksmith").addItem(new WeightedRandomChestContent(new ItemStack(wootzBoots), 1, 1, 1));
+		ChestGenHooks.getInfo("villageBlacksmith").addItem(new WeightedRandomChestContent(new ItemStack(wootzPick), 1, 5, 1));
+		ChestGenHooks.getInfo("villageBlacksmith").addItem(new WeightedRandomChestContent(new ItemStack(wootzAxe), 1, 2, 1));
+		ChestGenHooks.getInfo("villageBlacksmith").addItem(new WeightedRandomChestContent(new ItemStack(wootzShovel), 1, 1, 1));
+		ChestGenHooks.getInfo("villageBlacksmith").addItem(new WeightedRandomChestContent(new ItemStack(wootzSword), 1, 2, 1));
+		ChestGenHooks.getInfo("villageBlacksmith").addItem(new WeightedRandomChestContent(new ItemStack(wootzHoe), 1, 1, 1));
+		ChestGenHooks.getInfo("dungeonChest").addItem(new WeightedRandomChestContent(new ItemStack(wootzIngot), 1, 2, 4));
+		ChestGenHooks.getInfo("dungeonChest").addItem(new WeightedRandomChestContent(new ItemStack(wootzHelm), 1, 2, 5));
+		ChestGenHooks.getInfo("dungeonChest").addItem(new WeightedRandomChestContent(new ItemStack(wootzChest), 1, 2, 4));
+		ChestGenHooks.getInfo("dungeonChest").addItem(new WeightedRandomChestContent(new ItemStack(wootzLegs), 3, 5, 1));
+		ChestGenHooks.getInfo("dungeonChest").addItem(new WeightedRandomChestContent(new ItemStack(wootzBoots), 2, 6, 1));
+		ChestGenHooks.getInfo("dungeonChest").addItem(new WeightedRandomChestContent(new ItemStack(wootzPick), 2, 4, 1));
+		ChestGenHooks.getInfo("dungeonChest").addItem(new WeightedRandomChestContent(new ItemStack(wootzAxe), 1, 1, 1));
+		ChestGenHooks.getInfo("dungeonChest").addItem(new WeightedRandomChestContent(new ItemStack(wootzShovel), 1, 3, 1));
+		ChestGenHooks.getInfo("dungeonChest").addItem(new WeightedRandomChestContent(new ItemStack(wootzSword), 1, 2, 1));
+		ChestGenHooks.getInfo("strongholdCorridor").addItem(new WeightedRandomChestContent(new ItemStack(wootzIngot), 1, 1, 1));
+		ChestGenHooks.getInfo("strongholdCorridor").addItem(new WeightedRandomChestContent(new ItemStack(wootzSword), 1, 1, 2));
+		ChestGenHooks.getInfo("strongholdCrossing").addItem(new WeightedRandomChestContent(new ItemStack(wootzIngot), 1, 1, 4));
+		ChestGenHooks.getInfo("strongholdCrossing").addItem(new WeightedRandomChestContent(new ItemStack(wootzSword), 1, 1, 6));
+		ChestGenHooks.getInfo("strongholdLibrary").addItem(new WeightedRandomChestContent(new ItemStack(wootzHelm), 1, 1, 2));
+		ChestGenHooks.getInfo("strongholdLibrary").addItem(new WeightedRandomChestContent(new ItemStack(wootzChest), 1, 1, 1));
+		ChestGenHooks.getInfo("strongholdLibrary").addItem(new WeightedRandomChestContent(new ItemStack(wootzLegs), 1, 1, 1));
+		ChestGenHooks.getInfo("strongholdLibrary").addItem(new WeightedRandomChestContent(new ItemStack(wootzBoots), 1, 1, 1));
+		ChestGenHooks.getInfo("mineshaftCorridor").addItem(new WeightedRandomChestContent(new ItemStack(wootzIngot), 1, 2, 2));
+		ChestGenHooks.getInfo("mineshaftCorridor").addItem(new WeightedRandomChestContent(new ItemStack(wootzSword), 1, 1, 1));
+		ChestGenHooks.getInfo("mineshaftCorridor").addItem(new WeightedRandomChestContent(new ItemStack(wootzShovel), 1, 3, 1));
+		ChestGenHooks.getInfo("mineshaftCorridor").addItem(new WeightedRandomChestContent(new ItemStack(wootzAxe), 1, 1, 1));
+		ChestGenHooks.getInfo("mineshaftCorridor").addItem(new WeightedRandomChestContent(new ItemStack(wootzPick), 1, 3, 1));
+		ChestGenHooks.getInfo("pyramidDesertyChest").addItem(new WeightedRandomChestContent(new ItemStack(wootzSword), 3, 9, 3));
+		ChestGenHooks.getInfo("pyramidDesertyChest").addItem(new WeightedRandomChestContent(new ItemStack(wootzAxe), 1, 2, 2));
+		ChestGenHooks.getInfo("pyramidDesertyChest").addItem(new WeightedRandomChestContent(new ItemStack(wootzShovel), 1, 2, 1));
+		ChestGenHooks.getInfo("pyramidJungleChest").addItem(new WeightedRandomChestContent(new ItemStack(wootzSword), 2, 4, 6));
+		ChestGenHooks.getInfo("pyramidJungleChest").addItem(new WeightedRandomChestContent(new ItemStack(wootzChest), 1, 1, 2));
 	}
 
 }

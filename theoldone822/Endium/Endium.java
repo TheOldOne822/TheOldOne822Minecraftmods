@@ -20,7 +20,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-@Mod(modid = "endium", name = "Endium", version = "1.0", dependencies = "required-after:simpleores; required-after:fusionplugin; after:netherrocksfusion")
+@Mod(modid = "endium", name = "Endium", version = "2.0", dependencies = "required-after:simpleores; required-after:fusion; after:netherrocksfusion")
 public class Endium {
 	public static ToolMaterial toolEndium;
 	public static ToolMaterial toolTelos;

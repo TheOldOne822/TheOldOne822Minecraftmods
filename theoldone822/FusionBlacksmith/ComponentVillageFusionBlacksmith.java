@@ -96,7 +96,7 @@ public class ComponentVillageFusionBlacksmith extends StructureVillagePieces.Hou
         this.fillWithBlocks(par1World, par3StructureBoundingBox, 7, 2, 4, 8, 2, 5, Blocks.air, Blocks.air, false);
         this.placeBlockAtCurrentPosition(par1World, Blocks.cobblestone, 0, 6, 1, 3, par3StructureBoundingBox);
         this.placeBlockAtCurrentPosition(par1World, Blocks.furnace, 0, 6, 2, 3, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, alexndr.SimpleOres.plugins.fusion.FusionHelper.fusionContent.fusion_furnace, 0, 6, 3, 3, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, alexndr.plugins.Fusion.Content.fusion_furnace, 0, 6, 3, 3, par3StructureBoundingBox);
         this.placeBlockAtCurrentPosition(par1World, Blocks.double_stone_slab, 0, 8, 1, 1, par3StructureBoundingBox);
         this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 0, 2, 2, par3StructureBoundingBox);
         this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 0, 2, 4, par3StructureBoundingBox);

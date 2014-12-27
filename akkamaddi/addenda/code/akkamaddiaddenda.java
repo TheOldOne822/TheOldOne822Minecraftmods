@@ -2,6 +2,7 @@ package akkamaddi.addenda.code;
 
 import java.io.File;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -13,7 +14,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.MinecraftForge;
 
-@Mod(modid = "akkamaddiAddenda", name = "akkamaddi's Addenda", version = "1.0.1", dependencies = "required-after:simpleores ; required-after:fusionplugin")
+@Mod(modid = "akkamaddiAddenda", name = "akkamaddi's Addenda", version = "2.0.0")
 public class akkamaddiaddenda
 {
     // The instance of your mod that Forge uses.
@@ -56,12 +57,12 @@ public class akkamaddiaddenda
         
         config.save();
 
-        if (akkamaddiaddenda.enableChestGenSO)
+        if (Loader.isModLoaded("simpleores") && akkamaddiaddenda.enableChestGenSO)
         {
             SOChestGen.doSOChestGen();
         }
 
-        if (akkamaddiaddenda.enableChestGenFF)
+        if (Loader.isModLoaded("fusion") && akkamaddiaddenda.enableChestGenFF)
         {
             FFChestGen.doFFChestGen();
         }
@@ -72,17 +73,17 @@ public class akkamaddiaddenda
     {
         proxy.registerRenderers();
 
-        if (akkamaddiaddenda.enableFusionAlloyMobEquips)
+        if (Loader.isModLoaded("fusion") && akkamaddiaddenda.enableFusionAlloyMobEquips)
         {
             MinecraftForge.EVENT_BUS.register(new JoinWorldFF());
         }
 
-        if (akkamaddiaddenda.enableSimpleOresMobEquips)
+        if (Loader.isModLoaded("simpleores") && akkamaddiaddenda.enableSimpleOresMobEquips)
         {
             MinecraftForge.EVENT_BUS.register(new JoinWorldSO());
         }
 
-        if (akkamaddiaddenda.enableRecycling)
+        if (Loader.isModLoaded("fusion") && akkamaddiaddenda.enableRecycling)
         {
             RecycleRecipes.doRecycleRecipes();
         }

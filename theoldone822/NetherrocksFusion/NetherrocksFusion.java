@@ -27,7 +27,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "netherrocksfusion", name = "Netherrocks Fusion", version = "1.0", dependencies = "required-after:simpleores; required-after:fusionplugin; required-after:netherrocks")
+@Mod(modid = "netherrocksfusion", name = "Netherrocks Fusion", version = "2.0", dependencies = "required-after:fusion; required-after:netherrocks")
 public class NetherrocksFusion {
 
 	@SidedProxy(clientSide = "theoldone822.NetherrocksFusion.ProxyClient", serverSide = "theoldone822.NetherrocksFusion.ProxyCommon")	
@@ -92,13 +92,6 @@ public class NetherrocksFusion {
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
 		GameRegistry.registerTileEntity(SuperFusionFurnaceTileEntity.class, "dragonbezoarFusionFurnace");
 		GameRegistry.registerTileEntity(SuperFurnaceTileEntity.class, "dragonbezoarFurnace");
-
-		rendererCinderstone = alexndr.SimpleOres.core.SimpleOres.proxy.addArmor("cinderstone");
-		rendererThraka = alexndr.SimpleOres.core.SimpleOres.proxy.addArmor("thraka");
-		rendererPyralis = alexndr.SimpleOres.core.SimpleOres.proxy.addArmor("pyralis");
-		rendererPyralis = alexndr.SimpleOres.core.SimpleOres.proxy.addArmor("pyralischain");
-		rendererDragonBezoar = alexndr.SimpleOres.core.SimpleOres.proxy.addArmor("dragonbezoar");
-		rendererDragonBezoar = alexndr.SimpleOres.core.SimpleOres.proxy.addArmor("dragonbezoarchain");
 
         toolCinderstone.customCraftingMaterial = Content.cinderstoneIngot;
         toolPyralis.customCraftingMaterial = Content.pyralisIngot;

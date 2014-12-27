@@ -40,17 +40,5 @@ public class EntityStone extends EntityThrowable
         }
         
         worldObj.playSoundAtEntity(this, "dig.stone", 0.5F, 1.0F);
-        
-        if (!this.worldObj.isRemote && worldObj.difficultySetting.getDifficultyId() > 0)
-        {
-        	if (worldObj.rand.nextInt(64) == 0)
-        	{
-        		EntitySilverfish sf = new EntitySilverfish(this.worldObj);
-        		sf.setLocationAndAngles(position.blockX, position.blockY, position.blockZ, 0, 0);
-        		this.worldObj.spawnEntityInWorld(sf);
-        	}
-        	
-            this.setDead();
-        }
     }
 }

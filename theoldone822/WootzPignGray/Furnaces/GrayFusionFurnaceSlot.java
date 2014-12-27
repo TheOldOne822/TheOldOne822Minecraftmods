@@ -1,6 +1,6 @@
 package theoldone822.WootzPignGray.Furnaces;
 
-import alexndr.SimpleOres.plugins.fusion.FusionRecipes;
+import alexndr.plugins.Fusion.FusionFurnaceRecipes;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
@@ -72,7 +72,7 @@ public class GrayFusionFurnaceSlot extends Slot
         if (!this.thePlayer.worldObj.isRemote)
         {
             int i = this.field_75228_b;
-            float f = FusionRecipes.getExperience(par1ItemStack);
+            float f = FusionFurnaceRecipes.getExperience(par1ItemStack);
             int j;
 
             if (f == 0.0F)

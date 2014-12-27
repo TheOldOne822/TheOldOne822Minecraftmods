@@ -1,7 +1,7 @@
 package theoldone822.Endium;
 
-import alexndr.SimpleOres.plugins.fusion.FusionRecipes;
-import alexndr.SimpleOres.api.helpers.CoreHelper;
+import alexndr.plugins.Fusion.FusionFurnaceRecipes;
+import alexndr.plugins.Fusion.FusionMaterial;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -78,17 +78,17 @@ public class Recipes {
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(Content.SunteleiaBoots, true, new Object[] { "X X", "X X", Character.valueOf('X'), "ingotSunteleia" }));
 
 		// Smelting
-		FusionRecipes.addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(CoreHelper.coreContent.mythril_ingot), new ItemStack(Items.ender_pearl),
+		FusionFurnaceRecipes.addSmelting(FusionMaterial.of("ingotEndium"), FusionMaterial.of("ingotMythril"), FusionMaterial.of(Items.ender_pearl),
 				new ItemStack(Content.smallTelosChunk), 6.0F);
-		FusionRecipes.addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(CoreHelper.coreContent.mythril_ingot), new ItemStack(Items.ender_eye),
+		FusionFurnaceRecipes.addSmelting(FusionMaterial.of("ingotEndium"), FusionMaterial.of("ingotMythril"), FusionMaterial.of(Items.ender_eye),
 				new ItemStack(Content.mediumTelosChunk), 10.0F);
-		FusionRecipes.addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(CoreHelper.coreContent.mythril_ingot), new ItemStack(Items.skull, 1, 1),
+		FusionFurnaceRecipes.addSmelting(FusionMaterial.of("ingotEndium"), FusionMaterial.of("ingotMythril"), FusionMaterial.of(Items.skull, 1, 1),
 				new ItemStack(Content.largeTelosChunk), 30.0F);
 
 		if (Loader.isModLoaded("netherrocksfusion")) {
-		FusionRecipes.addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(theoldone822.NetherrocksFusion.Content.largeDragonBezoarChunk), new ItemStack(Items.ghast_tear), new ItemStack(Content.smallSunteleiaChunk), 6.0F);
-		FusionRecipes.addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(theoldone822.NetherrocksFusion.Content.largeDragonBezoarChunk), new ItemStack(Items.skull, 1, 1), new ItemStack(Content.mediumSunteleiaChunk), 10.0F);
-		FusionRecipes.addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(theoldone822.NetherrocksFusion.Content.largeDragonBezoarChunk), new ItemStack(Items.skull, 1, 1), new ItemStack(Content.largeSunteleiaChunk), 30.0F);
+		FusionFurnaceRecipes.addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(theoldone822.NetherrocksFusion.Content.largeDragonBezoarChunk), new ItemStack(Items.ghast_tear), new ItemStack(Content.smallSunteleiaChunk), 6.0F);
+		FusionFurnaceRecipes.addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(theoldone822.NetherrocksFusion.Content.largeDragonBezoarChunk), new ItemStack(Items.skull, 1, 1), new ItemStack(Content.mediumSunteleiaChunk), 10.0F);
+		FusionFurnaceRecipes.addSmelting(new ItemStack(Content.EndiumIngot), new ItemStack(theoldone822.NetherrocksFusion.Content.largeDragonBezoarChunk), new ItemStack(Items.skull, 1, 1), new ItemStack(Content.largeSunteleiaChunk), 30.0F);
 		}
 
 		GameRegistry.addSmelting(Content.EndiumOre, new ItemStack(Content.EndiumIngot, 1, 0), 0.3F);
@@ -96,35 +96,35 @@ public class Recipes {
 		GameRegistry.addSmelting(Content.largeSunteleiaChunk, new ItemStack(Content.SunteleiaIngot, 1, 0), 0.6F);
 
 		if (Settings.enableRecycling) {
-			FusionRecipes.addSmelting(new ItemStack(Content.EndiumHelm, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.EndiumOre), 15.0F);
-			FusionRecipes.addSmelting(new ItemStack(Content.EndiumChest, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone, 2, 0), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.EndiumOre, 2, 0), 30.0F);
-			FusionRecipes.addSmelting(new ItemStack(Content.EndiumLegs, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone, 2, 0), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.EndiumOre, 2, 0), 30.0F);
-			FusionRecipes.addSmelting(new ItemStack(Content.EndiumBoots, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.EndiumOre), 15.0F);
-			FusionRecipes.addSmelting(new ItemStack(Content.EndiumSword, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.EndiumOre), 15.0F);
-			FusionRecipes.addSmelting(new ItemStack(Content.EndiumShovel, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.EndiumOre), 15.0F);
-			FusionRecipes.addSmelting(new ItemStack(Content.EndiumPick, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.EndiumOre), 15.0F);
-			FusionRecipes.addSmelting(new ItemStack(Content.EndiumAxe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.EndiumOre), 15.0F);
-			FusionRecipes.addSmelting(new ItemStack(Content.EndiumHoe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.EndiumOre), 15.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.EndiumHelm, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.EndiumOre), 15.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.EndiumChest, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone, 2, 0), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.EndiumOre, 2, 0), 30.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.EndiumLegs, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone, 2, 0), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.EndiumOre, 2, 0), 30.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.EndiumBoots, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.EndiumOre), 15.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.EndiumSword, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.EndiumOre), 15.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.EndiumShovel, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.EndiumOre), 15.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.EndiumPick, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.EndiumOre), 15.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.EndiumAxe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.EndiumOre), 15.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.EndiumHoe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.EndiumOre), 15.0F);
 
-			FusionRecipes.addSmelting(new ItemStack(Content.TelosHelm, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeTelosChunk), 15.0F);
-			FusionRecipes.addSmelting(new ItemStack(Content.TelosChest, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone, 2, 0), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeTelosChunk, 2, 0), 30.0F);
-			FusionRecipes.addSmelting(new ItemStack(Content.TelosLegs, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone, 2, 0), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeTelosChunk, 2, 0), 30.0F);
-			FusionRecipes.addSmelting(new ItemStack(Content.TelosBoots, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeTelosChunk), 15.0F);
-			FusionRecipes.addSmelting(new ItemStack(Content.TelosSword, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeTelosChunk), 15.0F);
-			FusionRecipes.addSmelting(new ItemStack(Content.TelosShovel, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeTelosChunk), 15.0F);
-			FusionRecipes.addSmelting(new ItemStack(Content.TelosPick, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeTelosChunk), 15.0F);
-			FusionRecipes.addSmelting(new ItemStack(Content.TelosAxe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeTelosChunk), 15.0F);
-			FusionRecipes.addSmelting(new ItemStack(Content.TelosHoe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeTelosChunk), 15.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.TelosHelm, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeTelosChunk), 15.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.TelosChest, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone, 2, 0), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeTelosChunk, 2, 0), 30.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.TelosLegs, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone, 2, 0), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeTelosChunk, 2, 0), 30.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.TelosBoots, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeTelosChunk), 15.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.TelosSword, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeTelosChunk), 15.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.TelosShovel, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeTelosChunk), 15.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.TelosPick, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeTelosChunk), 15.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.TelosAxe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeTelosChunk), 15.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.TelosHoe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeTelosChunk), 15.0F);
 
-			FusionRecipes.addSmelting(new ItemStack(Content.SunteleiaBoots, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeSunteleiaChunk), 20.0F);
-			FusionRecipes.addSmelting(new ItemStack(Content.SunteleiaChest, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone, 2, 0), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeSunteleiaChunk, 2, 0), 40.0F);
-			FusionRecipes.addSmelting(new ItemStack(Content.SunteleiaLegs, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone, 2, 0), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeSunteleiaChunk, 2, 0), 40.0F);
-			FusionRecipes.addSmelting(new ItemStack(Content.SunteleiaBoots, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeSunteleiaChunk), 20.0F);
-			FusionRecipes.addSmelting(new ItemStack(Content.SunteleiaSword, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeSunteleiaChunk), 20.0F);
-			FusionRecipes.addSmelting(new ItemStack(Content.SunteleiaShovel, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeSunteleiaChunk), 20.0F);
-			FusionRecipes.addSmelting(new ItemStack(Content.SunteleiaPick, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeSunteleiaChunk), 20.0F);
-			FusionRecipes.addSmelting(new ItemStack(Content.SunteleiaAxe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeSunteleiaChunk), 20.0F);
-			FusionRecipes.addSmelting(new ItemStack(Content.SunteleiaHoe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeSunteleiaChunk), 20.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.SunteleiaBoots, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeSunteleiaChunk), 20.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.SunteleiaChest, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone, 2, 0), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeSunteleiaChunk, 2, 0), 40.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.SunteleiaLegs, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone, 2, 0), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeSunteleiaChunk, 2, 0), 40.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.SunteleiaBoots, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeSunteleiaChunk), 20.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.SunteleiaSword, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeSunteleiaChunk), 20.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.SunteleiaShovel, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeSunteleiaChunk), 20.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.SunteleiaPick, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeSunteleiaChunk), 20.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.SunteleiaAxe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeSunteleiaChunk), 20.0F);
+			FusionFurnaceRecipes.addSmelting(new ItemStack(Content.SunteleiaHoe, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.end_stone), new ItemStack(Blocks.dragon_egg, 0), new ItemStack(Content.largeSunteleiaChunk), 20.0F);
 
 		}
 

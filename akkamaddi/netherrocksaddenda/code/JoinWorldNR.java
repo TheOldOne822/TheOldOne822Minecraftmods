@@ -11,8 +11,7 @@ import net.minecraft.item.Item;
 import java.util.Random;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import alexndr.SimpleOres.plugins.netherrocks.Content;
-import alexndr.SimpleOres.api.helpers.CoreHelper;
+import alexndr.plugins.Netherrocks.Content;
 
 public class JoinWorldNR
 {
@@ -426,75 +425,51 @@ public class JoinWorldNR
 
             if (range == 133)
             {
-                living.setCurrentItemOrArmor(4, new ItemStack(CoreHelper.coreContent.adamantium_helmet));
-                living.setCurrentItemOrArmor(3, new ItemStack(CoreHelper.coreContent.adamantium_chestplate));
-                living.setCurrentItemOrArmor(2, new ItemStack(CoreHelper.coreContent.adamantium_leggings));
-                living.setCurrentItemOrArmor(1, new ItemStack(CoreHelper.coreContent.adamantium_boots));
                 living.setCurrentItemOrArmor(0, new ItemStack(Content.ashstone_sword));
             }
 
             if (range == 134)
             {
-                living.setCurrentItemOrArmor(4, new ItemStack(CoreHelper.coreContent.adamantium_helmet));
-                living.setCurrentItemOrArmor(1, new ItemStack(CoreHelper.coreContent.adamantium_boots));
                 living.setCurrentItemOrArmor(0, new ItemStack(Content.ashstone_pickaxe));
             }
 
             if (range == 135)
             {
-                living.setCurrentItemOrArmor(4, new ItemStack(CoreHelper.coreContent.adamantium_helmet));
-                living.setCurrentItemOrArmor(3, new ItemStack(CoreHelper.coreContent.adamantium_chestplate));
                 living.setCurrentItemOrArmor(0, new ItemStack(Content.ashstone_axe));
             }
 
             if (range == 136)
             {
-                living.setCurrentItemOrArmor(2, new ItemStack(CoreHelper.coreContent.adamantium_leggings));
-                living.setCurrentItemOrArmor(1, new ItemStack(CoreHelper.coreContent.adamantium_boots));
                 living.setCurrentItemOrArmor(0, new ItemStack(Content.ashstone_shovel));
             }
 
             if (range == 137)
             {
-                living.setCurrentItemOrArmor(4, new ItemStack(CoreHelper.coreContent.adamantium_helmet));
-                living.setCurrentItemOrArmor(1, new ItemStack(CoreHelper.coreContent.adamantium_boots));
                 living.setCurrentItemOrArmor(0, new ItemStack(Content.ashstone_hoe));
             }
 
             if (range == 138)
             {
-                living.setCurrentItemOrArmor(4, new ItemStack(CoreHelper.coreContent.mythril_helmet));
-                living.setCurrentItemOrArmor(3, new ItemStack(CoreHelper.coreContent.mythril_chestplate));
-                living.setCurrentItemOrArmor(2, new ItemStack(CoreHelper.coreContent.mythril_leggings));
-                living.setCurrentItemOrArmor(1, new ItemStack(CoreHelper.coreContent.mythril_boots));
                 living.setCurrentItemOrArmor(0, new ItemStack(Content.argonite_sword));
             }
 
             if (range == 139)
             {
-                living.setCurrentItemOrArmor(4, new ItemStack(CoreHelper.coreContent.mythril_helmet));
-                living.setCurrentItemOrArmor(1, new ItemStack(CoreHelper.coreContent.mythril_boots));
                 living.setCurrentItemOrArmor(0, new ItemStack(Content.argonite_pickaxe));
             }
 
             if (range == 140)
             {
-                living.setCurrentItemOrArmor(4, new ItemStack(CoreHelper.coreContent.mythril_helmet));
-                living.setCurrentItemOrArmor(3, new ItemStack(CoreHelper.coreContent.mythril_chestplate));
                 living.setCurrentItemOrArmor(0, new ItemStack(Content.argonite_axe));
             }
 
             if (range == 141)
             {
-                living.setCurrentItemOrArmor(2, new ItemStack(CoreHelper.coreContent.mythril_leggings));
-                living.setCurrentItemOrArmor(1, new ItemStack(CoreHelper.coreContent.mythril_boots));
                 living.setCurrentItemOrArmor(0, new ItemStack(Content.argonite_shovel));
             }
 
             if (range == 142)
             {
-                living.setCurrentItemOrArmor(4, new ItemStack(CoreHelper.coreContent.mythril_helmet));
-                living.setCurrentItemOrArmor(1, new ItemStack(CoreHelper.coreContent.mythril_boots));
                 living.setCurrentItemOrArmor(0, new ItemStack(Content.argonite_hoe));
             }
 
@@ -555,47 +530,31 @@ public class JoinWorldNR
 
             if (range == 150)
             {
-                living.setCurrentItemOrArmor(4, new ItemStack(CoreHelper.coreContent.onyx_helmet));
-                living.setCurrentItemOrArmor(3, new ItemStack(CoreHelper.coreContent.onyx_chestplate));
-                living.setCurrentItemOrArmor(2, new ItemStack(CoreHelper.coreContent.onyx_leggings));
-                living.setCurrentItemOrArmor(1, new ItemStack(CoreHelper.coreContent.onyx_boots));
                 living.setCurrentItemOrArmor(0, new ItemStack(Content.dragonstone_sword));
             }
 
             if (range == 151)
             {
-                living.setCurrentItemOrArmor(4, new ItemStack(CoreHelper.coreContent.onyx_helmet));
-                living.setCurrentItemOrArmor(1, new ItemStack(CoreHelper.coreContent.onyx_boots));
                 living.setCurrentItemOrArmor(0, new ItemStack(Content.dragonstone_pickaxe));
             }
 
             if (range == 152)
             {
-                living.setCurrentItemOrArmor(4, new ItemStack(CoreHelper.coreContent.onyx_helmet));
-                living.setCurrentItemOrArmor(3, new ItemStack(CoreHelper.coreContent.onyx_chestplate));
                 living.setCurrentItemOrArmor(0, new ItemStack(Content.dragonstone_axe));
             }
 
             if (range == 153)
             {
-                living.setCurrentItemOrArmor(2, new ItemStack(CoreHelper.coreContent.onyx_leggings));
-                living.setCurrentItemOrArmor(1, new ItemStack(CoreHelper.coreContent.onyx_boots));
                 living.setCurrentItemOrArmor(0, new ItemStack(Content.dragonstone_shovel));
             }
 
             if (range == 154)
             {
-                living.setCurrentItemOrArmor(4, new ItemStack(CoreHelper.coreContent.onyx_helmet));
-                living.setCurrentItemOrArmor(1, new ItemStack(CoreHelper.coreContent.onyx_boots));
                 living.setCurrentItemOrArmor(0, new ItemStack(Content.dragonstone_hoe));
             }
 
             if (range == 155)
             {
-                living.setCurrentItemOrArmor(4, new ItemStack(CoreHelper.coreContent.onyx_helmet));
-                living.setCurrentItemOrArmor(3, new ItemStack(CoreHelper.coreContent.onyx_chestplate));
-                living.setCurrentItemOrArmor(2, new ItemStack(CoreHelper.coreContent.onyx_leggings));
-                living.setCurrentItemOrArmor(1, new ItemStack(CoreHelper.coreContent.onyx_boots));
                 living.setCurrentItemOrArmor(0, new ItemStack(Content.illumenite_sword));
             }
         }

@@ -3,7 +3,7 @@ package theoldone822.WootzPignGray.Furnaces;
 import java.util.Random;
 
 import theoldone822.WootzPignGray.Settings;
-import alexndr.SimpleOres.plugins.fusion.FusionRecipes;
+import alexndr.plugins.Fusion.FusionFurnaceRecipes;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -327,7 +327,7 @@ public class GrayFusionFurnaceTileEntity extends TileEntity implements ISidedInv
     {
         if(this.furnaceItemStacks[0] != null && this.furnaceItemStacks[3] != null && this.furnaceItemStacks[4] != null)
         {
-        	ItemStack itemstack = FusionRecipes.getSmeltingResult(this.furnaceItemStacks[0], this.furnaceItemStacks[3], this.furnaceItemStacks[4]);
+        	ItemStack itemstack = FusionFurnaceRecipes.getSmeltingResult(this.furnaceItemStacks[0], this.furnaceItemStacks[3], this.furnaceItemStacks[4]);
        		if (itemstack == null) return false;
     		if (this.furnaceItemStacks[2] == null) return true;
     		if (!this.furnaceItemStacks[2].isItemEqual(itemstack)) return false;
@@ -343,7 +343,7 @@ public class GrayFusionFurnaceTileEntity extends TileEntity implements ISidedInv
      */
     public void smeltItem()
     {
-    	ItemStack itemstack = FusionRecipes.applyFusion(this.furnaceItemStacks[0], this.furnaceItemStacks[3], this.furnaceItemStacks[4]);
+    	ItemStack itemstack = FusionFurnaceRecipes.applyFusion(this.furnaceItemStacks[0], this.furnaceItemStacks[3], this.furnaceItemStacks[4]);
 
         if (this.furnaceItemStacks[2] == null)
         {

@@ -1,8 +1,7 @@
 package theoldone822.MoreFusionFurnaces.Furnaces;
 
 import theoldone822.MoreFusionFurnaces.MoreFusionFurnaces;
-import alexndr.SimpleOres.api.helpers.CoreHelper;
-import alexndr.SimpleOres.plugins.fusion.FusionHelper;
+import alexndr.plugins.Fusion.FusionFurnaceRecipes;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -326,7 +325,7 @@ public class MythrilFusionFurnaceTileEntity extends TileEntity implements ISided
     {
         if(this.furnaceItemStacks[0] != null && this.furnaceItemStacks[3] != null && this.furnaceItemStacks[4] != null)
         {
-        	ItemStack itemstack = FusionHelper.fusionFurnaceRecipes.getSmeltingResult(this.furnaceItemStacks[0], this.furnaceItemStacks[3], this.furnaceItemStacks[4]);
+        	ItemStack itemstack = FusionFurnaceRecipes.getSmeltingResult(this.furnaceItemStacks[0], this.furnaceItemStacks[3], this.furnaceItemStacks[4]);
        		if (itemstack == null) return false;
     		if (this.furnaceItemStacks[2] == null) return true;
     		if (!this.furnaceItemStacks[2].isItemEqual(itemstack)) return false;
@@ -344,7 +343,7 @@ public class MythrilFusionFurnaceTileEntity extends TileEntity implements ISided
     {
         if (this.canSmelt())
         {
-        	ItemStack itemstack = FusionHelper.fusionFurnaceRecipes.applyFusion(this.furnaceItemStacks[0], this.furnaceItemStacks[3], this.furnaceItemStacks[4]);
+        	ItemStack itemstack = FusionFurnaceRecipes.applyFusion(this.furnaceItemStacks[0], this.furnaceItemStacks[3], this.furnaceItemStacks[4]);
 
             if (this.furnaceItemStacks[2] == null)
             {

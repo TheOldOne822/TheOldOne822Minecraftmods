@@ -10,8 +10,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import alexndr.SimpleOres.api.helpers.TabHelper;
-import alexndr.SimpleOres.core.SimpleOres;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -20,7 +18,7 @@ public class SimpleOre extends Block
 {
 	private String modName = "simpleores";
 	private ItemStack stackDrop = null;
-	private CreativeTabs tab = SimpleOres.tabSimpleBlocks;
+//	private CreativeTabs tab = SimpleOres.tabSimpleBlocks;
 	
 	/**
 	 * Constructor for a basic block.
@@ -28,7 +26,7 @@ public class SimpleOre extends Block
 	public SimpleOre(Material material) 
 	{
 		super(material);
-		this.setCreativeTab(TabHelper.getBlocksTab(tab));
+//		this.setCreativeTab(TabHelper.getBlocksTab(tab));
 	}
 	
 	/**
@@ -55,8 +53,8 @@ public class SimpleOre extends Block
 	 */
 	public SimpleOre setTab(CreativeTabs creativetab)
 	{
-		tab = creativetab;
-		this.setCreativeTab(TabHelper.getBlocksTab(tab));
+//		tab = creativetab;
+//		this.setCreativeTab(TabHelper.getBlocksTab(tab));
 		return this;
 	}
 	

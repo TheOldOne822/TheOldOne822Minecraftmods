@@ -1,6 +1,5 @@
 package theoldone822.NetherrocksFusion.Furnaces;
 
-import alexndr.SimpleOres.api.helpers.CoreHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -54,11 +53,11 @@ public class SuperFusionFurnace extends BlockContainer
         
         if(par2 == false)
 		{
-        	if(CoreHelper.coreSettings.enableSeparateTabs == true)
-        	{
-    			this.setCreativeTab(CoreHelper.simpleores.tabSimpleDecorations);
-        	}
-        	else this.setCreativeTab(CoreHelper.simpleores.tabSimpleBlocks);      		
+//        	if(CoreHelper.coreSettings.enableSeparateTabs == true)
+//        	{
+//    			this.setCreativeTab(CoreHelper.simpleores.tabSimpleDecorations);
+//        	}
+//        	else this.setCreativeTab(CoreHelper.simpleores.tabSimpleBlocks);      		
 		}
     }
 

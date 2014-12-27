@@ -28,6 +28,7 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -35,8 +36,10 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "RoughStart", name = "Rough Start", version = "0.9b")
+@Mod(modid = "RoughStart", name = "Rough Start", version = "0.9c")
 public class RoughStart {
+	@SidedProxy(clientSide = "theoldone822.RoughStart.ProxyClient", serverSide = "theoldone822.RoughStart.ProxyCommon")	
+	public static ProxyCommon proxy;
 
 	@Instance("RoughStart")
 	public static RoughStart instance = new RoughStart();
@@ -63,6 +66,7 @@ public class RoughStart {
 	public static boolean naturalSticks;
 	public static boolean naturalRocks;
 	public static boolean noTreePunching;
+	public static boolean slowTreePunching;
 	public static boolean enableCrudeAxe;
 	public static boolean enableFlintAxe;
 	public static boolean noWoolDrop;
@@ -119,58 +123,68 @@ public class RoughStart {
 		Configuration settings = new Configuration(new File(installDir, "RoughStart.cfg"));
 
 		settings.load();
-		nerfPlank = settings.get("Recipes", "Nerf Plank", 2, "only get number planks").getInt();
-		plankCut = settings.get("Recipes", "Plank Cutting", 4, "add axe to recipe to get number planks").getInt();
-		nerfStick = settings.get("Recipes", "Nerf Stick", 2, "only get number sticks").getInt();
-		stickCut = settings.get("Recipes", "Stick Cutting", 4, "add axe to recipe to get number sticks").getInt();
-		nerfBlazePowder = settings.get("Recipes", "Nerf Blaze Power", true, "only 1 blaze powder per rod").getBoolean();
-		cobbleBreaking = settings.get("Recipes", "cobbleBreaking", 0, "craft cobblestone into number rocks with pickaxe").getInt();
-		stoneBreaking = settings.get("Recipes", "stoneBreaking", 0, "craft stone into number rocks with pickaxe").getInt();
-		cobbleCrafting = settings.get("Recipes", "cobbleCrafting", 0, "craft rocks into 1 cobblestone. 0 = off, 1 = 4 rocks, 2 = 9 rocks").getInt();
-		plankCraft = settings.get("Recipes", "plankCraft", 0, "craft sticks into 1 oak plank. 0 = off, 1 = 4 sticks, 2 = 9 sticks").getInt();
-		blazeTorch = settings.get("Recipes", "blazeTorch", 2, "lets you make torches with blaze powder. 0 Disables").getInt();
-		coalTorch = settings.get("Recipes", "Coal Torch", 2, "number of torches when using coal. 0 Disables").getInt();
-		charTorch = settings.get("Recipes", "Char Torch", 2, "number of torches when using charcoal. 0 Disables").getInt();
-		saplingSticks = settings.get("Recipes", "saplingSticks", 1, "craft saplings into number sticks").getInt();
-		nerfBrewing = settings.get("Recipes", "Harder Brewing Stand", true, "3 Stone, 2 Blaze Rods, and 2 Iron").getBoolean();
-		throwingRock = settings.get("Rebalance", "throwingRock", true, "you can throw rocks").getBoolean();
-		kindleTorch = settings.get("Rebalance", "kindleTorch", 0, "lets you make torches with kindling. 0 Disables").getInt();
-		flintFurnace = settings.get("Rebalance", "Flint Furnace", false, "Needs Flint in the middle.").getBoolean();
-		kindleFurnace = settings.get("Rebalance", "Kindling Furnace", true, "Needs Kindling in the middle.").getBoolean();
-		hardFurnace = settings.get("Rebalance", "Hardcore Furnace", false,
-				"Needs Flint and Steel in the middle. Get iron from zombie drop or chest.").getBoolean();
-		smoothStoneTools = settings.get("Rebalance", "smoothStoneTools", true, "Stone tools made with smooth stone").getBoolean();
-		enableCrudeAxe = settings.get("Rebalance", "enableCrudeAxe", true, "axe made from sticks and a rock in 2x2 crafting").getBoolean();
-		enableFlintAxe = settings.get("Rebalance", "enableFlintAxe", true, "axe made from sticks and flint in 2x2 crafting").getBoolean();
-		rockTools = settings.get("Rebalance", "rockTools", false, "Stone tools made with rocks").getBoolean();
-		kindlingEn = settings.get("Rebalance", "kindling", true, "kindling can be made").getBoolean();
-		simpleRepairsWood = settings.get("Repairs", "simpleRepairsWood", true, "wood tools can be repaired by crafting with planks").getBoolean();
-		simpleRepairsStone = settings.get("Repairs", "simpleRepairsStone", true, "stone tools can be repaired by crafting with smooth stone").getBoolean();
-		simpleRepairsCobble = settings.get("Repairs", "simpleRepairsCobble", false, "stone tools can be repaired by crafting with cobblestone").getBoolean();
-		simpleRepairsRock = settings.get("Repairs", "simpleRepairsRock", false, "stone tools can be repaired by crafting with rocks").getBoolean();
-		simpleRepairsCrude = settings.get("Repairs", "simpleRepairsCrude", true, "Crude tools can be repaired by crafting with rocks").getBoolean();
-		simpleRepairsLeather = settings.get("Repairs", "simpleRepairsLeather", false, "Leather armor can be repaired by crafting with leather").getBoolean();
-		simpleRepairsLeatherStrip = settings.get("Repairs", "simpleRepairsLeatherStrip", true, "Leather armor can be repaired by crafting with leather strips").getBoolean();
-		flintRepair = settings.get("Repairs", "flintRepair", true, "Flint Axe can be repaired by crafting with flint").getBoolean();
-		noWoolDrop = settings.get("Other", "noWoolDrop", true, "sheep don't drop wool if killed").getBoolean();
-		pigLeather = settings.get("Other", "pigLeather", 0, "chance for pigs drop 1 leather").getInt();
-		stripArmor = settings.get("Other", "stripArmor", true, "leather armor is made from leather strips").getBoolean();
-		leatherStrip = settings.get("Other", "leatherStrip", true, "Leather can be crafted into 3 leather strips").getBoolean();
-		stripRepair = settings.get("Other", "stripRepair", true, "3 leather strips can be crafted into Leather").getBoolean();
-		moreLeather = settings.get("Other", "moreLeather", 100, "Chance out of 100 for 1 extra leather from cows.").getInt();
-		naturalSticks = settings.get("World Gen", "naturalSticks", true, "find sticks in grass").getBoolean();
-		sticksLeaves = settings.get("World Gen", "TreeBranches", true, "find sticks in leaves").getBoolean();
-		bushSticks = settings.get("World Gen", "bushSticks", true, "get sticks from dead bushes with hand").getBoolean();
-		naturalRocks = settings.get("World Gen", "naturalRocks", true, "find rocks in grass").getBoolean();
-		shatteringStone = settings.get("World Gen", "shatteringStonemin", 0, "Stone breaks into rocks not cobblestone Min amount 0 disable").getInt();
-		shatteringStoneB = settings.get("World Gen", "shatteringStonemax", 4, "Max rocks from Stone").getInt();
-		shatteringCobble = settings.get("World Gen", "shatteringCobblemin", 0, "Cobblestone breaks into rocks when Mined Min amount 0 disable").getInt();
-		shatteringCobbleB = settings.get("World Gen", "shatteringCobblemax", 4, "Max rocks from Cobblestone").getInt();
-		noTreePunching = settings.get("World Gen", "noTreePunching", true, "must use axe to get logs and will be slower").getBoolean();
+		nerfPlank = settings.get("Recipes", "Nerf Plank", 2, "Number of Planks crafted per Log; 0 to disable").getInt();
+		plankCut = settings.get("Recipes", "Plank Cutting", 4, "Number of Planks crafted per Log with an added Axe; 0 to disable").getInt();
+		nerfStick = settings.get("Recipes", "Nerf Stick", 2, "Number of Sticks crafted per 2 Planks; 0 to disable").getInt();
+		stickCut = settings.get("Recipes", "Stick Cutting", 4, "Number of Sticks crafted per 2 Planks with an added Axe; 0 to disable").getInt();
+		nerfBlazePowder = settings.get("Recipes", "Nerf Blaze Power", true, "If true, Blaze Rods only make 1 Blaze Powder").getBoolean();
+		cobbleBreaking = settings.get("Recipes", "cobbleBreaking", 0, "Number of Rocks made by crafting Cobblestone with a Pickaxe; 0 to disable").getInt();
+		stoneBreaking = settings.get("Recipes", "stoneBreaking", 0, "Number of Rocks made by crafting Stone with a Pickaxe; 0 to disable").getInt();
+		cobbleCrafting = settings.get("Recipes", "cobbleCrafting", 0, "Allows you to craft Rocks into 1 Cobblestone; 0=disabled, 1=needs 4 rocks, 2=needs 9 rocks").getInt();
+		plankCraft = settings.get("Recipes", "plankCraft", 0, "Allows you to craft Sticks into 1 Oak Plank; 0=disabled, 1=needs 4 sticks, 2=needs 9 sticks").getInt();
+		blazeTorch = settings.get("Recipes", "blazeTorch", 2, "Number of Torches crafted per Stick and Blaze Powder; 0 to disable").getInt();
+		coalTorch = settings.get("Recipes", "Coal Torch", 2, "Number of Torches crafted per Stick and Coal; 0 to disable").getInt();
+		charTorch = settings.get("Recipes", "Char Torch", 2, "Number of Torches crafted per Stick and Charcoal; 0 to disable").getInt();
+		saplingSticks = settings.get("Recipes", "saplingSticks", 1, "Number of Sticks crafted per Sapling; 0 to disable").getInt();
+		nerfBrewing = settings.get("Recipes", "Harder Brewing Stand", true, "If true, Brewing Stand requires 3 Stone, 2 Blaze Rods, and 2 Iron Ingots").getBoolean();
+		throwingRock = settings.get("Rebalance", "throwingRock", true, "If true, Rocks can be thrown as a weapon").getBoolean();
+		kindlingEn = settings.get("Rebalance", "kindling", true, "If true, Kindling can be crafted from a Flint, a Rock, and 4 Sticks; if Rocks disabled, it will use Cobblestone").getBoolean();
+		kindleTorch = settings.get("Rebalance", "kindleTorch", 0, "Number of Torches crafted per Stick and Kindling; 0 to disable").getInt();
+		flintFurnace = settings.get("Rebalance", "Flint Furnace", false, "If true, Furnaces require a Flint in the middle to craft").getBoolean();
+		kindleFurnace = settings.get("Rebalance", "Kindling Furnace", true, "If true, Furnaces require a Kindling in the middle to craft").getBoolean();
+		hardFurnace = settings.get("Rebalance", "Hardcore Furnace", false, "If true, Furnaces require a Flint and Steel in the middle to craft").getBoolean();
+		enableCrudeAxe = settings.get("Rebalance", "enableCrudeAxe", true, "If true, a Crude Axe can be crafted from a Rock and 2 Sticks in 2x2").getBoolean();
+		enableFlintAxe = settings.get("Rebalance", "enableFlintAxe", true, "If true, a Flint Axe can be crafted from a Rock and 2 Sticks in 2x2").getBoolean();
+		smoothStoneTools = settings.get("Rebalance", "smoothStoneTools", true, "If true, Stone Tool require Smooth Stone instead of Cobblestone").getBoolean();
+		rockTools = settings.get("Rebalance", "rockTools", false, "If true, Stone Tool require Rocks instead of Cobblestone").getBoolean();
+		barkArmor = settings.get("Rebalance", "barkArmor", true, "If true, a Wood Chestplate can be made from Logs").getBoolean();
+		simpleRepairsWood = settings.get("Repairs", "simpleRepairsWood", true, "If true, Wood Tools can be repaired by crafting with Planks").getBoolean();
+		simpleRepairsStone = settings.get("Repairs", "simpleRepairsStone", true, "If true, Stone Tools can be repaired by crafting with Smooth Stone").getBoolean();
+		simpleRepairsCobble = settings.get("Repairs", "simpleRepairsCobble", false, "If true, Stone Tools can be repaired by crafting with Cobblestone").getBoolean();
+		simpleRepairsRock = settings.get("Repairs", "simpleRepairsRock", false, "If true, Stone Tools can be repaired by crafting with Rocks").getBoolean();
+		simpleRepairsLeather = settings.get("Repairs", "simpleRepairsLeather", false, "If true, Leather Armor can be repaired by crafting with Leather").getBoolean();
+		simpleRepairsLeatherStrip = settings.get("Repairs", "simpleRepairsLeatherStrip", true, "If true, Leather Armor can be repaired by crafting with Leather Strips").getBoolean();
+		simpleRepairsCrude = settings.get("Repairs", "simpleRepairsCrude", true, "If true, Crude Axe can be repaired by crafting with Rocks").getBoolean();
+		flintRepair = settings.get("Repairs", "flintRepair", true, "If true, Flint Axe can be repaired by crafting with Flint").getBoolean();
+		noWoolDrop = settings.get("Other", "noWoolDrop", true, "If true, Sheep drop no wool when kill; only by shearing").getBoolean();
+		pigLeather = settings.get("Other", "pigLeather", 0, "Percent chance for Pigs to drop 1 Leather").getInt();
+		stripArmor = settings.get("Other", "stripArmor", true, "If true, Leather Armor is instead crafted with Leather Strips").getBoolean();
+		leatherStrip = settings.get("Other", "leatherStrip", true, "If true, Leather can be crafted into 3 Leather Strips").getBoolean();
+		stripRepair = settings.get("Other", "stripRepair", true, "If true, 3 Leather Strips can be crafted into 1 Leather").getBoolean();
+		moreLeather = settings.get("Other", "moreLeather", 100, "Percent chance for Cows to drop an additional Leather").getInt();
+		naturalSticks = settings.get("World Gen", "naturalSticks", true, "If true, Sticks drop from Tall Grass").getBoolean();
+		sticksLeaves = settings.get("World Gen", "TreeBranches", true, "If true, Sticks drop from Leaves").getBoolean();
+		bushSticks = settings.get("World Gen", "bushSticks", true, "If true, Sticks drop from Dead Bushes if hand is empty").getBoolean();
+		naturalRocks = settings.get("World Gen", "naturalRocks", true, "If true, Rocks drop from Tall Grass").getBoolean();
+		shatteringStone = settings.get("World Gen", "shatteringStonemin", 0, "Minimum amount of Rocks dropped from Stone; replaces Cobblestone drop; 0 to Disable").getInt();
+		shatteringStoneB = settings.get("World Gen", "shatteringStonemax", 4, "Maximum amount of Rocks dropped from Stone; replaces Cobblestone drop").getInt();
+		shatteringCobble = settings.get("World Gen", "shatteringCobblemin", 0, "Minimum amount of Rocks dropped from Cobblestone; 0 to Disable").getInt();
+		shatteringCobbleB = settings.get("World Gen", "shatteringCobblemax", 4, "Maximum amount of Rocks dropped from Cobblestone").getInt();
+		noTreePunching = settings.get("World Gen", "noTreePunching", true, "If true, Logs can no longer be punched and require an Axe").getBoolean();
+		slowTreePunching = settings.get("World Gen", "slowPunching", false, "If true, Logs take longer to break when punching, but are still breakable").getBoolean();
 		barkArmor = settings.get("Rebalance", "barkArmor", true).getBoolean();
 
 		settings.save();
 
+		leatherStrips = new BasicItem().setUnlocalizedName("leatherStrips").setTextureName("roughstart:leatherStrips");
+		rock = new BasicItem().setUnlocalizedName("rock").setTextureName("roughstart:rock");
+		kindling = new BasicItem().setUnlocalizedName("kindling").setTextureName("roughstart:kindling");
+		proxy.initializeRenderers();
+		
+		LanguageRegistry.addName(leatherStrips, "Leather Strips");
+		LanguageRegistry.addName(rock, "Rock");
+		LanguageRegistry.addName(kindling, "Kindling");
+		
 		armorWood = EnumHelper.addArmorMaterial("WOOD", 7, new int[] { 1, 4, 1, 1 }, 8);
 
 		toolCrude = EnumHelper.addToolMaterial("Crude", 0, 32, 1.5F, -1.0F, 15);
@@ -178,6 +192,7 @@ public class RoughStart {
 		toolFlint = EnumHelper.addToolMaterial("Flint", 0, 122, 3.5F, 0.5F, 5);
 
 		FMLCommonHandler.instance().bus().register(new CraftHandeler());
+		
 	}
 
 	@EventHandler
@@ -187,8 +202,10 @@ public class RoughStart {
 		Blocks.log.setHarvestLevel("axe", 0);
 		Blocks.log2.setHarvestLevel("axe", 0);
 
+		if (slowTreePunching) {
 		Blocks.log.setHardness(2.25f);
 		Blocks.log2.setHardness(2.25f);
+		}
 
 		crudeAxe = new BasicAxe(toolCrude).setUnlocalizedName("crudeAxe").setTextureName("roughstart:crudeAxe");
 		flintAxe = new BasicAxe(toolFlint).setUnlocalizedName("flintAxe").setTextureName("roughstart:flintAxe");
@@ -196,11 +213,10 @@ public class RoughStart {
 		
 		GameRegistry.registerItem(woodChest, "WoodChestplate");
 
+		LanguageRegistry.addName(crudeAxe, "Crude Axe");
+		LanguageRegistry.addName(flintAxe, "Flint Axe");
 		LanguageRegistry.addName(woodChest, "Wood Hauberk");
 
-		leatherStrips = new BasicItem().setUnlocalizedName("leatherStrips").setTextureName("roughstart:leatherStrips");
-		rock = new BasicItem().setUnlocalizedName("rock").setTextureName("roughstart:rock");
-		kindling = new BasicItem().setUnlocalizedName("kindling").setTextureName("roughstart:kindling");
 //		stoneblock = new BasicBlock(Material.ground).setBlockName("stoneblock").setBlockTextureName("roughstart:stoneblock");
 
 		if (enableCrudeAxe)
@@ -268,7 +284,7 @@ public class RoughStart {
 							new ItemStack(Blocks.log2, 1, 1) }));
 			}		}
 
-		if (coalTorch != 4 || charTorch != 0){
+		if (coalTorch != 4 || charTorch != 4){
 			RecipeRemover.removeAnyRecipe(new ItemStack(Blocks.torch, 4));
 			if (coalTorch > 0)
 				CraftingManager.getInstance().getRecipeList().add(
@@ -486,13 +502,13 @@ public class RoughStart {
 //			Random rand = new Random();
 //			CraftingManager.getInstance().getRecipeList().add(
 //					new ShapedOreRecipe(new ItemStack(OreDictionary.getOres("plankWood").get(rand.nextInt((OreDictionary.getOres("plankWood").size() - 1) + 1)).getItem(), 1, rand.nextInt(16)), new Object[] { "XXX", "XXX", "XXX", Character.valueOf('X'), "stickWood" }));
-			CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Blocks.log), new Object[] { "XXX", "XXX", "XXX", Character.valueOf('X'), "stickWood" }));
+			CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Blocks.planks), new Object[] { "XXX", "XXX", "XXX", Character.valueOf('X'), "stickWood" }));
 		if (plankCraft == 1)
 			// Random Plank output code
 //			Random rand = new Random();
 //			CraftingManager.getInstance().getRecipeList().add(
 //					new ShapedOreRecipe(new ItemStack(OreDictionary.getOres("plankWood").get(rand.nextInt((OreDictionary.getOres("plankWood").size() - 1) + 1)).getItem(), 1, rand.nextInt(16)), new Object[] { "XX", "XX", Character.valueOf('X'), "stickWood" }));
-			CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Blocks.log), new Object[] { "XX", "XX", Character.valueOf('X'), "stickWood" }));
+			CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(Blocks.planks), new Object[] { "XX", "XX", Character.valueOf('X'), "stickWood" }));
 
 		if (plankCut > 0) {
 			CraftingManager.getInstance().getRecipeList().add(

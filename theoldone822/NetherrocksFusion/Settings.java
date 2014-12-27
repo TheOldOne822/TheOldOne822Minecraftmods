@@ -123,8 +123,8 @@ public class Settings {
 	cinderstoneDamageVsEntity = settings.get("Tool Stats", "Cinderstone Damage Vs Entity", 7).getInt();
 	cinderstoneEnchantability = settings.get("Tool Stats", "Cinderstone Enchantability", 4).getInt();
 	thrakaMiningLevel = settings.get("Tool Stats", "Thraka Mining Level", 3).getInt();
-	thrakaUsesNum = settings.get("Tool Stats", "Thraka Uses Number", 825).getInt();
-	thrakaMiningSpeed = (float) settings.get("Tool Stats", "Thraka Mining Speed", 14).getDouble(thrakaMiningSpeed);
+	thrakaUsesNum = settings.get("Tool Stats", "Thraka Uses Number", 1125).getInt();
+	thrakaMiningSpeed = (float) settings.get("Tool Stats", "Thraka Mining Speed", 17).getDouble(thrakaMiningSpeed);
 	thrakaDamageVsEntity = settings.get("Tool Stats", "Thraka Damage Vs Entity", 3).getInt();
 	thrakaEnchantability = settings.get("Tool Stats", "Thraka Enchantability", 34).getInt();
 	pyralisMiningLevel = settings.get("Tool Stats", "Pyralis Mining Level", 4).getInt();

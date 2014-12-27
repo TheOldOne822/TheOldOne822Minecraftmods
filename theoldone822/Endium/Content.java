@@ -2,14 +2,13 @@ package theoldone822.Endium;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
-import alexndr.SimpleOres.api.content.SimpleBlock;
-import alexndr.SimpleOres.api.helpers.CoreHelper;
-import alexndr.SimpleOres.api.content.SimpleAxe;
-import alexndr.SimpleOres.api.content.SimpleHoe;
-import alexndr.SimpleOres.api.content.SimpleIngot;
-import alexndr.SimpleOres.api.content.SimplePickaxe;
-import alexndr.SimpleOres.api.content.SimpleShovel;
-import alexndr.SimpleOres.api.content.SimpleSword;
+import alexndr.api.content.blocks.SimpleBlock;
+import alexndr.api.content.items.SimpleAxe;
+import alexndr.api.content.items.SimpleHoe;
+import alexndr.api.content.items.SimpleItem;
+import alexndr.api.content.items.SimplePickaxe;
+import alexndr.api.content.items.SimpleShovel;
+import alexndr.api.content.items.SimpleSword;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
@@ -142,15 +141,15 @@ public class Content
 	public static void doItems()
 	{
 		//Item Details
-		EndiumIngot = new SimpleIngot().modId("Endium").setUnlocalizedName("EndiumIngot").setTextureName("Endium:EndiumIngot");
-		TelosIngot = new SimpleIngot().modId("Endium").setUnlocalizedName("TelosIngot").setTextureName("Endium:TelosIngot");
-		SunteleiaIngot = new SimpleIngot().modId("Endium").setUnlocalizedName("SunteleiaIngot").setTextureName("Endium:SunteleiaIngot");
-		smallTelosChunk = new SimpleIngot().modId("Endium").setUnlocalizedName("smallTelosChunk").setTextureName("Endium:smallTelosChunk");
-		mediumTelosChunk = new SimpleIngot().modId("Endium").setUnlocalizedName("mediumTelosChunk").setTextureName("Endium:mediumTelosChunk");
-		largeTelosChunk = new SimpleIngot().modId("Endium").setUnlocalizedName("largeTelosChunk").setTextureName("Endium:largeTelosChunk");
-		smallSunteleiaChunk = new SimpleIngot().modId("Endium").setUnlocalizedName("smallSunteleiaChunk").setTextureName("Endium:smallSunteleiaChunk");
-		mediumSunteleiaChunk = new SimpleIngot().modId("Endium").setUnlocalizedName("mediumSunteleiaChunk").setTextureName("Endium:mediumSunteleiaChunk");
-		largeSunteleiaChunk = new SimpleIngot().modId("Endium").setUnlocalizedName("largeSunteleiaChunk").setTextureName("Endium:largeSunteleiaChunk");
+		EndiumIngot = new SimpleItem().modId("Endium").setUnlocalizedName("EndiumIngot").setTextureName("Endium:EndiumIngot");
+		TelosIngot = new SimpleItem().modId("Endium").setUnlocalizedName("TelosIngot").setTextureName("Endium:TelosIngot");
+		SunteleiaIngot = new SimpleItem().modId("Endium").setUnlocalizedName("SunteleiaIngot").setTextureName("Endium:SunteleiaIngot");
+		smallTelosChunk = new SimpleItem().modId("Endium").setUnlocalizedName("smallTelosChunk").setTextureName("Endium:smallTelosChunk");
+		mediumTelosChunk = new SimpleItem().modId("Endium").setUnlocalizedName("mediumTelosChunk").setTextureName("Endium:mediumTelosChunk");
+		largeTelosChunk = new SimpleItem().modId("Endium").setUnlocalizedName("largeTelosChunk").setTextureName("Endium:largeTelosChunk");
+		smallSunteleiaChunk = new SimpleItem().modId("Endium").setUnlocalizedName("smallSunteleiaChunk").setTextureName("Endium:smallSunteleiaChunk");
+		mediumSunteleiaChunk = new SimpleItem().modId("Endium").setUnlocalizedName("mediumSunteleiaChunk").setTextureName("Endium:mediumSunteleiaChunk");
+		largeSunteleiaChunk = new SimpleItem().modId("Endium").setUnlocalizedName("largeSunteleiaChunk").setTextureName("Endium:largeSunteleiaChunk");
 
 		LanguageRegistry.addName(EndiumIngot, "Endium Ingot");
 		LanguageRegistry.addName(TelosIngot, "Telos Ingot");

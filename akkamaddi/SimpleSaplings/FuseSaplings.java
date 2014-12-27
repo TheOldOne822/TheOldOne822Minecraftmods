@@ -13,9 +13,9 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import alexndr.SimpleOres.plugins.fusion.FusionHelper;
+import alexndr.plugins.Fusion.FusionFurnaceRecipes;
 
-@Mod(modid = "simplesaplings", name = "Simple Saplings", version = "1.1.0", dependencies = "required-after:fusionplugin")
+@Mod(modid = "simplesaplings", name = "Simple Saplings", version = "1.1.0", dependencies = "required-after:fusion")
 
 public class FuseSaplings
 {
@@ -42,7 +42,7 @@ public class FuseSaplings
         proxy.registerRenderers();
 
         for (int i : blarg)
-            FusionHelper.fusionFurnaceRecipes.addSmelting(
+            FusionFurnaceRecipes.addSmelting(
                 new ItemStack(Blocks.log, 1, i),
                 new ItemStack(Blocks.leaves, 1, i),
                 new ItemStack(Items.dye, 1, 15),

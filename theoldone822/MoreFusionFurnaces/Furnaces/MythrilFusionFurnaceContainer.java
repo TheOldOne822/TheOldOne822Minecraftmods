@@ -1,6 +1,6 @@
 package theoldone822.MoreFusionFurnaces.Furnaces;
 
-import alexndr.SimpleOres.plugins.fusion.FusionRecipes;
+import alexndr.plugins.Fusion.FusionFurnaceRecipes;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
@@ -150,11 +150,11 @@ public class MythrilFusionFurnaceContainer extends Container
                     {
                     	try
                     	{
-                            if (!this.mergeItemStack(itemstack1, 0, 1, false) && !this.mergeItemStack(itemstack1, 3, 4, false) || !FusionRecipes.isItemInput(itemstack1))
+                            if (!this.mergeItemStack(itemstack1, 0, 1, false) && !this.mergeItemStack(itemstack1, 3, 4, false) || !FusionFurnaceRecipes.isItemInput(itemstack1))
                             {                      	
                             	try
                             	{
-                                    if (!this.mergeItemStack(itemstack1, 4, 5, false) || !FusionRecipes.isItemCatalyst(itemstack1))
+                                    if (!this.mergeItemStack(itemstack1, 4, 5, false) || !FusionFurnaceRecipes.isItemCatalyst(itemstack1))
                                     {
                                         return null;
                                     }
@@ -171,14 +171,14 @@ public class MythrilFusionFurnaceContainer extends Container
                     	}
                     }    
                 }
-            	else if (FusionRecipes.isItemCatalyst(itemstack1))
+            	else if (FusionFurnaceRecipes.isItemCatalyst(itemstack1))
                 {
                     if (!this.mergeItemStack(itemstack1, 4, 5, false))
                     {   	
                         return null;
                     }
                 }
-                else if (FusionRecipes.isItemInput(itemstack1))
+                else if (FusionFurnaceRecipes.isItemInput(itemstack1))
                 {
                     if (!this.mergeItemStack(itemstack1, 0, 1, false) && !this.mergeItemStack(itemstack1, 3, 4, false))
                     {

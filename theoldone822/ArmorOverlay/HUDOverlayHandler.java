@@ -46,10 +46,10 @@ public class HUDOverlayHandler {
 		int left = scale.getScaledWidth() / 2 - 91;
 		int top = scale.getScaledHeight() - GuiIngameForge.left_height + 10;
 
-		drawSaturationOverlay(stats, mc, left, top);
+		drawAromrOverlay(stats, mc, left, top);
 	}
 
-	public static void drawSaturationOverlay(int armorLevel, Minecraft mc, int left, int top)
+	public static void drawAromrOverlay(int armorLevel, Minecraft mc, int left, int top)
 	{
 		if (armorLevel  < 21)
 			return;

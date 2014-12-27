@@ -15,9 +15,9 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
-import alexndr.SimpleOres.plugins.fusion.FusionHelper;
+import alexndr.plugins.Fusion.FusionFurnaceRecipes;
 
-@Mod(modid = "ClayFusion", name = "Clay and Cobblestone Fusion Recipes", version = "1.1.0", dependencies = "required-after:fusionplugin")
+@Mod(modid = "ClayFusion", name = "Clay and Cobblestone Fusion Recipes", version = "2.0.0", dependencies = "required-after:fusion")
 public class SimpleClay
 {
     // The instance of your mod that Forge uses.
@@ -42,20 +42,20 @@ public class SimpleClay
     {
         proxy.registerRenderers();
         // Fusion Clay Recipes
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Blocks.dirt), new ItemStack(Blocks.dirt), new ItemStack(Items.clay_ball), new ItemStack(Items.clay_ball, 2, 0), 0.1F);
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Blocks.grass), new ItemStack(Blocks.dirt), new ItemStack(Items.clay_ball), new ItemStack(Items.clay_ball, 2, 0), 0.1F);
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Blocks.grass), new ItemStack(Blocks.grass), new ItemStack(Items.clay_ball), new ItemStack(Items.clay_ball, 2, 0), 0.1F);
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Blocks.brick_block), new ItemStack(Blocks.brick_block), new ItemStack(Items.clay_ball), new ItemStack(Blocks.clay), 0.2F);
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Blocks.hardened_clay), new ItemStack(Blocks.brick_block), new ItemStack(Items.clay_ball), new ItemStack(Blocks.clay), 0.2F);
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Blocks.hardened_clay), new ItemStack(Blocks.hardened_clay), new ItemStack(Items.clay_ball), new ItemStack(Blocks.clay), 0.2F);
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Blocks.stained_hardened_clay, 1, WILDCARD_VALUE), new ItemStack(Blocks.hardened_clay), new ItemStack(Items.clay_ball), new ItemStack(Blocks.clay), 0.2F);
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Blocks.stained_hardened_clay, 1, WILDCARD_VALUE), new ItemStack(Blocks.brick_block), new ItemStack(Items.clay_ball), new ItemStack(Blocks.clay), 0.2F);
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Blocks.stained_hardened_clay, 1, WILDCARD_VALUE), new ItemStack(Blocks.stained_hardened_clay, 1, WILDCARD_VALUE), new ItemStack(Items.clay_ball), new ItemStack(Blocks.clay), 0.2F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Blocks.dirt), new ItemStack(Blocks.dirt), new ItemStack(Items.clay_ball), new ItemStack(Items.clay_ball, 2, 0), 0.1F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Blocks.grass), new ItemStack(Blocks.dirt), new ItemStack(Items.clay_ball), new ItemStack(Items.clay_ball, 2, 0), 0.1F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Blocks.grass), new ItemStack(Blocks.grass), new ItemStack(Items.clay_ball), new ItemStack(Items.clay_ball, 2, 0), 0.1F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Blocks.brick_block), new ItemStack(Blocks.brick_block), new ItemStack(Items.clay_ball), new ItemStack(Blocks.clay), 0.2F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Blocks.hardened_clay), new ItemStack(Blocks.brick_block), new ItemStack(Items.clay_ball), new ItemStack(Blocks.clay), 0.2F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Blocks.hardened_clay), new ItemStack(Blocks.hardened_clay), new ItemStack(Items.clay_ball), new ItemStack(Blocks.clay), 0.2F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Blocks.stained_hardened_clay, 1, WILDCARD_VALUE), new ItemStack(Blocks.hardened_clay), new ItemStack(Items.clay_ball), new ItemStack(Blocks.clay), 0.2F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Blocks.stained_hardened_clay, 1, WILDCARD_VALUE), new ItemStack(Blocks.brick_block), new ItemStack(Items.clay_ball), new ItemStack(Blocks.clay), 0.2F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Blocks.stained_hardened_clay, 1, WILDCARD_VALUE), new ItemStack(Blocks.stained_hardened_clay, 1, WILDCARD_VALUE), new ItemStack(Items.clay_ball), new ItemStack(Blocks.clay), 0.2F);
         // from Clay
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Blocks.gravel), new ItemStack(Blocks.gravel), new ItemStack(Items.clay_ball), new ItemStack(Blocks.cobblestone), 0.1F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Blocks.gravel), new ItemStack(Blocks.gravel), new ItemStack(Items.clay_ball), new ItemStack(Blocks.cobblestone), 0.1F);
         // Gratuitous
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.vine), new ItemStack(Items.dye, 1, 15), new ItemStack(Blocks.mossy_cobblestone), 0.3F);
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Blocks.stone), new ItemStack(Blocks.vine), new ItemStack(Items.dye, 1, 15), new ItemStack(Blocks.stone, 1, 1), 0.3F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.vine), new ItemStack(Items.dye, 1, 15), new ItemStack(Blocks.mossy_cobblestone), 0.3F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Blocks.stone), new ItemStack(Blocks.vine), new ItemStack(Items.dye, 1, 15), new ItemStack(Blocks.stone, 1, 1), 0.3F);
     }
 
     @EventHandler // used in 1.6.2

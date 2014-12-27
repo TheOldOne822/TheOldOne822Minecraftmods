@@ -15,9 +15,9 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
-import alexndr.SimpleOres.plugins.fusion.FusionHelper;
+import alexndr.plugins.Fusion.FusionFurnaceRecipes;
 
-@Mod(modid = "spawneggfusion", name = "Fusion recipes for spawn eggs of common mobs", version = "1.1.0", dependencies = "required-after:fusionplugin")
+@Mod(modid = "spawneggfusion", name = "Fusion recipes for spawn eggs of common mobs", version = "2.0.0", dependencies = "required-after:fusion")
 
 public class FusionEggsCore
 {
@@ -45,35 +45,35 @@ public class FusionEggsCore
         // The Eggs
         // the bad
         // creeper
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Items.gunpowder), new ItemStack(Items.dye, 1, 10), new ItemStack(Items.spawn_egg, 1, 50), 1.0F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Items.gunpowder), new ItemStack(Items.dye, 1, 10), new ItemStack(Items.spawn_egg, 1, 50), 1.0F);
         // skeleton
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Items.bone), new ItemStack(Items.dye, 1, 15), new ItemStack(Items.spawn_egg, 1, 51), 1.0F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Items.bone), new ItemStack(Items.dye, 1, 15), new ItemStack(Items.spawn_egg, 1, 51), 1.0F);
         // spider
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Items.spider_eye), new ItemStack(Items.dye, 1, 0), new ItemStack(Items.spawn_egg, 1, 52), 1.0F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Items.spider_eye), new ItemStack(Items.dye, 1, 0), new ItemStack(Items.spawn_egg, 1, 52), 1.0F);
         // cave spider
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Blocks.web), new ItemStack(Items.dye, 1, 0), new ItemStack(Items.spawn_egg, 1, 59), 1.0F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Blocks.web), new ItemStack(Items.dye, 1, 0), new ItemStack(Items.spawn_egg, 1, 59), 1.0F);
         // zombie
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Items.rotten_flesh), new ItemStack(Items.dye, 1, 2), new ItemStack(Items.spawn_egg, 1, 54), 1.0F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Items.rotten_flesh), new ItemStack(Items.dye, 1, 2), new ItemStack(Items.spawn_egg, 1, 54), 1.0F);
         // slime
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Items.slime_ball), new ItemStack(Items.dye, 1, 2), new ItemStack(Items.spawn_egg, 1, 55), 1.0F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Items.slime_ball), new ItemStack(Items.dye, 1, 2), new ItemStack(Items.spawn_egg, 1, 55), 1.0F);
         // the good
         // sheep
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Blocks.wool, 1, WILDCARD_VALUE), new ItemStack(Items.dye, 1, 7), new ItemStack(Items.spawn_egg, 1, 91), 1.0F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Blocks.wool, 1, WILDCARD_VALUE), new ItemStack(Items.dye, 1, 7), new ItemStack(Items.spawn_egg, 1, 91), 1.0F);
         // pig
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Items.porkchop), new ItemStack(Items.dye, 1, 9), new ItemStack(Items.spawn_egg, 1, 90), 1.0F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Items.porkchop), new ItemStack(Items.dye, 1, 9), new ItemStack(Items.spawn_egg, 1, 90), 1.0F);
         // cow
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Items.beef), new ItemStack(Items.dye, 1, 3), new ItemStack(Items.spawn_egg, 1, 92), 1.0F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Items.beef), new ItemStack(Items.dye, 1, 3), new ItemStack(Items.spawn_egg, 1, 92), 1.0F);
         // horse
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Blocks.hay_block), new ItemStack(Items.dye, 1, 3), new ItemStack(Items.spawn_egg, 1, 100), 1.0F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Blocks.hay_block), new ItemStack(Items.dye, 1, 3), new ItemStack(Items.spawn_egg, 1, 100), 1.0F);
         // chicken
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Items.feather), new ItemStack(Items.dye, 1, 15), new ItemStack(Items.spawn_egg, 1, 93), 1.0F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Items.feather), new ItemStack(Items.dye, 1, 15), new ItemStack(Items.spawn_egg, 1, 93), 1.0F);
         // the neutral
         // wolf
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Items.bone), new ItemStack(Items.dye, 1, 1), new ItemStack(Items.spawn_egg, 1, 95), 1.0F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Items.bone), new ItemStack(Items.dye, 1, 1), new ItemStack(Items.spawn_egg, 1, 95), 1.0F);
         // ocelot
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Items.fish), new ItemStack(Items.dye, 1, 11), new ItemStack(Items.spawn_egg, 1, 98), 1.0F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Items.fish), new ItemStack(Items.dye, 1, 11), new ItemStack(Items.spawn_egg, 1, 98), 1.0F);
         // squid
-        FusionHelper.fusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Items.fish), new ItemStack(Items.dye, 1, 0), new ItemStack(Items.spawn_egg, 1, 94), 1.0F);
+        FusionFurnaceRecipes.addSmelting(new ItemStack(Items.egg), new ItemStack(Items.fish), new ItemStack(Items.dye, 1, 0), new ItemStack(Items.spawn_egg, 1, 94), 1.0F);
     }
 
     @EventHandler // used in 1.6.2

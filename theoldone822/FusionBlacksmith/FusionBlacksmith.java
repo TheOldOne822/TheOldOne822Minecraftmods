@@ -7,7 +7,7 @@ import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.registry.VillagerRegistry;
 
-@Mod(modid = "fusionblacksmith", name = "Fusion Blacksmith", version = "1.0", dependencies = "required-after:simpleores; required-after:fusionplugin")
+@Mod(modid = "fusionblacksmith", name = "Fusion Blacksmith", version = "1.0", dependencies = "required-after:fusion")
 public class FusionBlacksmith {
 
 	@Instance("FusionBlacksmith")

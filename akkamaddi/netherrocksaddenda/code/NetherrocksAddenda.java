@@ -13,7 +13,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.MinecraftForge;
 
-@Mod(modid = "netherrocksAddenda", name = "akkamaddi's Addenda to Netherrocks", version = "1.0.1", dependencies = "required-after:simpleores ; required-after:fusionplugin ; required-after:netherrocks")
+@Mod(modid = "netherrocksAddenda", name = "akkamaddi's Addenda to Netherrocks", version = "2.0.0", dependencies = "required-after:fusion ; required-after:netherrocks")
 
 public class NetherrocksAddenda
 {

@@ -4,7 +4,7 @@ import java.util.Random;
 
 import theoldone822.NetherrocksFusion.NetherrocksFusion;
 import theoldone822.NetherrocksFusion.Settings;
-import alexndr.SimpleOres.plugins.fusion.FusionRecipes;
+import alexndr.plugins.Fusion.FusionFurnaceRecipes;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -328,7 +328,7 @@ public class SuperFusionFurnaceTileEntity extends TileEntity implements ISidedIn
     {
         if(this.furnaceItemStacks[0] != null && this.furnaceItemStacks[3] != null && this.furnaceItemStacks[4] != null)
         {
-        	ItemStack itemstack = FusionRecipes.getSmeltingResult(this.furnaceItemStacks[0], this.furnaceItemStacks[3], this.furnaceItemStacks[4]);
+        	ItemStack itemstack = FusionFurnaceRecipes.getSmeltingResult(this.furnaceItemStacks[0], this.furnaceItemStacks[3], this.furnaceItemStacks[4]);
        		if (itemstack == null) return false;
 //       		if(FusionRecipes.isStackBigEnough() == false) return false;
     		if (this.furnaceItemStacks[2] == null) return true;
@@ -367,7 +367,7 @@ public class SuperFusionFurnaceTileEntity extends TileEntity implements ISidedIn
 
         if (this.canSmelt())
         {
-        	ItemStack itemstack = FusionRecipes.applyFusion(this.furnaceItemStacks[0], this.furnaceItemStacks[3], this.furnaceItemStacks[4]);
+        	ItemStack itemstack = FusionFurnaceRecipes.applyFusion(this.furnaceItemStacks[0], this.furnaceItemStacks[3], this.furnaceItemStacks[4]);
 
             if (this.furnaceItemStacks[2] == null)
             {

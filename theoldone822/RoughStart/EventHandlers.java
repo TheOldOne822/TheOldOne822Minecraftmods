@@ -36,6 +36,7 @@ public class EventHandlers {
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onPlayerBreakSpeed(PlayerEvent.BreakSpeed event) {
+		if (RoughStart.noTreePunching || RoughStart.slowTreePunching) {
 		logs = OreDictionary.getOres("logWood");
 		for (int i = 0; i < logs.size(); i++) {
 			if (event.block.getBlockFromItem(logs.get(i).getItem()) == event.block) {
@@ -53,7 +54,7 @@ public class EventHandlers {
 				}
 			}
 		}
-	}
+		}	}
 
 	@SubscribeEvent
 	public void onBlockBreak(BreakEvent event) {
