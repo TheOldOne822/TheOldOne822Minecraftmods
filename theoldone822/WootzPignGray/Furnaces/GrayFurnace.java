@@ -1,19 +1,12 @@
 package theoldone822.WootzPignGray.Furnaces;
 
 //import SimpleOres.core.Blocks;
-import theoldone822.WootzPignGray.Content;
-import theoldone822.WootzPignGray.Settings;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 import java.util.Random;
 
-import theoldone822.WootzPignGray.WootzPignGray;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,6 +20,10 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import theoldone822.WootzPignGray.Content;
+import theoldone822.WootzPignGray.WootzPignGray;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class GrayFurnace extends BlockContainer {
 	/**
@@ -129,7 +126,8 @@ public class GrayFurnace extends BlockContainer {
 		if (par1World.isRemote) {
 			return true;
 		} else {
-			GrayFurnaceTileEntity tileentityfurnace = (GrayFurnaceTileEntity) par1World.getTileEntity(par2, par3, par4);
+			@SuppressWarnings("unused")
+            GrayFurnaceTileEntity tileentityfurnace = (GrayFurnaceTileEntity) par1World.getTileEntity(par2, par3, par4);
 			par5EntityPlayer.openGui(WootzPignGray.instance, 0, par1World, par2, par3, par4);
 
 			return true;

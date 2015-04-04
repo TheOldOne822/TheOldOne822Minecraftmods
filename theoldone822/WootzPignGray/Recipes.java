@@ -1,22 +1,20 @@
 package theoldone822.WootzPignGray;
 
-import alexndr.plugins.Fusion.FusionFurnaceRecipes;
-import alexndr.plugins.Fusion.FusionMaterial;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+import alexndr.plugins.Fusion.FusionFurnaceRecipes;
+import alexndr.plugins.Fusion.FusionMaterial;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class Recipes {
 
-	public static void doRecipes() {
+	@SuppressWarnings("unchecked")
+    public static void doRecipes() {
 		// Forge OreDictionary
 		OreDictionary.registerOre("ingotPigiron", new ItemStack(Content.pigironIngot));
 		OreDictionary.registerOre("ingotPigIron", new ItemStack(Content.pigironIngot));

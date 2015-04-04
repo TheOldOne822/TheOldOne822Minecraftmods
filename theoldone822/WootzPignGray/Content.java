@@ -1,7 +1,11 @@
 package theoldone822.WootzPignGray;
 
-import java.util.Random;
-
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.WeightedRandomChestContent;
+import net.minecraftforge.common.ChestGenHooks;
 import theoldone822.WootzPignGray.Furnaces.GrayFurnace;
 import theoldone822.WootzPignGray.Furnaces.GrayFusionFurnace;
 import theoldone822.WootzPignGray.Items.HardenedAxe;
@@ -9,22 +13,14 @@ import theoldone822.WootzPignGray.Items.HardenedHoe;
 import theoldone822.WootzPignGray.Items.HardenedPickaxe;
 import theoldone822.WootzPignGray.Items.HardenedShovel;
 import theoldone822.WootzPignGray.Items.HardenedSword;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
-import alexndr.api.content.items.SimpleItem;
-import alexndr.api.content.items.SimpleSword;
-import alexndr.api.content.items.SimpleShovel;
-import alexndr.api.content.items.SimpleAxe;
-import alexndr.api.content.items.SimplePickaxe;
-import alexndr.api.content.items.SimpleHoe;
 import alexndr.api.content.items.SimpleArmor;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.WeightedRandomChestContent;
-import net.minecraftforge.common.ChestGenHooks;
-import net.minecraftforge.common.MinecraftForge;
+import alexndr.api.content.items.SimpleAxe;
+import alexndr.api.content.items.SimpleHoe;
+import alexndr.api.content.items.SimpleItem;
+import alexndr.api.content.items.SimplePickaxe;
+import alexndr.api.content.items.SimpleShovel;
+import alexndr.api.content.items.SimpleSword;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class Content 
 {
@@ -90,17 +86,11 @@ public class Content
 	public static void doArmor()
 	{
 		//Armour Details
-		wootzHelm = new SimpleArmor(mod.armorWootz, mod.rendererWootz, 0).modId("wootzpigngray").setUnlocalizedName("wootzHelm").setTextureName("wootzpigngray:wootzHelm");
-		wootzChest = new SimpleArmor(mod.armorWootz, mod.rendererWootz, 1).modId("wootzpigngray").setUnlocalizedName("wootzChest").setTextureName("wootzpigngray:wootzChest");
-		wootzLegs = new SimpleArmor(mod.armorWootz, mod.rendererWootz, 2).modId("wootzpigngray").setUnlocalizedName("wootzLegs").setTextureName("wootzpigngray:wootzLegs");
-		wootzBoots = new SimpleArmor(mod.armorWootz, mod.rendererWootz, 3).modId("wootzpigngray").setUnlocalizedName("wootzBoots").setTextureName("wootzpigngray:wootzBoots");
-
-		LanguageRegistry.addName(wootzHelm, "Wootz steel Helmet");
-		LanguageRegistry.addName(wootzChest, "Wootz steel Chestplate");
-		LanguageRegistry.addName(wootzLegs, "Wootz steel Leggings");
-		LanguageRegistry.addName(wootzBoots, "Wootz steel Boots");
-
-}
+		wootzHelm = new SimpleArmor(WootzPignGray.armorWootz, 0).modId("wootzpigngray").setUnlocalizedName("wootzHelm").setTextureName("wootzpigngray:wootzHelm");
+		wootzChest = new SimpleArmor(WootzPignGray.armorWootz,1).modId("wootzpigngray").setUnlocalizedName("wootzChest").setTextureName("wootzpigngray:wootzChest");
+		wootzLegs = new SimpleArmor(WootzPignGray.armorWootz, 2).modId("wootzpigngray").setUnlocalizedName("wootzLegs").setTextureName("wootzpigngray:wootzLegs");
+		wootzBoots = new SimpleArmor(WootzPignGray.armorWootz, 3).modId("wootzpigngray").setUnlocalizedName("wootzBoots").setTextureName("wootzpigngray:wootzBoots");
+	}
 	
 	/**
 	 * The method that gives blocks their properties, names etc, harvest levels and registers them. This is called by the main SimpleOres class.
@@ -123,15 +113,6 @@ public class Content
 		GameRegistry.registerBlock(grayFusionFurnace, "grayFusionFurnace");
 		GameRegistry.registerBlock(grayFusionFurnaceOn, "grayFusionFurnaceOn");
 
-		LanguageRegistry.addName(pigironBlock, "Block of Pigiron");
-		LanguageRegistry.addName(wootzBlock, "Block of Wootz steel");
-		LanguageRegistry.addName(rePigironBlock, "Block of Refined Pigiron");
-		LanguageRegistry.addName(grayBlock, "Block of Gray Iron");
-		LanguageRegistry.addName(grayFurnace, "Gray Iron Furnace");
-		LanguageRegistry.addName(grayFurnaceOn, "Gray Iron Furnace");
-		LanguageRegistry.addName(grayFusionFurnace, "Gray Iron Fusion Furnace");
-		LanguageRegistry.addName(grayFusionFurnaceOn, "Gray Iron Fusion Furnace");
-
 	}	
 	
 	/**
@@ -151,18 +132,6 @@ public class Content
 		packedIron = new SimpleItem().modId("wootzpigngray").setUnlocalizedName("packedIron").setTextureName("wootzpigngray:packedIron");
 		graphite = new SimpleItem().modId("wootzpigngray").setUnlocalizedName("graphite").setTextureName("wootzpigngray:graphite");
 		largeGrayChunk = new SimpleItem().modId("wootzpigngray").setUnlocalizedName("largeGrayChunk").setTextureName("wootzpigngray:largeGrayChunk");
-
-		LanguageRegistry.addName(rawPigiron, "Raw Pigiron");
-		LanguageRegistry.addName(pigironIngot, "Pigiron Ingot");
-		LanguageRegistry.addName(wootzIngot, "Wootz steel Ingot");
-		LanguageRegistry.addName(rePigironIngot, "Refined Pigiron Ingot");
-		LanguageRegistry.addName(grayIngot, "Gray Iron Ingot");
-		LanguageRegistry.addName(smallWootzsteelChunk, "Small Wootz steel Chunk");
-		LanguageRegistry.addName(mediumWootzsteelChunk, "Medium Wootz steel Chunk");
-		LanguageRegistry.addName(largeWootzsteelChunk, "Large Wootz steel Chunk");
-		LanguageRegistry.addName(packedIron, "Packed Iron");
-		LanguageRegistry.addName(graphite, "Graphite");
-		LanguageRegistry.addName(largeGrayChunk, "Large Gray Iron Chunk");
 	}
 	
 	/**
@@ -182,16 +151,6 @@ public class Content
 		hardenedsteelSword = new HardenedSword(WootzPignGray.toolHardenedsteel, "wootzpigngray").setUnlocalizedName("hardenedsteelSword").setTextureName("wootzpigngray:hardenedsteelSword");
 		hardenedsteelHoe = new HardenedHoe(WootzPignGray.toolHardenedsteel, "wootzpigngray").setUnlocalizedName("hardenedsteelHoe").setTextureName("wootzpigngray:hardenedsteelHoe");
 
-		LanguageRegistry.addName(wootzPick, "Wootz steel Pickaxe");
-		LanguageRegistry.addName(wootzAxe, "Wootz steel Axe");
-		LanguageRegistry.addName(wootzShovel, "Wootz steel Shovel");
-		LanguageRegistry.addName(wootzSword, "Wootz steel Sword");
-		LanguageRegistry.addName(wootzHoe, "Wootz steel Hoe");
-		LanguageRegistry.addName(hardenedsteelPick, "Hardened steel Pickaxe");
-		LanguageRegistry.addName(hardenedsteelAxe, "Hardened steel Axe");
-		LanguageRegistry.addName(hardenedsteelShovel, "Hardened steel Shovel");
-		LanguageRegistry.addName(hardenedsteelSword, "Hardened steel Sword");
-		LanguageRegistry.addName(hardenedsteelHoe, "Hardened steel Hoe");
 		}
 	public static void doLoot()
 	{

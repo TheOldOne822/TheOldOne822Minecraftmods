@@ -1,19 +1,18 @@
 package theoldone822.WootzPignGray.Items;
 
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 
 public class HardenedSword extends ItemSword
 {
 	/**
 	 * The EnumToolMaterial for the tool. This is used to set what item can be used to repair it.
 	 */
+    @SuppressWarnings("unused")
     private final ToolMaterial material;
     private String modName;
 	  
