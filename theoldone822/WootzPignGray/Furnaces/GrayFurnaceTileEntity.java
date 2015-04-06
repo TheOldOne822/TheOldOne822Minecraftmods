@@ -1,11 +1,5 @@
 package theoldone822.WootzPignGray.Furnaces;
 
-import java.util.Random;
-
-import theoldone822.WootzPignGray.Settings;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,6 +16,10 @@ import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+import theoldone822.WootzPignGray.Settings;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class GrayFurnaceTileEntity extends TileEntity implements ISidedInventory {
 	private static final int[] slots_top = new int[] { 0 };

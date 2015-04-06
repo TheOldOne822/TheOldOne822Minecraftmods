@@ -100,7 +100,8 @@ public class SimpleOre extends Block
 
         if (this.getItemDropped(par5, par1World.rand, par7) != Item.getItemFromBlock(this))
         {
-        	int var8 = MathHelper.getRandomIntegerInRange(par1World.rand, 1, 8);
+        	@SuppressWarnings("unused")
+            int var8 = MathHelper.getRandomIntegerInRange(par1World.rand, 1, 8);
 
 //            this.dropXpOnBlockBreak(par1World, par2, par3, par4, var8);
         }

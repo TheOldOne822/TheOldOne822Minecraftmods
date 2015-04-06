@@ -1,15 +1,14 @@
 package theoldone822.WootzPignGray;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 import theoldone822.WootzPignGray.Furnaces.GrayFurnaceContainer;
 import theoldone822.WootzPignGray.Furnaces.GrayFurnaceGUI;
 import theoldone822.WootzPignGray.Furnaces.GrayFurnaceTileEntity;
 import theoldone822.WootzPignGray.Furnaces.GrayFusionFurnaceContainer;
 import theoldone822.WootzPignGray.Furnaces.GrayFusionFurnaceGUI;
 import theoldone822.WootzPignGray.Furnaces.GrayFusionFurnaceTileEntity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
 
 public class ProxyCommon implements IGuiHandler

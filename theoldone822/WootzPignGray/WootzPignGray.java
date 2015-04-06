@@ -6,6 +6,7 @@ import theoldone822.WootzPignGray.Furnaces.GrayFurnaceTileEntity;
 import theoldone822.WootzPignGray.Furnaces.GrayFusionFurnaceTileEntity;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.EnumHelper;
 import cpw.mods.fml.common.Loader;
@@ -20,7 +21,8 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid = "wootzpigngray", name = "Wootz Pig and Gray", version = "2.0", dependencies = "required-after:fusion")
+@Mod(modid = "wootzpigngray", name = "Wootz Pig and Gray", version = "1.7.10-2.0.1", 
+     dependencies = "required-after:simplecore; required-after:fusion; ")
 public class WootzPignGray {
 	@SidedProxy(clientSide = "theoldone822.WootzPignGray.ProxyClient", serverSide = "theoldone822.WootzPignGray.ProxyCommon")	
 	public static ProxyCommon proxy;
@@ -30,8 +32,8 @@ public class WootzPignGray {
 
 	public static ArmorMaterial armorWootz;
 
-	public static int rendererWootz;
-	public static int rendererHardenedsteel;
+//	public static int rendererWootz;
+//	public static int rendererHardenedsteel;
 	
 	@Instance("WootzPignGray")
 	public static WootzPignGray instance = new WootzPignGray();
@@ -72,7 +74,7 @@ public class WootzPignGray {
 			c.setString("axeIDList", String.valueOf(Content.wootzAxe) + "; " + String.valueOf(Content.hardenedsteelAxe));
 			FMLInterModComms.sendMessage("TreeCapitator", "ThirdPartyModConfig", c);
 		}
-		toolWootz.customCraftingMaterial = Content.wootzIngot;
+		toolWootz.setRepairItem(new ItemStack( Content.wootzIngot));
 		armorWootz.customCraftingMaterial = Content.wootzIngot;
 		Recipes.doPigiron();
 

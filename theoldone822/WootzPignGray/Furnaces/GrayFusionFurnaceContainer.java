@@ -1,17 +1,15 @@
 package theoldone822.WootzPignGray.Furnaces;
 
-import alexndr.plugins.Fusion.FusionFurnaceRecipes;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnace;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.tileentity.TileEntityFurnace;
+import alexndr.plugins.Fusion.FusionFurnaceRecipes;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class GrayFusionFurnaceContainer extends Container
 {
