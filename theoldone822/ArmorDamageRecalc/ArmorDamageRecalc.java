@@ -1,18 +1,65 @@
 package theoldone822.ArmorDamageRecalc;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
+import org.apache.commons.lang3.ArrayUtils;
+
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.RegistryNamespaced;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
+import theoldone822.ArmorDamageRecalc.API.ExtendedHandler;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid = "ArmorDamageRecalc", name = "Armor Damage Recalc", version = "0.9b")
+@Mod(modid = "ArmorDamageRecalc", name = "Armor Damage Recalc", version = "0.9d")
 public class ArmorDamageRecalc {
+
+	Configuration settings;
+	Configuration helm;
+	Configuration chest;
+	Configuration legs;
+	Configuration boots;
+
+	Configuration cloak;
+	Configuration shoulder;
+	Configuration vambrace;
+
+	public static int[] helmAmountI;
+	public static String[] helmListI;
+
+	public static int[] chestAmountI;
+	public static String[] chestListI;
+
+	public static int[] legsAmountI;
+	public static String[] legsListI;
+
+	public static int[] bootsAmountI;
+	public static String[] bootsListI;
+
+	private static boolean firstRun = true;
+
 	@Instance("ArmorDamageRecalc")
 	public static ArmorDamageRecalc instance = new ArmorDamageRecalc();
+
+	public static int maxArmor = 25;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -22,5 +69,181 @@ public class ArmorDamageRecalc {
 
 		metadata.authorList = Arrays.asList("theoldone822");
 		metadata.description = ".";
+		File installDir = event.getModConfigurationDirectory();
+		File configDir = new File(installDir, "ArmorDamageRecalc");
+		settings = new Configuration(new File(configDir, "ArmorDamageRecalc.cfg"));
+
+		File f = new File(configDir, "HelmBonusList.cfg");
+		if (f.exists()) {
+			firstRun = false;
+		}
+
+		helm = new Configuration(new File(configDir, "HelmBonusList.cfg"));
+		chest = new Configuration(new File(configDir, "ChestplateBonusList.cfg"));
+		legs = new Configuration(new File(configDir, "LeggingsBonusList.cfg"));
+		boots = new Configuration(new File(configDir, "BootsBonusList.cfg"));
+
+		cloak = new Configuration(new File(configDir, "CloakBonusList.cfg"));
+		shoulder = new Configuration(new File(configDir, "ShoulderBonusList.cfg"));
+		vambrace = new Configuration(new File(configDir, "VambraceBonusList.cfg"));
+
+		settings.load();
+		maxArmor = settings.get("Base options", "MaxArmor", 75,
+				"Number of armor points at witch all blockable damage is stopped. vanilla is 25").getInt();
+		ExtendedHandler.damagedArmor = settings
+				.get("Adavanced options", "DamagedArmor", false, "Weather armor will loose armor value when damaged.")
+				.getBoolean();
+		ExtendedHandler.damagedArmorFactor = (float) settings
+				.get("Adavanced options", "damagedArmor", 1.0,
+						"How large the effect of damaged armor is. Must be positive. Numbers below 1 cause damaged armor to be more powerful the new armor")
+				.getDouble();
+		settings.save();
+	}
+
+	@EventHandler
+	public void PostInitiateArmor(FMLPostInitializationEvent initEvent) {
+
+		if (firstRun) {
+			for (int i = 0; i < 32000; i++) {
+				if (Item.getItemById(i) != null) {
+					if (Item.getItemById(i) instanceof ItemArmor) {
+						ItemArmor item = (ItemArmor) Item.getItemById(i);
+						int n = item.damageReduceAmount;
+						int c = item.armorType;
+						float factor = maxArmor / 25;
+						switch (c) {
+						case 0:
+							helmAmountI = ArrayUtils.add(helmAmountI, ((int) Math.floor((n * factor)) - n));
+							helmListI = ArrayUtils.add(helmListI, Item.itemRegistry.getNameForObject(item));
+							break;
+						case 1:
+							chestAmountI = ArrayUtils.add(chestAmountI, ((int) Math.floor((n * factor)) - n));
+							chestListI = ArrayUtils.add(chestListI, Item.itemRegistry.getNameForObject(item));
+							break;
+						case 2:
+							legsAmountI = ArrayUtils.add(legsAmountI, ((int) Math.floor((n * factor)) - n));
+							legsListI = ArrayUtils.add(legsListI, Item.itemRegistry.getNameForObject(item));
+							break;
+						case 3:
+							bootsAmountI = ArrayUtils.add(bootsAmountI, ((int) Math.floor((n * factor)) - n));
+							bootsListI = ArrayUtils.add(bootsListI, Item.itemRegistry.getNameForObject(item));
+							break;
+						}
+					}
+				}
+			}
+			helm.load();
+			ExtendedHandler.helmList = helm.get("armor bonus", "ListOfHelms", helmListI,
+					"Must have same number of entries and in same order as HelmBonusList").getStringList();
+			ExtendedHandler.helmAmount = helm
+					.get("armor bonus", "HelmBonusList", helmAmountI,
+							"The amount to add to the armor normally provided. Must have same number of entries and in same order as ListOfHelms")
+					.getIntList();
+			helm.save();
+
+			chest.load();
+			ExtendedHandler.chestList = chest
+					.get("armor bonus", "ListOfChestplates", chestListI,
+							"Must have same number of entries and in same order as ChestplateBonusList")
+					.getStringList();
+			ExtendedHandler.chestAmount = chest
+					.get("armor bonus", "ChestplateBonusList", chestAmountI,
+							"The amount to add to the armor normally provided. Must have same number of entries and in same order as ListOfChestplates")
+					.getIntList();
+			chest.save();
+
+			legs.load();
+			ExtendedHandler.legsList = legs.get("armor bonus", "ListOfLeggings", legsListI,
+					"Must have same number of entries and in same order as LeggingBonusList").getStringList();
+			ExtendedHandler.legsAmount = legs
+					.get("armor bonus", "LeggingBonusList", legsAmountI,
+							"The amount to add to the armor normally provided. Must have same number of entries and in same order as ListOfLeggings")
+					.getIntList();
+			legs.save();
+
+			boots.load();
+			ExtendedHandler.bootsList = boots.get("armor bonus", "ListOfBoots", bootsListI,
+					"Must have same number of entries and in same order as BootBonusList").getStringList();
+			ExtendedHandler.bootsAmount = boots
+					.get("armor bonus", "BootBonusList", bootsAmountI,
+							"The amount to add to the armor normally provided. Must have same number of entries and in same order as ListOfBoots")
+					.getIntList();
+			boots.save();
+
+		} else {
+
+			helm.load();
+			ExtendedHandler.helmList = helm.get("armor bonus", "ListOfHelms", new String[] { "" },
+					"Must have same number of entries and in same order as HelmBonusList").getStringList();
+			ExtendedHandler.helmAmount = helm
+					.get("armor bonus", "HelmBonusList", new int[] { 0 },
+							"The amount to add to the armor normally provided. Must have same number of entries and in same order as ListOfHelms")
+					.getIntList();
+			helm.save();
+
+			chest.load();
+			ExtendedHandler.chestList = chest
+					.get("armor bonus", "ListOfChestplates", new String[] { "" },
+							"Must have same number of entries and in same order as ChestplateBonusList")
+					.getStringList();
+			ExtendedHandler.chestAmount = chest
+					.get("armor bonus", "ChestplateBonusList", new int[] {},
+							"The amount to add to the armor normally provided. Must have same number of entries and in same order as ListOfChestplates")
+					.getIntList();
+			chest.save();
+
+			legs.load();
+			ExtendedHandler.legsList = legs.get("armor bonus", "ListOfLeggings", new String[] { "" },
+					"Must have same number of entries and in same order as LeggingBonusList").getStringList();
+			ExtendedHandler.legsAmount = legs
+					.get("armor bonus", "LeggingBonusList", new int[] {},
+							"The amount to add to the armor normally provided. Must have same number of entries and in same order as ListOfLeggings")
+					.getIntList();
+			legs.save();
+
+			boots.load();
+			ExtendedHandler.bootsList = boots.get("armor bonus", "ListOfBoots", new String[] { "" },
+					"Must have same number of entries and in same order as BootBonusList").getStringList();
+			ExtendedHandler.bootsAmount = boots
+					.get("armor bonus", "BootBonusList", new int[] {},
+							"The amount to add to the armor normally provided. Must have same number of entries and in same order as ListOfBoots")
+					.getIntList();
+			boots.save();
+		}
+
+		if (Loader.isModLoaded("TravellersGear")) {
+			cloak.load();
+			ExtendedHandler.cloakList = cloak.get("armor bonus", "ListOfCloaks", new String[] {},
+					"Must have same number of entries and in same order as CloakBonusList").getStringList();
+			ExtendedHandler.cloakAmount = cloak
+					.get("armor bonus", "CloakBonusList", new int[] {},
+							"The amount to add to the armor normally provided. Must have same number of entries and in same order as ListOfCloaks")
+					.getIntList();
+
+			cloak.save();
+
+			shoulder.load();
+			ExtendedHandler.shoulderList = shoulder
+					.get("armor bonus", "ListOfShoulderpads", new String[] {},
+							"Must have same number of entries and in same order as ShoulderpadBonusList")
+					.getStringList();
+			ExtendedHandler.shoulderAmount = shoulder
+					.get("armor bonus", "ShoulderpadBonusList", new int[] {},
+							"The amount to add to the armor normally provided. Must have same number of entries and in same order as ListOfShoulderpads")
+					.getIntList();
+
+			shoulder.save();
+
+			vambrace.load();
+			ExtendedHandler.vambraceList = vambrace.get("armor bonus", "ListOfVambraces", new String[] {},
+					"Must have same number of entries and in same order as VambraceBonusList").getStringList();
+			ExtendedHandler.vambraceAmount = vambrace
+					.get("armor bonus", "VambraceBonusList", new int[] {},
+							"The amount to add to the armor normally provided. Must have same number of entries and in same order as ListOfVambraces")
+					.getIntList();
+
+			vambrace.save();
+		}
+
 	}
 }
