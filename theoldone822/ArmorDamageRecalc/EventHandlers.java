@@ -1,56 +1,40 @@
 package theoldone822.ArmorDamageRecalc;
 
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.CombatRules;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import theoldone822.ArmorDamageRecalc.API.ExtendedHandler;
-import theoldone822.ArmorDamageRecalc.API.IExtendedArmor;
-import travellersgear.api.TravellersGearAPI;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.eventhandler.EventPriority;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EventHandlers {
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void HurtEvent(LivingHurtEvent event) {
-		if (!event.source.isUnblockable()) {
-			event.source.setDamageBypassesArmor();
+		if (!event.source.isUnblockable() && event.entityLiving instanceof EntityPlayer) {
 
-			float i = (float) ArmorDamageRecalc.maxArmor - ExtendedHandler.getExtendedArmorValue(event.entityLiving);
-			float f1 = event.ammount * i;
-			if (event.entityLiving instanceof EntityPlayer) {
-				((EntityPlayer) event.entityLiving).inventory.damageArmor(event.ammount);
-				if (Loader.isModLoaded("TravellersGear")) {
-					ItemStack[] titemstack = TravellersGearAPI.getExtendedInventory((EntityPlayer) event.entityLiving);
-					int j = titemstack.length - 1;
-					for (int k = 0; k < j; ++k) {
-						ItemStack itemstack = titemstack[k];
-						if (itemstack != null) {
-							if (itemstack.getItem() instanceof IExtendedArmor) {
-								//TODO make it damage damageable extra armor slots TravellersGear does not make that easy
-								
-							}
+			float armF = (float) event.entityLiving.getEntityAttribute(SharedMonsterAttributes.ARMOR).getAttributeValue();
+			if (armF > 0) {
+				if (armF < 1) {
+					event.ammount = CombatRules.func_188402_a(event.ammount, armF);
+				} else {
+					if (armF != (float) event.entityLiving.getTotalArmorValue()) {
+						float vaDam = CombatRules.func_188402_a(event.ammount, (float) event.entityLiving.getTotalArmorValue());
+						float waDam = CombatRules.func_188402_a(event.ammount, armF);
+
+						if ((float) event.entityLiving.getTotalArmorValue() - event.ammount * 0.5F < (float) event.entityLiving.getTotalArmorValue() * 0.2F) {
+							event.ammount = (1 - (float) event.entityLiving.getTotalArmorValue() * 0.2F) * waDam;
+						} else if ((float) event.entityLiving.getTotalArmorValue() - event.ammount * 0.5f > 20.0F) {
+							event.ammount = (1 - 20.0F / 25) * waDam;
+						} else {
+							event.ammount = (1 - ((float) event.entityLiving.getTotalArmorValue() - event.ammount * 0.5F) / 25) * waDam;
 						}
 					}
 				}
 			}
-			event.ammount = f1 / (float) ArmorDamageRecalc.maxArmor;
 		}
-
-		/*
-		 * if (!event.source.isUnblockable() && ArmorDamageRecalc.reduction) {
-		 * if (event.entityLiving.getTotalArmorValue() > 20){
-		 * event.source.setDamageBypassesArmor(); float RecalcDamage =
-		 * event.ammount * 5F / 25.0F; float d = ArmorDamageRecalc.maxArmor -
-		 * event.entityLiving.getTotalArmorValue();
-		 * 
-		 * if (event.entityLiving instanceof EntityPlayer) ((EntityPlayer)
-		 * event.entityLiving).inventory.damageArmor(event.ammount);
-		 * 
-		 * event.ammount = RecalcDamage * d / (ArmorDamageRecalc.maxArmor - 20);
-		 * } }
-		 */ }
+	}
 }

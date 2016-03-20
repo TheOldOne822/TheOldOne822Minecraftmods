@@ -3,6 +3,7 @@ package theoldone822.ArmorOverlay;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -11,15 +12,12 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
 
 import org.lwjgl.opengl.GL11;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.TickEvent;
-import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class HUDOverlayHandler {
@@ -45,91 +43,31 @@ public class HUDOverlayHandler {
 		int left = scale.getScaledWidth() / 2 - 91;
 		int top = scale.getScaledHeight() - GuiIngameForge.left_height + 10;
 
-		int stats;
+		float stats = (float)player.getEntityAttribute(SharedMonsterAttributes.ARMOR).getAttributeValue();
 
-		if (!Loader.isModLoaded("ArmorDamageRecalc")) {
-			stats = player.getTotalArmorValue();
-		} else {
-			stats = (int) Math.floor(theoldone822.ArmorDamageRecalc.API.ExtendedHandler.getExtendedArmorValue(player));
-		}
-
-		if (ArmorOverlay.overlayLevels == 3 && ArmorOverlay.armorPices == 2 && !Loader.isModLoaded("ArmorDamageRecalc")) {
-			drawAromrOverlay(stats, mc, left, top);
-		} else {
-			if (ArmorOverlay.armorPices == 4)
-				drawExtendedAromrOverlay(stats, mc, left, top);
-			if (ArmorOverlay.armorPices == 2)
-				drawExtendedAromrOverlay(stats + stats, mc, left, top);
-			if (ArmorOverlay.armorPices == 1)
-				drawExtendedAromrOverlay(stats * 4, mc, left, top);
-		}
+//			if (ArmorOverlay.armorPices == 4)
+				drawAromrOverlay(stats, mc, left, top);
 	}
 
-	public static void drawAromrOverlay(int armorLevel, Minecraft mc, int left, int top) {
-		if (armorLevel < 21)
-			return;
-
-		int armorLevel2 = armorLevel - 20;
-
-		if (armorLevel > 40)
-			armorLevel2 = 20;
-
-		int endBar = (int) Math.ceil(Math.min(20, (armorLevel2)) / 2f);
-		mc.getTextureManager().bindTexture(modIcons);
-
-		for (int i = 0; i < (endBar + 1); ++i) {
-			int x = left + i * 8;
-			int y = top;
-			float HalfArmorBar = (armorLevel2) / 2 - i;
-
-			if (HalfArmorBar >= 1)
-				mc.ingameGUI.drawTexturedModalRect(x, y, 9, 0, 9, 9);
-			else if (HalfArmorBar != 0)
-				mc.ingameGUI.drawTexturedModalRect((x - 8), y, 0, 0, 9, 9);
-		}
-
-		if (armorLevel > 40) {
-			if (armorLevel > 60)
-				armorLevel = 60;
-			endBar = (int) Math.ceil(Math.min(20, (armorLevel - 40)) / 2f);
-			mc.getTextureManager().bindTexture(modIcons);
-
-			for (int i = 0; i < (endBar + 1); ++i) {
-				int x = left + i * 8;
-				int y = top;
-				float HalfArmorBar = (armorLevel - 40) / 2 - i;
-
-				if (HalfArmorBar >= 1)
-					mc.ingameGUI.drawTexturedModalRect(x, y, 27, 0, 9, 9);
-				else if (HalfArmorBar != 0)
-					mc.ingameGUI.drawTexturedModalRect((x - 8), y, 18, 0, 9, 9);
-			}
-		}
-		if (ArmorOverlay.showNumbers)
-		mc.ingameGUI.drawString(mc.fontRenderer, Integer.toString(armorLevel), left + 82, top + 1, 0xffffff);
-		// rebind default icons
-		mc.getTextureManager().bindTexture(Gui.icons);
-	}
-
-	public static void drawExtendedAromrOverlay(int armorLevel, Minecraft mc, int left, int top) {
-		float al = armorLevel;
-		if (al > ArmorOverlay.overlayLevels * 40)
-			al = ArmorOverlay.overlayLevels * 40;
+	public static void drawAromrOverlay(float al, Minecraft mc, int left, int top) {
+		float armorLevel = al * (ArmorOverlay.overlayLevels * 40 / 30);
 		
 		int textureOfset1 = 0;
 		int textureOfset2 = 0;
 		
-		if (ArmorOverlay.overlayLevels != 20)
+		if (ArmorOverlay.overlayLevels != 18)
 			textureOfset2 = 36;
 
 		if (ArmorOverlay.overlayLevels == 3)
-			textureOfset1 = 54;
+			textureOfset1 = 63;
 		
-		if (ArmorOverlay.overlayLevels == 10)
-			textureOfset1 = 90;
+		if (ArmorOverlay.overlayLevels == 9)
+			textureOfset1 = 99;
 		
-		int f1 = (int) Math.floor(al / 40);
-		int f2 = (int) Math.floor(al - (40 * f1));
+		
+		
+		int f1 = (int) Math.floor(armorLevel / 40);
+		int f2 = (int) Math.floor(armorLevel - (40 * f1));
 		int f3 = (int) Math.floor((f2) / 4);
 
 		if (f1 < 1 && f2 < 1 && f3 < 1)
@@ -148,12 +86,7 @@ public class HUDOverlayHandler {
 			}
 		}
 		if (ArmorOverlay.showNumbers){
-			if (ArmorOverlay.armorPices == 4)
-				mc.ingameGUI.drawString(mc.fontRenderer, Integer.toString(armorLevel), left + 82, top + 1, 0xffffff);
-			if (ArmorOverlay.armorPices == 2)
-				mc.ingameGUI.drawString(mc.fontRenderer, Integer.toString(armorLevel / 2), left + 82, top + 1, 0xffffff);
-			if (ArmorOverlay.armorPices == 1)
-				mc.ingameGUI.drawString(mc.fontRenderer, Integer.toString(armorLevel / 4), left + 82, top + 1, 0xffffff);
+				mc.ingameGUI.drawString(mc.fontRendererObj, Float.toString(al), left + 82, top + 1, 0xffffff);
 		}
 		// rebind default icons
 		mc.getTextureManager().bindTexture(Gui.icons);

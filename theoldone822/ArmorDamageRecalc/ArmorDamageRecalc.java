@@ -12,22 +12,21 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.RegistryNamespaced;
+//import net.minecraft.util.RegistryNamespaced;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-import theoldone822.ArmorDamageRecalc.API.ExtendedHandler;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.ModMetadata;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.ModMetadata;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod(modid = "ArmorDamageRecalc", name = "Armor Damage Recalc", version = "0.9d")
 public class ArmorDamageRecalc {
@@ -83,27 +82,14 @@ public class ArmorDamageRecalc {
 		legs = new Configuration(new File(configDir, "LeggingsBonusList.cfg"));
 		boots = new Configuration(new File(configDir, "BootsBonusList.cfg"));
 
-		cloak = new Configuration(new File(configDir, "CloakBonusList.cfg"));
-		shoulder = new Configuration(new File(configDir, "ShoulderBonusList.cfg"));
-		vambrace = new Configuration(new File(configDir, "VambraceBonusList.cfg"));
-
 		settings.load();
-		maxArmor = settings.get("Base options", "MaxArmor", 75,
-				"Number of armor points at witch all blockable damage is stopped. vanilla is 25").getInt();
-		ExtendedHandler.damagedArmor = settings
-				.get("Adavanced options", "DamagedArmor", false, "Weather armor will loose armor value when damaged.")
-				.getBoolean();
-		ExtendedHandler.damagedArmorFactor = (float) settings
-				.get("Adavanced options", "damagedArmor", 1.0,
-						"How large the effect of damaged armor is. Must be positive. Numbers below 1 cause damaged armor to be more powerful the new armor")
-				.getDouble();
 		settings.save();
 	}
 
 	@EventHandler
 	public void PostInitiateArmor(FMLPostInitializationEvent initEvent) {
 
-		if (firstRun) {
+/*		if (firstRun) {
 			for (int i = 0; i < 32000; i++) {
 				if (Item.getItemById(i) != null) {
 					if (Item.getItemById(i) instanceof ItemArmor) {
@@ -210,40 +196,6 @@ public class ArmorDamageRecalc {
 					.getIntList();
 			boots.save();
 		}
-
-		if (Loader.isModLoaded("TravellersGear")) {
-			cloak.load();
-			ExtendedHandler.cloakList = cloak.get("armor bonus", "ListOfCloaks", new String[] {},
-					"Must have same number of entries and in same order as CloakBonusList").getStringList();
-			ExtendedHandler.cloakAmount = cloak
-					.get("armor bonus", "CloakBonusList", new int[] {},
-							"The amount to add to the armor normally provided. Must have same number of entries and in same order as ListOfCloaks")
-					.getIntList();
-
-			cloak.save();
-
-			shoulder.load();
-			ExtendedHandler.shoulderList = shoulder
-					.get("armor bonus", "ListOfShoulderpads", new String[] {},
-							"Must have same number of entries and in same order as ShoulderpadBonusList")
-					.getStringList();
-			ExtendedHandler.shoulderAmount = shoulder
-					.get("armor bonus", "ShoulderpadBonusList", new int[] {},
-							"The amount to add to the armor normally provided. Must have same number of entries and in same order as ListOfShoulderpads")
-					.getIntList();
-
-			shoulder.save();
-
-			vambrace.load();
-			ExtendedHandler.vambraceList = vambrace.get("armor bonus", "ListOfVambraces", new String[] {},
-					"Must have same number of entries and in same order as VambraceBonusList").getStringList();
-			ExtendedHandler.vambraceAmount = vambrace
-					.get("armor bonus", "VambraceBonusList", new int[] {},
-							"The amount to add to the armor normally provided. Must have same number of entries and in same order as ListOfVambraces")
-					.getIntList();
-
-			vambrace.save();
-		}
-
+*/
 	}
 }
